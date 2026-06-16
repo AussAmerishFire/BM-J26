@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BM Revision · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{
+  --bg:#f4f2ec;
+  --card:#ffffff;
+  --ink:#1c1e22;
+  --ink2:#3b3f47;
+  --muted:#71757f;
+  --faint:#9a9da5;
+  --line:#e4e0d6;
+  --line2:#eeebe3;
+  --accent:#1f5670;       /* single deep teal-blue accent */
+  --accent-soft:#eaf1f4;
+  --accent-line:#cddde3;
+  --pos:#2f7350;          /* muted green */
+  --pos-soft:#edf4ef;
+  --neg:#a8493a;          /* muted clay */
+  --neg-soft:#f7eeeb;
+  --gold:#917216;         /* muted amber for booklet stars */
+  --gold-soft:#f5efdd;
+  --plum:#6a5a8c;         /* calm secondary for diagrams */
+  --radius:4px;
+  --sidebar:248px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* ── SIDEBAR ─────────────────────────────────── */
+#sidebar{position:fixed;top:0;left:0;width:var(--sidebar);height:100vh;
+  background:var(--card);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+#sidebar-header{padding:26px 24px 18px;border-bottom:1px solid var(--line)}
+#sidebar-header .logo{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink)}
+#sidebar-header .sub{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.02em}
+#sidebar nav{flex:1;padding:14px 0}
+.nav-item{display:flex;align-items:center;gap:11px;padding:9px 24px;cursor:pointer;
+  color:var(--ink2);font-size:13.5px;font-weight:500;transition:color .15s,background .15s;
+  border-left:2px solid transparent}
+.nav-item:hover{color:var(--ink);background:var(--line2)}
+.nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft)}
+.nav-item .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);width:16px;flex-shrink:0}
+.nav-item.active .num{color:var(--accent)}
+.nav-sep{height:1px;background:var(--line);margin:12px 24px}
+.nav-label{font-size:10px;font-weight:600;color:var(--faint);text-transform:uppercase;
+  letter-spacing:.1em;padding:6px 24px 6px}
+
+/* ── MAIN ────────────────────────────────────── */
+#main{margin-left:var(--sidebar)}
+.page{display:none;max-width:1320px;margin:0 auto;padding:52px 72px 96px}
+.page.active{display:block}
+.page-wide{max-width:1320px}
+.page-title{font-size:34px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-0.02em}
+.page-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.page-subtitle{font-size:14.5px;color:var(--muted);margin-bottom:44px;max-width:640px;line-height:1.6}
+
+/* ── SECTIONS ────────────────────────────────── */
+.section-title{font-size:21px;font-weight:600;color:var(--ink);margin:48px 0 18px;
+  padding-bottom:10px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+.section-title .s-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);font-weight:500}
+.sub-title{font-size:15px;font-weight:600;color:var(--ink);margin:22px 0 10px;font-family:'Inter',sans-serif}
+
+/* ── CARDS ───────────────────────────────────── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;margin-bottom:18px}
+.card-grid{display:grid;gap:18px}
+.card-grid.cols2{grid-template-columns:repeat(2,1fr)}
+.card-grid.cols3{grid-template-columns:repeat(3,1fr)}
+.card-grid.cols4{grid-template-columns:repeat(4,1fr)}
+
+/* ── TABLES ──────────────────────────────────── */
+.tbl-wrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:transparent;color:var(--accent);font-weight:600;text-align:left;
+  padding:11px 15px;border-bottom:1.5px solid var(--line);font-size:12.5px}
+td{padding:10px 15px;border-bottom:1px solid var(--line2);vertical-align:top;line-height:1.5;color:var(--ink2)}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--ink);font-weight:600}
+.num-col{text-align:right;font-family:'IBM Plex Mono',monospace}
+
+/* ── FINANCIAL STATEMENT FORMAT ──────────────── */
+.statement{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:0;margin:14px 0;overflow:hidden}
+.statement-head{background:var(--accent-soft);padding:12px 18px;border-bottom:1px solid var(--accent-line)}
+.statement-head .title{font-size:14px;font-weight:600;color:var(--ink)}
+.statement-head .note{font-size:11.5px;color:var(--muted);margin-top:2px}
+.statement table{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.statement td{padding:8px 18px}
+.statement .group-row td{color:var(--accent);font-weight:600;font-size:11px;text-transform:uppercase;
+  letter-spacing:.06em;padding-top:14px;background:transparent;font-family:'Inter',sans-serif}
+.statement .total-row td{font-weight:600;color:var(--ink);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.statement .indent{padding-left:32px}
+
+/* ── FORMULA BOXES ───────────────────────────── */
+.formula-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;margin:12px 0;position:relative}
+.formula-block.booklet{border-color:var(--gold);background:linear-gradient(to right,var(--gold-soft),var(--card) 60%)}
+.star{color:var(--gold);font-size:14px;margin-right:5px}
+.booklet-tag{position:absolute;top:-9px;right:14px;background:var(--gold);color:#fff;
+  font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:2px;letter-spacing:.04em;
+  font-family:'Inter',sans-serif}
+.eq{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:15px;color:var(--ink);
+  font-family:'IBM Plex Mono',monospace}
+.eq .equals{color:var(--accent);font-weight:600}
+.eq .label{font-size:11px;color:var(--muted);font-style:italic;font-family:'Inter',sans-serif;margin-left:4px}
+.frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 3px}
+.frac .num{border-bottom:1.5px solid var(--ink);padding:0 6px 3px;font-size:.92em}
+.frac .den{padding:3px 6px 0;font-size:.92em}
+.formula-note{font-size:12px;color:var(--muted);margin-top:9px;padding-top:9px;
+  border-top:1px solid var(--line2);font-family:'Inter',sans-serif;line-height:1.55}
+
+/* ── HL BADGE ────────────────────────────────── */
+.hl-badge{display:inline-block;background:var(--gold-soft);color:var(--gold);
+  font-size:10px;font-weight:600;padding:1px 7px;border-radius:2px;border:1px solid var(--gold);
+  margin-left:7px;vertical-align:middle;font-family:'Inter',sans-serif;letter-spacing:.03em}
+
+/* ── APPLIED CASE BOXES ──────────────────────── */
+.case-box{background:var(--accent-soft);border:1px solid var(--accent-line);
+  border-radius:var(--radius);padding:15px 18px;margin:14px 0}
+.case-box .case-label{font-size:10.5px;font-weight:600;color:var(--accent);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:6px}
+.case-box p{font-size:13px;color:var(--ink2);line-height:1.6}
+.case-box strong{color:var(--ink);font-weight:600}
+
+/* ── DEFINITION CARDS ────────────────────────── */
+.def-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:0;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
+.def-card{padding:14px 18px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.def-card .term{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:4px}
+.def-card .defn{font-size:12.5px;color:var(--ink2);line-height:1.55}
+
+/* ── DIAGRAMS ────────────────────────────────── */
+.diagram-wrap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;margin:16px 0;display:flex;justify-content:center;overflow-x:auto}
+svg text{font-family:'Inter',sans-serif}
+
+/* ── ADV / DISADV ────────────────────────────── */
+.ad-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+.ad-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 18px}
+.ad-box.adv{border-left:2px solid var(--pos)}
+.ad-box.dis{border-left:2px solid var(--neg)}
+.ad-box h5{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:9px;font-family:'Inter',sans-serif}
+.ad-box.adv h5{color:var(--pos)}
+.ad-box.dis h5{color:var(--neg)}
+.ad-box ul{list-style:none;padding:0}
+.ad-box ul li{font-size:12.5px;color:var(--ink2);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.ad-box.adv ul li::before{content:'+';position:absolute;left:0;color:var(--pos);font-weight:600}
+.ad-box.dis ul li::before{content:'−';position:absolute;left:0;color:var(--neg);font-weight:600}
+
+/* ── HOME ────────────────────────────────────── */
+.home-hero{padding:8px 0 36px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.home-hero .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.home-hero h1{font-size:56px;font-weight:500;line-height:1.02;letter-spacing:-0.03em;color:var(--ink);margin-bottom:18px}
+.home-hero h1 em{font-style:italic;color:var(--accent)}
+.home-hero p{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
+.hero-meta{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+.hero-meta .stat .n{font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:var(--ink)}
+.hero-meta .stat .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+.unit-list{border-top:1px solid var(--line)}
+.unit-row{display:flex;align-items:center;gap:20px;padding:22px 8px;border-bottom:1px solid var(--line);
+  cursor:pointer;transition:padding-left .2s,background .15s}
+.unit-row:hover{padding-left:18px;background:var(--card)}
+.unit-row .u-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);width:34px;flex-shrink:0}
+.unit-row .u-body{flex:1}
+.unit-row .u-body h3{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.unit-row .u-body p{font-size:13px;color:var(--muted);line-height:1.5}
+.unit-row .u-arrow{color:var(--faint);font-size:18px;transition:transform .2s,color .15s}
+.unit-row:hover .u-arrow{color:var(--accent);transform:translateX(4px)}
+
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
+.legend > div{padding:18px 20px;border-right:1px solid var(--line2)}
+.legend > div:last-child{border-right:none}
+.legend h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;font-family:'Inter',sans-serif}
+.legend p{font-size:12.5px;color:var(--muted);line-height:1.55}
+
+/* ── FORMULA SHEET ───────────────────────────── */
+.fs-group{margin-bottom:34px}
+.fs-title{font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line);
+  font-family:'Inter',sans-serif}
+.fs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.fs-grid .formula-block{margin:0}
+.fs-banner{padding:18px 22px;border-radius:var(--radius);margin-bottom:30px;font-size:14px;line-height:1.6}
+.fs-banner.given{background:var(--gold-soft);border:1px solid var(--gold)}
+.fs-banner.memorise{background:var(--neg-soft);border:1px solid var(--neg)}
+.fs-section-head{font-size:24px;font-weight:600;color:var(--ink);margin:8px 0 6px;display:flex;align-items:center;gap:10px}
+
+/* ── PROGRESS ────────────────────────────────── */
+#progress{position:fixed;top:0;left:var(--sidebar);right:0;height:2px;background:var(--accent);
+  z-index:200;transform:scaleX(0);transform-origin:left;transition:transform .1s}
+
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--faint)}
+
+/* ── PRINT ───────────────────────────────────── */
+@media print{
+  #sidebar,#progress{display:none}
+  #main{margin:0}
+  .page{display:block!important;page-break-after:always;max-width:none;padding:20px}
+  body{background:#fff}
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media(max-width:860px){
+  :root{--sidebar:0px}
+  #sidebar{transform:translateX(-100%);transition:transform .25s}
+  #sidebar.open{transform:translateX(0)}
+  #main{margin-left:0}
+  .page{padding:30px 20px 70px}
+  .card-grid.cols2,.card-grid.cols3,.card-grid.cols4{grid-template-columns:1fr}
+  .ad-grid{grid-template-columns:1fr}
+  .legend{grid-template-columns:1fr}
+  .fs-grid{grid-template-columns:1fr}
+  .home-hero h1{font-size:38px}
+  #menu-btn{display:flex!important}
+}
+#menu-btn{display:none;position:fixed;top:14px;left:14px;z-index:150;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);width:40px;height:40px;
+  align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+</style>
+</head>
+<body>
+<div id="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</div>
+<div id="progress"></div>
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <div class="logo">BM Revision</div>
+    <div class="sub">IB Diploma · June 2026</div>
+  </div>
+  <nav>
+    <div class="nav-item active" data-page="home"><span class="num">, </span>Home</div>
+    <div class="nav-sep"></div>
+    <div class="nav-label">Units</div>
+    <div class="nav-item" data-page="unit1"><span class="num">1</span>Business Organisation</div>
+    <div class="nav-item" data-page="unit2"><span class="num">2</span>Human Resources</div>
+    <div class="nav-item" data-page="unit3"><span class="num">3</span>Finance &amp; Accounts</div>
+    <div class="nav-item" data-page="unit4"><span class="num">4</span>Marketing</div>
+    <div class="nav-item" data-page="unit5"><span class="num">5</span>Operations</div>
+    <div class="nav-sep"></div>
+    <div class="nav-label">Reference</div>
+    <div class="nav-item" data-page="tools"><span class="num">◆</span>Tools &amp; Frameworks</div>
+    <div class="nav-item" data-page="formulas"><span class="num">★</span>Formula Sheet</div>
+    <div class="nav-item" data-page="defs"><span class="num">§</span>Definitions</div>
+  </nav>
+</nav>
+<div id="main">
+<div class="page active" id="page-home">
+  <div class="home-hero">
+    <div class="kicker">Paper 1 · Paper 2 · SL &amp; HL</div>
+    <h1>Business<br><em>Management</em></h1>
+    <p>A complete, exam-ready reference for the June 2026 sitting. Every definition, table, framework and formula, organised by unit.</p>
+    <div class="hero-meta">
+      <div class="stat"><div class="n">5</div><div class="l">Units</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">Frameworks</div></div>
+      <div class="stat"><div class="n">★</div><div class="l">Booklet formulas flagged</div></div>
+      <div class="stat"><div class="n">30+</div><div class="l">Applied cases</div></div>
+    </div>
+  </div>
+
+  <div class="unit-list">
+    <div class="unit-row" onclick="switchPage('unit1')">
+      <div class="u-num">01</div>
+      <div class="u-body"><h3>Business Organisation &amp; Environment</h3><p>Sectors, entities, stakeholders, growth, MNCs, CSR, economies of scale</p></div>
+      <div class="u-arrow">→</div>
+    </div>
+    <div class="unit-row" onclick="switchPage('unit2')">
+      <div class="u-num">02</div>
+      <div class="u-body"><h3>Human Resource Management</h3><p>Structure, leadership, motivation theories, rewards, recruitment, training</p></div>
+      <div class="u-arrow">→</div>
+    </div>
+    <div class="unit-row" onclick="switchPage('unit3')">
+      <div class="u-num">03</div>
+      <div class="u-body"><h3>Finance &amp; Accounts</h3><p>Sources of finance, P&amp;L, balance sheet, cash flow formats, ratios, investment appraisal</p></div>
+      <div class="u-arrow">→</div>
+    </div>
+    <div class="unit-row" onclick="switchPage('unit4')">
+      <div class="u-num">04</div>
+      <div class="u-body"><h3>Marketing</h3><p>Orientation, market share, product life cycle, pricing, promotion, distribution, 7Ps</p></div>
+      <div class="u-arrow">→</div>
+    </div>
+    <div class="unit-row" onclick="switchPage('unit5')">
+      <div class="u-num">05</div>
+      <div class="u-body"><h3>Operations Management</h3><p>Break-even analysis, contribution, margin of safety, production methods</p></div>
+      <div class="u-arrow">→</div>
+    </div>
+    <div class="unit-row" onclick="switchPage('tools')">
+      <div class="u-num">◆</div>
+      <div class="u-body"><h3>Tools &amp; Frameworks</h3><p>SWOT, STEEPLE, Ansoff Matrix, BCG Matrix, Decision Trees, Mendelow Matrix</p></div>
+      <div class="u-arrow">→</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><h4><span class="star">★</span> Formula booklet</h4><p>Gold-starred formulas are given to you in the exam. Know how to apply them, not memorise them.</p></div>
+    <div><h4>HL only</h4><p>Amber HL badges mark Higher Level content for Paper 2 Section B and Paper 3.</p></div>
+    <div><h4>Applied cases</h4><p>Highlighted boxes give real company examples. Mark schemes reward specific, contextual answers.</p></div>
+  </div>
+</div>
+<!-- ═══════════════════ UNIT 1 ═══════════════════ -->
+<div class="page" id="page-unit1">
+  <div class="page-title">Unit 1 · Business Organization &amp; Environment</div>
+  <div class="page-subtitle">Business sectors · entities · stakeholders · growth strategies · MNCs · CSR · economies of scale</div>
+
+  <!-- 1.1 SECTORS -->
+  <div class="section-title">1.1 Business Sectors</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Sector</th><th>Activity</th><th>Examples</th></tr>
+    <tr><td><strong>Primary</strong></td><td>Extracting raw materials from nature</td><td>Saudi Aramco (oil), Rio Tinto (mining), Al Dahra (UAE farming)</td></tr>
+    <tr><td><strong>Secondary</strong></td><td>Manufacturing / construction, turning raw materials into finished goods</td><td>Toyota (cars), Emirates Steel, Apple iPhone assembly (Foxconn)</td></tr>
+    <tr><td><strong>Tertiary</strong></td><td>Services, distribution, retail, finance, hospitality</td><td>Emirates Airline, McDonald's, HSBC, Carrefour UAE</td></tr>
+    <tr><td><strong>Quaternary</strong></td><td>Knowledge-based / information, R&amp;D, IT, consulting</td><td>Google, McKinsey, Anthropic, CERN</td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--muted)">Developed economies shift from primary → secondary → tertiary → quaternary over time (structural change).</p>
+
+  <!-- 1.2 TYPES OF BUSINESS -->
+  <div class="section-title">1.2 Business Entities</div>
+
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Sole Trader</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">One person owns and runs the business. Unlimited liability.</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Advantages</h5><ul><li>Full control over decisions</li><li>Keep all profits</li><li>Simple to set up, low cost</li><li>Flexibility, quick decisions</li></ul></div>
+        <div class="ad-box dis"><h5>Disadvantages</h5><ul><li>Unlimited liability (personal assets at risk)</li><li>Limited capital, hard to grow</li><li>No cover when owner ill/holiday</li><li>Skills limited to one person</li></ul></div>
+      </div>
+      <div class="case-box"><div class="case-label">Applied Example</div><p><strong>A local shawarma stall in Dubai</strong>, owner takes all profit but also bears all debt. If sued, personal savings and home are at risk.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Partnership</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">2 to 20 partners share ownership. Usually unlimited liability unless LLP.</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Advantages</h5><ul><li>Shared capital and workload</li><li>Complementary skills</li><li>Shared risk</li><li>Simple formation</li></ul></div>
+        <div class="ad-box dis"><h5>Disadvantages</h5><ul><li>Unlimited liability</li><li>Disagreements between partners</li><li>Profits split</li><li>Slow decision-making</li></ul></div>
+      </div>
+      <div class="case-box"><div class="case-label">Applied Example</div><p><strong>Deloitte, PwC, McKinsey</strong> are all partnerships, partners share ownership, profits, and legally-unlimited liability in many jurisdictions.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Private Limited Company (Ltd / LLC)</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Shares sold privately. Shareholders have limited liability. Separate legal identity.</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Advantages</h5><ul><li>Limited liability, shareholders only lose their investment</li><li>Separate legal entity</li><li>Can raise capital via private share sale</li><li>More credibility than sole trader</li></ul></div>
+        <div class="ad-box dis"><h5>Disadvantages</h5><ul><li>Cannot sell shares publicly</li><li>More admin/legal requirements</li><li>Financial accounts must be filed</li><li>Complex to set up vs sole trader</li></ul></div>
+      </div>
+      <div class="case-box"><div class="case-label">Applied Example</div><p><strong>On Holding AG</strong> was a Swiss LLC before its 2021 NYSE IPO. <strong>A Dubai café LLC</strong>, owners' personal homes are protected if the business fails.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Public Limited Company (PLC)</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Shares sold to the public on a stock exchange. Full limited liability.</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Advantages</h5><ul><li>Massive capital raising via IPO</li><li>Limited liability for shareholders</li><li>Enhanced public profile/credibility</li><li>Easier for employees to own shares</li></ul></div>
+        <div class="ad-box dis"><h5>Disadvantages</h5><ul><li>Loss of control, shareholders vote</li><li>Short-term shareholder pressure on profits</li><li>Expensive listing &amp; compliance costs</li><li>Hostile takeover risk</li></ul></div>
+      </div>
+      <div class="case-box"><div class="case-label">Applied Example</div><p><strong>On Holding AG (ONON)</strong> raised ~$750m in its 2021 IPO. <strong>Emirates NBD (ENBD)</strong> is listed on the Dubai Financial Market, open to any investor.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Cooperative</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Owned and run by its members for mutual benefit. Democratic (1 member = 1 vote).</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Advantages</h5><ul><li>Democratic, members have equal say</li><li>Profits shared among members</li><li>Ethical business model</li><li>Strong community loyalty</li></ul></div>
+        <div class="ad-box dis"><h5>Disadvantages</h5><ul><li>Slow decision-making</li><li>Difficult to raise large capital</li><li>Members may lack business expertise</li><li>Conflicts among members</li></ul></div>
+      </div>
+      <div class="case-box"><div class="case-label">Applied Example</div><p><strong>REI (US outdoor cooperative)</strong>, members pay $30 lifetime fee, get dividends. <strong>Mondragon (Spain)</strong>, world's largest cooperative with 81,000 worker-owners.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">NGO / Non-profit</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Exists for social/charitable purposes. Surplus reinvested into mission, not distributed.</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Advantages</h5><ul><li>Tax exemptions</li><li>Strong public trust &amp; brand</li><li>Grant funding available</li><li>Motivates values-driven staff</li></ul></div>
+        <div class="ad-box dis"><h5>Disadvantages</h5><ul><li>Cannot distribute profit</li><li>Dependent on donations/grants</li><li>Governance complexity</li><li>Hard to attract high-salary talent</li></ul></div>
+      </div>
+      <div class="case-box"><div class="case-label">Applied Example</div><p><strong>Médecins Sans Frontières (MSF)</strong>, operates in 70+ countries, 100% funded by donations, no shareholders. <strong>One Billion Lives Foundation</strong>, NGO redistributing technology access.</p></div>
+    </div>
+  </div>
+
+  <!-- 1.3 BUSINESS OBJECTIVES -->
+  <div class="section-title">1.3 Business Objectives &amp; Ethics</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Objective</th><th>Description</th><th>Typical for</th></tr>
+    <tr><td>Profit maximisation</td><td>Maximise the difference between revenue and costs</td><td>Mature PLCs, shareholder-owned firms</td></tr>
+    <tr><td>Revenue / Sales growth</td><td>Grow market share even at lower margins</td><td>Startups, tech firms (e.g. Amazon early years)</td></tr>
+    <tr><td>Market share</td><td>Dominate competitors by volume/value</td><td>FMCG, airlines (Emirates), FANG stocks</td></tr>
+    <tr><td>Survival</td><td>Break even; remain solvent, short-term crisis objective</td><td>New businesses, recession-hit firms</td></tr>
+    <tr><td>Social / ethical</td><td>CSR, sustainability, community benefit</td><td>B-corps (Patagonia), NGOs, cooperatives</td></tr>
+    <tr><td>Shareholder return</td><td>Maximise dividends and share price</td><td>PLCs, private equity-backed firms</td></tr>
+  </table></div>
+
+  <div class="sub-title">Corporate Social Responsibility (CSR)</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px">A business's commitment to ethical behaviour, environmental care, and community contribution beyond legal requirements. Can be <strong>philanthropic</strong> (charitable), <strong>strategic</strong> (integrated into business model), or <strong>greenwashing</strong> (superficial).</p>
+  <div class="card-grid cols2">
+    <div class="case-box"><div class="case-label">Applied, Genuine CSR</div><p><strong>Patagonia</strong> donates 1% of sales to environmental causes, uses recycled materials, and in 2022 transferred ownership to a trust, profit permanently funds climate work. Their "Don't Buy This Jacket" campaign built authentic loyalty.</p></div>
+    <div class="case-box"><div class="case-label">Applied, Greenwashing</div><p><strong>Volkswagen Dieselgate (2015)</strong>, marketed diesel cars as "clean" while software cheated emissions tests. Fined $14.7bn, brand damaged severely. Contrast with genuine CSR to explain the difference.</p></div>
+  </div>
+
+  <!-- 1.5 STAKEHOLDERS -->
+  <div class="section-title">1.5 Stakeholders</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px"><strong>Stakeholder:</strong> any individual or group with an interest in or affected by the decisions of a business.</p>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Internal Stakeholders</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Stakeholder</th><th>Main Interest</th><th>Potential Conflict</th></tr>
+        <tr><td>Shareholders</td><td>Dividends, share price growth</td><td>vs managers who want reinvestment</td></tr>
+        <tr><td>Managers</td><td>Salary, power, job security</td><td>vs workers demanding pay rises</td></tr>
+        <tr><td>Workers</td><td>Pay, conditions, security</td><td>vs shareholders wanting cost cuts</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">External Stakeholders</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Stakeholder</th><th>Main Interest</th><th>Potential Conflict</th></tr>
+        <tr><td>Customers</td><td>Low price, quality, reliability</td><td>vs profit-seeking shareholders</td></tr>
+        <tr><td>Suppliers</td><td>Prompt payment, long contracts</td><td>vs firm wanting lower costs</td></tr>
+        <tr><td>Government</td><td>Tax revenue, employment, laws</td><td>vs firm wanting less regulation</td></tr>
+        <tr><td>Community</td><td>Jobs, low pollution, local investment</td><td>vs firm wanting cheap outsourcing</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- MENDELOW MATRIX -->
+  <div class="sub-title">Mendelow Stakeholder Matrix</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Maps stakeholders by <strong>Power</strong> (ability to affect the business) and <strong>Interest</strong> (how much they care). Determines engagement strategy.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 600 420" width="100%" style="max-width:560px" xmlns="http://www.w3.org/2000/svg">
+  <!-- quadrants -->
+  <rect x="110" y="40" width="220" height="150" fill="#f3ece9" stroke="#d9d5ca"/>
+  <rect x="330" y="40" width="220" height="150" fill="#e8f1ea" stroke="#d9d5ca"/>
+  <rect x="110" y="190" width="220" height="150" fill="#f6f4ee" stroke="#d9d5ca"/>
+  <rect x="330" y="190" width="220" height="150" fill="#e3eef0" stroke="#d9d5ca"/>
+  <!-- titles -->
+  <text x="220" y="72" text-anchor="middle" fill="#a8493a" font-size="13" font-weight="600">Keep Satisfied</text>
+  <text x="220" y="90" text-anchor="middle" fill="#71757f" font-size="10">Consult, avoid dissatisfaction</text>
+  <text x="440" y="72" text-anchor="middle" fill="#2f7350" font-size="13" font-weight="600">Key Players</text>
+  <text x="440" y="90" text-anchor="middle" fill="#71757f" font-size="10">Manage closely, engage fully</text>
+  <text x="220" y="222" text-anchor="middle" fill="#71757f" font-size="13" font-weight="600">Minimal Effort</text>
+  <text x="220" y="240" text-anchor="middle" fill="#9a9da5" font-size="10">Monitor only</text>
+  <text x="440" y="222" text-anchor="middle" fill="#1f5670" font-size="13" font-weight="600">Keep Informed</text>
+  <text x="440" y="240" text-anchor="middle" fill="#71757f" font-size="10">Regular two-way updates</text>
+  <!-- examples -->
+  <text x="220" y="128" text-anchor="middle" fill="#1c1e22" font-size="11">Government,</text>
+  <text x="220" y="144" text-anchor="middle" fill="#1c1e22" font-size="11">regulators, banks</text>
+  <text x="440" y="128" text-anchor="middle" fill="#1c1e22" font-size="11">Major shareholders,</text>
+  <text x="440" y="144" text-anchor="middle" fill="#1c1e22" font-size="11">board of directors</text>
+  <text x="220" y="278" text-anchor="middle" fill="#1c1e22" font-size="11">General public,</text>
+  <text x="220" y="294" text-anchor="middle" fill="#1c1e22" font-size="11">passive community</text>
+  <text x="440" y="278" text-anchor="middle" fill="#1c1e22" font-size="11">Employees,</text>
+  <text x="440" y="294" text-anchor="middle" fill="#1c1e22" font-size="11">customers, local media</text>
+  <!-- axes -->
+  <text x="330" y="372" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Level of Interest</text>
+  <text x="220" y="356" text-anchor="middle" fill="#71757f" font-size="10.5">Low</text>
+  <text x="440" y="356" text-anchor="middle" fill="#71757f" font-size="10.5">High</text>
+  <text x="64" y="115" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600" transform="rotate(-90,64,115)">Power</text>
+  <text x="90" y="118" text-anchor="middle" fill="#71757f" font-size="10.5" transform="rotate(-90,90,118)">High</text>
+  <text x="90" y="268" text-anchor="middle" fill="#71757f" font-size="10.5" transform="rotate(-90,90,268)">Low</text>
+</svg>
+  </div>
+  <div class="case-box"><div class="case-label">Applied, On Holding AG (your IA firm)</div><p><strong>Key Players:</strong> Founders (Hoffman, Allemann) + major institutional shareholders (Softbank), high power, high interest in revenue growth.<br><strong>Keep Satisfied:</strong> NYSE regulators + Swiss financial authorities, high power but lower day-to-day interest.<br><strong>Keep Informed:</strong> Employees + retail customers, very interested in product/brand but limited power to affect board decisions.</p></div>
+
+  <!-- 1.6 GROWTH -->
+  <div class="section-title">1.6 Business Growth</div>
+  <div class="sub-title">Internal (Organic) Growth</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Method</th><th>How</th><th>Example</th></tr>
+    <tr><td>Expanding product range</td><td>New SKUs, new categories</td><td>Apple adding AirPods, Watch to iPhone line</td></tr>
+    <tr><td>Entering new markets</td><td>Geographic expansion, new segments</td><td>McDonald's entering India (McAloo Tikki)</td></tr>
+    <tr><td>Franchising</td><td>License brand/model to franchisees</td><td>McDonald's, 95% of outlets are franchises globally</td></tr>
+    <tr><td>Reinvesting profit</td><td>Use retained earnings to build capacity</td><td>In-N-Out Burger, stays private, grows slowly with own profits</td></tr>
+  </table></div>
+  <div class="sub-title">External (Inorganic) Growth</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Method</th><th>Definition</th><th>Advantages</th><th>Example</th></tr>
+    <tr><td><strong>Merger</strong></td><td>Two companies combine by mutual agreement to form a new entity</td><td>Shared resources; combined market power</td><td>Daimler + Chrysler (1998)</td></tr>
+    <tr><td><strong>Acquisition (Takeover)</strong></td><td>One company buys a controlling stake in another</td><td>Fast market entry; acquire capability</td><td>Disney acquires Fox (2019, $71.3bn), gained streaming catalogue</td></tr>
+    <tr><td><strong>Joint Venture</strong></td><td>Two+ firms create a separate entity together for a specific project</td><td>Shared risk, access to partner's market/tech</td><td>Sony Ericsson; BMW + Toyota hydrogen JV</td></tr>
+    <tr><td><strong>Strategic Alliance</strong></td><td>Formal cooperation without creating a new entity</td><td>Flexible; no shared equity</td><td>Star Alliance (airlines share routes, lounges)</td></tr>
+    <tr><td><strong>Franchising</strong></td><td>Franchisor licenses brand/system to franchisee</td><td>Rapid growth with low franchisor capital</td><td>McDonald's, Subway, Snap Fitness UAE</td></tr>
+  </table></div>
+
+  <!-- ECONOMIES OF SCALE -->
+  <div class="section-title">1.6 Economies of Scale</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Internal Economies of Scale</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Type</th><th>Explanation</th></tr>
+        <tr><td>Purchasing</td><td>Buy in bulk → lower unit cost (e.g. Carrefour buying 10M units)</td></tr>
+        <tr><td>Technical</td><td>Expensive machinery spread over more units (e.g. car robot arms)</td></tr>
+        <tr><td>Financial</td><td>Large firms get lower interest rates on loans</td></tr>
+        <tr><td>Managerial</td><td>Specialists hired (HR dept, CFO) → better decisions</td></tr>
+        <tr><td>Marketing</td><td>Fixed ad spend spread over more units sold</td></tr>
+        <tr><td>Network</td><td>Value grows with users (WhatsApp, Uber)</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Diseconomies of Scale</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Beyond optimal scale, average costs can <em>rise</em> as firm grows too large.</p>
+      <div class="ad-box dis" style="margin-top:8px"><h5>Causes</h5><ul>
+        <li>Poor communication across large hierarchies</li>
+        <li>Low morale, workers feel lost, alienated</li>
+        <li>Coordination problems between departments</li>
+        <li>Bureaucracy slows decision-making</li>
+        <li>Principal-agent problem (managers act in self-interest)</li>
+      </ul></div>
+      <div class="case-box"><div class="case-label">Applied Example</div><p><strong>General Electric (GE)</strong> diversified so far it could no longer manage its divisions efficiently, spun off into 3 separate companies by 2024.</p></div>
+    </div>
+  </div>
+
+  <!-- MNCs -->
+  <div class="section-title">1.6 Multinational Corporations (MNCs)</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px">An MNC operates in multiple countries, typically with headquarters in one nation and subsidiaries/manufacturing in others.</p>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Host Country Benefits</div>
+      <ul style="font-size:13px;color:var(--muted);padding-left:18px;line-height:1.8">
+        <li>FDI (Foreign Direct Investment), capital inflows</li>
+        <li>Employment creation</li>
+        <li>Technology transfer and skills development</li>
+        <li>Tax revenue for government</li>
+        <li>Infrastructure investment</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="sub-title">Host Country Concerns</div>
+      <ul style="font-size:13px;color:var(--muted);padding-left:18px;line-height:1.8">
+        <li>Profit repatriation, money leaves host country</li>
+        <li>Cultural erosion, local businesses displaced</li>
+        <li>Environmental exploitation</li>
+        <li>Tax avoidance via transfer pricing</li>
+        <li>Low wages, poor working conditions</li>
+      </ul>
+    </div>
+  </div>
+  <div class="case-box"><div class="case-label">Applied, Tesla Gigafactory Shanghai</div><p><strong>Tesla</strong> built Giga Shanghai in 2019, China's largest FDI project at the time. Benefits: 9,000+ local jobs, supply chain development, technology transfer. Concerns: profits repatriated to US, Chinese competitors (BYD, NIO) gained indirect knowledge spillover, environmental impact of battery production.</p></div>
+</div>
+<!-- ═══════════════════ UNIT 2 ═══════════════════ -->
+<div class="page" id="page-unit2">
+  <div class="page-title">Unit 2 · Human Resource Management</div>
+  <div class="page-subtitle">Leadership · motivation theories · rewards · recruitment · labour turnover · appraisals</div>
+
+  <!-- 2.1 ORG STRUCTURES -->
+  <div class="section-title">2.1 Organisational Structure</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Structure</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Best for</th></tr>
+    <tr><td><strong>Hierarchical (tall)</strong></td><td>Many levels, narrow span of control</td><td>Clear chain of command; promotion paths</td><td>Slow decisions; high admin cost; poor comms</td><td>Large traditional firms (banks, army)</td></tr>
+    <tr><td><strong>Flat</strong></td><td>Few levels, wide span of control</td><td>Fast decisions; lower cost; empowers staff</td><td>Managers overloaded; less promotion opportunity</td><td>Startups, creative agencies</td></tr>
+    <tr><td><strong>Matrix</strong></td><td>Staff report to both project manager and functional manager</td><td>Flexible; cross-functional expertise</td><td>Conflicting authority; confusion</td><td>IT projects, consultancies (Deloitte)</td></tr>
+    <tr><td><strong>Centralised</strong></td><td>Decisions made at top</td><td>Consistency; control</td><td>Slow; demotivates lower staff</td><td>McDonald's (standardisation)</td></tr>
+    <tr><td><strong>Decentralised</strong></td><td>Decision authority delegated downward</td><td>Motivated staff; local responsiveness</td><td>Inconsistency; duplication</td><td>Google, retail store managers</td></tr>
+  </table></div>
+
+  <!-- 2.3 LEADERSHIP -->
+  <div class="section-title">2.3 Leadership Styles</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Style</th><th>Description</th><th>Best Used When</th><th>Risk</th><th>Real Example</th></tr>
+    <tr><td><strong>Autocratic</strong></td><td>Leader makes all decisions unilaterally; little input from staff</td><td>Crisis, time-sensitive, unskilled workforce</td><td>Demotivates; stifles creativity</td><td>Steve Jobs (early Apple); military commanders</td></tr>
+    <tr><td><strong>Democratic</strong></td><td>Consults team before deciding; encourages participation</td><td>Creative/skilled team; complex problems</td><td>Slow; disagreements</td><td>Google "20% time"; Satya Nadella (Microsoft)</td></tr>
+    <tr><td><strong>Laissez-faire</strong></td><td>Hands-off; team sets own direction</td><td>Highly skilled, self-motivated experts</td><td>Chaos if team lacks direction</td><td>Warren Buffett's management of Berkshire Hathaway subsidiaries</td></tr>
+    <tr><td><strong>Paternalistic</strong></td><td>Leader acts as a parent, consults but ultimately decides what's "best" for team</td><td>Loyal, traditional workforce</td><td>Can be patronising; limits autonomy</td><td>Japanese firms (Honda, Toyota traditional model)</td></tr>
+    <tr><td><strong>Situational</strong></td><td>Leader adapts style to situation and staff development level (Hersey &amp; Blanchard)</td><td>Diverse teams, evolving environments</td><td>Requires high emotional intelligence</td><td>Netflix (Reed Hastings shifts style by context)</td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:8px"><strong>Management vs Leadership:</strong> Managers <em>administer</em> (plan, organise, control resources). Leaders <em>inspire</em> (set vision, motivate, influence). A great manager is not always a leader and vice versa.</p>
+  <div class="case-box"><div class="case-label">Applied, Emergency Room (ER) vs Google</div><p><strong>ER doctor mid-surgery</strong> uses autocratic style, no time for democracy when a patient is bleeding. <strong>Google's X Lab</strong> uses laissez-faire with moonshot engineers (self-motivated PhDs given resources and freedom). Same company, same month, different styles, this is situational leadership in practice.</p></div>
+
+  <!-- 2.3 MOTIVATION -->
+  <div class="section-title">2.3 Motivation Theories</div>
+
+  <div class="card">
+    <div class="sub-title">Taylor's Scientific Management (1911)</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Workers are rational economic beings motivated primarily by <strong>money</strong>. Break tasks into smallest components, find the "one best way" to do each, pay by results (piece-rate).</p>
+    <div class="card-grid cols2">
+      <div class="ad-box adv"><h5>Strengths</h5><ul><li>Increased productivity in manufacturing</li><li>Clear targets for workers</li><li>Still used: Amazon warehouse piece-rate scanning</li></ul></div>
+      <div class="ad-box dis"><h5>Criticisms</h5><ul><li>Dehumanising, treats workers as machines</li><li>Ignores social and psychological needs</li><li>Monotonous → low morale, high turnover</li></ul></div>
+    </div>
+    <div class="case-box"><div class="case-label">Applied, Amazon Fulfillment Centers</div><p>Workers scan a target of 300+ items/hour, tracked by productivity software. Piece-rate style incentives. High productivity BUT staff turnover ~150% annually, injuries 2× industry average. Taylor's theory works for output, it fails for wellbeing.</p></div>
+  </div>
+
+  <div class="card">
+    <div class="sub-title">Maslow's Hierarchy of Needs (1943)</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Five tiers of human needs, satisfied from bottom upward. A lower need must be mostly met before higher needs motivate.</p>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 720 360" width="100%" style="max-width:720px" xmlns="http://www.w3.org/2000/svg">
+  <!-- tiers: apex at top -->
+  <polygon points="290,30 230,98 350,98" fill="#ede7f3" stroke="#6a5a8c" stroke-width="1.5"/>
+  <polygon points="228,102 352,102 372,166 208,166" fill="#e3eef0" stroke="#1f5670" stroke-width="1.5"/>
+  <polygon points="206,170 374,170 394,234 186,234" fill="#e8f1ea" stroke="#2f7350" stroke-width="1.5"/>
+  <polygon points="184,238 396,238 416,302 164,302" fill="#f3ece9" stroke="#a8493a" stroke-width="1.5"/>
+  <polygon points="162,306 418,306 418,340 162,340" fill="#f4efdf" stroke="#917216" stroke-width="1.5"/>
+  <!-- tier labels -->
+  <text x="290" y="76" text-anchor="middle" fill="#1c1e22" font-size="11.5" font-weight="600">Self-actualisation</text>
+  <text x="290" y="138" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Esteem</text>
+  <text x="290" y="153" text-anchor="middle" fill="#71757f" font-size="9.5">Recognition, status</text>
+  <text x="290" y="200" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Social / Belonging</text>
+  <text x="290" y="215" text-anchor="middle" fill="#71757f" font-size="9.5">Friendship, teamwork</text>
+  <text x="290" y="268" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Safety &amp; Security</text>
+  <text x="290" y="283" text-anchor="middle" fill="#71757f" font-size="9.5">Job security, contract</text>
+  <text x="290" y="327" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Physiological, wages, rest</text>
+  <!-- annotations on right, kept well inside viewBox -->
+  <line x1="350" y1="64" x2="470" y2="56" stroke="#6a5a8c" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="478" y="54" fill="#6a5a8c" font-size="10.5" font-weight="500">Challenging projects</text>
+  <text x="478" y="68" fill="#71757f" font-size="10">e.g. Google moonshots</text>
+  <line x1="372" y1="134" x2="470" y2="126" stroke="#1f5670" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="478" y="124" fill="#1f5670" font-size="10.5" font-weight="500">Promotions, job titles</text>
+  <line x1="394" y1="202" x2="470" y2="196" stroke="#2f7350" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="478" y="194" fill="#2f7350" font-size="10.5" font-weight="500">Team socials, culture</text>
+  <line x1="416" y1="270" x2="470" y2="266" stroke="#a8493a" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="478" y="264" fill="#a8493a" font-size="10.5" font-weight="500">Pension, contract, H&amp;S</text>
+  <line x1="418" y1="323" x2="470" y2="326" stroke="#917216" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="478" y="324" fill="#917216" font-size="10.5" font-weight="500">Basic wage, breaks</text>
+  <!-- upward arrow -->
+  <line x1="130" y1="335" x2="130" y2="45" stroke="#9a9da5" stroke-width="1" marker-end="url(#mup)"/>
+  <text x="118" y="200" text-anchor="middle" fill="#71757f" font-size="10" transform="rotate(-90,118,200)">Satisfied bottom to top</text>
+  <defs><marker id="mup" markerWidth="8" markerHeight="8" refX="4" refY="5" orient="auto"><path d="M0,8 L4,0 L8,8" fill="none" stroke="#9a9da5" stroke-width="1.2"/></marker></defs>
+</svg>
+    </div>
+    <div class="card-grid cols2">
+      <div class="ad-box adv"><h5>Implications for managers</h5><ul><li>Identify which level employees are currently at</li><li>Match rewards to unmet needs</li><li>Physical/safety first, then social/esteem</li></ul></div>
+      <div class="ad-box dis"><h5>Criticisms</h5><ul><li>Rigid hierarchy, people need multiple levels simultaneously</li><li>Cultural differences, collectivist societies value social &gt; esteem</li><li>Hard to measure which level someone is at</li></ul></div>
+    </div>
+    <div class="case-box"><div class="case-label">Applied, Ritz-Carlton Hotels</div><p>Ritz-Carlton addresses all five layers: <strong>Physiological</strong>, above-average pay; <strong>Safety</strong>, permanent contracts, clear HR policies; <strong>Social</strong>, "Ladies and Gentlemen serving Ladies and Gentlemen" team ethos; <strong>Esteem</strong>, Employee of the Month, published guest compliments; <strong>Self-actualisation</strong>, each employee given $2,000/day discretionary budget to solve any guest problem without manager approval. Result: industry-leading retention and Net Promoter Scores.</p></div>
+  </div>
+
+  <div class="card">
+    <div class="sub-title">Herzberg's Two-Factor Theory (1959)</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Distinguishes between factors that cause <strong>dissatisfaction</strong> (hygiene factors) and factors that cause <strong>true motivation</strong> (motivators). Removing hygiene factors only prevents unhappiness, it doesn't motivate.</p>
+    <div class="card-grid cols2">
+      <div class="card" style="border-color:rgba(255,82,82,.3)">
+        <div class="sub-title" style="color:var(--neg)">Hygiene Factors (Dissatisfiers)</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px">Must be present to avoid dissatisfaction, but don't directly motivate:</p>
+        <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:1.8">
+          <li>Salary and pay</li><li>Job security</li><li>Working conditions / environment</li>
+          <li>Company policy and administration</li><li>Relationships with supervisors</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(0,230,118,.3)">
+        <div class="sub-title" style="color:var(--pos)">Motivators (Satisfiers)</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px">These genuinely increase motivation and job satisfaction:</p>
+        <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:1.8">
+          <li>Achievement and recognition</li><li>Responsibility</li>
+          <li>Advancement / promotion</li><li>Personal growth</li>
+          <li>The work itself being interesting</li>
+        </ul>
+      </div>
+    </div>
+    <div class="case-box"><div class="case-label">Applied, John Lewis Partnership (UK)</div><p>John Lewis is a worker-owned partnership where all "Partners" (staff) share annual profits. <strong>Hygiene factors:</strong> good pay, secure jobs, quality canteen. <strong>Motivators:</strong> ownership stake creates genuine responsibility and achievement. Result: consistently higher customer satisfaction and lower staff turnover than competitors like M&amp;S.</p></div>
+  </div>
+
+  <!-- HL MOTIVATION THEORIES -->
+  <div class="sub-title">Additional Motivation Theories <span class="hl-badge">HL</span></div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Theory</th><th>Key Idea</th><th>Application</th></tr>
+    <tr><td><strong>McClelland (1961)</strong></td><td>Three needs: Achievement (nAch), Power (nPow), Affiliation (nAff). People differ in which dominates.</td><td>High nAch → give challenging targets, feedback. High nAff → team-based projects. High nPow → management roles.</td></tr>
+    <tr><td><strong>Deci &amp; Ryan, Self-Determination Theory (1985)</strong></td><td>Intrinsic motivation requires: <strong>Autonomy</strong> (control), <strong>Competence</strong> (mastery), <strong>Relatedness</strong> (connection)</td><td>Google's "20% time" addresses autonomy; training builds competence; team culture builds relatedness.</td></tr>
+    <tr><td><strong>Adams' Equity Theory (1963)</strong></td><td>Workers compare their input/output ratio to others. Perceived inequity → reduced effort or resentment.</td><td>Pay transparency can backfire. Gig economy workers (Uber) feel inequity vs permanent staff → higher churn.</td></tr>
+    <tr><td><strong>Vroom's Expectancy Theory (1964)</strong></td><td>Motivation = Expectancy (effort→performance) × Instrumentality (performance→reward) × Valence (value of reward)</td><td>Sales commissions only motivate if worker believes (1) effort leads to sales, (2) sales leads to commission, (3) commission is worth having.</td></tr>
+  </table></div>
+
+  <!-- FINANCIAL REWARDS -->
+  <div class="section-title">2.4 Rewards &amp; Remuneration</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Financial Rewards</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Method</th><th>Description</th><th>Example</th></tr>
+        <tr><td>Salary</td><td>Fixed annual pay regardless of hours (paid monthly)</td><td>Teachers, managers, engineers</td></tr>
+        <tr><td>Wage (time-rate)</td><td>Paid per hour worked; overtime at higher rate</td><td>Retail staff, construction workers</td></tr>
+        <tr><td>Piece-rate</td><td>Paid per unit produced</td><td>Garment workers, agricultural pickers</td></tr>
+        <tr><td>Commission</td><td>% of sales value generated</td><td>Real estate agents (2 to 3% of sale price)</td></tr>
+        <tr><td>Profit-sharing</td><td>Proportion of net profit distributed to employees</td><td>John Lewis (up to 20% of salary)</td></tr>
+        <tr><td>Performance bonus</td><td>One-off payment for meeting targets</td><td>Investment banking bonuses (Goldman Sachs)</td></tr>
+        <tr><td>Fringe benefits</td><td>Non-cash perks, car, health insurance, gym</td><td>Google: free meals, on-site gym, dog-friendly office</td></tr>
+        <tr><td>Share options</td><td>Right to buy company shares at fixed price</td><td>Tesla grants options to engineers, aligns with firm growth</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Non-Financial Rewards</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Method</th><th>Description</th><th>Links to Theory</th></tr>
+        <tr><td>Job enrichment</td><td>Adding more challenging, meaningful tasks to role (vertical loading)</td><td>Herzberg, motivators</td></tr>
+        <tr><td>Job enlargement</td><td>Adding more tasks at same level (horizontal loading)</td><td>Reduces monotony; mild Herzberg effect</td></tr>
+        <tr><td>Job rotation</td><td>Moving between tasks/departments to vary work</td><td>Reduces boredom; builds skills</td></tr>
+        <tr><td>Empowerment</td><td>Giving employees autonomy to make decisions</td><td>Maslow, self-actualisation; Deci autonomy</td></tr>
+        <tr><td>Team working</td><td>Collaborative project structures</td><td>Maslow, social; McClelland, affiliation</td></tr>
+        <tr><td>Flexible working</td><td>Remote work, flexi-hours, compressed weeks</td><td>Deci, autonomy; work-life balance</td></tr>
+        <tr><td>Training &amp; development</td><td>Upskilling programmes</td><td>Maslow, self-actualisation; Deci, competence</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- HR METRICS -->
+  <div class="section-title">2.4 HR Metrics</div>
+  <div class="card-grid cols3">
+    <div class="card">
+      <div class="formula-block">
+        <div class="eq">
+          <span>Labour Turnover</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Staff leaving per year</span><span class="den">Average staff employed</span></span>
+          <span>× 100%</span>
+        </div>
+        <div class="formula-note">High turnover = costly recruitment + lost knowledge. Target: &lt;15% in most industries</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="formula-block">
+        <div class="eq">
+          <span>Labour Productivity</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Output per period</span><span class="den">Number of employees</span></span>
+        </div>
+        <div class="formula-note">Output in units, revenue, or tasks. Key efficiency metric.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="formula-block">
+        <div class="eq">
+          <span>Absenteeism</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Days absent per year</span><span class="den">Total possible working days</span></span>
+          <span>× 100%</span>
+        </div>
+        <div class="formula-note">UK national average ~2.6%. High absenteeism signals poor morale.</div>
+      </div>
+    </div>
+  </div>
+  <div class="case-box"><div class="case-label">Applied, Pebble Smartwatch (startup)</div><p>Pebble raised $10.2m on Kickstarter (2012) but had extremely high labour turnover (~60% in year 2). Reason: founder-only equity, no formal HR structure, unclear roles. Herzberg's hygiene factors unmet. By 2016, Pebble was acquired by Fitbit for ~$40m, a fraction of its potential, partly due to talent retention failure. Use this to discuss how HR strategy directly impacts business performance.</p></div>
+
+  <!-- RECRUITMENT -->
+  <div class="section-title">2.4 Recruitment &amp; Training</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Internal vs External Recruitment</div>
+      <div class="tbl-wrap"><table>
+        <tr><th></th><th>Internal</th><th>External</th></tr>
+        <tr><td><strong>Method</strong></td><td>Promotion, transfer</td><td>Job boards, agencies, uni fairs</td></tr>
+        <tr><td><strong>Advantages</strong></td><td>Faster, cheaper, known culture fit, motivates existing staff</td><td>Fresh ideas, wider talent pool, no internal politics</td></tr>
+        <tr><td><strong>Disadvantages</strong></td><td>Creates another vacancy, limited innovation</td><td>Expensive, risky, longer onboarding</td></tr>
+        <tr><td><strong>Example</strong></td><td>Emirates promoting cabin crew to senior roles</td><td>McKinsey hiring from top universities globally</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Training Types</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Type</th><th>Description</th><th>Example</th></tr>
+        <tr><td>On-the-job</td><td>Learn by doing, shadowing, mentoring</td><td>McDonald's crew trainer programme</td></tr>
+        <tr><td>Off-the-job</td><td>External courses, workshops, degrees</td><td>CIMA qualifications for finance staff</td></tr>
+        <tr><td>Induction</td><td>Introduction to company culture/systems for new starters</td><td>Disney "Traditions" 4-day onboarding programme</td></tr>
+        <tr><td>Cognitive</td><td>Knowledge-based, classroom, online</td><td>LinkedIn Learning, Coursera corporate</td></tr>
+        <tr><td>Behavioural</td><td>Changing attitudes/responses, role play, simulations</td><td>Emirates cabin crew emergency drills</td></tr>
+      </table></div>
+    </div>
+  </div>
+</div>
+<!-- ═══════════════════ UNIT 3 ═══════════════════ -->
+<div class="page" id="page-unit3">
+  <div class="page-title">Unit 3 · Finance &amp; Accounts</div>
+  <div class="page-subtitle">Sources of finance · P&amp;L · balance sheet · ratio analysis · cash flow · investment appraisal · budgets</div>
+
+
+  <!-- STATEMENT FORMATS -->
+  <div class="section-title">3.3 Statement Formats (learn the layout)</div>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.6">These are the exact structures examiners expect. In Paper 2 you may be asked to complete or construct any of these, so the order of line items matters as much as the figures. Sample numbers are shown so you can see how each total is built.</p>
+
+  <div class="card-grid cols2">
+    <!-- INCOME STATEMENT -->
+    <div class="statement">
+      <div class="statement-head">
+        <div class="title">Income Statement (Profit &amp; Loss)</div>
+        <div class="note">for the year ended 31 Dec · figures in $000</div>
+      </div>
+      <table>
+        <tr><td>Sales revenue</td><td class="num-col">80,000</td></tr>
+        <tr><td>Cost of goods sold</td><td class="num-col">(50,000)</td></tr>
+        <tr class="total-row"><td>Gross profit</td><td class="num-col">30,000</td></tr>
+        <tr><td>Expenses (overheads)</td><td class="num-col">(14,000)</td></tr>
+        <tr><td>Depreciation</td><td class="num-col">(2,000)</td></tr>
+        <tr class="total-row"><td>Profit before interest &amp; tax</td><td class="num-col">14,000</td></tr>
+        <tr><td>Interest</td><td class="num-col">(1,000)</td></tr>
+        <tr><td>Tax</td><td class="num-col">(3,000)</td></tr>
+        <tr class="total-row"><td>Profit for period (after tax)</td><td class="num-col">10,000</td></tr>
+        <tr><td>Dividends</td><td class="num-col">(4,000)</td></tr>
+        <tr class="total-row"><td>Retained profit</td><td class="num-col">6,000</td></tr>
+      </table>
+    </div>
+
+    <!-- CASH FLOW -->
+    <div class="statement">
+      <div class="statement-head">
+        <div class="title">Cash Flow Forecast</div>
+        <div class="note">monthly · figures in $</div>
+      </div>
+      <table>
+        <tr class="group-row"><td>Jan</td><td></td></tr>
+        <tr><td>Cash inflows</td><td class="num-col">15,000</td></tr>
+        <tr><td>Cash outflows</td><td class="num-col">(20,000)</td></tr>
+        <tr class="total-row"><td>Net cash flow</td><td class="num-col">(5,000)</td></tr>
+        <tr><td>Opening balance</td><td class="num-col">3,000</td></tr>
+        <tr class="total-row"><td>Closing balance</td><td class="num-col">(2,000)</td></tr>
+        <tr class="group-row"><td>Feb</td><td></td></tr>
+        <tr><td>Net cash flow</td><td class="num-col">2,000</td></tr>
+        <tr><td>Opening balance</td><td class="num-col">(2,000)</td></tr>
+        <tr class="total-row"><td>Closing balance</td><td class="num-col">0</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- BALANCE SHEET full width -->
+  <div class="statement">
+    <div class="statement-head">
+      <div class="title">Statement of Financial Position (Balance Sheet)</div>
+      <div class="note">as at 31 Dec · figures in $000 · Net assets must equal Total equity</div>
+    </div>
+    <table>
+      <tr class="group-row"><td colspan="2">Non-current assets</td></tr>
+      <tr><td class="indent">Property, plant &amp; equipment</td><td class="num-col">45,000</td></tr>
+      <tr><td class="indent">Intangible assets (brand, patents)</td><td class="num-col">8,000</td></tr>
+      <tr class="total-row"><td>Total non-current assets</td><td class="num-col">53,000</td></tr>
+      <tr class="group-row"><td colspan="2">Current assets</td></tr>
+      <tr><td class="indent">Inventories (stock)</td><td class="num-col">6,000</td></tr>
+      <tr><td class="indent">Trade receivables (debtors)</td><td class="num-col">4,000</td></tr>
+      <tr><td class="indent">Cash &amp; equivalents</td><td class="num-col">3,000</td></tr>
+      <tr class="total-row"><td>Total current assets</td><td class="num-col">13,000</td></tr>
+      <tr class="group-row"><td colspan="2">Current liabilities</td></tr>
+      <tr><td class="indent">Trade payables (creditors)</td><td class="num-col">5,000</td></tr>
+      <tr><td class="indent">Short-term borrowing / overdraft</td><td class="num-col">2,000</td></tr>
+      <tr class="total-row"><td>Total current liabilities</td><td class="num-col">7,000</td></tr>
+      <tr class="total-row"><td>Net current assets (working capital)</td><td class="num-col">6,000</td></tr>
+      <tr><td>Non-current liabilities (long-term debt)</td><td class="num-col">(20,000)</td></tr>
+      <tr class="total-row"><td>NET ASSETS (= capital employed)</td><td class="num-col">39,000</td></tr>
+      <tr class="group-row"><td colspan="2">Financed by, Equity</td></tr>
+      <tr><td class="indent">Share capital</td><td class="num-col">15,000</td></tr>
+      <tr><td class="indent">Retained earnings</td><td class="num-col">24,000</td></tr>
+      <tr class="total-row"><td>TOTAL EQUITY</td><td class="num-col">39,000</td></tr>
+    </table>
+  </div>
+  <div class="case-box"><div class="case-label">How they connect</div><p>The <strong>retained profit</strong> from the income statement ($6,000) flows into <strong>retained earnings</strong> on the balance sheet. The <strong>closing cash balance</strong> from the cash flow forecast becomes the <strong>cash</strong> figure under current assets. Examiners love testing whether you understand that the three statements link together.</p></div>
+
+
+  <!-- 3.1 SOURCES OF FINANCE -->
+  <div class="section-title">3.1 Sources of Finance</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Source</th><th>Type</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Best for</th></tr>
+    <tr><td><strong>Retained profit</strong></td><td>Internal</td><td>Profit kept in business after tax &amp; dividends</td><td>No interest cost; no loss of control</td><td>Limited by past profitability</td><td>Established profitable firms</td></tr>
+    <tr><td><strong>Sale of assets</strong></td><td>Internal</td><td>Sell unused machinery, property, vehicles</td><td>Immediate cash; reduces maintenance cost</td><td>One-off; assets lost permanently</td><td>Asset-heavy businesses</td></tr>
+    <tr><td><strong>Owner's capital</strong></td><td>Internal</td><td>Personal funds from owner(s)</td><td>No interest; full control retained</td><td>Personal financial risk; limited amount</td><td>Startups, small businesses</td></tr>
+    <tr><td><strong>Share issue (equity)</strong></td><td>External</td><td>Selling new shares to investors</td><td>No repayment obligation; large sums possible</td><td>Dilutes ownership; dividends expected</td><td>PLCs needing large capital</td></tr>
+    <tr><td><strong>Bank loan</strong></td><td>External</td><td>Lump sum borrowed at fixed/variable interest</td><td>Predictable repayments; tax-deductible interest</td><td>Interest cost; security needed</td><td>Equipment, expansion</td></tr>
+    <tr><td><strong>Overdraft</strong></td><td>External</td><td>Short-term borrowing on current account</td><td>Flexible, only pay interest when used</td><td>High interest rate; repayable on demand</td><td>Managing cash flow gaps</td></tr>
+    <tr><td><strong>Trade credit</strong></td><td>External</td><td>Buying now, paying supplier later (30 to 90 days)</td><td>Interest-free short-term finance</td><td>Late payment damages relationships; discounts lost</td><td>Working capital management</td></tr>
+    <tr><td><strong>Leasing</strong></td><td>External</td><td>Pay to use asset without buying it</td><td>Preserve cash; always current technology</td><td>No ownership; long-term cost &gt; buying</td><td>Aircraft, heavy equipment</td></tr>
+    <tr><td><strong>Venture capital</strong></td><td>External</td><td>Equity investment from specialist VC firm</td><td>Large sums + expertise + networks</td><td>Significant equity given away; board control</td><td>High-growth startups</td></tr>
+    <tr><td><strong>Crowdfunding</strong></td><td>External</td><td>Raise small amounts from many backers (Kickstarter)</td><td>Market validation; no debt/equity required</td><td>Slow; public failure risk; fulfillment pressure</td><td>Consumer product startups</td></tr>
+    <tr><td><strong>Microfinance</strong></td><td>External</td><td>Small loans to entrepreneurs in developing countries</td><td>Access to finance where banks won't lend</td><td>High interest rates; small loan sizes</td><td>Developing economy entrepreneurs</td></tr>
+  </table></div>
+  <div class="case-box"><div class="case-label">Applied, Grameen Bank (Microfinance)</div><p>Founded by Muhammad Yunus in Bangladesh, Grameen Bank provides microloans averaging ~$200 to rural women entrepreneurs. 97%+ repayment rate. Used this to argue microfinance can be both commercially viable and socially impactful, directly challenges Friedman's shareholder-first view of CSR.</p></div>
+
+  <!-- 3.3 P&L -->
+  <!-- 3.4 RATIO ANALYSIS -->
+  <div class="section-title">3.4 Ratio Analysis (computed from the statements above)</div>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.6">Every ratio below is worked out from the sample statements at the top of this page, so you can trace each figure. Always interpret a ratio (compare to previous years, competitors, or a benchmark) rather than just stating it.</p>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Profitability</div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Gross profit margin</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Gross profit</span><span class="den">Sales revenue</span></span><span>× 100</span></div>
+        <div class="formula-note">30,000 ÷ 80,000 × 100 = 37.5%</div>
+      </div>
+      <div class="formula-block booklet" style="margin-top:10px"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Profit margin</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Profit before int. &amp; tax</span><span class="den">Sales revenue</span></span><span>× 100</span></div>
+        <div class="formula-note">14,000 ÷ 80,000 × 100 = 17.5%</div>
+      </div>
+      <div class="formula-block booklet" style="margin-top:10px"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>ROCE</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Profit before int. &amp; tax</span><span class="den">Capital employed</span></span><span>× 100</span></div>
+        <div class="formula-note">14,000 ÷ 39,000 × 100 = 35.9%. If above the bank interest rate, the business is creating value.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Liquidity &amp; Gearing</div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Current ratio</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Current assets</span><span class="den">Current liabilities</span></span></div>
+        <div class="formula-note">13,000 ÷ 7,000 = 1.86 : 1. Ideal 1.5 to 2.0. Below 1 signals liquidity risk.</div>
+      </div>
+      <div class="formula-block booklet" style="margin-top:10px"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Acid test</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Current assets − inventories</span><span class="den">Current liabilities</span></span></div>
+        <div class="formula-note">(13,000 − 6,000) ÷ 7,000 = 1.0 : 1. Ideal 0.75 to 1.0. Strips out stock that is hard to sell quickly.</div>
+      </div>
+      <div class="formula-block booklet" style="margin-top:10px"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Gearing</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Non-current liabilities</span><span class="den">Capital employed</span></span><span>× 100</span><span class="label">HL</span></div>
+        <div class="formula-note">20,000 ÷ 39,000 × 100 = 51.3%. Above 50% is high, leaving the firm exposed to interest rate rises.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3.5 DEPRECIATION -->
+  <div class="section-title">3.5 Depreciation</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px">The systematic allocation of a non-current asset's cost over its useful life. Two IB methods:</p>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Straight-Line Method</div>
+      <div class="formula-block" style="border-color:var(--accent)">
+        <div class="eq">
+          <span>Annual Depreciation</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Cost − Residual Value</span><span class="den">Useful Life (years)</span></span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px"><strong>Example:</strong> Machine costs $50,000, residual $5,000, life 5 years.<br>Annual dep. = (50,000−5,000)/5 = <strong>$9,000/year</strong></p>
+    </div>
+    <div class="card">
+      <div class="sub-title">Reducing Balance Method</div>
+      <div class="formula-block" style="border-color:var(--accent)">
+        <div class="eq">
+          <span>Annual Depreciation</span><span class="equals">=</span><span>Rate% × Net Book Value</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px"><strong>Example:</strong> NBV $50,000, rate 20%.<br>Year 1: $10,000. Year 2: 20% × $40,000 = $8,000. Year 3: 20% × $32,000 = $6,400.<br>Higher depreciation early, matches asset use for vehicles/tech.</p>
+    </div>
+  </div>
+
+  <!-- 3.7 CASH FLOW -->
+  <div class="section-title">3.7 Cash Flow Forecasting</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Sample Cash Flow Forecast</div>
+      <div class="tbl-wrap"><table>
+        <tr><th></th><th>Jan $</th><th>Feb $</th><th>Mar $</th></tr>
+        <tr><td>Cash inflows</td><td>15,000</td><td>18,000</td><td>22,000</td></tr>
+        <tr><td>Cash outflows</td><td>(20,000)</td><td>(16,000)</td><td>(14,000)</td></tr>
+        <tr><td><strong>Net cash flow</strong></td><td><strong style="color:var(--neg)">(5,000)</strong></td><td><strong style="color:var(--pos)">2,000</strong></td><td><strong style="color:var(--pos)">8,000</strong></td></tr>
+        <tr><td>Opening balance</td><td>3,000</td><td>(2,000)</td><td>0</td></tr>
+        <tr><td><strong>Closing balance</strong></td><td><strong style="color:var(--neg)">(2,000)</strong></td><td><strong>0</strong></td><td><strong style="color:var(--pos)">8,000</strong></td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Key Formulas</div>
+      <div class="formula-block">
+        <div class="eq"><span>Net Cash Flow</span><span class="equals">=</span><span>Total Inflows − Total Outflows</span></div>
+      </div>
+      <div class="formula-block" style="margin-top:8px">
+        <div class="eq"><span>Closing Balance</span><span class="equals">=</span><span>Opening Balance + Net Cash Flow</span></div>
+        <div class="formula-note">Jan closing: 3,000 + (−5,000) = −2,000 ← danger sign!</div>
+      </div>
+      <div class="sub-title" style="margin-top:14px">Improving Cash Flow</div>
+      <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:1.8">
+        <li>Negotiate extended credit from suppliers</li>
+        <li>Offer early-payment discounts to debtors</li>
+        <li>Arrange overdraft facility before needed</li>
+        <li>Sale and leaseback of assets</li>
+        <li>Invoice factoring, sell debtors to factor firm</li>
+        <li>Cut stock levels (JIT inventory)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3.8 INVESTMENT APPRAISAL -->
+  <div class="section-title">3.8 Investment Appraisal <span class="hl-badge">HL</span></div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Evaluating whether a capital investment is worth making. Three key methods in IB BM.</p>
+  <div class="card" style="padding:20px">
+    <div class="sub-title">Worked Example, New Production Line</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Initial investment: $100,000. Annual net cash flows (after tax): $30,000, $35,000, $40,000, $40,000, $30,000. Discount rate: 10%.</p>
+    <div class="tbl-wrap"><table>
+      <tr><th>Year</th><th>Net Cash Flow ($)</th><th>Discount Factor @ 10%</th><th>Discounted CF ($)</th><th>Cumulative CF ($)</th></tr>
+      <tr><td>0 (now)</td><td>(100,000)</td><td>1.000</td><td>(100,000)</td><td>(100,000)</td></tr>
+      <tr><td>1</td><td>30,000</td><td>0.909</td><td>27,270</td><td>(72,730)</td></tr>
+      <tr><td>2</td><td>35,000</td><td>0.826</td><td>28,910</td><td>(43,820)</td></tr>
+      <tr><td>3</td><td>40,000</td><td>0.751</td><td>30,040</td><td>(13,780)</td></tr>
+      <tr><td>4</td><td>40,000</td><td>0.683</td><td>27,320</td><td>13,540</td></tr>
+      <tr><td>5</td><td>30,000</td><td>0.621</td><td>18,630</td><td>32,170</td></tr>
+    </table></div>
+    <div class="card-grid cols3" style="margin-top:16px">
+      <div class="card">
+        <div class="sub-title">Payback Period</div>
+        <div class="formula-block">
+          <div class="eq" style="flex-direction:column;align-items:flex-start;gap:4px">
+            <span>Payback = 3 years + </span>
+            <span class="frac"><span class="num">$13,780</span><span class="den">$40,000</span></span>
+            <span>= <strong>3 years 4.1 months</strong></span>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--muted)">Simple, ignores time value of money</p>
+      </div>
+      <div class="card">
+        <div class="sub-title">ARR (Average Rate of Return)</div>
+        <div class="formula-block">
+          <div class="eq" style="flex-direction:column;align-items:flex-start;gap:4px">
+            <span>Avg annual profit = </span>
+            <span class="frac"><span class="num">(175,000−100,000)</span><span class="den">5</span></span>
+            <span>= $15,000</span>
+            <br/><span>ARR = </span>
+            <span class="frac"><span class="num">15,000</span><span class="den">100,000</span></span>
+            <span>× 100 = <strong>15%</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sub-title">NPV</div>
+        <div class="formula-block">
+          <div class="eq" style="flex-direction:column;align-items:flex-start;gap:4px">
+            <span>Sum of discounted CFs = $132,170</span>
+            <span>NPV = 132,170 − 100,000</span>
+            <span><strong>NPV = +$32,170</strong></span>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--pos)">Positive NPV → invest! More sophisticated; includes time value of money.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUDGETS -->
+  <div class="section-title">3.9 Budgets &amp; Variances</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Budget vs Actual, Variance Analysis</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Item</th><th>Budget ($)</th><th>Actual ($)</th><th>Variance ($)</th><th>Type</th></tr>
+        <tr><td>Revenue</td><td>80,000</td><td>90,000</td><td>+10,000</td><td style="color:var(--pos)">Favourable ✓</td></tr>
+        <tr><td>Labour costs</td><td>20,000</td><td>23,000</td><td>+3,000</td><td style="color:var(--neg)">Adverse ✗</td></tr>
+        <tr><td>Materials</td><td>15,000</td><td>13,500</td><td>−1,500</td><td style="color:var(--pos)">Favourable ✓</td></tr>
+        <tr><td>Overheads</td><td>10,000</td><td>11,200</td><td>+1,200</td><td style="color:var(--neg)">Adverse ✗</td></tr>
+        <tr><td><strong>Net profit</strong></td><td><strong>35,000</strong></td><td><strong>42,300</strong></td><td><strong>+7,300</strong></td><td style="color:var(--pos)"><strong>Favourable ✓</strong></td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Key Definitions</div>
+      <div class="def-grid">
+        <div class="def-card"><div class="term">Favourable Variance</div><div class="defn">Actual result is better than budgeted, revenue higher OR costs lower than planned.</div></div>
+        <div class="def-card"><div class="term">Adverse Variance</div><div class="defn">Actual result is worse than budgeted, revenue lower OR costs higher than planned.</div></div>
+        <div class="def-card"><div class="term">Zero-based budgeting</div><div class="defn">Every budget starts from zero each period, every cost must be justified. Prevents budget padding.</div></div>
+        <div class="def-card"><div class="term">Incremental budgeting</div><div class="defn">Previous year's budget + adjustment. Simple but can perpetuate inefficiencies.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ═══════════════════ UNIT 4 ═══════════════════ -->
+<div class="page" id="page-unit4">
+  <div class="page-title">Unit 4 · Marketing</div>
+  <div class="page-subtitle">Market orientation · market share · product life cycle · pricing · promotion · distribution · 7Ps</div>
+
+  <!-- 4.1 MARKETING BASICS -->
+  <div class="section-title">4.1 Introduction to Marketing</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Market vs Product Orientation</div>
+      <div class="tbl-wrap"><table>
+        <tr><th></th><th>Market-oriented</th><th>Product-oriented</th></tr>
+        <tr><td><strong>Focus</strong></td><td>Customer needs first, then build product</td><td>Build great product, assume demand follows</td></tr>
+        <tr><td><strong>Risk</strong></td><td>Lower, research-led</td><td>Higher, may not sell</td></tr>
+        <tr><td><strong>Example</strong></td><td>Coca-Cola (constant consumer research)</td><td>Dyson, Apple (innovation-led, "people don't know what they want")</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Market Share &amp; Growth Formulas</div>
+      <div class="formula-block">
+        <div class="eq">
+          <span>Market Share</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Firm's Sales Revenue</span><span class="den">Total Market Sales Revenue</span></span>
+          <span>× 100%</span>
+        </div>
+      </div>
+      <div class="formula-block" style="margin-top:8px">
+        <div class="eq">
+          <span>Market Growth</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Change in Market Size</span><span class="den">Original Market Size</span></span>
+          <span>× 100%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="case-box"><div class="case-label">Applied, On Holding AG market position</div><p>On's running shoe segment grew its market share from ~1% to ~6% of the premium performance running market (2021 to 2024). Key concept: a high-growth market (premium athleisure growing ~10% annually) made share gains easier than in a saturated market. Always link market share moves to whether the overall market is growing or shrinking.</p></div>
+
+  <!-- 4.5 PRODUCT LIFE CYCLE -->
+  <div class="section-title">4.5 Product Life Cycle</div>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 720 380" width="100%" style="max-width:720px" xmlns="http://www.w3.org/2000/svg">
+  <!-- zero line for cash flow -->
+  <line x1="80" y1="300" x2="660" y2="300" stroke="#d9d5ca" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="72" y="304" text-anchor="end" fill="#9a9da5" font-size="10">$0</text>
+  <!-- axes -->
+  <line x1="80" y1="40" x2="80" y2="340" stroke="#71757f" stroke-width="1.2"/>
+  <line x1="80" y1="260" x2="660" y2="260" stroke="#71757f" stroke-width="1.2"/>
+  <text x="44" y="160" text-anchor="middle" fill="#71757f" font-size="11" transform="rotate(-90,44,160)">Sales / Revenue</text>
+  <text x="370" y="368" text-anchor="middle" fill="#71757f" font-size="11">Time</text>
+  <!-- stage dividers -->
+  <line x1="190" y1="50" x2="190" y2="320" stroke="#e4e0d6" stroke-width="1"/>
+  <line x1="320" y1="50" x2="320" y2="320" stroke="#e4e0d6" stroke-width="1"/>
+  <line x1="470" y1="50" x2="470" y2="320" stroke="#e4e0d6" stroke-width="1"/>
+  <line x1="570" y1="50" x2="570" y2="320" stroke="#e4e0d6" stroke-width="1"/>
+  <!-- stage labels -->
+  <text x="135" y="66" text-anchor="middle" fill="#1f5670" font-size="11" font-weight="600">Introduction</text>
+  <text x="255" y="66" text-anchor="middle" fill="#2f7350" font-size="11" font-weight="600">Growth</text>
+  <text x="395" y="66" text-anchor="middle" fill="#917216" font-size="11" font-weight="600">Maturity</text>
+  <text x="520" y="66" text-anchor="middle" fill="#6a5a8c" font-size="11" font-weight="600">Saturation</text>
+  <text x="615" y="66" text-anchor="middle" fill="#a8493a" font-size="11" font-weight="600">Decline</text>
+  <!-- SALES curve: low start, rise through growth, peak/plateau maturity, fall decline -->
+  <path d="M80,248 C130,242 165,225 190,200 C230,150 290,100 320,90 C380,82 430,82 470,90 C510,98 545,120 570,150 C600,185 630,215 660,240"
+        fill="none" stroke="#1f5670" stroke-width="2.5"/>
+  <text x="335" y="120" fill="#1f5670" font-size="11" font-weight="600">Sales</text>
+  <!-- CASH FLOW curve: clearly below zero in intro, crosses up in growth, peaks maturity, declines -->
+  <path d="M80,322 C130,326 165,322 190,312 C240,292 290,278 320,275 C380,270 430,272 470,278 C520,286 545,296 570,305 C600,316 630,322 660,326"
+        fill="none" stroke="#a8493a" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="100" y="338" fill="#a8493a" font-size="10" font-weight="500">Cash flow (negative early)</text>
+  <!-- strategy notes -->
+  <text x="135" y="288" text-anchor="middle" fill="#9a9da5" font-size="9">High promo,</text>
+  <text x="135" y="299" text-anchor="middle" fill="#9a9da5" font-size="9">low profit</text>
+  <text x="395" y="250" text-anchor="middle" fill="#9a9da5" font-size="9">Peak profit, defend share</text>
+</svg>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Stage</th><th>Sales</th><th>Profit / Cash flow</th><th>Marketing Strategy</th><th>Example</th></tr>
+    <tr><td>Introduction</td><td>Low, slow</td><td>Negative (high dev/promo cost)</td><td>Heavy promotion, penetration/skimming pricing</td><td>Apple Vision Pro (2024)</td></tr>
+    <tr><td>Growth</td><td>Rising fast</td><td>Turning positive</td><td>Build brand, expand distribution</td><td>Electric vehicles (BYD, Tesla)</td></tr>
+    <tr><td>Maturity</td><td>Peak, flattening</td><td>Highest profit</td><td>Differentiation, defend market share</td><td>iPhone, Coca-Cola</td></tr>
+    <tr><td>Saturation</td><td>Flat / peaked</td><td>Profit declining</td><td>Price competition, extension strategies</td><td>Soft drinks, fast food</td></tr>
+    <tr><td>Decline</td><td>Falling</td><td>Falling, may turn negative</td><td>Harvest, divest, or extension</td><td>DVDs, printed newspapers</td></tr>
+  </table></div>
+  <div class="sub-title">Extension Strategies</div>
+  <div class="card-grid cols2">
+    <div class="case-box"><div class="case-label">Applied, Coca-Cola</div><p>Coca-Cola extends its mature product through: new flavours (Cherry, Vanilla, Zero Sugar), new packaging (mini cans, glass bottles for premium), new markets (Africa expansion), and seasonal campaigns. The core product is decades old but extension strategies keep it in maturity, not decline.</p></div>
+    <div class="case-box"><div class="case-label">Applied, LEGO</div><p>LEGO nearly went bankrupt in 2003. Extension via licensing (Star Wars, Harry Potter, Marvel sets), LEGO movies, video games, and adult-targeted sets (LEGO Architecture, Botanicals) repositioned a "declining" toy into sustained growth, revenue tripled by 2015.</p></div>
+  </div>
+
+  <!-- 4.5 PRICING -->
+  <div class="section-title">4.5 Pricing Strategies</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Strategy</th><th>Description</th><th>When Used</th><th>Example</th></tr>
+    <tr><td>Cost-plus (mark-up)</td><td>Add fixed % profit margin onto unit cost</td><td>Retail, simple goods</td><td>Supermarkets (typically 30 to 50% markup)</td></tr>
+    <tr><td>Penetration</td><td>Set low initial price to gain market share fast</td><td>New product, competitive market</td><td>Disney+ launched at $6.99 to undercut Netflix</td></tr>
+    <tr><td>Price skimming</td><td>Set high initial price, lower over time</td><td>Innovative tech products</td><td>Apple iPhone, high launch, drops over 12 months</td></tr>
+    <tr><td>Competitive pricing</td><td>Price in line with competitors</td><td>Saturated markets</td><td>Petrol stations matching each other</td></tr>
+    <tr><td>Psychological</td><td>Price set to seem lower ($9.99 not $10)</td><td>Consumer retail</td><td>Almost all retail; "charm pricing"</td></tr>
+    <tr><td>Loss leader</td><td>Sell below cost to attract customers who buy other items</td><td>Supermarkets, gaming</td><td>PlayStation sold at loss, profit from games</td></tr>
+    <tr><td>Premium pricing</td><td>Set deliberately high to signal exclusivity/quality</td><td>Luxury goods</td><td>Rolex, Louis Vuitton, high price IS the appeal</td></tr>
+    <tr><td>Dynamic pricing <span class="hl-badge">HL</span></td><td>Prices change in real-time based on demand</td><td>Apps, travel</td><td>Uber surge pricing; airline fares</td></tr>
+    <tr><td>Price discrimination <span class="hl-badge">HL</span></td><td>Different prices to different groups for same product</td><td>Segmented markets</td><td>Student/senior cinema tickets; peak vs off-peak rail</td></tr>
+    <tr><td>Contribution/marginal <span class="hl-badge">HL</span></td><td>Price set above variable cost to maximise contribution</td><td>Excess capacity decisions</td><td>Airlines selling last-minute seats cheap</td></tr>
+  </table></div>
+  <div class="card-grid cols3">
+    <div class="case-box"><div class="case-label">Applied, Rolex (Premium)</div><p>Rolex deliberately limits supply and keeps prices high. A lower price would <em>damage</em> demand, the high price signals status. Classic Veblen good behaviour where premium pricing IS the marketing.</p></div>
+    <div class="case-box"><div class="case-label">Applied, Uber (Dynamic)</div><p>Uber's surge pricing multiplies fares during high demand (rain, rush hour, events). Maximises revenue and incentivises more drivers to come online, but generates customer resentment, a real trade-off to evaluate.</p></div>
+    <div class="case-box"><div class="case-label">Applied, Netflix (Penetration → Premium)</div><p>Netflix used penetration pricing to dominate streaming, then steadily raised prices once locked in (price inelastic loyal users). A planned shift along the strategy spectrum over the product life cycle.</p></div>
+  </div>
+
+  <!-- 4.5 PROMOTION -->
+  <div class="section-title">4.5 Promotion</div>
+  <div class="card-grid cols3">
+    <div class="card">
+      <div class="sub-title">Above the Line (ATL)</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:6px">Mass media, untargeted, builds brand awareness.</p>
+      <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:1.7"><li>TV &amp; radio adverts</li><li>Billboards</li><li>Print (newspapers, magazines)</li><li>Cinema ads</li></ul>
+    </div>
+    <div class="card">
+      <div class="sub-title">Below the Line (BTL)</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:6px">Targeted, measurable, direct.</p>
+      <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:1.7"><li>Direct mail / email</li><li>Sales promotions (BOGOF, coupons)</li><li>Personal selling</li><li>Sponsorship, PR events</li></ul>
+    </div>
+    <div class="card">
+      <div class="sub-title">Through the Line (TTL)</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:6px">Integrated, blends ATL + BTL.</p>
+      <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:1.7"><li>Social media campaigns</li><li>Influencer marketing</li><li>360° brand campaigns</li><li>Retargeting ads</li></ul>
+    </div>
+  </div>
+
+  <!-- 4.5 DISTRIBUTION (PLACE) -->
+  <div class="section-title">4.5 Distribution Channels (Place)</div>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 720 240" width="100%" style="max-width:720px" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="da" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#71757f"/></marker></defs>
+  <!-- zero level -->
+  <text x="20" y="36" fill="#1f5670" font-size="11" font-weight="600">Direct (zero-level)</text>
+  <rect x="20" y="46" width="92" height="34" rx="3" fill="#fff" stroke="#1f5670"/>
+  <text x="66" y="68" text-anchor="middle" fill="#1c1e22" font-size="11">Producer</text>
+  <line x1="112" y1="63" x2="196" y2="63" stroke="#71757f" stroke-width="1.2" marker-end="url(#da)"/>
+  <rect x="200" y="46" width="92" height="34" rx="3" fill="#fff" stroke="#2f7350"/>
+  <text x="246" y="68" text-anchor="middle" fill="#1c1e22" font-size="11">Consumer</text>
+  <text x="318" y="68" fill="#71757f" font-size="10.5">e.g. Tesla, Dell, farm shops</text>
+  <!-- one level -->
+  <text x="20" y="116" fill="#1f5670" font-size="11" font-weight="600">One-level</text>
+  <rect x="20" y="126" width="84" height="32" rx="3" fill="#fff" stroke="#1f5670"/>
+  <text x="62" y="146" text-anchor="middle" fill="#1c1e22" font-size="10.5">Producer</text>
+  <line x1="104" y1="142" x2="150" y2="142" stroke="#71757f" stroke-width="1.2" marker-end="url(#da)"/>
+  <rect x="154" y="126" width="84" height="32" rx="3" fill="#fff" stroke="#917216"/>
+  <text x="196" y="146" text-anchor="middle" fill="#1c1e22" font-size="10.5">Retailer</text>
+  <line x1="238" y1="142" x2="284" y2="142" stroke="#71757f" stroke-width="1.2" marker-end="url(#da)"/>
+  <rect x="288" y="126" width="84" height="32" rx="3" fill="#fff" stroke="#2f7350"/>
+  <text x="330" y="146" text-anchor="middle" fill="#1c1e22" font-size="10.5">Consumer</text>
+  <text x="388" y="146" fill="#71757f" font-size="10.5">e.g. Nike to Foot Locker</text>
+  <!-- two level -->
+  <text x="20" y="196" fill="#1f5670" font-size="11" font-weight="600">Two-level</text>
+  <rect x="20" y="206" width="78" height="30" rx="3" fill="#fff" stroke="#1f5670"/>
+  <text x="59" y="225" text-anchor="middle" fill="#1c1e22" font-size="10">Producer</text>
+  <line x1="98" y1="221" x2="122" y2="221" stroke="#71757f" stroke-width="1.1" marker-end="url(#da)"/>
+  <rect x="126" y="206" width="86" height="30" rx="3" fill="#fff" stroke="#6a5a8c"/>
+  <text x="169" y="225" text-anchor="middle" fill="#1c1e22" font-size="10">Wholesaler</text>
+  <line x1="212" y1="221" x2="236" y2="221" stroke="#71757f" stroke-width="1.1" marker-end="url(#da)"/>
+  <rect x="240" y="206" width="78" height="30" rx="3" fill="#fff" stroke="#917216"/>
+  <text x="279" y="225" text-anchor="middle" fill="#1c1e22" font-size="10">Retailer</text>
+  <line x1="318" y1="221" x2="342" y2="221" stroke="#71757f" stroke-width="1.1" marker-end="url(#da)"/>
+  <rect x="346" y="206" width="80" height="30" rx="3" fill="#fff" stroke="#2f7350"/>
+  <text x="386" y="225" text-anchor="middle" fill="#1c1e22" font-size="10">Consumer</text>
+  <text x="442" y="225" fill="#71757f" font-size="10.5">e.g. FMCG via Carrefour</text>
+</svg>
+  </div>
+
+  <!-- 7Ps -->
+  <div class="section-title">4.5 The Marketing Mix, 7Ps</div>
+  <div class="card-grid cols4">
+    <div class="card"><div class="sub-title">Product</div><p style="font-size:12px;color:var(--muted)">Features, quality, design, branding that meet customer needs</p></div>
+    <div class="card"><div class="sub-title">Price</div><p style="font-size:12px;color:var(--muted)">Strategy chosen, penetration, skimming, premium etc.</p></div>
+    <div class="card"><div class="sub-title">Place</div><p style="font-size:12px;color:var(--muted)">Distribution channels, how product reaches customer</p></div>
+    <div class="card"><div class="sub-title">Promotion</div><p style="font-size:12px;color:var(--muted)">ATL/BTL/TTL communication to target market</p></div>
+    <div class="card"><div class="sub-title">People <span class="hl-badge">SVC</span></div><p style="font-size:12px;color:var(--muted)">Staff who deliver service, training, attitude (Emirates crew)</p></div>
+    <div class="card"><div class="sub-title">Process <span class="hl-badge">SVC</span></div><p style="font-size:12px;color:var(--muted)">Systems delivering service, booking, queuing, ordering</p></div>
+    <div class="card"><div class="sub-title">Physical Evidence <span class="hl-badge">SVC</span></div><p style="font-size:12px;color:var(--muted)">Tangible cues, store layout, packaging, ambience</p></div>
+    <div class="card" style="background:rgba(0,212,255,.05)"><div class="sub-title">Note</div><p style="font-size:12px;color:var(--muted)">Last 3 Ps apply to <strong>services</strong> marketing (intangible products)</p></div>
+  </div>
+</div>
+<!-- ═══════════════════ UNIT 5 ═══════════════════ -->
+<div class="page" id="page-unit5">
+  <div class="page-title">Unit 5 · Operations Management</div>
+  <div class="page-subtitle">Break-even analysis · contribution · margin of safety · production methods · quality</div>
+
+  <!-- 5.5 BREAK-EVEN -->
+  <div class="section-title">5.5 Break-Even Analysis</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:8px">The break-even point (BEP) is the output level where <strong>total revenue = total costs</strong>, i.e. profit is zero. Below BEP the firm makes a loss, above it makes a profit.</p>
+
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Worked Example</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Variable</th><th>Value</th></tr>
+        <tr><td>Selling price per unit</td><td>$10</td></tr>
+        <tr><td>Variable cost per unit</td><td>$6</td></tr>
+        <tr><td>Fixed costs</td><td>$20,000</td></tr>
+        <tr><td><strong>Contribution per unit</strong></td><td><strong>$10 − $6 = $4</strong></td></tr>
+        <tr><td><strong>Break-even point</strong></td><td><strong>20,000 ÷ 4 = 5,000 units</strong></td></tr>
+      </table></div>
+      <div class="formula-block" style="margin-top:10px">
+        <div class="eq">
+          <span>Break-even (units)</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Fixed Costs</span><span class="den">Contribution per unit</span></span>
+        </div>
+        <div class="formula-note">20,000 ÷ 4 = 5,000 units. At this output: Revenue = 5,000 × $10 = $50,000 = Total cost (20,000 + 5,000×6 = $50,000) ✓</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Related Formulas</div>
+      <div class="formula-block">
+        <div class="eq"><span>Contribution per unit</span><span class="equals">=</span><span>Price − Variable cost/unit</span></div>
+      </div>
+      <div class="formula-block" style="margin-top:8px">
+        <div class="eq"><span>Total Contribution</span><span class="equals">=</span><span>Contribution/unit × Units sold</span></div>
+      </div>
+      <div class="formula-block" style="margin-top:8px">
+        <div class="eq"><span>Profit</span><span class="equals">=</span><span>Total Contribution − Fixed Costs</span></div>
+      </div>
+      <div class="formula-block" style="margin-top:8px">
+        <div class="eq"><span>Margin of Safety</span><span class="equals">=</span><span>Actual output − BEP output</span></div>
+        <div class="formula-note">If selling 7,000 units: MOS = 7,000 − 5,000 = 2,000 units (the cushion before making a loss)</div>
+      </div>
+      <div class="formula-block" style="margin-top:8px">
+        <div class="eq">
+          <span>Target Profit Output</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Fixed Costs + Target Profit</span><span class="den">Contribution per unit</span></span>
+        </div>
+        <div class="formula-note">For $12,000 profit: (20,000+12,000)/4 = 8,000 units</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAK-EVEN CHART - geometrically correct -->
+  <div class="sub-title">Break-Even Chart (BEP correctly at 5,000 units / $50,000)</div>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 320" width="100%" style="max-width:700px" xmlns="http://www.w3.org/2000/svg">
+  <!-- axes -->
+  <line x1="80" y1="40" x2="80" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <line x1="80" y1="250" x2="620" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <text x="370" y="296" text-anchor="middle" fill="#71757f" font-size="11">Output (units)</text>
+  <text x="34" y="145" text-anchor="middle" fill="#71757f" font-size="11" transform="rotate(-90,34,145)">Costs &amp; Revenue ($)</text>
+  <!-- gridlines x: 0,2000,4000,6000,8000 mapped 80..620 -->
+  <g stroke="#eeebe3" stroke-width="1">
+    <line x1="215" y1="40" x2="215" y2="250"/><line x1="350" y1="40" x2="350" y2="250"/>
+    <line x1="485" y1="40" x2="485" y2="250"/><line x1="620" y1="40" x2="620" y2="250"/>
+  </g>
+  <text x="80" y="265" text-anchor="middle" fill="#9a9da5" font-size="9">0</text>
+  <text x="215" y="265" text-anchor="middle" fill="#9a9da5" font-size="9">2000</text>
+  <text x="350" y="265" text-anchor="middle" fill="#9a9da5" font-size="9">4000</text>
+  <text x="485" y="265" text-anchor="middle" fill="#9a9da5" font-size="9">6000</text>
+  <text x="620" y="265" text-anchor="middle" fill="#9a9da5" font-size="9">8000</text>
+  <!-- y gridlines: 0,20k,40k,60k,80k mapped 250..40 (52.5 each) -->
+  <g stroke="#eeebe3" stroke-width="1">
+    <line x1="80" y1="197.5" x2="620" y2="197.5"/><line x1="80" y1="145" x2="620" y2="145"/>
+    <line x1="80" y1="92.5" x2="620" y2="92.5"/>
+  </g>
+  <text x="72" y="201" text-anchor="end" fill="#9a9da5" font-size="9">20k</text>
+  <text x="72" y="148" text-anchor="end" fill="#9a9da5" font-size="9">40k</text>
+  <text x="72" y="96" text-anchor="end" fill="#9a9da5" font-size="9">60k</text>
+  <text x="72" y="44" text-anchor="end" fill="#9a9da5" font-size="9">80k</text>
+  <!-- Fixed cost line at $20k = y197.5 -->
+  <line x1="80" y1="197.5" x2="620" y2="197.5" stroke="#917216" stroke-width="2"/>
+  <text x="626" y="200" fill="#917216" font-size="10" font-weight="500">Fixed cost</text>
+  <!-- Total cost: (80,197.5) to (620,71.5) [20k -> 68k at 8000u] -->
+  <line x1="80" y1="197.5" x2="620" y2="71.5" stroke="#a8493a" stroke-width="2"/>
+  <text x="626" y="74" fill="#a8493a" font-size="10" font-weight="500">Total cost</text>
+  <!-- Revenue: (80,250) to (620,40) [0 -> 80k] -->
+  <line x1="80" y1="250" x2="620" y2="40" stroke="#1f5670" stroke-width="2"/>
+  <text x="626" y="42" fill="#1f5670" font-size="10" font-weight="500">Revenue</text>
+  <!-- BEP at 5000 units / $50k -> x=417.5, y=118.75 -->
+  <line x1="417.5" y1="118.75" x2="417.5" y2="250" stroke="#2f7350" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="417.5" y1="118.75" x2="80" y2="118.75" stroke="#2f7350" stroke-width="1" stroke-dasharray="4,3"/>
+  <circle cx="417.5" cy="118.75" r="5" fill="#2f7350" stroke="#fff" stroke-width="1.5"/>
+  <text x="427" y="112" fill="#2f7350" font-size="11" font-weight="600">Break-even</text>
+  <text x="417.5" y="240" text-anchor="middle" fill="#2f7350" font-size="9" font-weight="500">5000 units</text>
+  <text x="86" y="115" fill="#2f7350" font-size="9" font-weight="500">$50k</text>
+  <text x="510" y="160" fill="#2f7350" font-size="10">Profit</text>
+  <text x="180" y="225" fill="#a8493a" font-size="10">Loss</text>
+</svg>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">The break-even point is where the <span style="color:var(--accent)">Revenue</span> line crosses the <span style="color:var(--neg)">Total Cost</span> line, at exactly 5,000 units and $50,000. Left of this = loss; right of this = profit. The vertical gap between revenue and total cost beyond BEP = profit at that output.</p>
+
+  <!-- Effect of changes -->
+  <div class="sub-title">Effects of Changes on Break-Even</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Change</th><th>Effect on BEP</th><th>Why</th></tr>
+    <tr><td>↑ Selling price</td><td>BEP falls (fewer units needed)</td><td>Higher contribution per unit</td></tr>
+    <tr><td>↑ Variable cost</td><td>BEP rises (more units needed)</td><td>Lower contribution per unit</td></tr>
+    <tr><td>↑ Fixed cost</td><td>BEP rises</td><td>More contribution needed to cover FC</td></tr>
+    <tr><td>↓ Selling price</td><td>BEP rises</td><td>Lower contribution per unit</td></tr>
+  </table></div>
+
+  <!-- Limitations -->
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="ad-box adv"><h5>Benefits of Break-Even Analysis</h5><ul>
+        <li>Simple visual tool for decision-making</li>
+        <li>Shows margin of safety</li>
+        <li>Helps set output and pricing targets</li>
+        <li>Useful for "what-if" scenario planning</li>
+        <li>Supports loan applications (shows viability)</li>
+      </ul></div>
+    </div>
+    <div class="card">
+      <div class="ad-box dis"><h5>Limitations</h5><ul>
+        <li>Assumes all output is sold (unrealistic)</li>
+        <li>Assumes costs/price are linear (ignores discounts, economies of scale)</li>
+        <li>Fixed costs may change at higher output (stepped costs)</li>
+        <li>Only suitable for single-product analysis</li>
+        <li>Static, ignores market changes over time</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <!-- PRODUCTION METHODS -->
+  <div class="section-title">5.x Production Methods</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Method</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Example</th></tr>
+    <tr><td>Job production</td><td>One-off, bespoke items made individually</td><td>High quality, customised, premium price</td><td>Labour-intensive, slow, expensive</td><td>Savile Row suits, wedding cakes</td></tr>
+    <tr><td>Batch production</td><td>Groups of identical products made in stages</td><td>Flexible, some economies of scale</td><td>Downtime between batches, storage costs</td><td>Bakery bread runs, pharmaceuticals</td></tr>
+    <tr><td>Flow (mass) production</td><td>Continuous production of standardised goods</td><td>Low unit cost, high output, automation</td><td>High setup cost, inflexible, monotonous work</td><td>Coca-Cola bottling, car assembly lines</td></tr>
+    <tr><td>Cellular production</td><td>Teams (cells) responsible for a complete stage</td><td>Motivating, flexible, quality ownership</td><td>Requires multi-skilled staff, setup cost</td><td>Toyota lean manufacturing cells</td></tr>
+  </table></div>
+</div>
+<!-- ═══════════════════ TOOLS & FRAMEWORKS ═══════════════════ -->
+<div class="page" id="page-tools">
+  <div class="page-title">Tools &amp; Frameworks</div>
+  <div class="page-subtitle">SWOT · STEEPLE · Ansoff Matrix · BCG Matrix · Decision Trees · Mendelow Matrix</div>
+
+  <!-- SWOT -->
+  <div class="section-title">SWOT Analysis</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Internal (Strengths, Weaknesses) and external (Opportunities, Threats) audit of a business's position.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 560 360" width="100%" style="max-width:520px" xmlns="http://www.w3.org/2000/svg">
+  <rect x="50" y="44" width="230" height="140" fill="#e8f1ea" stroke="#2f7350" stroke-width="1.2"/>
+  <rect x="280" y="44" width="230" height="140" fill="#f3ece9" stroke="#a8493a" stroke-width="1.2"/>
+  <rect x="50" y="184" width="230" height="140" fill="#e3eef0" stroke="#1f5670" stroke-width="1.2"/>
+  <rect x="280" y="184" width="230" height="140" fill="#f4efdf" stroke="#917216" stroke-width="1.2"/>
+  <text x="66" y="68" fill="#2f7350" font-size="13" font-weight="600">Strengths</text>
+  <text x="66" y="84" fill="#71757f" font-size="9.5">Internal · positive</text>
+  <text x="66" y="108" fill="#1c1e22" font-size="11">Strong brand</text>
+  <text x="66" y="126" fill="#1c1e22" font-size="11">Skilled workforce</text>
+  <text x="66" y="144" fill="#1c1e22" font-size="11">Patents / IP</text>
+  <text x="296" y="68" fill="#a8493a" font-size="13" font-weight="600">Weaknesses</text>
+  <text x="296" y="84" fill="#71757f" font-size="9.5">Internal · negative</text>
+  <text x="296" y="108" fill="#1c1e22" font-size="11">High debt</text>
+  <text x="296" y="126" fill="#1c1e22" font-size="11">Ageing technology</text>
+  <text x="296" y="144" fill="#1c1e22" font-size="11">Weak cash flow</text>
+  <text x="66" y="208" fill="#1f5670" font-size="13" font-weight="600">Opportunities</text>
+  <text x="66" y="224" fill="#71757f" font-size="9.5">External · positive</text>
+  <text x="66" y="248" fill="#1c1e22" font-size="11">New markets</text>
+  <text x="66" y="266" fill="#1c1e22" font-size="11">New technology</text>
+  <text x="66" y="284" fill="#1c1e22" font-size="11">Competitor exit</text>
+  <text x="296" y="208" fill="#917216" font-size="13" font-weight="600">Threats</text>
+  <text x="296" y="224" fill="#71757f" font-size="9.5">External · negative</text>
+  <text x="296" y="248" fill="#1c1e22" font-size="11">New entrants</text>
+  <text x="296" y="266" fill="#1c1e22" font-size="11">Recession</text>
+  <text x="296" y="284" fill="#1c1e22" font-size="11">Regulation</text>
+</svg>
+  </div>
+  <div class="case-box"><div class="case-label">60-Second Worked SWOT, On Holding AG</div><p><strong>Strengths:</strong> Patented CloudTec sole technology, Roger Federer brand partnership, premium positioning. <strong>Weaknesses:</strong> Heavy reliance on running category, premium price limits mass-market reach, relatively small vs Nike/Adidas. <strong>Opportunities:</strong> Apparel expansion, Asia-Pacific growth, retail store rollout. <strong>Threats:</strong> Nike/Adidas marketing budgets, economic downturn hitting premium spend, fast-fashion copying designs.</p></div>
+
+  <!-- STEEPLE -->
+  <div class="section-title">STEEPLE Analysis</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Framework for analysing the external macro-environment affecting a business.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Factor</th><th>What it covers</th><th>Example impact</th></tr>
+    <tr><td><strong>S</strong>ocial</td><td>Demographics, lifestyle, culture, trends</td><td>Ageing population → demand for healthcare</td></tr>
+    <tr><td><strong>T</strong>echnological</td><td>Innovation, automation, R&amp;D, digital</td><td>AI disrupting customer service jobs</td></tr>
+    <tr><td><strong>E</strong>conomic</td><td>Growth, inflation, interest rates, unemployment</td><td>High interest rates → less borrowing/investment</td></tr>
+    <tr><td><strong>E</strong>nvironmental</td><td>Climate, sustainability, resource scarcity</td><td>Carbon taxes raising production costs</td></tr>
+    <tr><td><strong>P</strong>olitical</td><td>Government policy, stability, trade, tax</td><td>UAE 9% corporate tax (2023) affecting firms</td></tr>
+    <tr><td><strong>L</strong>egal</td><td>Employment law, consumer protection, H&amp;S</td><td>GDPR data laws affecting marketing</td></tr>
+    <tr><td><strong>E</strong>thical</td><td>Moral expectations, CSR, fair trade</td><td>Consumer boycotts of unethical brands</td></tr>
+  </table></div>
+  <div class="case-box"><div class="case-label">Applied, STEEPLE of Fast Fashion (Shein, Zara)</div><p><strong>Social:</strong> Gen-Z trend cycles drive demand. <strong>Technological:</strong> AI demand-forecasting enables ultra-fast restocking. <strong>Economic:</strong> Cost-of-living crisis boosts cheap fashion. <strong>Environmental:</strong> Textile waste backlash, biggest threat. <strong>Political:</strong> Potential import tariffs on Chinese goods. <strong>Legal:</strong> Forced labour scrutiny in supply chains. <strong>Ethical:</strong> Growing consumer rejection of "throwaway" culture. This shows external forces pulling in opposite directions.</p></div>
+
+  <!-- ANSOFF -->
+  <div class="section-title">Ansoff Matrix</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Maps growth strategies by product (existing/new) vs market (existing/new). Risk increases toward bottom-right.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 560 380" width="100%" style="max-width:540px" xmlns="http://www.w3.org/2000/svg">
+  <rect x="130" y="56" width="190" height="120" fill="#e8f1ea" stroke="#2f7350" stroke-width="1.2"/>
+  <rect x="320" y="56" width="190" height="120" fill="#f4efdf" stroke="#917216" stroke-width="1.2"/>
+  <rect x="130" y="176" width="190" height="120" fill="#e3eef0" stroke="#1f5670" stroke-width="1.2"/>
+  <rect x="320" y="176" width="190" height="120" fill="#f3ece9" stroke="#a8493a" stroke-width="1.2"/>
+  <text x="225" y="104" text-anchor="middle" fill="#2f7350" font-size="12.5" font-weight="600">Market Penetration</text>
+  <text x="225" y="126" text-anchor="middle" fill="#71757f" font-size="9.5">Existing products,</text>
+  <text x="225" y="140" text-anchor="middle" fill="#71757f" font-size="9.5">existing market</text>
+  <text x="225" y="160" text-anchor="middle" fill="#1c1e22" font-size="9.5">Coca-Cola loyalty</text>
+  <text x="415" y="104" text-anchor="middle" fill="#917216" font-size="12.5" font-weight="600">Product Development</text>
+  <text x="415" y="126" text-anchor="middle" fill="#71757f" font-size="9.5">New products,</text>
+  <text x="415" y="140" text-anchor="middle" fill="#71757f" font-size="9.5">existing market</text>
+  <text x="415" y="160" text-anchor="middle" fill="#1c1e22" font-size="9.5">Apple Watch</text>
+  <text x="225" y="224" text-anchor="middle" fill="#1f5670" font-size="12.5" font-weight="600">Market Development</text>
+  <text x="225" y="246" text-anchor="middle" fill="#71757f" font-size="9.5">Existing products,</text>
+  <text x="225" y="260" text-anchor="middle" fill="#71757f" font-size="9.5">new market</text>
+  <text x="225" y="280" text-anchor="middle" fill="#1c1e22" font-size="9.5">Netflix into Asia</text>
+  <text x="415" y="224" text-anchor="middle" fill="#a8493a" font-size="12.5" font-weight="600">Diversification</text>
+  <text x="415" y="246" text-anchor="middle" fill="#71757f" font-size="9.5">New products,</text>
+  <text x="415" y="260" text-anchor="middle" fill="#71757f" font-size="9.5">new market (riskiest)</text>
+  <text x="415" y="280" text-anchor="middle" fill="#1c1e22" font-size="9.5">Amazon to AWS</text>
+  <text x="225" y="44" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600">Existing Products</text>
+  <text x="415" y="44" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600">New Products</text>
+  <text x="116" y="116" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600" transform="rotate(-90,116,116)">Existing Markets</text>
+  <text x="116" y="236" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600" transform="rotate(-90,116,236)">New Markets</text>
+  <line x1="150" y1="322" x2="490" y2="322" stroke="#a8493a" stroke-width="1.5" marker-end="url(#aar)"/>
+  <text x="320" y="344" text-anchor="middle" fill="#71757f" font-size="10.5">Increasing risk</text>
+  <defs><marker id="aar" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#a8493a"/></marker></defs>
+</svg>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Strategy</th><th>Risk</th><th>Real Example</th></tr>
+    <tr><td>Market Penetration</td><td>Lowest</td><td>Coca-Cola loyalty programs, more advertising to existing drinkers</td></tr>
+    <tr><td>Product Development</td><td>Medium</td><td>Apple launching Apple Watch to existing iPhone users</td></tr>
+    <tr><td>Market Development</td><td>Medium</td><td>Netflix expanding into India and Africa</td></tr>
+    <tr><td>Diversification</td><td>Highest</td><td>Amazon entering cloud computing (AWS), totally new product + market</td></tr>
+  </table></div>
+
+  <!-- BCG -->
+  <div class="section-title">BCG Matrix</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Portfolio analysis mapping products by market share (high/low) vs market growth (high/low).</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 560 380" width="100%" style="max-width:540px" xmlns="http://www.w3.org/2000/svg">
+  <rect x="120" y="50" width="185" height="140" fill="#e3eef0" stroke="#1f5670" stroke-width="1.2"/>
+  <rect x="305" y="50" width="185" height="140" fill="#e8f1ea" stroke="#2f7350" stroke-width="1.2"/>
+  <rect x="120" y="190" width="185" height="140" fill="#f3ece9" stroke="#a8493a" stroke-width="1.2"/>
+  <rect x="305" y="190" width="185" height="140" fill="#f4efdf" stroke="#917216" stroke-width="1.2"/>
+  <text x="212" y="92" text-anchor="middle" fill="#1f5670" font-size="13" font-weight="600">Question Mark</text>
+  <text x="212" y="112" text-anchor="middle" fill="#71757f" font-size="9.5">High growth, low share</text>
+  <text x="212" y="128" text-anchor="middle" fill="#71757f" font-size="9.5">Invest heavily or divest</text>
+  <text x="212" y="150" text-anchor="middle" fill="#1c1e22" font-size="10">Apple Vision Pro</text>
+  <text x="397" y="92" text-anchor="middle" fill="#2f7350" font-size="13" font-weight="600">Star</text>
+  <text x="397" y="112" text-anchor="middle" fill="#71757f" font-size="9.5">High growth, high share</text>
+  <text x="397" y="128" text-anchor="middle" fill="#71757f" font-size="9.5">Invest to keep lead</text>
+  <text x="397" y="150" text-anchor="middle" fill="#1c1e22" font-size="10">iPhone</text>
+  <text x="212" y="232" text-anchor="middle" fill="#a8493a" font-size="13" font-weight="600">Dog</text>
+  <text x="212" y="252" text-anchor="middle" fill="#71757f" font-size="9.5">Low growth, low share</text>
+  <text x="212" y="268" text-anchor="middle" fill="#71757f" font-size="9.5">Divest / discontinue</text>
+  <text x="212" y="290" text-anchor="middle" fill="#1c1e22" font-size="10">iPod</text>
+  <text x="397" y="232" text-anchor="middle" fill="#917216" font-size="13" font-weight="600">Cash Cow</text>
+  <text x="397" y="252" text-anchor="middle" fill="#71757f" font-size="9.5">Low growth, high share</text>
+  <text x="397" y="268" text-anchor="middle" fill="#71757f" font-size="9.5">Harvest, fund Stars</text>
+  <text x="397" y="290" text-anchor="middle" fill="#1c1e22" font-size="10">MacBook</text>
+  <text x="305" y="38" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600">Relative Market Share</text>
+  <text x="212" y="352" text-anchor="middle" fill="#71757f" font-size="10">Low</text>
+  <text x="397" y="352" text-anchor="middle" fill="#71757f" font-size="10">High</text>
+  <text x="104" y="190" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600" transform="rotate(-90,104,190)">Market Growth</text><text x="132" y="120" text-anchor="middle" fill="#71757f" font-size="10" transform="rotate(-90,132,120)">High</text><text x="132" y="260" text-anchor="middle" fill="#71757f" font-size="10" transform="rotate(-90,132,260)">Low</text>
+</svg>
+  </div>
+  <div class="case-box"><div class="case-label">Applied, Apple's BCG Portfolio</div><p><strong>Star:</strong> iPhone (high share in still-growing premium smartphone market). <strong>Cash Cow:</strong> MacBook/iPad (mature market, strong share, funds R&amp;D). <strong>Question Mark:</strong> Vision Pro (new AR market, uncertain share). <strong>Dog:</strong> iPod (discontinued 2022, declining market, replaced by phones). A balanced portfolio uses Cash Cows to fund Stars and Question Marks.</p></div>
+
+  <!-- DECISION TREE -->
+  <div class="section-title">Decision Trees <span class="hl-badge">HL</span></div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">A diagram showing quantitative decision options, their probabilities, and expected values (EV). Squares = decisions, circles = chance nodes.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 320" width="100%" style="max-width:700px" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="142" width="24" height="24" fill="#fff" stroke="#1f5670" stroke-width="1.8"/>
+  <text x="52" y="186" text-anchor="middle" fill="#71757f" font-size="9">decision</text>
+  <line x1="64" y1="154" x2="210" y2="84" stroke="#71757f" stroke-width="1.2"/>
+  <text x="92" y="108" fill="#1f5670" font-size="10.5" font-weight="500">Launch new (−$200k)</text>
+  <circle cx="220" cy="84" r="11" fill="#fff" stroke="#2f7350" stroke-width="1.8"/>
+  <line x1="64" y1="154" x2="210" y2="232" stroke="#71757f" stroke-width="1.2"/>
+  <text x="86" y="216" fill="#917216" font-size="10.5" font-weight="500">Improve existing (−$80k)</text>
+  <circle cx="220" cy="232" r="11" fill="#fff" stroke="#2f7350" stroke-width="1.8"/>
+  <line x1="231" y1="84" x2="380" y2="52" stroke="#9a9da5" stroke-width="1"/>
+  <text x="276" y="56" fill="#71757f" font-size="9.5">Success 0.6 → $500k</text>
+  <line x1="231" y1="84" x2="380" y2="118" stroke="#9a9da5" stroke-width="1"/>
+  <text x="276" y="120" fill="#71757f" font-size="9.5">Fail 0.4 → $100k</text>
+  <line x1="231" y1="232" x2="380" y2="200" stroke="#9a9da5" stroke-width="1"/>
+  <text x="276" y="204" fill="#71757f" font-size="9.5">Success 0.7 → $250k</text>
+  <line x1="231" y1="232" x2="380" y2="266" stroke="#9a9da5" stroke-width="1"/>
+  <text x="276" y="282" fill="#71757f" font-size="9.5">Fail 0.3 → $90k</text>
+  <rect x="406" y="58" width="250" height="66" rx="3" fill="#e8f1ea" stroke="#2f7350"/>
+  <text x="418" y="78" fill="#2f7350" font-size="10.5" font-weight="600">EV (Launch)</text>
+  <text x="418" y="94" fill="#1c1e22" font-size="9.5">(0.6×500)+(0.4×100) = $340k</text>
+  <text x="418" y="108" fill="#1c1e22" font-size="9.5">Net = 340 − 200 = $140k ✓ choose</text>
+  <rect x="406" y="200" width="250" height="66" rx="3" fill="#f4efdf" stroke="#917216"/>
+  <text x="418" y="220" fill="#917216" font-size="10.5" font-weight="600">EV (Improve)</text>
+  <text x="418" y="236" fill="#1c1e22" font-size="9.5">(0.7×250)+(0.3×90) = $202k</text>
+  <text x="418" y="250" fill="#1c1e22" font-size="9.5">Net = 202 − 80 = $122k</text>
+</svg>
+  </div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="formula-block">
+        <div class="eq" style="flex-direction:column;align-items:flex-start;gap:6px">
+          <span>Expected Value (EV) =</span>
+          <span>Σ (probability × payoff)</span>
+        </div>
+        <div class="formula-note">Then subtract the cost of each decision to get net EV. Choose highest net EV.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ad-box dis"><h5>Limitations of Decision Trees</h5><ul>
+        <li>Probabilities are estimates, often inaccurate</li>
+        <li>Ignores qualitative factors (brand, ethics, staff morale)</li>
+        <li>Assumes a static environment</li>
+        <li>Bias in assigning probabilities by managers</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+<!-- ═══════════════════ FORMULA SHEET ═══════════════════ -->
+<div class="page" id="page-formulas">
+  <div class="page-eyebrow">Reference</div>
+  <div class="page-title">Formula Sheet</div>
+  <div class="page-subtitle">Split into what the IB gives you in the Data Booklet (★) and what you must memorise. Wording matches the official IB Business Management Data Booklet exactly. HL badges mark Higher Level only formulas.</div>
+
+  <!-- ═══ GIVEN IN BOOKLET ═══ -->
+  <div class="fs-section-head"><span class="star">★</span> Given in the Data Booklet</div>
+  <div class="fs-banner given">You are handed these in the exam, so do not waste revision time memorising them. Spend your effort knowing exactly when and how to apply each one, and what a result means once calculated.</div>
+
+  <div class="fs-group">
+    <div class="fs-title">Profitability ratios · SL &amp; HL</div>
+    <div class="fs-grid">
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Gross profit margin</span><span class="equals">=</span>
+          <span class="frac"><span class="num">gross profit</span><span class="den">sales revenue</span></span><span>× 100</span></div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Profit margin</span><span class="equals">=</span>
+          <span class="frac"><span class="num">profit before interest and tax</span><span class="den">sales revenue</span></span><span>× 100</span></div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>ROCE</span><span class="equals">=</span>
+          <span class="frac"><span class="num">profit before interest and tax</span><span class="den">capital employed</span></span><span>× 100</span></div>
+        <div class="formula-note">where capital employed = non-current liabilities + equity</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">Liquidity ratios · SL &amp; HL</div>
+    <div class="fs-grid">
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Current ratio</span><span class="equals">=</span>
+          <span class="frac"><span class="num">current assets</span><span class="den">current liabilities</span></span></div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Acid test (quick) ratio</span><span class="equals">=</span>
+          <span class="frac"><span class="num">current assets − stock</span><span class="den">current liabilities</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">Efficiency ratios · HL only</div>
+    <div class="fs-grid">
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Stock turnover (times)</span><span class="equals">=</span>
+          <span class="frac"><span class="num">cost of sales</span><span class="den">average stock</span></span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Stock turnover (days)</span><span class="equals">=</span>
+          <span class="frac"><span class="num">average stock</span><span class="den">cost of sales</span></span><span>× 365</span><span class="label">HL</span></div>
+        <div class="formula-note">where average stock = (opening stock + closing stock) ÷ 2</div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Debtor days</span><span class="equals">=</span>
+          <span class="frac"><span class="num">debtors</span><span class="den">total sales revenue</span></span><span>× 365</span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Creditor days</span><span class="equals">=</span>
+          <span class="frac"><span class="num">creditors</span><span class="den">cost of sales</span></span><span>× 365</span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Gearing ratio</span><span class="equals">=</span>
+          <span class="frac"><span class="num">non-current liabilities</span><span class="den">capital employed</span></span><span>× 100</span><span class="label">HL</span></div>
+        <div class="formula-note">where capital employed = non-current liabilities + equity</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">Investment appraisal</div>
+    <div class="fs-grid">
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>ARR</span><span class="equals">=</span>
+          <span class="frac"><span class="num">(total returns − capital cost) ÷ years of use</span><span class="den">capital cost</span></span><span>× 100</span></div>
+        <div class="formula-note">Average rate of return · SL &amp; HL</div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>NPV</span><span class="equals">=</span><span>Σ (present values of return) − original cost</span><span class="label">HL</span></div>
+        <div class="formula-note">Net present value · uses the discount table below</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">Capacity utilization and productivity · HL only</div>
+    <div class="fs-grid">
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Capacity utilization rate</span><span class="equals">=</span>
+          <span class="frac"><span class="num">actual output</span><span class="den">productive capacity</span></span><span>× 100</span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+        <div class="eq"><span>Productivity rate</span><span class="equals">=</span>
+          <span class="frac"><span class="num">total output</span><span class="den">total input</span></span><span>× 100</span><span class="label">HL</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">NPV discount table (printed in the booklet) <span class="hl-badge">HL</span></div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Year</th><th>3%</th><th>4%</th><th>5%</th><th>6%</th><th>8%</th><th>10%</th><th>12%</th><th>20%</th></tr>
+      <tr><td>1</td><td>0.971</td><td>0.962</td><td>0.952</td><td>0.943</td><td>0.926</td><td>0.909</td><td>0.893</td><td>0.833</td></tr>
+      <tr><td>2</td><td>0.943</td><td>0.925</td><td>0.907</td><td>0.890</td><td>0.857</td><td>0.826</td><td>0.797</td><td>0.694</td></tr>
+      <tr><td>3</td><td>0.915</td><td>0.889</td><td>0.864</td><td>0.840</td><td>0.794</td><td>0.751</td><td>0.712</td><td>0.579</td></tr>
+      <tr><td>4</td><td>0.888</td><td>0.855</td><td>0.823</td><td>0.792</td><td>0.735</td><td>0.683</td><td>0.636</td><td>0.482</td></tr>
+      <tr><td>5</td><td>0.863</td><td>0.822</td><td>0.784</td><td>0.747</td><td>0.681</td><td>0.621</td><td>0.567</td><td>0.402</td></tr>
+      <tr><td>6</td><td>0.837</td><td>0.790</td><td>0.746</td><td>0.705</td><td>0.630</td><td>0.564</td><td>0.507</td><td>0.335</td></tr>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--muted)">Discounted cash flow = cash flow × discount factor. NPV = Σ discounted cash flows − original cost.</p>
+  </div>
+
+  <!-- ═══ MEMORISE ═══ -->
+  <div class="fs-section-head" style="margin-top:48px">Memorise these</div>
+  <div class="fs-banner memorise">These are not printed in the Data Booklet, so you must learn them. They still appear in calculation questions, so know them cold.</div>
+
+  <div class="fs-group">
+    <div class="fs-title">Break-even and contribution</div>
+    <div class="fs-grid">
+      <div class="formula-block">
+        <div class="eq"><span>Contribution per unit</span><span class="equals">=</span><span>selling price − variable cost per unit</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Total contribution</span><span class="equals">=</span><span>contribution per unit × quantity sold</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Break-even quantity</span><span class="equals">=</span>
+          <span class="frac"><span class="num">fixed costs</span><span class="den">contribution per unit</span></span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Profit</span><span class="equals">=</span><span>total contribution − fixed costs</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Margin of safety</span><span class="equals">=</span><span>actual output − break-even output</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Target profit output</span><span class="equals">=</span>
+          <span class="frac"><span class="num">fixed costs + target profit</span><span class="den">contribution per unit</span></span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Total revenue</span><span class="equals">=</span><span>price × quantity</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Total costs</span><span class="equals">=</span><span>fixed costs + (variable cost per unit × quantity)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">Marketing</div>
+    <div class="fs-grid">
+      <div class="formula-block">
+        <div class="eq"><span>Market share</span><span class="equals">=</span>
+          <span class="frac"><span class="num">firm's sales revenue</span><span class="den">total market sales revenue</span></span><span>× 100</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Market growth</span><span class="equals">=</span>
+          <span class="frac"><span class="num">change in market size</span><span class="den">original market size</span></span><span>× 100</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">Human resources and decisions</div>
+    <div class="fs-grid">
+      <div class="formula-block">
+        <div class="eq"><span>Labour turnover</span><span class="equals">=</span>
+          <span class="frac"><span class="num">number of staff leaving</span><span class="den">average number employed</span></span><span>× 100</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Expected value</span><span class="equals">=</span><span>Σ (probability × payoff)</span><span class="label">HL · decision trees</span></div>
+        <div class="formula-note">Net gain = expected value − cost of the decision</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ═══════════════════ DEFINITION SHEET ═══════════════════ -->
+<div class="page" id="page-defs">
+  <div class="page-title">Definition Sheet</div>
+  <div class="page-subtitle">Key terms for 2-mark "define" questions · grouped by unit · use precise IB wording</div>
+
+  <div class="section-title">Unit 1 · Business Organization</div>
+  <div class="def-grid">
+    <div class="def-card"><div class="term">Business</div><div class="defn">An organisation that combines human, physical and financial resources to produce goods or services to satisfy customer needs.</div></div>
+    <div class="def-card"><div class="term">Entrepreneur</div><div class="defn">An individual who plans, organises and takes the financial risk of running a business in pursuit of profit.</div></div>
+    <div class="def-card"><div class="term">Limited liability</div><div class="defn">Shareholders are only liable for the debts of the business up to the amount they invested; personal assets are protected.</div></div>
+    <div class="def-card"><div class="term">Unlimited liability</div><div class="defn">Owners are personally responsible for all business debts, risking personal assets.</div></div>
+    <div class="def-card"><div class="term">Stakeholder</div><div class="defn">Any individual or group with an interest in, or affected by, the activities and decisions of a business.</div></div>
+    <div class="def-card"><div class="term">CSR</div><div class="defn">Corporate Social Responsibility, a business's obligation to act ethically and consider its social and environmental impact beyond legal requirements.</div></div>
+    <div class="def-card"><div class="term">Economies of scale</div><div class="defn">Cost advantages a business gains as output increases, reducing average cost per unit.</div></div>
+    <div class="def-card"><div class="term">Multinational corporation (MNC)</div><div class="defn">A business that operates production or service facilities in more than one country.</div></div>
+    <div class="def-card"><div class="term">Merger</div><div class="defn">When two businesses agree to combine and form one new legal entity.</div></div>
+    <div class="def-card"><div class="term">Acquisition</div><div class="defn">When one business buys a controlling interest (over 50%) in another business.</div></div>
+  </div>
+
+  <div class="section-title">Unit 2 · Human Resources</div>
+  <div class="def-grid">
+    <div class="def-card"><div class="term">Leadership</div><div class="defn">The ability to influence, inspire and direct people towards achieving organisational goals.</div></div>
+    <div class="def-card"><div class="term">Motivation</div><div class="defn">The internal and external factors that drive an individual to take action and put effort into their work.</div></div>
+    <div class="def-card"><div class="term">Labour turnover</div><div class="defn">The percentage of the workforce that leaves a business over a given period, usually one year.</div></div>
+    <div class="def-card"><div class="term">Appraisal</div><div class="defn">The formal assessment of an employee's performance against set objectives.</div></div>
+    <div class="def-card"><div class="term">Job enrichment</div><div class="defn">Giving employees more challenging and meaningful tasks with greater responsibility (vertical loading).</div></div>
+    <div class="def-card"><div class="term">Job enlargement</div><div class="defn">Increasing the number of tasks an employee performs at the same level (horizontal loading).</div></div>
+    <div class="def-card"><div class="term">Empowerment</div><div class="defn">Giving employees the authority and autonomy to make decisions about their own work.</div></div>
+    <div class="def-card"><div class="term">Span of control</div><div class="defn">The number of subordinates directly reporting to a manager.</div></div>
+    <div class="def-card"><div class="term">Delayering</div><div class="defn">Removing one or more levels of hierarchy from an organisational structure.</div></div>
+  </div>
+
+  <div class="section-title">Unit 3 · Finance &amp; Accounts</div>
+  <div class="def-grid">
+    <div class="def-card"><div class="term">Gross profit</div><div class="defn">The profit made from trading, calculated as sales revenue minus cost of goods sold.</div></div>
+    <div class="def-card"><div class="term">Net profit</div><div class="defn">The profit remaining after all expenses, interest and tax have been deducted from gross profit.</div></div>
+    <div class="def-card"><div class="term">Liquidity</div><div class="defn">The ability of a business to pay its short-term debts as they fall due.</div></div>
+    <div class="def-card"><div class="term">Working capital</div><div class="defn">The funds available for the day-to-day running of a business; current assets minus current liabilities.</div></div>
+    <div class="def-card"><div class="term">Depreciation</div><div class="defn">The reduction in the value of a non-current asset over its useful life.</div></div>
+    <div class="def-card"><div class="term">Insolvency</div><div class="defn">When a business cannot pay its debts as they fall due (a cash flow problem).</div></div>
+    <div class="def-card"><div class="term">Bankruptcy</div><div class="defn">A legal status when a business or individual cannot repay debts and assets are liquidated.</div></div>
+    <div class="def-card"><div class="term">Investment appraisal</div><div class="defn">The quantitative techniques used to assess the financial viability of a capital investment decision.</div></div>
+    <div class="def-card"><div class="term">Budget</div><div class="defn">A quantitative financial plan for a future period, setting targets for revenue and expenditure.</div></div>
+    <div class="def-card"><div class="term">Variance</div><div class="defn">The difference between a budgeted figure and the actual figure achieved.</div></div>
+  </div>
+
+  <div class="section-title">Unit 4 · Marketing</div>
+  <div class="def-grid">
+    <div class="def-card"><div class="term">Marketing</div><div class="defn">The management process of identifying, anticipating and satisfying customer needs profitably.</div></div>
+    <div class="def-card"><div class="term">Market share</div><div class="defn">The proportion of total sales in a market held by one business or product, expressed as a percentage.</div></div>
+    <div class="def-card"><div class="term">Market orientation</div><div class="defn">A business approach that focuses on identifying and meeting customer needs through market research.</div></div>
+    <div class="def-card"><div class="term">Product orientation</div><div class="defn">A business approach focused on the product itself and its quality, assuming demand will follow.</div></div>
+    <div class="def-card"><div class="term">USP</div><div class="defn">Unique Selling Point, a feature that distinguishes a product from competitors.</div></div>
+    <div class="def-card"><div class="term">Product life cycle</div><div class="defn">The stages a product passes through from launch to withdrawal: introduction, growth, maturity, decline.</div></div>
+    <div class="def-card"><div class="term">Penetration pricing</div><div class="defn">Setting a low initial price to quickly gain market share.</div></div>
+    <div class="def-card"><div class="term">Price skimming</div><div class="defn">Setting a high initial price on a new product, lowering it over time.</div></div>
+    <div class="def-card"><div class="term">Marketing mix</div><div class="defn">The combination of elements (7Ps) used to market a product effectively.</div></div>
+  </div>
+
+  <div class="section-title">Unit 5 · Operations</div>
+  <div class="def-grid">
+    <div class="def-card"><div class="term">Break-even point</div><div class="defn">The level of output where total revenue equals total costs, so neither profit nor loss is made.</div></div>
+    <div class="def-card"><div class="term">Contribution</div><div class="defn">The amount each unit sold contributes to covering fixed costs, after variable costs are paid.</div></div>
+    <div class="def-card"><div class="term">Margin of safety</div><div class="defn">The amount by which actual output exceeds the break-even output.</div></div>
+    <div class="def-card"><div class="term">Fixed costs</div><div class="defn">Costs that do not change with the level of output (e.g. rent, salaries).</div></div>
+    <div class="def-card"><div class="term">Variable costs</div><div class="defn">Costs that change directly with the level of output (e.g. raw materials).</div></div>
+    <div class="def-card"><div class="term">Capacity utilisation</div><div class="defn">The proportion of maximum possible output that a business is currently producing.</div></div>
+  </div>
+
+  <!-- COMMAND TERMS -->
+  <div class="section-title">IB Command Terms by Assessment Objective</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>AO Level</th><th>Command Terms</th><th>What's expected</th></tr>
+    <tr><td><strong>AO1</strong> Knowledge</td><td>Define, State, Outline, List, Identify</td><td>Recall facts/terms. Short, direct answers. (1 to 2 marks)</td></tr>
+    <tr><td><strong>AO2</strong> Application</td><td>Describe, Apply, Distinguish, Explain, Suggest, Calculate</td><td>Apply theory to the case study/context. Use the stimulus material. (2 to 4 marks)</td></tr>
+    <tr><td><strong>AO3</strong> Analysis</td><td>Analyse, Comment, Examine, Compare and contrast</td><td>Break down, show cause/effect, develop chains of reasoning. (4 to 6 marks)</td></tr>
+    <tr><td><strong>AO4</strong> Evaluation</td><td>Evaluate, Discuss, Justify, Recommend, To what extent</td><td>Weigh both sides, make a judgement, give a supported conclusion. (6 to 10 marks)</td></tr>
+  </table></div>
+  <div class="card" style="margin-top:16px;background:rgba(0,212,255,.05)">
+    <div class="sub-title">Exam Technique, Mark Band Tips</div>
+    <ul style="font-size:13px;color:var(--muted);padding-left:18px;line-height:1.8">
+      <li><strong>"Evaluate/Discuss" (top band):</strong> always reach a justified conclusion, don't just list pros/cons. Use phrases like "On balance...", "The most significant factor is...", "This depends on..."</li>
+      <li><strong>Application marks:</strong> name the specific business and use figures from the case study. Generic answers cap at low bands.</li>
+      <li><strong>Analysis:</strong> build chains of reasoning, "Lower price → higher demand → more revenue → but lower margin → so net effect depends on PED."</li>
+      <li><strong>Use the tools:</strong> if a question suits SWOT/Ansoff/BCG, structure your answer around it explicitly.</li>
+    </ul>
+  </div>
+</div>
+</div><!-- /main -->
+<script>
+const pages = ['home','unit1','unit2','unit3','unit4','unit5','tools','formulas','defs'];
+let current = 'home';
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function switchPage(id){
+  if(id===current) return;
+  const oldEl = document.getElementById('page-'+current);
+  const newEl = document.getElementById('page-'+id);
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active', n.dataset.page===id));
+  document.getElementById('sidebar').classList.remove('open');
+  const show = ()=>{
+    oldEl.classList.remove('active');
+    newEl.classList.add('active');
+    window.scrollTo(0,0);
+    if(!reduced){
+      gsap.fromTo(newEl,{opacity:0,y:10},{opacity:1,y:0,duration:0.28,ease:'power2.out'});
+      const items = newEl.querySelectorAll('.section-title, .card, .tbl-wrap, .diagram-wrap, .statement, .case-box, .def-grid, .fs-group, .unit-row, .formula-block, .legend');
+      gsap.fromTo(items,{opacity:0,y:12},{opacity:1,y:0,duration:0.34,stagger:0.018,ease:'power2.out',delay:0.04});
+    }
+  };
+  if(reduced){ show(); }
+  else { gsap.to(oldEl,{opacity:0,duration:0.14,onComplete:show}); }
+  current = id;
+}
+
+document.querySelectorAll('.nav-item').forEach(n=> n.addEventListener('click',()=>switchPage(n.dataset.page)));
+
+window.addEventListener('load',()=>{
+  if(reduced) return;
+  const home = document.getElementById('page-home');
+  const items = home.querySelectorAll('.home-hero, .unit-row, .legend');
+  gsap.fromTo(items,{opacity:0,y:14},{opacity:1,y:0,duration:0.4,stagger:0.05,ease:'power2.out',delay:0.06});
+});
+
+// progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)||0;
+  document.getElementById('progress').style.transform='scaleX('+p+')';
+});
+</script>
+</body>
+</html>
