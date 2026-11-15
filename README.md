@@ -7,7 +7,9 @@ tools and frameworks, a Data Booklet formula sheet, and a definitions sheet).
 
 ## What it is
 - Pure static site. The whole thing is `index.html`.
-- No build step, no dependencies to install. GSAP and Google Fonts load from a CDN.
+- No build step, no dependencies to install. Only Google Fonts load from a CDN; there is no JavaScript library.
+- Every page and section has its own address (for example `#unit5` or `#u5-52`), so links, refresh and the Back button work.
+- Search (sidebar and home page) covers sections, formulas, definitions, case studies and practice questions.
 
 ## Deploy to Vercel
 1. Create an empty GitHub repo (do not add a README from GitHub).

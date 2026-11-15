@@ -3,74 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BM Revision · June 2026</title>
+<title>BM Revision</title>
+<meta name="description" content="IB Business Management HL revision: notes, formulas, worked examples and practice questions, organised by unit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4f2ec;
+  --bg:#f5f6f8;
   --card:#ffffff;
-  --ink:#1c1e22;
-  --ink2:#3b3f47;
-  --muted:#71757f;
-  --faint:#9a9da5;
-  --line:#e4e0d6;
-  --line2:#eeebe3;
-  --accent:#1f5670;       /* single deep teal-blue accent */
-  --accent-soft:#eaf1f4;
-  --accent-line:#cddde3;
-  --pos:#2f7350;          /* muted green */
-  --pos-soft:#edf4ef;
-  --neg:#a8493a;          /* muted clay */
-  --neg-soft:#f7eeeb;
-  --gold:#917216;         /* muted amber for booklet stars */
-  --gold-soft:#f5efdd;
-  --plum:#6a5a8c;         /* calm secondary for diagrams */
-  --radius:4px;
-  --sidebar:248px;
+  --ink:#1b2230;
+  --ink2:#343c4a;
+  --muted:#566070;
+  --faint:#8a93a2;
+  --line:#dde2e9;
+  --line2:#ebeef3;
+  --accent:#1f5670;       /* deep teal-blue: links, equals signs, case studies */
+  --accent-soft:#e9f1f5;
+  --accent-line:#c7dae3;
+  --pos:#2a7a4c;          /* advantages, profit */
+  --pos-soft:#ebf5ef;
+  --neg:#b0412e;          /* disadvantages, loss */
+  --neg-soft:#fbefec;
+  --gold:#8c6a0e;         /* ★ printed on the formula sheet */
+  --gold-soft:#f8f1dc;
+  --plum:#6a5a8c;
+  /* one colour per unit, used for its number everywhere on the site */
+  --u1:#2f5fb3; --u2:#7448a8; --u3:#0f7d6e; --u4:#b0306a; --u5:#c0601d;
+  --radius:6px;
+  --sidebar:272px;
+  --ui:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --display:'Fraunces',Georgia,serif;
+  --figures:'IBM Plex Mono',ui-monospace,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);
-  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em}
-.mono{font-family:'IBM Plex Mono',monospace}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{font-family:var(--ui);background:var(--bg);color:var(--ink);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:var(--ui);font-weight:700;letter-spacing:-0.005em}
+.mono{font-family:var(--figures)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.skip{position:absolute;left:-9999px;top:10px;z-index:400;background:#fff;color:var(--ink);padding:9px 14px;border-radius:8px;border:1px solid var(--line);font-weight:700}
+.skip:focus{left:12px}
+.u1{--u:var(--u1)} .u2{--u:var(--u2)} .u3{--u:var(--u3)} .u4{--u:var(--u4)} .u5{--u:var(--u5)}
 
 /* ── SIDEBAR ─────────────────────────────────── */
 #sidebar{position:fixed;top:0;left:0;width:var(--sidebar);height:100vh;
   background:var(--card);border-right:1px solid var(--line);
-  display:flex;flex-direction:column;z-index:100;overflow-y:auto}
-#sidebar-header{padding:26px 24px 18px;border-bottom:1px solid var(--line)}
-#sidebar-header .logo{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--ink)}
-#sidebar-header .sub{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.02em}
-#sidebar nav{flex:1;padding:14px 0}
-.nav-item{display:flex;align-items:center;gap:11px;padding:9px 24px;cursor:pointer;
-  color:var(--ink2);font-size:13.5px;font-weight:500;transition:color .15s,background .15s;
-  border-left:2px solid transparent}
+  display:flex;flex-direction:column;z-index:200;overflow-y:auto;overscroll-behavior:contain}
+#sidebar-header{padding:24px 22px 12px}
+#sidebar-header .logo{font-family:var(--display);font-size:23px;font-weight:600;color:var(--ink);text-decoration:none;letter-spacing:-0.01em}
+#sidebar-header .sub{font-size:13.5px;color:var(--muted);margin-top:1px}
+#sidebar .search{margin:6px 16px 8px}
+#sidebar .nav{flex:1;padding:2px 0 32px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:8px 22px 8px 19px;text-decoration:none;
+  color:var(--ink2);font-size:15px;line-height:1.3;border-left:3px solid transparent}
 .nav-item:hover{color:var(--ink);background:var(--line2)}
-.nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft)}
-.nav-item .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);width:16px;flex-shrink:0}
-.nav-item.active .num{color:var(--accent)}
-.nav-sep{height:1px;background:var(--line);margin:12px 24px}
-.nav-label{font-size:10px;font-weight:600;color:var(--faint);text-transform:uppercase;
-  letter-spacing:.1em;padding:6px 24px 6px}
+.nav-item.active{color:var(--ink);font-weight:700;border-left-color:var(--u,var(--ink));background:var(--line2)}
+.nav-item .num{width:24px;height:24px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:var(--faint);border-radius:50%}
+.nav-item.unit .num{background:var(--u);color:#fff}
+.nav-item .num.test{background:var(--ink);color:#fff;border-radius:5px;width:28px;font-size:11.5px}
+.nav-label{font-size:13px;font-weight:700;color:var(--faint);padding:18px 22px 5px}
+.nav-sub{margin:2px 0 10px 46px;padding-left:12px;border-left:1px solid var(--line)}
+.nav-sub a{display:block;font-size:13.5px;line-height:1.35;color:var(--muted);text-decoration:none;padding:5px 14px 5px 0}
+.nav-sub a:hover{color:var(--ink)}
+.nav-sub a.part{font-weight:700;color:var(--ink2);margin-top:8px}
+.nav-sub a.on{color:var(--u,var(--accent));font-weight:700}
+
+/* ── SEARCH ──────────────────────────────────── */
+.search{position:relative}
+.search .s-ico{position:absolute;left:12px;top:50%;width:17px;height:17px;transform:translateY(-50%);color:var(--faint);pointer-events:none}
+.search input{width:100%;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--bg);
+  font:inherit;font-size:15px;color:var(--ink);padding:0 12px 0 38px;outline:none;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:var(--faint)}
+.search input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}
+.search.lg .s-ico{left:18px;width:21px;height:21px}
+.search.lg input{height:58px;font-size:17.5px;padding-left:50px;border-radius:12px;background:#fff;border-color:#cfd5de}
+.search-results{display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);
+  border-radius:10px;box-shadow:0 14px 34px rgba(27,34,48,.16);z-index:300;max-height:min(440px,62vh);overflow-y:auto;padding:6px}
+.search-results.open{display:block}
+.sr-item{display:grid;grid-template-columns:1fr auto;gap:1px 10px;padding:9px 10px;border-radius:7px;text-decoration:none;color:var(--ink)}
+.sr-item:hover,.sr-item.sel{background:var(--line2)}
+.sr-title{font-size:15px;font-weight:700;line-height:1.3}
+.sr-meta{grid-column:1 / -1;font-size:13px;color:var(--muted);line-height:1.4}
+.sr-page{font-size:12px;font-weight:700;color:#fff;background:var(--u,var(--ink2));border-radius:999px;padding:2px 9px;align-self:start;white-space:nowrap;line-height:1.5}
+.sr-empty{padding:12px;font-size:14.5px;color:var(--muted)}
 
 /* ── MAIN ────────────────────────────────────── */
 #main{margin-left:var(--sidebar)}
-.page{display:none;max-width:1320px;margin:0 auto;padding:52px 72px 96px}
-.page.active{display:block}
-.page-wide{max-width:1320px}
-.page-title{font-size:34px;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:-0.02em}
-.page-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
-.page-subtitle{font-size:14.5px;color:var(--muted);margin-bottom:44px;max-width:640px;line-height:1.6}
+.page{display:none;max-width:1240px;margin:0 auto;padding:48px 64px 96px}
+.page.active{display:block;animation:pageIn .22s ease-out}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.page-wide{max-width:1240px}
+.page-title{font-family:var(--display);font-size:38px;font-weight:600;color:var(--ink);margin-bottom:10px;
+  letter-spacing:-0.02em;line-height:1.12;display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px}
+.uchip{display:inline-flex;align-items:center;font-family:var(--ui);font-size:14px;font-weight:700;letter-spacing:0;
+  color:#fff;background:var(--u,var(--accent));border-radius:999px;padding:4px 12px;line-height:1.25}
+.page-eyebrow{font-size:14.5px;font-weight:700;color:var(--accent);margin-bottom:8px}
+.page-subtitle{font-size:16.5px;color:var(--muted);margin-bottom:40px;max-width:68ch;line-height:1.6}
 
 /* ── SECTIONS ────────────────────────────────── */
-.section-title{font-size:21px;font-weight:600;color:var(--ink);margin:48px 0 18px;
-  padding-bottom:10px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
-.section-title .s-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);font-weight:500}
-.sub-title{font-size:15px;font-weight:600;color:var(--ink);margin:22px 0 10px;font-family:'Inter',sans-serif}
+.section-title{font-size:23px;font-weight:700;color:var(--ink);margin:60px 0 18px;line-height:1.25;
+  padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;scroll-margin-top:24px}
+.section-title .s-num{font-size:14px;font-weight:700;color:#fff;background:var(--u,var(--accent));border-radius:999px;
+  padding:3px 11px;line-height:1.3;flex-shrink:0;font-family:var(--ui)}
+.sub-title{font-size:17px;font-weight:700;color:var(--ink);margin:24px 0 10px;line-height:1.35;scroll-margin-top:24px}
 
 /* ── CARDS ───────────────────────────────────── */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
@@ -82,25 +120,24 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01
 
 /* ── TABLES ──────────────────────────────────── */
 .tbl-wrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th{background:transparent;color:var(--accent);font-weight:600;text-align:left;
-  padding:11px 15px;border-bottom:1.5px solid var(--line);font-size:12.5px}
-td{padding:10px 15px;border-bottom:1px solid var(--line2);vertical-align:top;line-height:1.5;color:var(--ink2)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{background:#f7f8fa;color:var(--ink);font-weight:700;text-align:left;
+  padding:11px 15px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.35}
+td{padding:11px 15px;border-bottom:1px solid var(--line2);vertical-align:top;line-height:1.55;color:var(--ink2)}
 tr:last-child td{border-bottom:none}
-td strong{color:var(--ink);font-weight:600}
-.num-col{text-align:right;font-family:'IBM Plex Mono',monospace}
+td strong{color:var(--ink);font-weight:700}
+.num-col{text-align:right;font-family:var(--figures);font-size:.94em}
 
 /* ── FINANCIAL STATEMENT FORMAT ──────────────── */
 .statement{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
   padding:0;margin:14px 0;overflow:hidden}
 .statement-head{background:var(--accent-soft);padding:12px 18px;border-bottom:1px solid var(--accent-line)}
-.statement-head .title{font-size:14px;font-weight:600;color:var(--ink)}
-.statement-head .note{font-size:11.5px;color:var(--muted);margin-top:2px}
-.statement table{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.statement-head .title{font-size:15.5px;font-weight:700;color:var(--ink)}
+.statement-head .note{font-size:13.5px;color:var(--muted);margin-top:2px}
+.statement table{font-size:14.5px}
 .statement td{padding:8px 18px}
-.statement .group-row td{color:var(--accent);font-weight:600;font-size:11px;text-transform:uppercase;
-  letter-spacing:.06em;padding-top:14px;background:transparent;font-family:'Inter',sans-serif}
-.statement .total-row td{font-weight:600;color:var(--ink);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.statement .group-row td{color:var(--accent);font-weight:700;font-size:14px;padding-top:14px;background:transparent}
+.statement .total-row td{font-weight:700;color:var(--ink);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
 .statement .indent{padding-left:32px}
 
 /* ── FORMULA BOXES ───────────────────────────── */
@@ -108,38 +145,36 @@ td strong{color:var(--ink);font-weight:600}
   padding:18px 20px;margin:12px 0;position:relative}
 .formula-block.booklet{border-color:var(--gold);background:linear-gradient(to right,var(--gold-soft),var(--card) 60%)}
 .star{color:var(--gold);font-size:14px;margin-right:5px}
-.booklet-tag{position:absolute;top:-9px;right:14px;background:var(--gold);color:#fff;
-  font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:2px;letter-spacing:.04em;
-  font-family:'Inter',sans-serif}
-.eq{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:15px;color:var(--ink);
-  font-family:'IBM Plex Mono',monospace}
-.eq .equals{color:var(--accent);font-weight:600}
-.eq .label{font-size:11px;color:var(--muted);font-style:italic;font-family:'Inter',sans-serif;margin-left:4px}
+.booklet-tag{position:absolute;top:-10px;right:14px;background:var(--gold);color:#fff;
+  font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:999px;font-family:var(--ui);line-height:1.5}
+.eq{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:16.5px;color:var(--ink);
+  font-family:var(--ui);font-variant-numeric:tabular-nums;line-height:1.4}
+.eq .equals{color:var(--accent);font-weight:700}
+.eq .label{font-size:13px;color:var(--muted);font-style:italic;font-family:var(--ui);margin-left:4px}
 .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 3px}
-.frac .num{border-bottom:1.5px solid var(--ink);padding:0 6px 3px;font-size:.92em}
-.frac .den{padding:3px 6px 0;font-size:.92em}
-.formula-note{font-size:12px;color:var(--muted);margin-top:9px;padding-top:9px;
-  border-top:1px solid var(--line2);font-family:'Inter',sans-serif;line-height:1.55}
+.frac .num{border-bottom:1.5px solid var(--ink);padding:0 8px 4px;font-size:.94em}
+.frac .den{padding:4px 8px 0;font-size:.94em}
+.formula-note{font-size:14px;color:var(--muted);margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--line2);font-family:var(--ui);line-height:1.6}
 
 /* ── HL BADGE ────────────────────────────────── */
-.hl-badge{display:inline-block;background:var(--gold-soft);color:var(--gold);
-  font-size:10px;font-weight:600;padding:1px 7px;border-radius:2px;border:1px solid var(--gold);
-  margin-left:7px;vertical-align:middle;font-family:'Inter',sans-serif;letter-spacing:.03em}
+.hl-badge{display:inline-block;background:#fff;color:var(--ink);
+  font-size:11.5px;font-weight:700;padding:0 8px;border-radius:999px;border:1.5px solid var(--ink);
+  margin-left:7px;vertical-align:middle;font-family:var(--ui);line-height:1.55;letter-spacing:.02em}
 
 /* ── APPLIED CASE BOXES ──────────────────────── */
 .case-box{background:var(--accent-soft);border:1px solid var(--accent-line);
-  border-radius:var(--radius);padding:15px 18px;margin:14px 0}
-.case-box .case-label{font-size:10.5px;font-weight:600;color:var(--accent);text-transform:uppercase;
-  letter-spacing:.08em;margin-bottom:6px}
-.case-box p{font-size:13px;color:var(--ink2);line-height:1.6}
-.case-box strong{color:var(--ink);font-weight:600}
+  border-radius:var(--radius);padding:16px 20px;margin:14px 0}
+.case-box .case-label{font-size:14.5px;font-weight:700;color:var(--accent);margin-bottom:5px;line-height:1.35}
+.case-box p{font-size:15px;color:var(--ink2);line-height:1.65}
+.case-box strong{color:var(--ink);font-weight:700}
 
 /* ── DEFINITION CARDS ────────────────────────── */
 .def-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:0;
   border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
-.def-card{padding:14px 18px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
-.def-card .term{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:4px}
-.def-card .defn{font-size:12.5px;color:var(--ink2);line-height:1.55}
+.def-card{padding:15px 18px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.def-card .term{font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.def-card .defn{font-size:14.5px;color:var(--ink2);line-height:1.6}
 
 /* ── DIAGRAMS ────────────────────────────────── */
 .diagram-wrap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
@@ -149,243 +184,287 @@ svg text{font-family:'Inter',sans-serif}
 /* ── ADV / DISADV ────────────────────────────── */
 .ad-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
 .ad-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 18px}
-.ad-box.adv{border-left:2px solid var(--pos)}
-.ad-box.dis{border-left:2px solid var(--neg)}
-.ad-box h5{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
-  margin-bottom:9px;font-family:'Inter',sans-serif}
+.ad-box.adv{border-left:3px solid var(--pos)}
+.ad-box.dis{border-left:3px solid var(--neg)}
+.ad-box h5{font-size:15px;font-weight:700;margin-bottom:8px;font-family:var(--ui)}
 .ad-box.adv h5{color:var(--pos)}
 .ad-box.dis h5{color:var(--neg)}
 .ad-box ul{list-style:none;padding:0}
-.ad-box ul li{font-size:12.5px;color:var(--ink2);padding:3px 0 3px 16px;position:relative;line-height:1.5}
-.ad-box.adv ul li::before{content:'+';position:absolute;left:0;color:var(--pos);font-weight:600}
-.ad-box.dis ul li::before{content:'−';position:absolute;left:0;color:var(--neg);font-weight:600}
+.ad-box ul li{font-size:14.5px;color:var(--ink2);padding:4px 0 4px 18px;position:relative;line-height:1.55}
+.ad-box.adv ul li::before{content:'+';position:absolute;left:0;color:var(--pos);font-weight:700}
+.ad-box.dis ul li::before{content:'−';position:absolute;left:0;color:var(--neg);font-weight:700}
 
 /* ── HOME ────────────────────────────────────── */
-.home-hero{padding:8px 0 36px;border-bottom:1px solid var(--line);margin-bottom:40px}
-.home-hero .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);
-  letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
-.home-hero h1{font-size:56px;font-weight:500;line-height:1.02;letter-spacing:-0.03em;color:var(--ink);margin-bottom:18px}
-.home-hero h1 em{font-style:italic;color:var(--accent)}
-.home-hero p{font-size:16px;color:var(--muted);max-width:540px;line-height:1.6}
-.hero-meta{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
-.hero-meta .stat .n{font-family:'Fraunces',serif;font-size:28px;font-weight:500;color:var(--ink)}
-.hero-meta .stat .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.home-hero{padding:20px 0 36px;max-width:780px}
+.home-hero h1{font-family:var(--display);font-size:56px;font-weight:600;line-height:1.04;letter-spacing:-0.03em;color:var(--ink);margin-bottom:14px}
+.home-hero p{font-size:18.5px;color:var(--muted);max-width:56ch;line-height:1.55;margin-bottom:22px}
+.quick-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.quick-links a{font-size:14.5px;color:var(--ink2);text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.quick-links a:hover{border-color:var(--ink2);color:var(--ink)}
+.test-card{display:flex;align-items:center;gap:20px 26px;flex-wrap:wrap;background:var(--ink);color:#fff;border-radius:12px;
+  padding:26px 30px;text-decoration:none;margin:4px 0 22px}
+.test-card .tc-badge{font-size:16px;font-weight:700;background:#fff;color:var(--ink);border-radius:8px;padding:11px 12px;line-height:1}
+.test-card .tc-body{flex:1;min-width:230px}
+.test-card h2{font-family:var(--display);font-size:29px;font-weight:600;letter-spacing:-0.015em;line-height:1.15;margin-bottom:5px}
+.test-card p{font-size:15.5px;color:#c8cfdb;max-width:64ch;line-height:1.55}
+.test-card .tc-cta{font-size:15px;font-weight:700;border:1.5px solid #fff;border-radius:999px;padding:9px 18px;white-space:nowrap}
+.test-card:hover .tc-cta{background:#fff;color:var(--ink)}
+.home-h{font-size:20px;font-weight:700;color:var(--ink);margin:40px 0 14px}
+.unit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.unit-card{display:block;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--u,var(--ink2));
+  border-radius:var(--radius);padding:16px 20px 20px;text-decoration:none;color:var(--ink)}
+.unit-card .uc-num{font-size:14px;font-weight:700;color:var(--u,var(--muted))}
+.unit-card h3{font-size:18.5px;font-weight:700;color:var(--ink);margin:2px 0 6px;line-height:1.3}
+.unit-card p{font-size:14.5px;color:var(--muted);line-height:1.5}
+.unit-card:hover h3{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
 
-.unit-list{border-top:1px solid var(--line)}
-.unit-row{display:flex;align-items:center;gap:20px;padding:22px 8px;border-bottom:1px solid var(--line);
-  cursor:pointer;transition:padding-left .2s,background .15s}
-.unit-row:hover{padding-left:18px;background:var(--card)}
-.unit-row .u-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);width:34px;flex-shrink:0}
-.unit-row .u-body{flex:1}
-.unit-row .u-body h3{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:3px}
-.unit-row .u-body p{font-size:13px;color:var(--muted);line-height:1.5}
-.unit-row .u-arrow{color:var(--faint);font-size:18px;transition:transform .2s,color .15s}
-.unit-row:hover .u-arrow{color:var(--accent);transform:translateX(4px)}
-
-.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:0;
   border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
 .legend > div{padding:18px 20px;border-right:1px solid var(--line2)}
 .legend > div:last-child{border-right:none}
-.legend h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px;font-family:'Inter',sans-serif}
-.legend p{font-size:12.5px;color:var(--muted);line-height:1.55}
+.legend h4{font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.legend h4 .hl-badge{margin-left:0}
+.legend p{font-size:14.5px;color:var(--muted);line-height:1.55}
 
 /* ── FORMULA SHEET ───────────────────────────── */
 .fs-group{margin-bottom:34px}
-.fs-title{font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;
-  letter-spacing:.08em;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line);
-  font-family:'Inter',sans-serif}
+.fs-title{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--line);
+  font-family:var(--ui);scroll-margin-top:24px}
 .fs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .fs-grid .formula-block{margin:0}
-.fs-banner{padding:18px 22px;border-radius:var(--radius);margin-bottom:30px;font-size:14px;line-height:1.6}
+.fs-banner{padding:18px 22px;border-radius:var(--radius);margin-bottom:30px;font-size:15.5px;line-height:1.6;max-width:90ch}
 .fs-banner.given{background:var(--gold-soft);border:1px solid var(--gold)}
 .fs-banner.memorise{background:var(--neg-soft);border:1px solid var(--neg)}
 .fs-section-head{font-size:24px;font-weight:600;color:var(--ink);margin:8px 0 6px;display:flex;align-items:center;gap:10px}
 
 /* ── IN-PAGE CONTENTS + HELPERS ──────────────── */
-.toc{display:flex;flex-wrap:wrap;gap:8px;margin:-24px 0 30px}
-.toc a{font-size:12px;color:var(--ink2);text-decoration:none;background:var(--card);border:1px solid var(--line);
-  border-radius:999px;padding:5px 12px;transition:border-color .15s,color .15s}
-.toc a:hover{border-color:var(--accent);color:var(--accent)}
-.section-title{scroll-margin-top:24px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:-22px 0 30px}
+.toc a{font-size:14px;color:var(--ink2);text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px}
+.toc a:hover{border-color:var(--ink2);color:var(--ink)}
 .card-grid > *{min-width:0}
-.para{font-size:13px;color:var(--ink2);line-height:1.65;margin:0 0 10px}
+.para{font-size:15px;color:var(--ink2);line-height:1.65;margin:0 0 10px;max-width:80ch}
 .para.muted{color:var(--muted)}
-.small-list{font-size:12.5px;color:var(--ink2);padding-left:18px;line-height:1.75}
-.small-list li{margin-bottom:2px}
+.small-list{font-size:14.5px;color:var(--ink2);padding-left:20px;line-height:1.7}
+.small-list li{margin-bottom:3px}
 .steps{list-style:none;counter-reset:s;padding:0;margin:4px 0}
-.steps li{counter-increment:s;position:relative;padding:7px 0 7px 32px;font-size:12.5px;color:var(--ink2);
-  line-height:1.55;border-bottom:1px solid var(--line2)}
+.steps li{counter-increment:s;position:relative;padding:8px 0 8px 34px;font-size:14.5px;color:var(--ink2);
+  line-height:1.6;border-bottom:1px solid var(--line2)}
 .steps li:last-child{border-bottom:none}
-.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:21px;height:21px;border-radius:50%;
-  background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:600;display:flex;
-  align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace}
-.exam-tip{background:var(--card);border:1px solid var(--line);border-left:2px solid var(--gold);
-  border-radius:var(--radius);padding:13px 18px;margin:14px 0;font-size:12.5px;color:var(--ink2);line-height:1.6}
-.exam-tip .tip-label{font-size:10.5px;font-weight:600;color:var(--gold);text-transform:uppercase;
-  letter-spacing:.08em;margin-bottom:4px}
-.new-badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:600;
-  padding:1px 7px;border-radius:2px;border:1px solid var(--accent-line);margin-left:7px;vertical-align:middle;
-  font-family:'Inter',sans-serif;letter-spacing:.03em}
-.whats-new{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--accent-line);
-  border-left:2px solid var(--accent);border-radius:var(--radius);padding:16px 20px;margin:-12px 0 32px}
-.whats-new .wn-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);
-  text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;padding-top:2px}
-.whats-new p{font-size:13px;color:var(--ink2);line-height:1.6}
-.whats-new a{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:23px;height:23px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:700;display:flex;
+  align-items:center;justify-content:center}
+.exam-tip{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:var(--radius);padding:14px 18px;margin:14px 0;font-size:15px;color:var(--ink2);line-height:1.65}
+.exam-tip .tip-label{font-size:14.5px;font-weight:700;color:var(--gold);margin-bottom:4px}
+.new-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;
+  padding:0 8px;border-radius:999px;margin-left:7px;vertical-align:middle;font-family:var(--ui);line-height:1.6}
+.whats-new{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px 20px;margin:0}
+.whats-new .wn-label{font-size:14.5px;font-weight:700;color:var(--accent);white-space:nowrap}
+.whats-new p{font-size:15px;color:var(--ink2);line-height:1.6}
+.whats-new a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 
 /* ── TEST PAGE ───────────────────────────────── */
-.part-head{font-family:'Fraunces',serif;font-size:27px;font-weight:600;color:var(--ink);margin:64px 0 4px;letter-spacing:-0.02em}
-.part-sub{font-size:13px;color:var(--muted);margin-bottom:6px}
-.stimulus{background:#fbfaf6;border:1px solid var(--line);border-left:2px solid var(--plum);border-radius:var(--radius);
-  padding:14px 18px;margin:14px 0;font-size:13px;color:var(--ink2);line-height:1.65}
-.stimulus .stim-label{font-size:10.5px;font-weight:600;color:var(--plum);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.part-head{font-family:var(--display);font-size:31px;font-weight:600;color:var(--ink);margin:72px 0 6px;letter-spacing:-0.02em;line-height:1.15;scroll-margin-top:24px}
+.part-sub{font-size:15.5px;color:var(--muted);margin-bottom:6px;max-width:80ch}
+.stimulus{background:#fbfbfd;border:1px solid var(--line);border-left:3px solid var(--plum);border-radius:var(--radius);
+  padding:15px 19px;margin:16px 0;font-size:15px;color:var(--ink2);line-height:1.65}
+.stimulus .stim-label{font-size:14.5px;font-weight:700;color:var(--plum);margin-bottom:5px}
 .qa{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:8px 0}
-.qa summary{cursor:pointer;padding:11px 16px;font-size:13px;color:var(--ink);list-style:none;display:flex;gap:10px;align-items:baseline}
+.qa summary{cursor:pointer;padding:12px 16px;font-size:15px;color:var(--ink);list-style:none;display:flex;gap:10px;align-items:baseline;line-height:1.5}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary::before{content:'+';color:var(--accent);font-weight:600;width:12px;flex-shrink:0;font-family:'IBM Plex Mono',monospace}
+.qa summary::before{content:'+';color:var(--accent);font-weight:700;width:14px;flex-shrink:0;font-size:17px}
 .qa[open] summary::before{content:'−'}
-.qa summary .marks{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap;padding-left:10px}
-.qa .ans{padding:10px 16px 14px 38px;font-size:12.5px;color:var(--ink2);line-height:1.7;border-top:1px solid var(--line2)}
+.qa[open] summary{font-weight:700}
+.qa summary .marks{margin-left:auto;font-size:13.5px;font-weight:700;color:var(--muted);white-space:nowrap;padding-left:10px}
+.qa .ans{padding:12px 18px 16px 40px;font-size:15px;color:var(--ink2);line-height:1.7;border-top:1px solid var(--line2)}
 .qa .ans strong{color:var(--ink)}
-.more-link{font-size:12px;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.more-link{font-size:14px;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
 .ff-bar{display:inline-block;height:8px;border-radius:2px;vertical-align:middle;margin-right:6px}
-.eq.sm{font-family:'Inter',sans-serif;font-size:13.5px;gap:7px;color:var(--ink);row-gap:6px}
+.eq.sm{font-family:var(--ui);font-size:15px;gap:7px;color:var(--ink);row-gap:6px}
 .eq.sm .frac{margin:2px 2px}
 .eq.sm .frac .num,.eq.sm .frac .den{white-space:nowrap}
-.eq .eq-note{font-size:11.5px;color:var(--muted);font-family:'Inter',sans-serif}
+.eq .eq-note{font-size:13px;color:var(--muted);font-family:var(--ui)}
 .ftable td{vertical-align:middle}
 .ftable td:first-child{vertical-align:top}
 
 /* ── PROGRESS ────────────────────────────────── */
-#progress{position:fixed;top:0;left:var(--sidebar);right:0;height:2px;background:var(--accent);
-  z-index:200;transform:scaleX(0);transform-origin:left;transition:transform .1s}
+#progress{position:fixed;top:0;left:var(--sidebar);right:0;height:3px;background:var(--accent);
+  z-index:250;transform:scaleX(0);transform-origin:left}
 
-::-webkit-scrollbar{width:8px;height:8px}
+/* ── JUMP HIGHLIGHT + BACK TO TOP ────────────── */
+@keyframes flash{0%{box-shadow:0 0 0 5px rgba(140,106,14,.45)}100%{box-shadow:0 0 0 5px rgba(140,106,14,0)}}
+.flash{animation:flash 1.8s ease-out;border-radius:4px}
+#totop{position:fixed;right:22px;bottom:22px;z-index:120;border:1px solid var(--line);background:var(--card);color:var(--ink);
+  border-radius:999px;padding:10px 16px;font:inherit;font-size:14.5px;font-weight:700;cursor:pointer;
+  box-shadow:0 6px 18px rgba(27,34,48,.12);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s}
+#totop.show{opacity:1;pointer-events:auto;transform:none}
+
+/* Older notes use inline font sizes; lift them to the same readable scale */
+.page [style*="font-size:11px"]{font-size:13px!important}
+.page [style*="font-size:12px"]{font-size:14px!important}
+.page [style*="font-size:12.5px"]{font-size:14px!important}
+.page [style*="font-size:13px"]{font-size:14.5px!important}
+.page [style*="font-size:14px"]{font-size:15px!important}
+.page [style*="rgba(0,212,255"]{background:var(--accent-soft)!important}
+.page [style*="rgba(255,82,82"]{border-color:#efcdc6!important}
+.page [style*="rgba(0,230,118"]{border-color:#c6e3d1!important}
+
+::-webkit-scrollbar{width:9px;height:9px}
 ::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+::-webkit-scrollbar-thumb{background:#cdd3dc;border-radius:5px}
 ::-webkit-scrollbar-thumb:hover{background:var(--faint)}
+
+/* ── TOP BAR (phones and tablets) ────────────── */
+#topbar,#scrim{display:none}
+#menu-btn{width:42px;height:42px;border:1px solid var(--line);background:var(--card);border-radius:8px;
+  font:inherit;font-size:19px;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.tb-logo{font-family:var(--display);font-weight:600;font-size:19px;text-decoration:none;color:var(--ink);white-space:nowrap}
+#tb-page{font-size:14.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 
 /* ── PRINT ───────────────────────────────────── */
 @media print{
-  #sidebar,#progress{display:none}
+  #sidebar,#progress,#topbar,#scrim,#totop,.toc,.search{display:none!important}
   #main{margin:0}
-  .page{display:block!important;page-break-after:always;max-width:none;padding:20px}
+  .page{display:block!important;animation:none!important;page-break-after:always;max-width:none;padding:20px}
   body{background:#fff}
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */
-@media(max-width:860px){
+@media(max-width:1100px){
+  .page{padding:40px 36px 88px}
+  .unit-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
   :root{--sidebar:0px}
-  #sidebar{transform:translateX(-100%);transition:transform .25s}
-  #sidebar.open{transform:translateX(0)}
+  #topbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:150;height:58px;padding:0 12px;
+    background:rgba(245,246,248,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  #sidebar{width:304px;max-width:86vw;transform:translateX(-100%);transition:transform .22s ease}
+  #sidebar.open{transform:none;box-shadow:0 0 44px rgba(27,34,48,.22)}
+  #scrim{display:block;position:fixed;inset:0;background:rgba(27,34,48,.38);z-index:190;opacity:0;pointer-events:none;transition:opacity .2s}
+  #scrim.on{opacity:1;pointer-events:auto}
   #main{margin-left:0}
-  .page{padding:30px 20px 70px}
+  .page{padding:26px 18px 80px}
+  .page-title{font-size:31px}
+  .section-title{font-size:21px;margin-top:48px;scroll-margin-top:72px}
+  .sub-title,.part-head,.fs-title{scroll-margin-top:72px}
   .card-grid.cols2,.card-grid.cols3,.card-grid.cols4{grid-template-columns:1fr}
   .ad-grid{grid-template-columns:1fr}
   .legend{grid-template-columns:1fr}
+  .legend > div{border-right:none;border-bottom:1px solid var(--line2)}
   .fs-grid{grid-template-columns:1fr}
-  .home-hero h1{font-size:38px}
+  .home-hero h1{font-size:42px}
+  .home-hero p{font-size:17px}
   .whats-new{flex-direction:column;gap:6px}
-  #menu-btn{display:flex!important}
+  .test-card{padding:22px}
+  #totop{right:14px;bottom:14px}
 }
-#menu-btn{display:none;position:fixed;top:14px;left:14px;z-index:150;background:var(--card);
-  border:1px solid var(--line);border-radius:var(--radius);width:40px;height:40px;
-  align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+@media(max-width:600px){
+  .unit-grid{grid-template-columns:1fr}
+  .home-hero h1{font-size:38px}
+  .search.lg input{height:52px;font-size:16.5px}
+}
+@media (prefers-reduced-motion: reduce){
+  .page.active{animation:none}
+  .flash{animation:none;outline:3px solid var(--gold);outline-offset:3px}
+  #sidebar,#scrim,#totop{transition:none}
+}
 </style>
 </head>
 <body>
-<div id="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</div>
+<a href="#main" class="skip">Skip to content</a>
+<header id="topbar">
+  <button id="menu-btn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">☰</button>
+  <a href="#home" class="tb-logo">BM Revision</a>
+  <span id="tb-page"></span>
+</header>
 <div id="progress"></div>
-<nav id="sidebar">
+<div id="scrim"></div>
+<nav id="sidebar" aria-label="Site">
   <div id="sidebar-header">
-    <div class="logo">BM Revision</div>
-    <div class="sub">IB Diploma · June 2026</div>
+    <a href="#home" class="logo">BM Revision</a>
+    <div class="sub">IB Business Management · HL</div>
   </div>
-  <nav>
-    <div class="nav-item active" data-page="home"><span class="num">, </span>Home</div>
-    <div class="nav-sep"></div>
+  <div class="search" data-search>
+    <svg class="s-ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input type="search" placeholder="Search the notes" aria-label="Search the notes" autocomplete="off" spellcheck="false">
+    <div class="search-results" role="listbox"></div>
+  </div>
+  <div class="nav">
+    <a class="nav-item" href="#home" data-page="home"><span class="num">⌂</span>Home</a>
     <div class="nav-label">Tests</div>
-    <div class="nav-item" data-page="nov"><span class="num">P2</span>November Test</div>
-    <div class="nav-sep"></div>
+    <a class="nav-item" href="#nov" data-page="nov"><span class="num test">P2</span>November Test</a>
     <div class="nav-label">Units</div>
-    <div class="nav-item" data-page="unit1"><span class="num">1</span>Business Organisation</div>
-    <div class="nav-item" data-page="unit2"><span class="num">2</span>Human Resources</div>
-    <div class="nav-item" data-page="unit3"><span class="num">3</span>Finance &amp; Accounts</div>
-    <div class="nav-item" data-page="unit4"><span class="num">4</span>Marketing</div>
-    <div class="nav-item" data-page="unit5"><span class="num">5</span>Operations</div>
-    <div class="nav-sep"></div>
+    <a class="nav-item unit u1" href="#unit1" data-page="unit1"><span class="num">1</span>Business organisation</a>
+    <a class="nav-item unit u2" href="#unit2" data-page="unit2"><span class="num">2</span>Human resources</a>
+    <a class="nav-item unit u3" href="#unit3" data-page="unit3"><span class="num">3</span>Finance and accounts</a>
+    <a class="nav-item unit u4" href="#unit4" data-page="unit4"><span class="num">4</span>Marketing</a>
+    <a class="nav-item unit u5" href="#unit5" data-page="unit5"><span class="num">5</span>Operations</a>
     <div class="nav-label">Reference</div>
-    <div class="nav-item" data-page="tools"><span class="num">◆</span>Tools &amp; Frameworks</div>
-    <div class="nav-item" data-page="formulas"><span class="num">★</span>Formula Sheet</div>
-    <div class="nav-item" data-page="defs"><span class="num">§</span>Definitions</div>
-  </nav>
+    <a class="nav-item" href="#tools" data-page="tools"><span class="num">◆</span>Tools and frameworks</a>
+    <a class="nav-item" href="#formulas" data-page="formulas"><span class="num">★</span>Formula sheet</a>
+    <a class="nav-item" href="#defs" data-page="defs"><span class="num">§</span>Definitions</a>
+  </div>
 </nav>
 <div id="main">
 <div class="page active" id="page-home">
   <div class="home-hero">
-    <div class="kicker">Paper 1 · Paper 2 · SL &amp; HL</div>
-    <h1>Business<br><em>Management</em></h1>
-    <p>A complete, exam-ready reference for the June 2026 sitting. Every definition, table, framework and formula, organised by unit.</p>
-    <div class="hero-meta">
-      <div class="stat"><div class="n">5</div><div class="l">Units</div></div>
-      <div class="stat"><div class="n">6</div><div class="l">Frameworks</div></div>
-      <div class="stat"><div class="n">★</div><div class="l">Booklet formulas flagged</div></div>
-      <div class="stat"><div class="n">55+</div><div class="l">Applied cases</div></div>
+    <h1>BM Revision</h1>
+    <p>IB Business Management HL notes, formulas and worked examples. Search for anything, or pick a unit below.</p>
+    <div class="search lg" data-search>
+      <svg class="s-ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="search" placeholder="Try ROCE, break-even or Herzberg" aria-label="Search the notes" autocomplete="off" spellcheck="false">
+      <div class="search-results" role="listbox"></div>
+    </div>
+    <div class="quick-links">
+      <a href="#formulas">Formula sheet</a>
+      <a href="#defs">Definitions</a>
+      <a href="#tools">Tools and frameworks</a>
+      <a href="#nt-practice">Practice paper</a>
     </div>
   </div>
+
+  <a class="test-card" href="#nov">
+    <span class="tc-badge">P2</span>
+    <div class="tc-body">
+      <h2>November Test</h2>
+      <p>All 15 test topics on one page: formulas, statement layouts, worked examples, case studies and a mini practice paper with answers.</p>
+    </div>
+    <span class="tc-cta">Open test page</span>
+  </a>
 
   <div class="whats-new">
-    <div class="wn-label">New · Sep to Nov</div>
-    <p>Added <a onclick="switchPage('unit4');setTimeout(()=>document.getElementById('u4-43').scrollIntoView(),350)">4.3 Sales forecasting</a> <span class="hl-badge">HL</span> and, in <a onclick="switchPage('unit5')">Unit 5</a>: 5.2 Operations methods, 5.3 Lean production &amp; quality <span class="hl-badge">HL</span>, 5.4 Location, 5.6 Production planning <span class="hl-badge">HL</span>, 5.7 Crisis management &amp; contingency planning <span class="hl-badge">HL</span>. 5.5 Break-even now covers target price and target profit. The Formula Sheet and Definitions have the new terms.</p>
+    <div class="wn-label">Recently added</div>
+    <p><a href="#u4-43">4.3 Sales forecasting</a> <span class="hl-badge">HL</span> and, in <a href="#unit5">Unit 5</a>, operations methods, lean production and quality <span class="hl-badge">HL</span>, location, production planning <span class="hl-badge">HL</span> and crisis management <span class="hl-badge">HL</span>. Break-even now covers target price and target profit.</p>
   </div>
 
-  <div class="unit-list">
-    <div class="unit-row" onclick="switchPage('nov')" style="background:var(--card)">
-      <div class="u-num">P2</div>
-      <div class="u-body"><h3>November Test · Paper 2 <span class="new-badge">NEW</span></h3><p>All 15 test topics on one page: formats, formulas, toolkit, case studies and a mini practice paper with answers</p></div>
-      <div class="u-arrow">→</div>
-    </div>
-    <div class="unit-row" onclick="switchPage('unit1')">
-      <div class="u-num">01</div>
-      <div class="u-body"><h3>Business Organisation &amp; Environment</h3><p>Sectors, entities, stakeholders, growth, MNCs, CSR, economies of scale</p></div>
-      <div class="u-arrow">→</div>
-    </div>
-    <div class="unit-row" onclick="switchPage('unit2')">
-      <div class="u-num">02</div>
-      <div class="u-body"><h3>Human Resource Management</h3><p>Structure, leadership, motivation theories, rewards, recruitment, training</p></div>
-      <div class="u-arrow">→</div>
-    </div>
-    <div class="unit-row" onclick="switchPage('unit3')">
-      <div class="u-num">03</div>
-      <div class="u-body"><h3>Finance &amp; Accounts</h3><p>Sources of finance, P&amp;L, balance sheet, cash flow formats, ratios, investment appraisal</p></div>
-      <div class="u-arrow">→</div>
-    </div>
-    <div class="unit-row" onclick="switchPage('unit4')">
-      <div class="u-num">04</div>
-      <div class="u-body"><h3>Marketing</h3><p>Orientation, market share, sales forecasting (HL), product life cycle, pricing, promotion, distribution, 7Ps</p></div>
-      <div class="u-arrow">→</div>
-    </div>
-    <div class="unit-row" onclick="switchPage('unit5')">
-      <div class="u-num">05</div>
-      <div class="u-body"><h3>Operations Management</h3><p>Operations methods, lean production &amp; quality (HL), location, break-even, production planning (HL), crisis management (HL)</p></div>
-      <div class="u-arrow">→</div>
-    </div>
-    <div class="unit-row" onclick="switchPage('tools')">
-      <div class="u-num">◆</div>
-      <div class="u-body"><h3>Tools &amp; Frameworks</h3><p>SWOT, STEEPLE, Ansoff Matrix, BCG Matrix, Decision Trees, Mendelow Matrix</p></div>
-      <div class="u-arrow">→</div>
-    </div>
+  <h2 class="home-h">Units</h2>
+  <div class="unit-grid">
+    <a class="unit-card u1" href="#unit1"><span class="uc-num">Unit 1</span><h3>Business organisation and environment</h3><p>Sectors, entities, stakeholders, growth, MNCs, CSR, economies of scale</p></a>
+    <a class="unit-card u2" href="#unit2"><span class="uc-num">Unit 2</span><h3>Human resource management</h3><p>Structure, leadership, motivation theories, rewards, recruitment, training</p></a>
+    <a class="unit-card u3" href="#unit3"><span class="uc-num">Unit 3</span><h3>Finance and accounts</h3><p>Sources of finance, final accounts, ratios, cash flow, investment appraisal, budgets</p></a>
+    <a class="unit-card u4" href="#unit4"><span class="uc-num">Unit 4</span><h3>Marketing</h3><p>Market share, sales forecasting, product life cycle, pricing, promotion, place, 7Ps</p></a>
+    <a class="unit-card u5" href="#unit5"><span class="uc-num">Unit 5</span><h3>Operations management</h3><p>Operations methods, lean and quality, location, break-even, production planning, crisis management</p></a>
   </div>
 
+  <h2 class="home-h">Reference</h2>
+  <div class="unit-grid">
+    <a class="unit-card" href="#tools"><span class="uc-num">◆ Tools</span><h3>Tools and frameworks</h3><p>SWOT, STEEPLE, Ansoff, BCG matrix, decision trees</p></a>
+    <a class="unit-card" href="#formulas"><span class="uc-num">★ Formulas</span><h3>Formula sheet</h3><p>What the exam gives you, and what you must memorise</p></a>
+    <a class="unit-card" href="#defs"><span class="uc-num">§ Terms</span><h3>Definitions</h3><p>Key terms for "define" questions, plus command terms</p></a>
+  </div>
+
+  <h2 class="home-h">How to read the notes</h2>
   <div class="legend">
-    <div><h4><span class="star">★</span> Formula booklet</h4><p>Gold-starred formulas are given to you in the exam. Know how to apply them, not memorise them.</p></div>
-    <div><h4>HL only</h4><p>Amber HL badges mark Higher Level content for Paper 2 Section B and Paper 3.</p></div>
-    <div><h4>Applied cases</h4><p>Highlighted boxes give real company examples. Mark schemes reward specific, contextual answers.</p></div>
+    <div><h4><span class="star">★</span> Given in the exam</h4><p>Gold formulas are printed on the formula sheet you get in the exam. Learn when to use them rather than memorising them.</p></div>
+    <div><h4><span class="hl-badge">HL</span> Higher Level only</h4><p>Marks content that only HL students are examined on. SL students can skip it.</p></div>
+    <div><h4>Case studies</h4><p>Blue boxes give real company examples. Mark schemes reward answers that use specific, real context.</p></div>
   </div>
 </div>
 <!-- ═══════════════════ UNIT 1 ═══════════════════ -->
-<div class="page" id="page-unit1">
-  <div class="page-title">Unit 1 · Business Organization &amp; Environment</div>
+<div class="page u1" id="page-unit1">
+  <div class="page-title"><span class="uchip">Unit 1</span>Business Organisation &amp; Environment</div>
   <div class="page-subtitle">Business sectors · entities · stakeholders · growth strategies · MNCs · CSR · economies of scale</div>
 
   <!-- 1.1 SECTORS -->
@@ -619,8 +698,8 @@ svg text{font-family:'Inter',sans-serif}
   <div class="case-box"><div class="case-label">Applied, Tesla Gigafactory Shanghai</div><p><strong>Tesla</strong> built Giga Shanghai in 2019, China's largest FDI project at the time. Benefits: 9,000+ local jobs, supply chain development, technology transfer. Concerns: profits repatriated to US, Chinese competitors (BYD, NIO) gained indirect knowledge spillover, environmental impact of battery production.</p></div>
 </div>
 <!-- ═══════════════════ UNIT 2 ═══════════════════ -->
-<div class="page" id="page-unit2">
-  <div class="page-title">Unit 2 · Human Resource Management</div>
+<div class="page u2" id="page-unit2">
+  <div class="page-title"><span class="uchip">Unit 2</span>Human Resource Management</div>
   <div class="page-subtitle">Leadership · motivation theories · rewards · recruitment · labour turnover · appraisals</div>
 
   <!-- 2.1 ORG STRUCTURES -->
@@ -834,8 +913,8 @@ svg text{font-family:'Inter',sans-serif}
   </div>
 </div>
 <!-- ═══════════════════ UNIT 3 ═══════════════════ -->
-<div class="page" id="page-unit3">
-  <div class="page-title">Unit 3 · Finance &amp; Accounts</div>
+<div class="page u3" id="page-unit3">
+  <div class="page-title"><span class="uchip">Unit 3</span>Finance &amp; Accounts</div>
   <div class="page-subtitle">Sources of finance · P&amp;L · balance sheet · ratio analysis · cash flow · investment appraisal · budgets</div>
 
 
@@ -1123,8 +1202,8 @@ svg text{font-family:'Inter',sans-serif}
   </div>
 </div>
 <!-- ═══════════════════ UNIT 4 ═══════════════════ -->
-<div class="page" id="page-unit4">
-  <div class="page-title">Unit 4 · Marketing</div>
+<div class="page u4" id="page-unit4">
+  <div class="page-title"><span class="uchip">Unit 4</span>Marketing</div>
   <div class="page-subtitle">Market orientation · market share · sales forecasting (HL) · product life cycle · pricing · promotion · distribution · 7Ps</div>
   <div class="toc">
     <a href="#u4-41">4.1 Introduction</a>
@@ -1448,8 +1527,8 @@ svg text{font-family:'Inter',sans-serif}
   </div>
 </div>
 <!-- ═══════════════════ UNIT 5 ═══════════════════ -->
-<div class="page" id="page-unit5">
-  <div class="page-title">Unit 5 · Operations Management</div>
+<div class="page u5" id="page-unit5">
+  <div class="page-title"><span class="uchip">Unit 5</span>Operations Management</div>
   <div class="page-subtitle">Operations methods · lean production &amp; quality (HL) · location · break-even · production planning (HL) · crisis management (HL)</div>
   <div class="toc">
     <a href="#u5-52">5.2 Operations methods</a>
@@ -2288,7 +2367,7 @@ svg text{font-family:'Inter',sans-serif}
     <tr><td><strong>Mass / flow</strong></td><td>Continuous, standardised</td><td>Lowest unit cost</td><td>Inflexible, huge capital cost</td><td>Coca-Cola bottling</td></tr>
     <tr><td><strong>Mass customisation</strong></td><td>High volume <em>and</em> variety (via technology)</td><td>Premium for personalisation</td><td>Complex IT, slower delivery</td><td>Nike By You, Dell</td></tr>
   </table></div>
-  <div class="exam-tip"><div class="tip-label">Paper 2 angle</div>Link the method to <strong>cost per unit</strong> and the break-even point: moving from batch to flow raises fixed costs (machinery) but cuts variable cost per unit, so break-even rises while profit at high volumes grows. Quote the case data on demand: flow production only makes sense if demand is large and stable. <span class="more-link" onclick="goTo('unit5','u5-52')">Full notes →</span></div>
+  <div class="exam-tip"><div class="tip-label">Paper 2 angle</div>Link the method to <strong>cost per unit</strong> and the break-even point: moving from batch to flow raises fixed costs (machinery) but cuts variable cost per unit, so break-even rises while profit at high volumes grows. Quote the case data on demand: flow production only makes sense if demand is large and stable. <a class="more-link" href="#u5-52">Full notes on 5.2</a></div>
 
   <!-- 5.3 -->
   <div class="section-title" id="nt-53"><span class="s-num">5.3</span> Lean production &amp; quality management <span class="hl-badge">HL</span></div>
@@ -2297,7 +2376,7 @@ svg text{font-family:'Inter',sans-serif}
     <div class="card"><div class="sub-title" style="margin-top:0">Quality control vs assurance</div><ul class="small-list"><li><strong>QC</strong> detects defects by inspecting output (reactive, inspectors)</li><li><strong>QA</strong> prevents defects at every stage (proactive, everyone)</li><li><strong>Methods:</strong> quality circles, benchmarking, TQM (zero defects culture)</li><li><strong>Standards:</strong> ISO 9001, ISO 14001, CE, Emirates Quality Mark</li></ul></div>
     <div class="card"><div class="sub-title" style="margin-top:0">Impact on the organisation</div><ul class="small-list"><li><span style="color:var(--pos)">+</span> Lower waste and storage costs; better cash flow; reputation; motivated, empowered staff</li><li><span style="color:var(--neg)">−</span> Training cost; slow culture change; JIT supply risk; pressure of zero-defect targets</li></ul></div>
   </div>
-  <div class="case-box"><div class="case-label">Case, Toyota vs Boeing</div><p>Toyota's lean system lets any worker pull the andon cord to stop the line and fix a fault at its source (QA). Boeing shows the opposite: in January 2024 a door plug blew out of a new 737 MAX 9 because bolts had not been refitted at the factory, and the US regulator capped production at 38 jets a month. Use the pair to <strong>contrast QA and a TQM culture with weak quality control</strong>. <span class="more-link" onclick="goTo('unit5','u5-53')">Full notes →</span></p></div>
+  <div class="case-box"><div class="case-label">Case, Toyota vs Boeing</div><p>Toyota's lean system lets any worker pull the andon cord to stop the line and fix a fault at its source (QA). Boeing shows the opposite: in January 2024 a door plug blew out of a new 737 MAX 9 because bolts had not been refitted at the factory, and the US regulator capped production at 38 jets a month. Use the pair to <strong>contrast QA and a TQM culture with weak quality control</strong>. <a class="more-link" href="#u5-53">Full notes on 5.3</a></p></div>
 
   <!-- 5.4 -->
   <div class="section-title" id="nt-54"><span class="s-num">5.4</span> Location</div>
@@ -2325,7 +2404,7 @@ svg text{font-family:'Inter',sans-serif}
       <p class="para muted">Site B is $20k a year cheaper, but a strong answer adds the qualitative side: B's higher labour bill may reflect a skills shortage, while A may be closer to talent and customers. Then make a judgement.</p>
     </div>
   </div>
-  <div class="case-box"><div class="case-label">Case, Apple and Adidas</div><p>Apple <strong>offshored</strong> most US-bound iPhone assembly to India in 2025 to reduce China and tariff risk, despite higher costs there. Adidas tried <strong>reshoring</strong> trainer production to robot "Speedfactories" in Germany and the US, then closed both (announced 2019) and moved the technology to Asian suppliers "where the know-how and suppliers are located". <span class="more-link" onclick="goTo('unit5','u5-54')">Full notes →</span></p></div>
+  <div class="case-box"><div class="case-label">Case, Apple and Adidas</div><p>Apple <strong>offshored</strong> most US-bound iPhone assembly to India in 2025 to reduce China and tariff risk, despite higher costs there. Adidas tried <strong>reshoring</strong> trainer production to robot "Speedfactories" in Germany and the US, then closed both (announced 2019) and moved the technology to Asian suppliers "where the know-how and suppliers are located". <a class="more-link" href="#u5-54">Full notes on 5.4</a></p></div>
 
   <!-- 5.5 -->
   <div class="section-title" id="nt-55"><span class="s-num">5.5</span> Break-even analysis</div>
@@ -2351,7 +2430,7 @@ svg text{font-family:'Inter',sans-serif}
         <li><strong>Total revenue:</strong> starts at 0 and rises by the price (at 8,000 units, $80,000).</li>
         <li>Mark and label the <strong>break-even point</strong>, the profit and loss areas, and the <strong>margin of safety</strong> (between BEQ and actual output).</li>
       </ol>
-      <p class="para muted">Price up → revenue line steeper → BEQ falls. Fixed costs up → FC and TC lines shift up → BEQ rises. Variable cost up → TC steeper → BEQ rises. <span class="more-link" onclick="goTo('unit5','u5-55')">Chart and full notes →</span></p>
+      <p class="para muted">Price up → revenue line steeper → BEQ falls. Fixed costs up → FC and TC lines shift up → BEQ rises. Variable cost up → TC steeper → BEQ rises. <a class="more-link" href="#u5-55">Chart and full notes on 5.5</a></p>
     </div>
   </div>
 
@@ -2371,7 +2450,7 @@ svg text{font-family:'Inter',sans-serif}
       <div class="sub-title" style="margin-top:0">Stock control chart</div>
       <p class="para">Usage 100 units a week, lead time 2 weeks, buffer stock 200, maximum stock 800.</p>
       <ul class="small-list"><li><strong>Reorder level</strong> = (100 × 2) + 200 = <strong>400 units</strong></li><li><strong>Reorder quantity</strong> = 800 − 200 = <strong>600 units</strong></li><li>Draw a sawtooth: stock falls from 800 to 200 over 6 weeks, the order is placed at week 4 (stock 400), and it arrives at week 6</li></ul>
-      <p class="para muted"><span class="more-link" onclick="goTo('unit5','u5-56')">Chart and full notes →</span></p>
+      <p class="para muted"><a class="more-link" href="#u5-56">Chart and full notes on 5.6</a></p>
     </div>
     <div class="card">
       <div class="sub-title" style="margin-top:0">JIT vs JIC and supply chains</div>
@@ -2401,7 +2480,7 @@ svg text{font-family:'Inter',sans-serif}
         <li>Expected loss with plan = 0.1 × $500,000 + $80,000 = <strong>$130,000</strong></li>
         <li>Plan saves an expected <strong>$70,000 a year</strong>, so it is worth it on cost grounds</li>
       </ul>
-      <p class="para muted">Evaluate with the four syllabus lenses: <strong>cost</strong> (upfront spend vs savings), <strong>time</strong> (faster recovery, but planning takes time), <strong>risks</strong> (can't foresee every crisis) and <strong>safety</strong> (protects staff and customers). <span class="more-link" onclick="goTo('unit5','u5-57')">Full notes →</span></p>
+      <p class="para muted">Evaluate with the four syllabus lenses: <strong>cost</strong> (upfront spend vs savings), <strong>time</strong> (faster recovery, but planning takes time), <strong>risks</strong> (can't foresee every crisis) and <strong>safety</strong> (protects staff and customers). <a class="more-link" href="#u5-57">Full notes on 5.7</a></p>
     </div>
   </div>
 
@@ -2412,7 +2491,7 @@ svg text{font-family:'Inter',sans-serif}
       <div class="sub-title" style="margin-top:0">Method in brief</div>
       <p class="para">A time series has a <strong>trend</strong>, <strong>seasonal</strong>, <strong>cyclical</strong> and <strong>random</strong> variation. Moving averages smooth the data to reveal the trend, which is then extrapolated and adjusted by the average seasonal variation.</p>
       <p class="para"><strong>Three-part moving average</strong> on monthly sales 20, 26, 23, 29, 32: (20 + 26 + 23) ÷ 3 = <strong>23</strong>, then 26, then 28. The trend is rising.<br><strong>Four-part</strong> averages fall between two periods, so they must be <strong>centred</strong> (average each pair).</p>
-      <p class="para muted"><span class="more-link" onclick="goTo('unit4','u4-43')">Full worked four-part example and chart →</span></p>
+      <p class="para muted"><a class="more-link" href="#u4-43">Full four-part worked example and chart</a></p>
     </div>
     <div class="card">
       <div class="ad-box adv" style="margin-bottom:10px"><h5>Benefits (the assessed part)</h5><ul><li>Planning for production, staffing, cash flow and budgets</li><li>Better stock control (fewer stockouts and less excess)</li><li>Helps secure finance; sets targets</li></ul></div>
@@ -2661,7 +2740,7 @@ svg text{font-family:'Inter',sans-serif}
         <tr><td><strong>High power</strong></td><td>Keep satisfied (government, regulators, banks)</td><td>Key players: manage closely (major shareholders, the board)</td></tr>
         <tr><td><strong>Low power</strong></td><td>Monitor (general public)</td><td>Keep informed (employees, local community)</td></tr>
       </table></div>
-      <p class="para muted">Useful for structuring a conflict answer: which stakeholder's view is likely to win, and why. <span class="more-link" onclick="goTo('unit1')">Matrix diagram on Unit 1 →</span></p>
+      <p class="para muted">Useful for structuring a conflict answer: which stakeholder's view is likely to win, and why. <a class="more-link" href="#unit1">Matrix diagram on Unit 1</a></p>
     </div>
   </div>
   <div class="case-box"><div class="case-label">Case, Tesla's Berlin Gigafactory</div><p>Tesla wanted to expand its plant near Berlin (managers, shareholders and the regional government, which wanted jobs, were in favour). In February 2024 local residents voted against the expansion in a non-binding vote, worried about clearing forest and water use. In March 2024, activists set fire to a power pylon and production stopped for about a week. It shows <strong>community and pressure groups</strong> clashing with owners, and how even low-power stakeholders can disrupt a business.</p></div>
@@ -2712,7 +2791,7 @@ svg text{font-family:'Inter',sans-serif}
     </table></div>
     <div class="card" style="margin:0">
       <p class="para"><strong>Option A</strong> has the higher expected net gain ($200k vs $175k), so on the numbers choose A. But A has a 40% chance of a $100k loss (100 − 200), while B's worst case is still +$70k (150 − 80). A risk-averse firm, or one with weak liquidity, might prefer B.</p>
-      <p class="para muted">Squares are decision nodes and circles are chance nodes. Probabilities at each chance node must add up to 1. Work backwards from right to left. <span class="more-link" onclick="goTo('tools')">Diagram on the Tools page →</span></p>
+      <p class="para muted">Squares are decision nodes and circles are chance nodes. Probabilities at each chance node must add up to 1. Work backwards from right to left. <a class="more-link" href="#tools">Diagram on the Tools page</a></p>
     </div>
   </div>
 
@@ -2849,7 +2928,7 @@ svg text{font-family:'Inter',sans-serif}
     </div>
     <div class="card" style="margin:0">
       <p class="para">The one-off 38 (perhaps a promotion week) pulls the <strong>mean</strong> above most weeks. The <strong>median</strong> (18) is a better guide to a "typical" week, which matters when planning stock or staff. Charts: bar charts compare categories, pie charts show shares of a whole, and infographics summarise data for stakeholders.</p>
-      <p class="para muted"><strong>Other tools to have ready:</strong> SWOT, STEEPLE, Ansoff (growth strategy, 1.5), BCG (product portfolio, 4.5), circular business models (cradle to cradle, 5.3), Gantt chart <span class="hl-badge">HL</span> (project timing, 5.6), Porter's generic strategies <span class="hl-badge">HL</span> (cost leadership vs differentiation, 4.5) and Hofstede <span class="hl-badge">HL</span> (culture and offshoring, 5.4). <span class="more-link" onclick="goTo('tools')">Tools page →</span></p>
+      <p class="para muted"><strong>Other tools to have ready:</strong> SWOT, STEEPLE, Ansoff (growth strategy, 1.5), BCG (product portfolio, 4.5), circular business models (cradle to cradle, 5.3), Gantt chart <span class="hl-badge">HL</span> (project timing, 5.6), Porter's generic strategies <span class="hl-badge">HL</span> (cost leadership vs differentiation, 4.5) and Hofstede <span class="hl-badge">HL</span> (culture and offshoring, 5.4). <a class="more-link" href="#tools">Tools page</a></p>
     </div>
   </div>
 
@@ -3433,51 +3512,229 @@ svg text{font-family:'Inter',sans-serif}
 </div>
 <footer style="text-align:center;padding:28px 20px 36px;font-size:12px;color:var(--faint);border-top:1px solid var(--line2);margin-top:8px">Built by Jonathan</footer>
 </div><!-- /main -->
+<button id="totop" type="button">Back to top</button>
 <script>
-const pages = ['home','nov','unit1','unit2','unit3','unit4','unit5','tools','formulas','defs'];
-function goTo(page, anchor){
-  switchPage(page);
-  if(anchor) setTimeout(()=>{ const el=document.getElementById(anchor); if(el) el.scrollIntoView(); }, 380);
-}
-let current = 'home';
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function switchPage(id){
-  if(id===current) return;
-  const oldEl = document.getElementById('page-'+current);
-  const newEl = document.getElementById('page-'+id);
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active', n.dataset.page===id));
-  document.getElementById('sidebar').classList.remove('open');
-  const show = ()=>{
-    oldEl.classList.remove('active');
-    newEl.classList.add('active');
-    window.scrollTo(0,0);
-    if(!reduced){
-      gsap.fromTo(newEl,{opacity:0,y:10},{opacity:1,y:0,duration:0.28,ease:'power2.out'});
-      const items = newEl.querySelectorAll('.section-title, .card, .tbl-wrap, .diagram-wrap, .statement, .case-box, .def-grid, .fs-group, .unit-row, .formula-block, .legend');
-      gsap.fromTo(items,{opacity:0,y:12},{opacity:1,y:0,duration:0.34,stagger:0.018,ease:'power2.out',delay:0.04});
-    }
+(function(){
+  const pages = ['home','nov','unit1','unit2','unit3','unit4','unit5','tools','formulas','defs'];
+  const info = {
+    home:{name:'Home'},
+    nov:{name:'November Test', short:'Nov test'},
+    unit1:{name:'Unit 1: Business organisation', short:'Unit 1', u:1},
+    unit2:{name:'Unit 2: Human resources', short:'Unit 2', u:2},
+    unit3:{name:'Unit 3: Finance and accounts', short:'Unit 3', u:3},
+    unit4:{name:'Unit 4: Marketing', short:'Unit 4', u:4},
+    unit5:{name:'Unit 5: Operations', short:'Unit 5', u:5},
+    tools:{name:'Tools and frameworks', short:'Tools'},
+    formulas:{name:'Formula sheet', short:'Formulas'},
+    defs:{name:'Definitions', short:'Definitions'}
   };
-  if(reduced){ show(); }
-  else { gsap.to(oldEl,{opacity:0,duration:0.14,onComplete:show}); }
-  current = id;
-}
+  const HEADS = '.section-title,.part-head,.fs-title';
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const cleanText = el => {
+    const c = el.cloneNode(true);
+    c.querySelectorAll('.hl-badge,.new-badge,.booklet-tag,[style*="font-weight:400"]').forEach(x => x.remove());
+    c.querySelectorAll('.s-num').forEach(s => { s.textContent = s.textContent + ' '; });
+    return c.textContent.replace(/\s+/g,' ').trim();
+  };
 
-document.querySelectorAll('.nav-item').forEach(n=> n.addEventListener('click',()=>switchPage(n.dataset.page)));
+  /* 1. Section numbers become coloured pills (colour = unit) */
+  $$('.page .section-title').forEach(h => {
+    if (h.querySelector('.s-num')) return;
+    const first = h.firstChild;
+    if (!first || first.nodeType !== 3) return;
+    const m = first.nodeValue.match(/^\s*(\d\.\d+(?:\s*\/\s*\d\.\d+)?)\s+/);
+    if (!m) return;
+    const pill = document.createElement('span');
+    pill.className = 's-num';
+    pill.textContent = m[1].replace(/\s+/g,'');
+    first.nodeValue = first.nodeValue.slice(m[0].length);
+    h.insertBefore(pill, first);
+  });
+  $$('.s-num').forEach(s => { const d = s.textContent.trim().charAt(0); if ('12345'.includes(d)) s.classList.add('u'+d); });
 
-window.addEventListener('load',()=>{
-  if(reduced) return;
-  const home = document.getElementById('page-home');
-  const items = home.querySelectorAll('.home-hero, .unit-row, .legend');
-  gsap.fromTo(items,{opacity:0,y:14},{opacity:1,y:0,duration:0.4,stagger:0.05,ease:'power2.out',delay:0.06});
-});
+  /* 2. Every heading gets an address, so it can be linked, searched and tracked */
+  $$('.page').forEach(pg => {
+    const pid = pg.id.slice(5); let n = 0;
+    $$(HEADS, pg).forEach(h => { n++; if (!h.id) h.id = pid + '-' + n; });
+  });
 
-// progress bar
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement;
-  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)||0;
-  document.getElementById('progress').style.transform='scaleX('+p+')';
-});
+  /* 3. Search index */
+  const index = [], seen = new Set();
+  function add(el, title, type, extra){
+    if (!el) return;
+    title = (title || '').replace(/\s+/g,' ').trim();
+    if (type === 'Formula') title = title.split('=')[0].trim();
+    if (title.length < 2 || title.length > 110) return;
+    const pg = el.closest('.page'); if (!pg) return;
+    const page = pg.id.slice(5); if (page === 'home') return;
+    const key = page + '|' + type + '|' + title.toLowerCase();
+    if (seen.has(key)) return; seen.add(key);
+    if (!el.id) el.id = 'f' + index.length;
+    extra = (extra || '').replace(/\s+/g,' ').trim();
+    index.push({ id:el.id, title, type, page, extra, lt:title.toLowerCase(), le:extra.toLowerCase() });
+  }
+  $$('.page').forEach(pg => {
+    $$('.section-title,.part-head', pg).forEach(h => add(h, cleanText(h), 'Section'));
+    $$('.sub-title,.fs-title', pg).forEach(h => add(h, cleanText(h), 'Topic'));
+    $$('.def-card', pg).forEach(d => { const t = $('.term', d); if (t) add(d, cleanText(t), 'Definition', ($('.defn', d) || {}).textContent); });
+    $$('.formula-block .eq > span:first-child, .ftable .eq > span:first-child', pg).forEach(s => {
+      if (s.classList.contains('frac')) return;
+      add(s.closest('.formula-block') || s.closest('tr'), s.textContent, 'Formula');
+    });
+    $$('.case-box .case-label', pg).forEach(c => add(c.closest('.case-box'), c.textContent.replace(/^(Applied|Case)\s*,\s*/i,''), 'Case study', (c.nextElementSibling || {}).textContent));
+    $$('details.qa summary', pg).forEach(s => { const c = s.cloneNode(true); c.querySelectorAll('.marks,.hl-badge').forEach(x => x.remove()); add(s.parentElement, c.textContent, 'Practice question'); });
+  });
+  const typeBoost = { 'Section':6, 'Definition':5, 'Formula':4, 'Topic':3, 'Case study':1, 'Practice question':0 };
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  function find(q){
+    q = q.toLowerCase().trim(); if (!q) return [];
+    const words = q.split(/\s+/), wordStart = new RegExp('(^|[^a-z0-9])' + esc(q));
+    const out = [];
+    for (const it of index){
+      let s;
+      if (it.lt === q) s = 100;
+      else if (it.lt.startsWith(q)) s = 80;
+      else if (wordStart.test(it.lt)) s = 65;
+      else if (it.lt.includes(q)) s = 50;
+      else if (words.length > 1 && words.every(w => it.lt.includes(w) || it.le.includes(w))) s = 35;
+      else if (it.le.includes(q)) s = 18;
+      else continue;
+      out.push([s + (typeBoost[it.type] || 0), it]);
+    }
+    out.sort((a,b) => b[0] - a[0] || a[1].title.length - b[1].title.length);
+    return out.slice(0, 14).map(x => x[1]);
+  }
+  function render(box, results, q){
+    box.innerHTML = '';
+    if (!q){ box.classList.remove('open'); return; }
+    if (!results.length){
+      const e = document.createElement('div'); e.className = 'sr-empty';
+      e.textContent = 'No matches for "' + q + '". Try a shorter word, such as "ratio" or "cost".';
+      box.appendChild(e); box.classList.add('open'); return;
+    }
+    results.forEach((it, i) => {
+      const a = document.createElement('a');
+      a.className = 'sr-item' + (i === 0 ? ' sel' : '');
+      a.href = '#' + it.id; a.setAttribute('role','option');
+      const t = document.createElement('span'); t.className = 'sr-title'; t.textContent = it.title;
+      const p = document.createElement('span'); p.className = 'sr-page' + (info[it.page].u ? ' u' + info[it.page].u : ''); p.textContent = info[it.page].short || info[it.page].name;
+      const m = document.createElement('span'); m.className = 'sr-meta';
+      const snip = it.type !== 'Section' && it.extra ? ': ' + (it.extra.length > 95 ? it.extra.slice(0, 95) + '…' : it.extra) : '';
+      m.textContent = it.type + snip;
+      a.append(t, p, m); box.appendChild(a);
+    });
+    box.classList.add('open');
+  }
+  $$('[data-search]').forEach(wrap => {
+    const input = $('input', wrap), box = $('.search-results', wrap);
+    const update = () => render(box, find(input.value), input.value.trim());
+    const done = () => { box.classList.remove('open'); input.blur(); };
+    input.addEventListener('input', update);
+    input.addEventListener('focus', () => { if (input.value.trim()) update(); });
+    input.addEventListener('keydown', e => {
+      const items = $$('.sr-item', box); let i = items.findIndex(x => x.classList.contains('sel'));
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+        e.preventDefault(); if (!items.length) return;
+        if (i >= 0) items[i].classList.remove('sel');
+        i = e.key === 'ArrowDown' ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+        items[i].classList.add('sel'); items[i].scrollIntoView({ block:'nearest' });
+      } else if (e.key === 'Enter'){
+        const t = items[i >= 0 ? i : 0];
+        if (t){ e.preventDefault(); go(t.getAttribute('href').slice(1)); done(); }
+      } else if (e.key === 'Escape'){
+        input.value = ''; render(box, [], ''); input.blur();
+      }
+    });
+    box.addEventListener('click', e => { if (e.target.closest('.sr-item')) done(); });
+    document.addEventListener('click', e => { if (!wrap.contains(e.target)) box.classList.remove('open'); });
+  });
+
+  /* 4. Pages and addresses (#unit5, #u5-52 …) so Back, refresh and sharing work */
+  let current = null, lastOn = null;
+  const sidebar = $('#sidebar'), scrim = $('#scrim'), menuBtn = $('#menu-btn');
+  function openMenu(){ sidebar.classList.add('open'); scrim.classList.add('on'); menuBtn.setAttribute('aria-expanded','true'); }
+  function closeMenu(){ sidebar.classList.remove('open'); scrim.classList.remove('on'); menuBtn.setAttribute('aria-expanded','false'); }
+  menuBtn.addEventListener('click', () => sidebar.classList.contains('open') ? closeMenu() : openMenu());
+  scrim.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  function buildSubnav(id){
+    $$('.nav-sub').forEach(x => x.remove());
+    if (id === 'home') return;
+    const heads = $$(HEADS, $('#page-' + id)); if (heads.length < 2) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'nav-sub' + (info[id].u ? ' u' + info[id].u : '');
+    wrap.setAttribute('aria-label', 'Sections on this page');
+    heads.forEach(h => {
+      const a = document.createElement('a'); a.href = '#' + h.id; a.textContent = cleanText(h);
+      if (h.classList.contains('part-head')) a.className = 'part';
+      wrap.appendChild(a);
+    });
+    $('.nav-item[data-page="' + id + '"]').after(wrap);
+  }
+  function showPage(id){
+    if (id === current) return false;
+    $$('.page').forEach(p => p.classList.toggle('active', p.id === 'page-' + id));
+    $$('.nav-item').forEach(n => { const on = n.dataset.page === id; n.classList.toggle('active', on); on ? n.setAttribute('aria-current','page') : n.removeAttribute('aria-current'); });
+    current = id; lastOn = null; buildSubnav(id);
+    $('#tb-page').textContent = id === 'home' ? '' : info[id].name;
+    document.title = (id === 'home' ? '' : info[id].name + ' · ') + 'BM Revision';
+    return true;
+  }
+  function flash(el){ el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1900); }
+  function route(){
+    const h = decodeURIComponent(location.hash.slice(1));
+    closeMenu();
+    if (!h || pages.includes(h)){ showPage(h || 'home'); window.scrollTo(0, 0); requestAnimationFrame(tick); return; }
+    const el = document.getElementById(h);
+    if (!el){ showPage('home'); window.scrollTo(0, 0); return; }
+    const pg = el.closest('.page');
+    if (!pg){ el.setAttribute('tabindex','-1'); el.focus(); return; }
+    const switched = showPage(pg.id.slice(5));
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ block:'start', behavior: (switched || reduced) ? 'auto' : 'smooth' });
+      flash(el); setTimeout(tick, switched ? 0 : 450);
+    });
+  }
+  function go(target){ if (location.hash === '#' + target) route(); else location.hash = target; }
+  window.switchPage = id => go(id);
+  window.goTo = (page, anchor) => go(anchor || page);
+  window.addEventListener('hashchange', route);
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute('href') === location.hash){ e.preventDefault(); route(); }
+  });
+
+  /* 5. Where am I? Section tracking, reading progress, back to top */
+  const progress = $('#progress'), totop = $('#totop');
+  function spy(){
+    const pg = $('#page-' + current); if (!pg) return;
+    let on = null;
+    for (const h of $$(HEADS, pg)){ if (h.getBoundingClientRect().top < 150) on = h.id; else break; }
+    if (on === lastOn) return; lastOn = on;
+    $$('.nav-sub a').forEach(a => {
+      const match = a.getAttribute('href') === '#' + on;
+      a.classList.toggle('on', match);
+      if (match && window.innerWidth > 900){
+        const r = a.getBoundingClientRect();
+        if (r.top < 90 || r.bottom > window.innerHeight - 24) a.scrollIntoView({ block:'nearest' });
+      }
+    });
+  }
+  function tick(){
+    const d = document.documentElement;
+    progress.style.transform = 'scaleX(' + (d.scrollTop / (d.scrollHeight - d.clientHeight) || 0) + ')';
+    totop.classList.toggle('show', d.scrollTop > 900);
+    spy();
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(() => { tick(); ticking = false; }); } }, { passive:true });
+  totop.addEventListener('click', () => window.scrollTo({ top:0, behavior: reduced ? 'auto' : 'smooth' }));
+
+  route();
+})();
 </script>
 </body>
 </html>
