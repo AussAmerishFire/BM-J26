@@ -249,6 +249,12 @@ svg text{font-family:'Inter',sans-serif}
 .qa .ans strong{color:var(--ink)}
 .more-link{font-size:12px;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 .ff-bar{display:inline-block;height:8px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.eq.sm{font-family:'Inter',sans-serif;font-size:13.5px;gap:7px;color:var(--ink);row-gap:6px}
+.eq.sm .frac{margin:2px 2px}
+.eq.sm .frac .num,.eq.sm .frac .den{white-space:nowrap}
+.eq .eq-note{font-size:11.5px;color:var(--muted);font-family:'Inter',sans-serif}
+.ftable td{vertical-align:middle}
+.ftable td:first-child{vertical-align:top}
 
 /* ── PROGRESS ────────────────────────────────── */
 #progress{position:fixed;top:0;left:var(--sidebar);right:0;height:2px;background:var(--accent);
@@ -1720,7 +1726,7 @@ svg text{font-family:'Inter',sans-serif}
         <tr><td>Variable cost per unit</td><td>$6</td></tr>
         <tr><td>Fixed costs</td><td>$20,000</td></tr>
         <tr><td><strong>Contribution per unit</strong></td><td><strong>$10 − $6 = $4</strong></td></tr>
-        <tr><td><strong>Break-even point</strong></td><td><strong>20,000 ÷ 4 = 5,000 units</strong></td></tr>
+        <tr><td><strong>Break-even point</strong></td><td><div class="eq sm"><span class="frac"><span class="num">20,000</span><span class="den">4</span></span><span>= <strong>5,000 units</strong></span></div></td></tr>
       </table></div>
       <div class="formula-block" style="margin-top:10px">
         <div class="eq">
@@ -2208,41 +2214,65 @@ svg text{font-family:'Inter',sans-serif}
 
   <!-- ALL FORMULAS -->
   <div class="section-title" id="nt-formulas">Every formula for this test</div>
-  <p class="para">★ means it is printed on the formula sheet you get in the exam. Everything else must be <strong>memorised</strong>. HL marks HL-only content.</p>
-  <div class="tbl-wrap"><table>
+  <p class="para">★ means it is printed on the formula sheet you get in the exam. Everything else must be <strong>memorised</strong>. HL marks HL-only content. Read every fraction as <strong>top ÷ bottom</strong>: work out the top line, work out the bottom line, then divide.</p>
+  <div class="tbl-wrap"><table class="ftable">
     <tr><th>Topic</th><th>Formula</th><th>Given?</th></tr>
-    <tr><td rowspan="7"><strong>5.5 Break-even</strong></td><td>Contribution per unit = price − variable cost per unit</td><td>Memorise</td></tr>
-    <tr><td>Total contribution = contribution per unit × quantity</td><td>Memorise</td></tr>
-    <tr><td>Break-even quantity = fixed costs ÷ contribution per unit</td><td>Memorise</td></tr>
-    <tr><td>Profit = total contribution − fixed costs = total revenue − total costs</td><td>Memorise</td></tr>
-    <tr><td>Margin of safety = actual output − break-even quantity</td><td>Memorise</td></tr>
-    <tr><td>Target profit output = (fixed costs + target profit) ÷ contribution per unit</td><td>Memorise</td></tr>
-    <tr><td>Target price = (fixed costs + target profit) ÷ quantity + variable cost per unit</td><td>Memorise</td></tr>
-    <tr><td rowspan="8"><strong>5.6 Production planning</strong> <span class="hl-badge">HL</span></td><td>Capacity utilisation rate = actual output ÷ productive capacity × 100</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>Productivity rate = total output ÷ total input × 100</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>Defect rate = defective units ÷ total output × 100</td><td>Memorise</td></tr>
-    <tr><td>Labour productivity = total output ÷ total hours worked (or ÷ workers)</td><td>Memorise</td></tr>
-    <tr><td>Capital productivity = total output ÷ total capital (machine) hours</td><td>Memorise</td></tr>
-    <tr><td>Operating leverage = Q(P − AVC) ÷ [Q(P − AVC) − TFC] = total contribution ÷ profit</td><td>Memorise</td></tr>
-    <tr><td>CTB = P × Q · CTM = TFC + (AVC × Q)</td><td>Memorise</td></tr>
-    <tr><td>Reorder level = (usage per period × lead time) + buffer stock</td><td>Memorise</td></tr>
-    <tr><td><strong>4.3 Forecasting</strong> <span class="hl-badge">HL</span></td><td>Seasonal variation = actual − trend · Forecast = extrapolated trend + average seasonal variation</td><td>Memorise</td></tr>
-    <tr><td rowspan="3"><strong>3.5 Profitability &amp; liquidity</strong></td><td>Gross profit margin = gross profit ÷ sales revenue × 100 · Profit margin = PBIT ÷ sales revenue × 100</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>ROCE = PBIT ÷ capital employed × 100, where <strong>capital employed = non-current liabilities + equity</strong></td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>Current ratio = current assets ÷ current liabilities · Acid test = (current assets − stock) ÷ current liabilities</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td rowspan="4"><strong>3.6 Efficiency</strong> <span class="hl-badge">HL</span></td><td>Stock turnover = cost of sales ÷ average stock (times), or average stock ÷ cost of sales × 365 (days); average stock = (opening + closing) ÷ 2</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>Debtor days = debtors ÷ sales revenue × 365</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>Creditor days = creditors ÷ cost of sales × 365</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>Gearing = non-current liabilities ÷ capital employed × 100</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td rowspan="2"><strong>3.4 Depreciation</strong> <span class="hl-badge">HL</span></td><td>Straight line: annual depreciation = (cost − residual value) ÷ years of useful life</td><td>Memorise</td></tr>
-    <tr><td>Units of production: (cost − residual value) ÷ total expected units × units produced this year</td><td>Memorise</td></tr>
-    <tr><td rowspan="3"><strong>3.8 Investment appraisal</strong></td><td>Payback = full years + (amount still to recover ÷ cash flow in the next year) × 12 months</td><td>Memorise</td></tr>
-    <tr><td>ARR = [(total returns − capital cost) ÷ years of use] ÷ capital cost × 100</td><td><span class="star">★</span>Given</td></tr>
-    <tr><td>NPV = Σ present values of return − original cost (present value = cash flow × discount factor) <span class="hl-badge">HL</span></td><td><span class="star">★</span>Given</td></tr>
-    <tr><td><strong>2.4 Motivation</strong></td><td>Labour turnover = staff leaving ÷ average number of staff × 100 <span class="hl-badge">HL</span> · Commission = % × sales value · Piece rate = rate × units</td><td>Memorise</td></tr>
-    <tr><td rowspan="2"><strong>4.5 Price</strong></td><td>Cost-plus price = unit cost × (1 + mark-up %)</td><td>Memorise</td></tr>
-    <tr><td>PED = % change in quantity demanded ÷ % change in price <span class="hl-badge">HL</span></td><td>Memorise</td></tr>
-    <tr><td><strong>Toolkit</strong></td><td>Expected value = Σ(probability × outcome) · Total float = LFT − duration − EST · Free float = EST of next activity − duration − EST of this activity <span class="hl-badge">HL</span></td><td>Memorise</td></tr>
+    <!-- 5.5 -->
+    <tr><td rowspan="7"><strong>5.5 Break-even</strong></td><td><div class="eq sm"><span>Contribution per unit</span><span class="equals">=</span><span>price − variable cost per unit</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Total contribution</span><span class="equals">=</span><span>contribution per unit × quantity</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Break-even quantity</span><span class="equals">=</span><span class="frac"><span class="num">fixed costs</span><span class="den">contribution per unit</span></span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Profit</span><span class="equals">=</span><span>total contribution − fixed costs</span><span class="eq-note">(also = total revenue − total costs)</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Margin of safety</span><span class="equals">=</span><span>actual output − break-even quantity</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Target profit output</span><span class="equals">=</span><span class="frac"><span class="num">fixed costs + target profit</span><span class="den">contribution per unit</span></span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Target price</span><span class="equals">=</span><span class="frac"><span class="num">fixed costs + target profit</span><span class="den">quantity</span></span><span>+ variable cost per unit</span></div></td><td>Memorise</td></tr>
+    <!-- 5.6 -->
+    <tr><td rowspan="9"><strong>5.6 Production planning</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span>Capacity utilisation rate</span><span class="equals">=</span><span class="frac"><span class="num">actual output</span><span class="den">productive capacity</span></span><span>× 100</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Productivity rate</span><span class="equals">=</span><span class="frac"><span class="num">total output</span><span class="den">total input</span></span><span>× 100</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Defect rate</span><span class="equals">=</span><span class="frac"><span class="num">number of defective units</span><span class="den">total output</span></span><span>× 100</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Labour productivity</span><span class="equals">=</span><span class="frac"><span class="num">total output</span><span class="den">total hours worked</span></span><span class="eq-note">or per worker: total output on top, number of workers underneath</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Capital productivity</span><span class="equals">=</span><span class="frac"><span class="num">total output</span><span class="den">total capital (machine) hours</span></span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Operating leverage</span><span class="equals">=</span><span class="frac"><span class="num">Q × (P − AVC)</span><span class="den">Q × (P − AVC) − TFC</span></span><span class="equals">=</span><span class="frac"><span class="num">total contribution</span><span class="den">profit</span></span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Cost to buy (CTB)</span><span class="equals">=</span><span>P × Q</span><span class="eq-note">P = supplier's price per unit</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Cost to make (CTM)</span><span class="equals">=</span><span>TFC + (AVC × Q)</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Reorder level</span><span class="equals">=</span><span>(usage per period × lead time) + buffer stock</span></div></td><td>Memorise</td></tr>
+    <!-- 4.3 -->
+    <tr><td rowspan="2"><strong>4.3 Forecasting</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span>Seasonal variation</span><span class="equals">=</span><span>actual sales − trend value</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Sales forecast</span><span class="equals">=</span><span>extrapolated trend + average seasonal variation</span></div></td><td>Memorise</td></tr>
+    <!-- 3.5 -->
+    <tr><td rowspan="6"><strong>3.5 Profitability &amp; liquidity</strong></td><td><div class="eq sm"><span>Gross profit margin</span><span class="equals">=</span><span class="frac"><span class="num">gross profit</span><span class="den">sales revenue</span></span><span>× 100</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Profit margin</span><span class="equals">=</span><span class="frac"><span class="num">profit before interest and tax</span><span class="den">sales revenue</span></span><span>× 100</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>ROCE</span><span class="equals">=</span><span class="frac"><span class="num">profit before interest and tax</span><span class="den">capital employed</span></span><span>× 100</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Capital employed</span><span class="equals">=</span><span><strong>non-current liabilities + equity</strong></span><span class="eq-note">(not net assets)</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Current ratio</span><span class="equals">=</span><span class="frac"><span class="num">current assets</span><span class="den">current liabilities</span></span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Acid test (quick) ratio</span><span class="equals">=</span><span class="frac"><span class="num">current assets − stock</span><span class="den">current liabilities</span></span></div></td><td><span class="star">★</span>Given</td></tr>
+    <!-- 3.6 -->
+    <tr><td rowspan="6"><strong>3.6 Efficiency</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span>Stock turnover (times)</span><span class="equals">=</span><span class="frac"><span class="num">cost of sales</span><span class="den">average stock</span></span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Stock turnover (days)</span><span class="equals">=</span><span class="frac"><span class="num">average stock</span><span class="den">cost of sales</span></span><span>× 365</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Average stock</span><span class="equals">=</span><span class="frac"><span class="num">opening stock + closing stock</span><span class="den">2</span></span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Debtor days</span><span class="equals">=</span><span class="frac"><span class="num">debtors</span><span class="den">sales revenue</span></span><span>× 365</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Creditor days</span><span class="equals">=</span><span class="frac"><span class="num">creditors</span><span class="den">cost of sales</span></span><span>× 365</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Gearing</span><span class="equals">=</span><span class="frac"><span class="num">non-current liabilities</span><span class="den">capital employed</span></span><span>× 100</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <!-- 3.4 -->
+    <tr><td rowspan="2"><strong>3.4 Depreciation</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span>Straight line (per year)</span><span class="equals">=</span><span class="frac"><span class="num">cost − residual value</span><span class="den">years of useful life</span></span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Units of production (per year)</span><span class="equals">=</span><span class="frac"><span class="num">cost − residual value</span><span class="den">total expected units</span></span><span>× units produced this year</span></div></td><td>Memorise</td></tr>
+    <!-- 3.8 -->
+    <tr><td rowspan="5"><strong>3.8 Investment appraisal</strong></td><td><div class="eq sm"><span>Payback</span><span class="equals">=</span><span>full years +</span><span class="frac"><span class="num">amount still to recover</span><span class="den">cash flow in the next year</span></span><span>× 12 months</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Average annual return</span><span class="equals">=</span><span class="frac"><span class="num">total returns − capital cost</span><span class="den">years of use</span></span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>ARR</span><span class="equals">=</span><span class="frac"><span class="num">average annual return</span><span class="den">capital cost</span></span><span>× 100</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><div class="eq sm"><span>Present value</span><span class="equals">=</span><span>cash flow × discount factor</span><span class="hl-badge">HL</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>NPV</span><span class="equals">=</span><span>Σ present values of return − original cost</span><span class="hl-badge">HL</span></div></td><td><span class="star">★</span>Given</td></tr>
+    <!-- 2.4 -->
+    <tr><td rowspan="3"><strong>2.4 Motivation</strong></td><td><div class="eq sm"><span>Labour turnover</span><span class="equals">=</span><span class="frac"><span class="num">number of staff leaving</span><span class="den">average number of staff</span></span><span>× 100</span><span class="hl-badge">HL</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Commission</span><span class="equals">=</span><span>commission rate (%) × sales value</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Piece-rate pay</span><span class="equals">=</span><span>rate per unit × units produced</span></div></td><td>Memorise</td></tr>
+    <!-- 4.5 -->
+    <tr><td rowspan="3"><strong>4.5 Price</strong></td><td><div class="eq sm"><span>Cost-plus price</span><span class="equals">=</span><span>unit cost × (1 + mark-up %)</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>PED</span><span class="equals">=</span><span class="frac"><span class="num">% change in quantity demanded</span><span class="den">% change in price</span></span><span class="hl-badge">HL</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>% change</span><span class="equals">=</span><span class="frac"><span class="num">new − old</span><span class="den">old</span></span><span>× 100</span><span class="eq-note">needed for PED and growth questions</span></div></td><td>Memorise</td></tr>
+    <!-- Toolkit -->
+    <tr><td rowspan="3"><strong>Toolkit</strong></td><td><div class="eq sm"><span>Expected value</span><span class="equals">=</span><span>Σ (probability × outcome)</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Total float</span><span class="equals">=</span><span>LFT − duration − EST</span><span class="hl-badge">HL</span></div></td><td>Memorise</td></tr>
+    <tr><td><div class="eq sm"><span>Free float</span><span class="equals">=</span><span>EST of next activity − duration − EST of this activity</span><span class="hl-badge">HL</span></div></td><td>Memorise</td></tr>
   </table></div>
 
   <!-- ═══ PART A ═══ -->
@@ -2305,11 +2335,11 @@ svg text{font-family:'Inter',sans-serif}
       <p class="para">Price $10, variable cost $6 per unit, fixed costs $20,000, actual sales 7,000 units.</p>
       <div class="tbl-wrap" style="margin-top:0"><table>
         <tr><td>Contribution per unit</td><td class="num-col">10 − 6 = <strong>$4</strong></td></tr>
-        <tr><td>Break-even quantity</td><td class="num-col">20,000 ÷ 4 = <strong>5,000 units</strong></td></tr>
+        <tr><td>Break-even quantity</td><td><div class="eq sm" style="justify-content:flex-end"><span class="frac"><span class="num">20,000</span><span class="den">4</span></span><span>= <strong>5,000 units</strong></span></div></td></tr>
         <tr><td>Margin of safety</td><td class="num-col">7,000 − 5,000 = <strong>2,000 units</strong></td></tr>
         <tr><td>Profit at 7,000</td><td class="num-col">(4 × 7,000) − 20,000 = <strong>$8,000</strong></td></tr>
-        <tr><td>Output for $12,000 profit</td><td class="num-col">(20,000 + 12,000) ÷ 4 = <strong>8,000 units</strong></td></tr>
-        <tr><td>Price for $10,000 profit at 6,000 units</td><td class="num-col">30,000 ÷ 6,000 + 6 = <strong>$11</strong></td></tr>
+        <tr><td>Output for $12,000 profit</td><td><div class="eq sm" style="justify-content:flex-end"><span class="frac"><span class="num">20,000 + 12,000</span><span class="den">4</span></span><span>= <strong>8,000 units</strong></span></div></td></tr>
+        <tr><td>Price for $10,000 profit at 6,000 units</td><td><div class="eq sm" style="justify-content:flex-end"><span class="frac"><span class="num">20,000 + 10,000</span><span class="den">6,000</span></span><span>+ 6 = <strong>$11</strong></span></div></td></tr>
       </table></div>
     </div>
     <div class="card">
@@ -2329,11 +2359,11 @@ svg text{font-family:'Inter',sans-serif}
   <div class="section-title" id="nt-56"><span class="s-num">5.6</span> Production planning <span class="hl-badge">HL</span></div>
   <p class="para muted">Worked example: capacity 10,000 chairs a month; output 8,000 (240 defective); 6,400 labour hours; 2,000 machine hours.</p>
   <div class="card-grid cols3">
-    <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq"><span>Capacity utilisation</span><span class="equals">=</span><span>8,000 ÷ 10,000 × 100 = <strong>80%</strong></span></div></div>
-    <div class="formula-block" style="margin:0"><div class="eq"><span>Defect rate</span><span class="equals">=</span><span>240 ÷ 8,000 × 100 = <strong>3%</strong></span></div></div>
-    <div class="formula-block" style="margin:0"><div class="eq"><span>Labour productivity</span><span class="equals">=</span><span>8,000 ÷ 6,400 = <strong>1.25 per hour</strong></span></div></div>
-    <div class="formula-block" style="margin:0"><div class="eq"><span>Capital productivity</span><span class="equals">=</span><span>8,000 ÷ 2,000 = <strong>4 per machine hour</strong></span></div></div>
-    <div class="formula-block" style="margin:0"><div class="eq"><span>Operating leverage</span><span class="equals">=</span><span>28,000 ÷ 8,000 = <strong>3.5</strong></span></div><div class="formula-note">Break-even firm at 7,000 units: a 10% rise in sales gives a 35% rise in profit</div></div>
+    <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq sm"><span>Capacity utilisation</span><span class="equals">=</span><span class="frac"><span class="num">8,000</span><span class="den">10,000</span></span><span>× 100 = <strong>80%</strong></span></div><div class="formula-note">actual output on top, productive capacity underneath</div></div>
+    <div class="formula-block" style="margin:0"><div class="eq sm"><span>Defect rate</span><span class="equals">=</span><span class="frac"><span class="num">240</span><span class="den">8,000</span></span><span>× 100 = <strong>3%</strong></span></div><div class="formula-note">defective units on top, total output underneath</div></div>
+    <div class="formula-block" style="margin:0"><div class="eq sm"><span>Labour productivity</span><span class="equals">=</span><span class="frac"><span class="num">8,000</span><span class="den">6,400</span></span><span>= <strong>1.25 per hour</strong></span></div><div class="formula-note">total output on top, labour hours underneath</div></div>
+    <div class="formula-block" style="margin:0"><div class="eq sm"><span>Capital productivity</span><span class="equals">=</span><span class="frac"><span class="num">8,000</span><span class="den">2,000</span></span><span>= <strong>4 per machine hour</strong></span></div><div class="formula-note">total output on top, machine hours underneath</div></div>
+    <div class="formula-block" style="margin:0"><div class="eq sm"><span>Operating leverage</span><span class="equals">=</span><span class="frac"><span class="num">28,000</span><span class="den">8,000</span></span><span>= <strong>3.5</strong></span></div><div class="formula-note">Total contribution on top, profit underneath (the break-even firm at 7,000 units). A 10% rise in sales gives a 35% rise in profit.</div></div>
     <div class="formula-block" style="margin:0"><div class="eq"><span>CTB vs CTM</span><span class="equals">=</span><span>$40,000 vs $35,000</span></div><div class="formula-note">5,000 parts: buy at $8, or make for $15,000 fixed + $4 each. <strong>Make</strong> (saves $5,000). Indifference point 3,750 units</div></div>
   </div>
   <div class="card-grid cols2" style="margin-top:14px">
@@ -2503,15 +2533,15 @@ svg text{font-family:'Inter',sans-serif}
   <p class="para">From Oasis Cycles' accounts above. <strong>Capital employed = non-current liabilities + equity = 220 + 700 = $920k.</strong> Opening stock was $110k, so average stock = (110 + 130) ÷ 2 = $120k.</p>
   <div class="tbl-wrap"><table>
     <tr><th>Ratio</th><th>Working (2025)</th><th class="num-col">2025</th><th class="num-col">2024</th><th>Comment</th></tr>
-    <tr><td><strong>Gross profit margin</strong></td><td>480 ÷ 1,200 × 100</td><td class="num-col">40.0%</td><td class="num-col">42.0%</td><td>Fell: cost of sales rose faster than prices (e.g. battery costs)</td></tr>
-    <tr><td><strong>Profit margin</strong></td><td>180 ÷ 1,200 × 100</td><td class="num-col">15.0%</td><td class="num-col">14.0%</td><td>Improved despite lower GPM, so expenses are well controlled</td></tr>
-    <tr><td><strong>ROCE</strong></td><td>180 ÷ 920 × 100</td><td class="num-col">19.6%</td><td class="num-col">17.0%</td><td>Better use of capital, and well above its borrowing cost (20 ÷ 220 ≈ 9.1%)</td></tr>
-    <tr><td><strong>Current ratio</strong></td><td>320 ÷ 200</td><td class="num-col">1.6 : 1</td><td class="num-col">1.9 : 1</td><td>Lower, but still inside the usual 1.5 to 2 comfort range</td></tr>
-    <tr><td><strong>Acid test</strong></td><td>(320 − 130) ÷ 200</td><td class="num-col">0.95 : 1</td><td class="num-col">1.2 : 1</td><td>Just below 1, so it now relies on selling stock to pay short-term debts</td></tr>
-    <tr><td><strong>Stock turnover</strong> <span class="hl-badge">HL</span></td><td>720 ÷ 120 (or 120 ÷ 720 × 365)</td><td class="num-col">6 times (61 days)</td><td class="num-col">7 times (52 days)</td><td>Slower; bikes sit longer and risk becoming outdated models</td></tr>
-    <tr><td><strong>Debtor days</strong> <span class="hl-badge">HL</span></td><td>150 ÷ 1,200 × 365</td><td class="num-col">46 days</td><td class="num-col">38 days</td><td>Customers paying more slowly, which squeezes cash flow</td></tr>
-    <tr><td><strong>Creditor days</strong> <span class="hl-badge">HL</span></td><td>170 ÷ 720 × 365</td><td class="num-col">86 days</td><td class="num-col">70 days</td><td>Paying suppliers later helps cash, but risks supplier goodwill and lost discounts</td></tr>
-    <tr><td><strong>Gearing</strong> <span class="hl-badge">HL</span></td><td>220 ÷ 920 × 100</td><td class="num-col">23.9%</td><td class="num-col">30.0%</td><td>Low gearing (under 25%), so there is room to borrow for expansion</td></tr>
+    <tr><td><strong>Gross profit margin</strong></td><td><div class="eq sm"><span class="frac"><span class="num">480</span><span class="den">1,200</span></span><span>× 100</span></div></td><td class="num-col">40.0%</td><td class="num-col">42.0%</td><td>Fell: cost of sales rose faster than prices (e.g. battery costs)</td></tr>
+    <tr><td><strong>Profit margin</strong></td><td><div class="eq sm"><span class="frac"><span class="num">180</span><span class="den">1,200</span></span><span>× 100</span></div></td><td class="num-col">15.0%</td><td class="num-col">14.0%</td><td>Improved despite lower GPM, so expenses are well controlled</td></tr>
+    <tr><td><strong>ROCE</strong></td><td><div class="eq sm"><span class="frac"><span class="num">180</span><span class="den">920</span></span><span>× 100</span></div></td><td class="num-col">19.6%</td><td class="num-col">17.0%</td><td>Better use of capital, and well above its borrowing cost (20 ÷ 220 ≈ 9.1%)</td></tr>
+    <tr><td><strong>Current ratio</strong></td><td><div class="eq sm"><span class="frac"><span class="num">320</span><span class="den">200</span></span></div></td><td class="num-col">1.6 : 1</td><td class="num-col">1.9 : 1</td><td>Lower, but still inside the usual 1.5 to 2 comfort range</td></tr>
+    <tr><td><strong>Acid test</strong></td><td><div class="eq sm"><span class="frac"><span class="num">320 − 130</span><span class="den">200</span></span></div></td><td class="num-col">0.95 : 1</td><td class="num-col">1.2 : 1</td><td>Just below 1, so it now relies on selling stock to pay short-term debts</td></tr>
+    <tr><td><strong>Stock turnover</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span class="frac"><span class="num">720</span><span class="den">120</span></span><span class="eq-note">or</span><span class="frac"><span class="num">120</span><span class="den">720</span></span><span>× 365</span></div></td><td class="num-col">6 times (61 days)</td><td class="num-col">7 times (52 days)</td><td>Slower; bikes sit longer and risk becoming outdated models</td></tr>
+    <tr><td><strong>Debtor days</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span class="frac"><span class="num">150</span><span class="den">1,200</span></span><span>× 365</span></div></td><td class="num-col">46 days</td><td class="num-col">38 days</td><td>Customers paying more slowly, which squeezes cash flow</td></tr>
+    <tr><td><strong>Creditor days</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span class="frac"><span class="num">170</span><span class="den">720</span></span><span>× 365</span></div></td><td class="num-col">86 days</td><td class="num-col">70 days</td><td>Paying suppliers later helps cash, but risks supplier goodwill and lost discounts</td></tr>
+    <tr><td><strong>Gearing</strong> <span class="hl-badge">HL</span></td><td><div class="eq sm"><span class="frac"><span class="num">220</span><span class="den">920</span></span><span>× 100</span></div></td><td class="num-col">23.9%</td><td class="num-col">30.0%</td><td>Low gearing (under 25%), so there is room to borrow for expansion</td></tr>
   </table></div>
   <div class="exam-tip"><div class="tip-label">Common mistake</div>Capital employed is <strong>not</strong> the same as net assets. Here net assets are $700k, but capital employed is $920k because the $220k long-term loan is added back. Using $700k gives a wrong ROCE (25.7%) and a wrong gearing (31.4%).</div>
   <div class="card-grid cols2">
@@ -2550,8 +2580,8 @@ svg text{font-family:'Inter',sans-serif}
     <tr><td>5</td><td class="num-col">30,000</td><td class="num-col">75,000</td><td class="num-col">0.6209</td><td class="num-col">18,627</td></tr>
   </table></div>
   <div class="card-grid cols3">
-    <div class="formula-block" style="margin:0"><div class="eq"><span>Payback</span><span class="equals">=</span><span>2 years + (35,000 ÷ 40,000) × 12</span></div><div class="formula-note">= <strong>2 years 10.5 months</strong>. Use the <em>undiscounted</em> cumulative column: after year 2, $35,000 is still owed, and year 3 brings $40,000.</div></div>
-    <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq"><span>ARR</span><span class="equals">=</span><span>[(175,000 − 100,000) ÷ 5] ÷ 100,000 × 100</span></div><div class="formula-note">= 15,000 ÷ 100,000 × 100 = <strong>15%</strong>. Compare it with the interest rate or a target rate.</div></div>
+    <div class="formula-block" style="margin:0"><div class="eq sm"><span>Payback</span><span class="equals">=</span><span>2 years +</span><span class="frac"><span class="num">35,000</span><span class="den">40,000</span></span><span>× 12 months</span></div><div class="formula-note">= <strong>2 years 10.5 months</strong>. Use the <em>undiscounted</em> cumulative column: after year 2, $35,000 is still owed, and year 3 brings $40,000.</div></div>
+    <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq sm"><span>Average annual return</span><span class="equals">=</span><span class="frac"><span class="num">175,000 − 100,000</span><span class="den">5</span></span><span>= $15,000</span></div><div class="eq sm" style="margin-top:8px"><span>ARR</span><span class="equals">=</span><span class="frac"><span class="num">15,000</span><span class="den">100,000</span></span><span>× 100 = <strong>15%</strong></span></div><div class="formula-note">Compare it with the interest rate or a target rate.</div></div>
     <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq"><span>NPV</span><span class="equals">=</span><span>132,196 − 100,000</span><span class="label">HL</span></div><div class="formula-note">= <strong>+$32,196</strong>. Positive, so the project earns more than the 10% required return.</div></div>
   </div>
   <div class="card-grid cols2" style="margin-top:14px">
@@ -2809,7 +2839,7 @@ svg text{font-family:'Inter',sans-serif}
     <div class="card" style="margin:0">
       <p class="para">Weekly e-bike sales over 7 weeks: <strong>12, 15, 15, 18, 20, 22, 38</strong></p>
       <div class="tbl-wrap" style="margin-top:0"><table>
-        <tr><td><strong>Mean</strong></td><td>140 ÷ 7 = <strong>20</strong></td></tr>
+        <tr><td><strong>Mean</strong></td><td><div class="eq sm"><span class="frac"><span class="num">140</span><span class="den">7</span></span><span>= <strong>20</strong></span></div></td></tr>
         <tr><td><strong>Median</strong> (middle value)</td><td><strong>18</strong></td></tr>
         <tr><td><strong>Mode</strong> (most frequent)</td><td><strong>15</strong></td></tr>
         <tr><td><strong>Range</strong></td><td>38 − 12 = <strong>26</strong></td></tr>
