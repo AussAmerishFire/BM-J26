@@ -233,6 +233,23 @@ svg text{font-family:'Inter',sans-serif}
 .whats-new p{font-size:13px;color:var(--ink2);line-height:1.6}
 .whats-new a{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 
+/* ── TEST PAGE ───────────────────────────────── */
+.part-head{font-family:'Fraunces',serif;font-size:27px;font-weight:600;color:var(--ink);margin:64px 0 4px;letter-spacing:-0.02em}
+.part-sub{font-size:13px;color:var(--muted);margin-bottom:6px}
+.stimulus{background:#fbfaf6;border:1px solid var(--line);border-left:2px solid var(--plum);border-radius:var(--radius);
+  padding:14px 18px;margin:14px 0;font-size:13px;color:var(--ink2);line-height:1.65}
+.stimulus .stim-label{font-size:10.5px;font-weight:600;color:var(--plum);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:8px 0}
+.qa summary{cursor:pointer;padding:11px 16px;font-size:13px;color:var(--ink);list-style:none;display:flex;gap:10px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:'+';color:var(--accent);font-weight:600;width:12px;flex-shrink:0;font-family:'IBM Plex Mono',monospace}
+.qa[open] summary::before{content:'−'}
+.qa summary .marks{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap;padding-left:10px}
+.qa .ans{padding:10px 16px 14px 38px;font-size:12.5px;color:var(--ink2);line-height:1.7;border-top:1px solid var(--line2)}
+.qa .ans strong{color:var(--ink)}
+.more-link{font-size:12px;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.ff-bar{display:inline-block;height:8px;border-radius:2px;vertical-align:middle;margin-right:6px}
+
 /* ── PROGRESS ────────────────────────────────── */
 #progress{position:fixed;top:0;left:var(--sidebar);right:0;height:2px;background:var(--accent);
   z-index:200;transform:scaleX(0);transform-origin:left;transition:transform .1s}
@@ -281,6 +298,9 @@ svg text{font-family:'Inter',sans-serif}
   <nav>
     <div class="nav-item active" data-page="home"><span class="num">, </span>Home</div>
     <div class="nav-sep"></div>
+    <div class="nav-label">Tests</div>
+    <div class="nav-item" data-page="nov"><span class="num">P2</span>November Test</div>
+    <div class="nav-sep"></div>
     <div class="nav-label">Units</div>
     <div class="nav-item" data-page="unit1"><span class="num">1</span>Business Organisation</div>
     <div class="nav-item" data-page="unit2"><span class="num">2</span>Human Resources</div>
@@ -304,7 +324,7 @@ svg text{font-family:'Inter',sans-serif}
       <div class="stat"><div class="n">5</div><div class="l">Units</div></div>
       <div class="stat"><div class="n">6</div><div class="l">Frameworks</div></div>
       <div class="stat"><div class="n">★</div><div class="l">Booklet formulas flagged</div></div>
-      <div class="stat"><div class="n">45+</div><div class="l">Applied cases</div></div>
+      <div class="stat"><div class="n">55+</div><div class="l">Applied cases</div></div>
     </div>
   </div>
 
@@ -314,6 +334,11 @@ svg text{font-family:'Inter',sans-serif}
   </div>
 
   <div class="unit-list">
+    <div class="unit-row" onclick="switchPage('nov')" style="background:var(--card)">
+      <div class="u-num">P2</div>
+      <div class="u-body"><h3>November Test · Paper 2 <span class="new-badge">NEW</span></h3><p>All 15 test topics on one page: formats, formulas, toolkit, case studies and a mini practice paper with answers</p></div>
+      <div class="u-arrow">→</div>
+    </div>
     <div class="unit-row" onclick="switchPage('unit1')">
       <div class="u-num">01</div>
       <div class="u-body"><h3>Business Organisation &amp; Environment</h3><p>Sectors, entities, stakeholders, growth, MNCs, CSR, economies of scale</p></div>
@@ -2127,7 +2152,711 @@ svg text{font-family:'Inter',sans-serif}
     <div class="exam-tip" style="margin:14px 0"><div class="tip-label">Evaluation tip</div>Contingency planning is most worthwhile when a crisis is <strong>likely</strong> or its impact would be <strong>severe</strong>: airlines, banks, food producers, chemical plants, hospitals. Small firms may lack the money and time, so they should prioritise their biggest risks. A strong conclusion: contingency planning cannot prevent crises, but it greatly improves the <em>quality</em> of crisis management when one strikes.</div>
   </div>
 </div>
+<!-- ═══════════════════ NOVEMBER TEST (PAPER 2) ═══════════════════ -->
+<div class="page" id="page-nov">
+  <div class="page-eyebrow">Paper 2 · HL · Wednesday 11 November 2026</div>
+  <div class="page-title">November Test</div>
+  <div class="page-subtitle">Everything for the Paper 2 test on one page: the paper format, every formula and statement layout you need, the toolkit, real case studies, and a mini practice paper with model answers. Paper 2 is quantitative, so this page leads with numbers.</div>
+  <div class="toc">
+    <a href="#nt-paper">The paper</a>
+    <a href="#nt-formulas">All formulas</a>
+    <a href="#nt-partA">Sep–Nov topics</a>
+    <a href="#nt-partB">June topics</a>
+    <a href="#nt-tools">Toolkit</a>
+    <a href="#nt-practice">Practice paper</a>
+  </div>
+
+  <!-- THE PAPER -->
+  <div class="section-title" id="nt-paper">What Paper 2 looks like</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Format (HL, full exam)</div>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><td><strong>Time</strong></td><td>1 hour 45 minutes · 50 marks · 30% of the final grade</td></tr>
+        <tr><td><strong>Stimulus</strong></td><td>Unseen case about a fictional business, given <strong>in parts</strong>: read a part, answer its question, then move on. It includes text, tables, charts and infographics</td></tr>
+        <tr><td><strong>Section A</strong></td><td>30 marks. Answer <strong>all</strong> the structured questions (assessed at AO1, AO2 and AO4)</td></tr>
+        <tr><td><strong>Section B</strong></td><td>20 marks. Choose <strong>one of two</strong> questions: some structured parts plus an extended response (all four AOs)</td></tr>
+        <tr><td><strong>Content</strong></td><td>Units 1 to 5 including HL topics. "Most questions will be quantitative"</td></tr>
+        <tr><td><strong>Given to you</strong></td><td>The formula sheet (★ formulas below) and a discount table when NPV is needed</td></tr>
+      </table></div>
+      <p class="para muted">Your school test is timetabled for 30 minutes (9:55 to 10:25), so expect a shortened version with fewer questions in the same style. Budget roughly <strong>1 mark per 2 minutes</strong>.</p>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">How to pick up calculation marks</div>
+      <ol class="steps">
+        <li><strong>Write the formula first</strong>, then substitute the numbers, then the answer. Working earns marks even if the final number is wrong.</li>
+        <li><strong>Use units and labels:</strong> $, %, units, days, times, ":1". "1.6" alone may lose a mark, but "1.6 : 1" won't.</li>
+        <li><strong>Round sensibly</strong> (normally 2 decimal places) and only at the end. Round a break-even quantity <strong>up</strong> to a whole unit.</li>
+        <li><strong>Carried-forward errors:</strong> mark schemes usually apply an "own figure rule", so a later part that correctly uses your wrong earlier answer can still score. Never leave a part blank.</li>
+        <li><strong>"Comment" or "explain" after a calculation</strong> means interpret: is it good or bad, compared with what, and why does it matter for <em>this</em> business?</li>
+        <li><strong>Construct or complete</strong> questions (statements, charts) need the exact layout and labels. Use a ruler and label every line and axis.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="sub-title">Command terms (2024 guide)</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>AO</th><th>Command terms</th><th>What the examiner wants</th></tr>
+    <tr><td><strong>AO1</strong> Knowledge</td><td>Define, Describe, Identify, List, Outline, State</td><td>Precise recall. Short, accurate answers, often 2 marks</td></tr>
+    <tr><td><strong>AO2</strong> Application and analysis</td><td>Analyse, Apply, Comment, Demonstrate, Distinguish, Explain, Suggest</td><td>Use theory <em>on the case</em>; give reasons and consequences, and use the figures in the stimulus</td></tr>
+    <tr><td><strong>AO3</strong> Synthesis and evaluation</td><td>Compare (and contrast), Contrast, Discuss, Evaluate, Examine, Justify, Recommend, To what extent</td><td>Weigh both sides using the data, then reach a <strong>justified judgement</strong></td></tr>
+    <tr><td><strong>AO4</strong> Skills</td><td>Annotate, Calculate, Complete, Construct, Draw, Label, Plot, Prepare</td><td>Show working; follow the correct format; accurate, labelled diagrams</td></tr>
+  </table></div>
+
+  <!-- ALL FORMULAS -->
+  <div class="section-title" id="nt-formulas">Every formula for this test</div>
+  <p class="para">★ means it is printed on the formula sheet you get in the exam. Everything else must be <strong>memorised</strong>. HL marks HL-only content.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Topic</th><th>Formula</th><th>Given?</th></tr>
+    <tr><td rowspan="7"><strong>5.5 Break-even</strong></td><td>Contribution per unit = price − variable cost per unit</td><td>Memorise</td></tr>
+    <tr><td>Total contribution = contribution per unit × quantity</td><td>Memorise</td></tr>
+    <tr><td>Break-even quantity = fixed costs ÷ contribution per unit</td><td>Memorise</td></tr>
+    <tr><td>Profit = total contribution − fixed costs = total revenue − total costs</td><td>Memorise</td></tr>
+    <tr><td>Margin of safety = actual output − break-even quantity</td><td>Memorise</td></tr>
+    <tr><td>Target profit output = (fixed costs + target profit) ÷ contribution per unit</td><td>Memorise</td></tr>
+    <tr><td>Target price = (fixed costs + target profit) ÷ quantity + variable cost per unit</td><td>Memorise</td></tr>
+    <tr><td rowspan="8"><strong>5.6 Production planning</strong> <span class="hl-badge">HL</span></td><td>Capacity utilisation rate = actual output ÷ productive capacity × 100</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>Productivity rate = total output ÷ total input × 100</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>Defect rate = defective units ÷ total output × 100</td><td>Memorise</td></tr>
+    <tr><td>Labour productivity = total output ÷ total hours worked (or ÷ workers)</td><td>Memorise</td></tr>
+    <tr><td>Capital productivity = total output ÷ total capital (machine) hours</td><td>Memorise</td></tr>
+    <tr><td>Operating leverage = Q(P − AVC) ÷ [Q(P − AVC) − TFC] = total contribution ÷ profit</td><td>Memorise</td></tr>
+    <tr><td>CTB = P × Q · CTM = TFC + (AVC × Q)</td><td>Memorise</td></tr>
+    <tr><td>Reorder level = (usage per period × lead time) + buffer stock</td><td>Memorise</td></tr>
+    <tr><td><strong>4.3 Forecasting</strong> <span class="hl-badge">HL</span></td><td>Seasonal variation = actual − trend · Forecast = extrapolated trend + average seasonal variation</td><td>Memorise</td></tr>
+    <tr><td rowspan="3"><strong>3.5 Profitability &amp; liquidity</strong></td><td>Gross profit margin = gross profit ÷ sales revenue × 100 · Profit margin = PBIT ÷ sales revenue × 100</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>ROCE = PBIT ÷ capital employed × 100, where <strong>capital employed = non-current liabilities + equity</strong></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>Current ratio = current assets ÷ current liabilities · Acid test = (current assets − stock) ÷ current liabilities</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td rowspan="4"><strong>3.6 Efficiency</strong> <span class="hl-badge">HL</span></td><td>Stock turnover = cost of sales ÷ average stock (times), or average stock ÷ cost of sales × 365 (days); average stock = (opening + closing) ÷ 2</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>Debtor days = debtors ÷ sales revenue × 365</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>Creditor days = creditors ÷ cost of sales × 365</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>Gearing = non-current liabilities ÷ capital employed × 100</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td rowspan="2"><strong>3.4 Depreciation</strong> <span class="hl-badge">HL</span></td><td>Straight line: annual depreciation = (cost − residual value) ÷ years of useful life</td><td>Memorise</td></tr>
+    <tr><td>Units of production: (cost − residual value) ÷ total expected units × units produced this year</td><td>Memorise</td></tr>
+    <tr><td rowspan="3"><strong>3.8 Investment appraisal</strong></td><td>Payback = full years + (amount still to recover ÷ cash flow in the next year) × 12 months</td><td>Memorise</td></tr>
+    <tr><td>ARR = [(total returns − capital cost) ÷ years of use] ÷ capital cost × 100</td><td><span class="star">★</span>Given</td></tr>
+    <tr><td>NPV = Σ present values of return − original cost (present value = cash flow × discount factor) <span class="hl-badge">HL</span></td><td><span class="star">★</span>Given</td></tr>
+    <tr><td><strong>2.4 Motivation</strong></td><td>Labour turnover = staff leaving ÷ average number of staff × 100 <span class="hl-badge">HL</span> · Commission = % × sales value · Piece rate = rate × units</td><td>Memorise</td></tr>
+    <tr><td rowspan="2"><strong>4.5 Price</strong></td><td>Cost-plus price = unit cost × (1 + mark-up %)</td><td>Memorise</td></tr>
+    <tr><td>PED = % change in quantity demanded ÷ % change in price <span class="hl-badge">HL</span></td><td>Memorise</td></tr>
+    <tr><td><strong>Toolkit</strong></td><td>Expected value = Σ(probability × outcome) · Total float = LFT − duration − EST · Free float = EST of next activity − duration − EST of this activity <span class="hl-badge">HL</span></td><td>Memorise</td></tr>
+  </table></div>
+
+  <!-- ═══ PART A ═══ -->
+  <div class="part-head" id="nt-partA">Part A · Topics from September to November</div>
+  <p class="part-sub">The condensed exam version. Each topic links to the full notes on the Unit 4 and Unit 5 pages.</p>
+
+  <!-- 5.2 -->
+  <div class="section-title" id="nt-52"><span class="s-num">5.2</span> Operations methods</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Method</th><th>Volume / variety</th><th>Key plus</th><th>Key minus</th><th>Example</th></tr>
+    <tr><td><strong>Job</strong></td><td>One-off, unique</td><td>High quality, premium price</td><td>High unit cost, slow</td><td>Burj Khalifa, tailored suits</td></tr>
+    <tr><td><strong>Batch</strong></td><td>Groups of identical items</td><td>Some economies of scale, flexible</td><td>Downtime between batches</td><td>Bakery, clothing sizes</td></tr>
+    <tr><td><strong>Mass / flow</strong></td><td>Continuous, standardised</td><td>Lowest unit cost</td><td>Inflexible, huge capital cost</td><td>Coca-Cola bottling</td></tr>
+    <tr><td><strong>Mass customisation</strong></td><td>High volume <em>and</em> variety (via technology)</td><td>Premium for personalisation</td><td>Complex IT, slower delivery</td><td>Nike By You, Dell</td></tr>
+  </table></div>
+  <div class="exam-tip"><div class="tip-label">Paper 2 angle</div>Link the method to <strong>cost per unit</strong> and the break-even point: moving from batch to flow raises fixed costs (machinery) but cuts variable cost per unit, so break-even rises while profit at high volumes grows. Quote the case data on demand: flow production only makes sense if demand is large and stable. <span class="more-link" onclick="goTo('unit5','u5-52')">Full notes →</span></div>
+
+  <!-- 5.3 -->
+  <div class="section-title" id="nt-53"><span class="s-num">5.3</span> Lean production &amp; quality management <span class="hl-badge">HL</span></div>
+  <div class="card-grid cols3">
+    <div class="card"><div class="sub-title" style="margin-top:0">Lean = less waste, more efficiency</div><ul class="small-list"><li><strong>Kaizen:</strong> small continuous improvements by everyone</li><li><strong>JIT:</strong> stock arrives only when needed (kanban)</li><li><strong>Cradle to cradle:</strong> every material reused, so no waste</li><li>7 wastes: TIMWOOD (transport, inventory, motion, waiting, overproduction, over-processing, defects)</li></ul></div>
+    <div class="card"><div class="sub-title" style="margin-top:0">Quality control vs assurance</div><ul class="small-list"><li><strong>QC</strong> detects defects by inspecting output (reactive, inspectors)</li><li><strong>QA</strong> prevents defects at every stage (proactive, everyone)</li><li><strong>Methods:</strong> quality circles, benchmarking, TQM (zero defects culture)</li><li><strong>Standards:</strong> ISO 9001, ISO 14001, CE, Emirates Quality Mark</li></ul></div>
+    <div class="card"><div class="sub-title" style="margin-top:0">Impact on the organisation</div><ul class="small-list"><li><span style="color:var(--pos)">+</span> Lower waste and storage costs; better cash flow; reputation; motivated, empowered staff</li><li><span style="color:var(--neg)">−</span> Training cost; slow culture change; JIT supply risk; pressure of zero-defect targets</li></ul></div>
+  </div>
+  <div class="case-box"><div class="case-label">Case, Toyota vs Boeing</div><p>Toyota's lean system lets any worker pull the andon cord to stop the line and fix a fault at its source (QA). Boeing shows the opposite: in January 2024 a door plug blew out of a new 737 MAX 9 because bolts had not been refitted at the factory, and the US regulator capped production at 38 jets a month. Use the pair to <strong>contrast QA and a TQM culture with weak quality control</strong>. <span class="more-link" onclick="goTo('unit5','u5-53')">Full notes →</span></p></div>
+
+  <!-- 5.4 -->
+  <div class="section-title" id="nt-54"><span class="s-num">5.4</span> Location</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Reasons for a location</div>
+      <p class="para"><strong>Quantitative:</strong> land and rent, labour cost and skills, transport costs (closeness to market or raw materials), government incentives (grants, free zones, tax).<br><strong>Qualitative:</strong> infrastructure, clustering, trade barriers, political stability, quality of life, ethics.</p>
+      <div class="sub-title">Reorganising production</div>
+      <ul class="small-list">
+        <li><strong>Outsourcing:</strong> <em>who</em> does the work, a third party</li>
+        <li><strong>Offshoring:</strong> <em>where</em>, in another country</li>
+        <li><strong>Insourcing:</strong> bringing outsourced work back in-house</li>
+        <li><strong>Reshoring:</strong> bringing offshored work back home</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Paper 2 style: compare two sites (annual costs, $000)</div>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th>Cost</th><th class="num-col">Site A (city)</th><th class="num-col">Site B (free zone)</th></tr>
+        <tr><td>Rent</td><td class="num-col">120</td><td class="num-col">80</td></tr>
+        <tr><td>Labour</td><td class="num-col">400</td><td class="num-col">450</td></tr>
+        <tr><td>Transport to customers</td><td class="num-col">60</td><td class="num-col">30</td></tr>
+        <tr><td><strong>Total</strong></td><td class="num-col"><strong>580</strong></td><td class="num-col"><strong>560</strong></td></tr>
+      </table></div>
+      <p class="para muted">Site B is $20k a year cheaper, but a strong answer adds the qualitative side: B's higher labour bill may reflect a skills shortage, while A may be closer to talent and customers. Then make a judgement.</p>
+    </div>
+  </div>
+  <div class="case-box"><div class="case-label">Case, Apple and Adidas</div><p>Apple <strong>offshored</strong> most US-bound iPhone assembly to India in 2025 to reduce China and tariff risk, despite higher costs there. Adidas tried <strong>reshoring</strong> trainer production to robot "Speedfactories" in Germany and the US, then closed both (announced 2019) and moved the technology to Asian suppliers "where the know-how and suppliers are located". <span class="more-link" onclick="goTo('unit5','u5-54')">Full notes →</span></p></div>
+
+  <!-- 5.5 -->
+  <div class="section-title" id="nt-55"><span class="s-num">5.5</span> Break-even analysis</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Worked example</div>
+      <p class="para">Price $10, variable cost $6 per unit, fixed costs $20,000, actual sales 7,000 units.</p>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><td>Contribution per unit</td><td class="num-col">10 − 6 = <strong>$4</strong></td></tr>
+        <tr><td>Break-even quantity</td><td class="num-col">20,000 ÷ 4 = <strong>5,000 units</strong></td></tr>
+        <tr><td>Margin of safety</td><td class="num-col">7,000 − 5,000 = <strong>2,000 units</strong></td></tr>
+        <tr><td>Profit at 7,000</td><td class="num-col">(4 × 7,000) − 20,000 = <strong>$8,000</strong></td></tr>
+        <tr><td>Output for $12,000 profit</td><td class="num-col">(20,000 + 12,000) ÷ 4 = <strong>8,000 units</strong></td></tr>
+        <tr><td>Price for $10,000 profit at 6,000 units</td><td class="num-col">30,000 ÷ 6,000 + 6 = <strong>$11</strong></td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Drawing the break-even chart</div>
+      <ol class="steps">
+        <li>Axes: <strong>output (units)</strong> on x, <strong>costs and revenue ($)</strong> on y. Title it.</li>
+        <li><strong>Fixed costs:</strong> horizontal line at $20,000.</li>
+        <li><strong>Total costs:</strong> starts at $20,000 on the y-axis and rises by the variable cost per unit (at 8,000 units, 20,000 + 48,000 = $68,000).</li>
+        <li><strong>Total revenue:</strong> starts at 0 and rises by the price (at 8,000 units, $80,000).</li>
+        <li>Mark and label the <strong>break-even point</strong>, the profit and loss areas, and the <strong>margin of safety</strong> (between BEQ and actual output).</li>
+      </ol>
+      <p class="para muted">Price up → revenue line steeper → BEQ falls. Fixed costs up → FC and TC lines shift up → BEQ rises. Variable cost up → TC steeper → BEQ rises. <span class="more-link" onclick="goTo('unit5','u5-55')">Chart and full notes →</span></p>
+    </div>
+  </div>
+
+  <!-- 5.6 -->
+  <div class="section-title" id="nt-56"><span class="s-num">5.6</span> Production planning <span class="hl-badge">HL</span></div>
+  <p class="para muted">Worked example: capacity 10,000 chairs a month; output 8,000 (240 defective); 6,400 labour hours; 2,000 machine hours.</p>
+  <div class="card-grid cols3">
+    <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq"><span>Capacity utilisation</span><span class="equals">=</span><span>8,000 ÷ 10,000 × 100 = <strong>80%</strong></span></div></div>
+    <div class="formula-block" style="margin:0"><div class="eq"><span>Defect rate</span><span class="equals">=</span><span>240 ÷ 8,000 × 100 = <strong>3%</strong></span></div></div>
+    <div class="formula-block" style="margin:0"><div class="eq"><span>Labour productivity</span><span class="equals">=</span><span>8,000 ÷ 6,400 = <strong>1.25 per hour</strong></span></div></div>
+    <div class="formula-block" style="margin:0"><div class="eq"><span>Capital productivity</span><span class="equals">=</span><span>8,000 ÷ 2,000 = <strong>4 per machine hour</strong></span></div></div>
+    <div class="formula-block" style="margin:0"><div class="eq"><span>Operating leverage</span><span class="equals">=</span><span>28,000 ÷ 8,000 = <strong>3.5</strong></span></div><div class="formula-note">Break-even firm at 7,000 units: a 10% rise in sales gives a 35% rise in profit</div></div>
+    <div class="formula-block" style="margin:0"><div class="eq"><span>CTB vs CTM</span><span class="equals">=</span><span>$40,000 vs $35,000</span></div><div class="formula-note">5,000 parts: buy at $8, or make for $15,000 fixed + $4 each. <strong>Make</strong> (saves $5,000). Indifference point 3,750 units</div></div>
+  </div>
+  <div class="card-grid cols2" style="margin-top:14px">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Stock control chart</div>
+      <p class="para">Usage 100 units a week, lead time 2 weeks, buffer stock 200, maximum stock 800.</p>
+      <ul class="small-list"><li><strong>Reorder level</strong> = (100 × 2) + 200 = <strong>400 units</strong></li><li><strong>Reorder quantity</strong> = 800 − 200 = <strong>600 units</strong></li><li>Draw a sawtooth: stock falls from 800 to 200 over 6 weeks, the order is placed at week 4 (stock 400), and it arrives at week 6</li></ul>
+      <p class="para muted"><span class="more-link" onclick="goTo('unit5','u5-56')">Chart and full notes →</span></p>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">JIT vs JIC and supply chains</div>
+      <p class="para"><strong>JIT:</strong> low storage cost and little cash tied up, but high stockout risk. <strong>JIC:</strong> safe against disruption, but costly and risks waste. Local supply chains are shorter and more controllable; global ones are cheaper but exposed to shocks.</p>
+      <div class="case-box" style="margin-bottom:0"><div class="case-label">Case, Toyota chips</div><p>After the 2011 Fukushima earthquake, Toyota made suppliers hold roughly 2 to 6 months of chips. That helped it keep production largely on target in 2021 while rivals cut output. A hybrid: JIT for most parts, JIC for critical ones.</p></div>
+    </div>
+  </div>
+
+  <!-- 5.7 -->
+  <div class="section-title" id="nt-57"><span class="s-num">5.7</span> Crisis management &amp; contingency planning <span class="hl-badge">HL</span></div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <p class="para"><strong>Contingency planning</strong> is done <em>before</em> a crisis (proactive): identify risks, prepare responses. <strong>Crisis management</strong> happens <em>during</em> it (reactive): limit damage, restore normality.</p>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th>Factor</th><th>Case</th></tr>
+        <tr><td><strong>Transparency</strong></td><td>Boeing 737 MAX: MCAS not fully disclosed to pilots; 346 deaths, grounded about 20 months</td></tr>
+        <tr><td><strong>Communication</strong></td><td>KFC UK 2018: "FCK, we're sorry" ad after its switch to DHL caused chicken shortages</td></tr>
+        <tr><td><strong>Speed</strong></td><td>J&amp;J Tylenol 1982: about 31 million bottles recalled within a week</td></tr>
+        <tr><td><strong>Control</strong></td><td>Delta 2024 CrowdStrike outage: 7,000+ flights cancelled, about $550m cost</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Paper 2 style: is the contingency plan worth it?</div>
+      <p class="para">A cyberattack has a 10% chance a year of causing $2m of damage. A backup system costs $80,000 a year and would cut the damage to $0.5m.</p>
+      <ul class="small-list">
+        <li>Expected loss without plan = 0.1 × $2,000,000 = <strong>$200,000</strong></li>
+        <li>Expected loss with plan = 0.1 × $500,000 + $80,000 = <strong>$130,000</strong></li>
+        <li>Plan saves an expected <strong>$70,000 a year</strong>, so it is worth it on cost grounds</li>
+      </ul>
+      <p class="para muted">Evaluate with the four syllabus lenses: <strong>cost</strong> (upfront spend vs savings), <strong>time</strong> (faster recovery, but planning takes time), <strong>risks</strong> (can't foresee every crisis) and <strong>safety</strong> (protects staff and customers). <span class="more-link" onclick="goTo('unit5','u5-57')">Full notes →</span></p>
+    </div>
+  </div>
+
+  <!-- 4.3 -->
+  <div class="section-title" id="nt-43"><span class="s-num">4.3</span> Sales forecasting <span class="hl-badge">HL</span></div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Method in brief</div>
+      <p class="para">A time series has a <strong>trend</strong>, <strong>seasonal</strong>, <strong>cyclical</strong> and <strong>random</strong> variation. Moving averages smooth the data to reveal the trend, which is then extrapolated and adjusted by the average seasonal variation.</p>
+      <p class="para"><strong>Three-part moving average</strong> on monthly sales 20, 26, 23, 29, 32: (20 + 26 + 23) ÷ 3 = <strong>23</strong>, then 26, then 28. The trend is rising.<br><strong>Four-part</strong> averages fall between two periods, so they must be <strong>centred</strong> (average each pair).</p>
+      <p class="para muted"><span class="more-link" onclick="goTo('unit4','u4-43')">Full worked four-part example and chart →</span></p>
+    </div>
+    <div class="card">
+      <div class="ad-box adv" style="margin-bottom:10px"><h5>Benefits (the assessed part)</h5><ul><li>Planning for production, staffing, cash flow and budgets</li><li>Better stock control (fewer stockouts and less excess)</li><li>Helps secure finance; sets targets</li></ul></div>
+      <div class="ad-box dis"><h5>Limitations</h5><ul><li>Assumes the past repeats itself</li><li>Random events (e.g. COVID-19) can't be predicted</li><li>Worse further ahead; no data for new products</li><li>Ignores competitors, tastes and the economy</li></ul></div>
+    </div>
+  </div>
+  <!-- ═══ PART B ═══ -->
+  <div class="part-head" id="nt-partB">Part B · Topics from the June exam</div>
+  <p class="part-sub">The finance topics use one fictional firm, <strong>Oasis Cycles Ltd</strong> (an e-bike maker), so every ratio can be traced back to its statements. The practice paper at the end uses the same firm.</p>
+
+  <!-- 4.5 -->
+  <div class="section-title" id="nt-45"><span class="s-num">4.5</span> The seven Ps of the marketing mix</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>P</th><th>What the syllabus wants you to know</th></tr>
+    <tr><td><strong>Product</strong></td><td>Product life cycle and its link to investment, profit and cash flow (cash flow negative at launch, highest in maturity); product portfolio (BCG matrix: stars, cash cows, question marks, dogs); extension strategies; branding: <strong>awareness, development, loyalty, value</strong> and why branding matters</td></tr>
+    <tr><td><strong>Price</strong></td><td>Cost-plus (mark-up), penetration, loss leader, <strong>predatory</strong> (pricing below cost to force rivals out, often illegal), premium. HL: dynamic, competitive, contribution pricing, PED</td></tr>
+    <tr><td><strong>Promotion</strong></td><td>Above the line (mass media), below the line (targeted: sales promotions, direct mail, sponsorship), through the line (integrated); social media marketing as a strategy</td></tr>
+    <tr><td><strong>Place</strong></td><td>Importance of distribution channels: direct (zero-level), one-level (via retailer), two-level (wholesaler then retailer), online</td></tr>
+    <tr><td><strong>People</strong></td><td>Employee–customer relationships in services, and cultural variation in them</td></tr>
+    <tr><td><strong>Processes</strong></td><td>Delivery processes in services and how they change (apps, self-service kiosks)</td></tr>
+    <tr><td><strong>Physical evidence</strong></td><td>Tangible cues in services: store design, uniforms, packaging, website</td></tr>
+  </table></div>
+  <div class="card-grid cols3">
+    <div class="formula-block" style="margin:0"><div class="eq"><span>Cost-plus price</span><span class="equals">=</span><span>unit cost × (1 + mark-up)</span></div><div class="formula-note">Unit cost $40, mark-up 25%: 40 × 1.25 = <strong>$50</strong></div></div>
+    <div class="formula-block" style="margin:0"><div class="eq"><span>PED</span><span class="equals">=</span><span class="frac"><span class="num">% change in Qd</span><span class="den">% change in price</span></span><span class="label">HL</span></div><div class="formula-note">Price $50 → $55 (+10%), demand 2,000 → 1,700 (−15%). PED = −15 ÷ 10 = <strong>−1.5, elastic</strong>. Revenue falls from $100,000 to $93,500, so the price rise is a mistake.</div></div>
+    <div class="formula-block" style="margin:0"><div class="eq"><span>Contribution pricing</span><span class="equals">=</span><span>any price above AVC</span><span class="label">HL</span></div><div class="formula-note">With spare capacity, a one-off order at any price above variable cost adds to profit, because fixed costs are already covered (e.g. airlines selling empty seats late)</div></div>
+  </div>
+  <div class="exam-tip"><div class="tip-label">Interpreting PED</div>|PED| &gt; 1 is <strong>elastic</strong>: cut price to raise revenue. |PED| &lt; 1 is <strong>inelastic</strong>: raise price to raise revenue. Demand is more inelastic for necessities, strong brands, few substitutes and addictive products.</div>
+  <div class="card-grid cols2">
+    <div class="case-box"><div class="case-label">Case, Netflix (price and inelastic demand)</div><p>Netflix raised prices several times and in 2023 started charging for password sharing, yet it added about 30 million subscribers that year. Its strong brand and content library make demand relatively <strong>price inelastic</strong>, so higher prices raised revenue. A good example of branding (loyalty and value) supporting a pricing strategy.</p></div>
+    <div class="case-box"><div class="case-label">Case, an appropriate marketing mix</div><p>A premium e-bike brand would choose: <strong>product</strong> with a strong brand and warranty; <strong>premium price</strong> (PED inelastic for enthusiasts); <strong>promotion</strong> through the line (influencers, test-ride events); <strong>place</strong> direct online plus flagship stores; <strong>people</strong> as expert staff; <strong>process</strong> of easy online booking for servicing; <strong>physical evidence</strong> in showroom design. Every P should match the target market and positioning.</p></div>
+  </div>
+
+  <!-- 3.4 -->
+  <div class="section-title" id="nt-34"><span class="s-num">3.4</span> Final accounts</div>
+  <p class="para">Learn this exact layout: Paper 2 can ask you to <strong>construct or complete</strong> either statement. The figures below are Oasis Cycles' accounts for 2025, in $000.</p>
+  <div class="card-grid cols2">
+    <div class="statement" style="margin:0">
+      <div class="statement-head"><div class="title">Statement of profit or loss</div><div class="note">Oasis Cycles Ltd · year ended 31 Dec 2025 · $000</div></div>
+      <table>
+        <tr><td>Sales revenue</td><td class="num-col">1,200</td></tr>
+        <tr><td>Cost of sales</td><td class="num-col">(720)</td></tr>
+        <tr class="total-row"><td>Gross profit</td><td class="num-col">480</td></tr>
+        <tr><td>Expenses</td><td class="num-col">(300)</td></tr>
+        <tr class="total-row"><td>Profit before interest and tax</td><td class="num-col">180</td></tr>
+        <tr><td>Interest</td><td class="num-col">(20)</td></tr>
+        <tr class="total-row"><td>Profit before tax</td><td class="num-col">160</td></tr>
+        <tr><td>Tax (20%)</td><td class="num-col">(32)</td></tr>
+        <tr class="total-row"><td>Profit for period</td><td class="num-col">128</td></tr>
+        <tr><td>Dividends</td><td class="num-col">(48)</td></tr>
+        <tr class="total-row"><td>Retained profit</td><td class="num-col">80</td></tr>
+      </table>
+    </div>
+    <div class="statement" style="margin:0">
+      <div class="statement-head"><div class="title">Statement of financial position (balance sheet)</div><div class="note">Oasis Cycles Ltd · as at 31 Dec 2025 · $000</div></div>
+      <table>
+        <tr class="group-row"><td colspan="2">Non-current assets</td></tr>
+        <tr><td class="indent">Property, plant and equipment</td><td class="num-col">900</td></tr>
+        <tr><td class="indent">Accumulated depreciation</td><td class="num-col">(180)</td></tr>
+        <tr><td class="indent">Intangible assets</td><td class="num-col">80</td></tr>
+        <tr class="total-row"><td>Total non-current assets</td><td class="num-col">800</td></tr>
+        <tr class="group-row"><td colspan="2">Current assets</td></tr>
+        <tr><td class="indent">Cash</td><td class="num-col">40</td></tr>
+        <tr><td class="indent">Debtors</td><td class="num-col">150</td></tr>
+        <tr><td class="indent">Stock</td><td class="num-col">130</td></tr>
+        <tr class="total-row"><td>Total current assets</td><td class="num-col">320</td></tr>
+        <tr class="total-row"><td>Total assets</td><td class="num-col">1,120</td></tr>
+        <tr class="group-row"><td colspan="2">Current liabilities</td></tr>
+        <tr><td class="indent">Overdraft</td><td class="num-col">30</td></tr>
+        <tr><td class="indent">Creditors</td><td class="num-col">170</td></tr>
+        <tr class="total-row"><td>Total current liabilities</td><td class="num-col">200</td></tr>
+        <tr class="group-row"><td colspan="2">Non-current liabilities</td></tr>
+        <tr><td class="indent">Long-term borrowing</td><td class="num-col">220</td></tr>
+        <tr class="total-row"><td>Total non-current liabilities</td><td class="num-col">220</td></tr>
+        <tr class="total-row"><td>Total liabilities</td><td class="num-col">420</td></tr>
+        <tr class="total-row"><td>NET ASSETS (total assets − total liabilities)</td><td class="num-col">700</td></tr>
+        <tr class="group-row"><td colspan="2">Equity</td></tr>
+        <tr><td class="indent">Share capital</td><td class="num-col">400</td></tr>
+        <tr><td class="indent">Retained earnings</td><td class="num-col">300</td></tr>
+        <tr class="total-row"><td>TOTAL EQUITY (must equal net assets)</td><td class="num-col">700</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="card-grid cols3" style="margin-top:16px">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Who uses the accounts, and why</div>
+      <ul class="small-list"><li><strong>Shareholders:</strong> profit, dividends, share value</li><li><strong>Managers:</strong> performance, decisions, targets</li><li><strong>Employees:</strong> job security, pay claims</li><li><strong>Banks and lenders:</strong> liquidity and gearing (can it repay?)</li><li><strong>Suppliers:</strong> liquidity (will we be paid?)</li><li><strong>Government:</strong> tax; <strong>competitors:</strong> benchmarking</li></ul>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Intangible assets</div>
+      <p class="para">Non-physical assets with value: <strong>goodwill</strong> (the amount paid above net assets when buying a firm), <strong>brand</strong>, <strong>patents</strong>, <strong>copyrights</strong> and <strong>trademarks</strong>. They are hard to value objectively, so they can make a balance sheet look stronger than it is.</p>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">How the statements link</div>
+      <p class="para">Retained profit (80) adds to retained earnings on the balance sheet. The year's depreciation is an <strong>expense</strong> in the profit or loss statement and builds up as <strong>accumulated depreciation</strong> on the balance sheet. Cash is the closing balance from the cash flow.</p>
+    </div>
+  </div>
+  <div class="sub-title">Depreciation <span class="hl-badge">HL</span>: machine costs $50,000, residual value $5,000, life 5 years or 90,000 units</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Straight line method</div>
+      <p class="para">(50,000 − 5,000) ÷ 5 = <strong>$9,000 every year</strong></p>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th>End of year</th><th class="num-col">1</th><th class="num-col">2</th><th class="num-col">3</th><th class="num-col">4</th><th class="num-col">5</th></tr>
+        <tr><td>Net book value ($)</td><td class="num-col">41,000</td><td class="num-col">32,000</td><td class="num-col">23,000</td><td class="num-col">14,000</td><td class="num-col">5,000</td></tr>
+      </table></div>
+      <p class="para muted">Best for assets used evenly over time (buildings, furniture). Simple, but ignores how heavily the asset is used.</p>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Units of production method</div>
+      <p class="para">(50,000 − 5,000) ÷ 90,000 units = <strong>$0.50 per unit</strong>. Year 1: 24,000 units × 0.50 = <strong>$12,000</strong> (NBV $38,000). Year 2: 20,000 units = <strong>$10,000</strong> (NBV $28,000).</p>
+      <p class="para muted">Best when wear depends on use (machinery, vehicles by kilometres). More accurate, but total lifetime output must be estimated, and the charge changes every year.</p>
+    </div>
+  </div>
+
+  <!-- 3.5 & 3.6 -->
+  <div class="section-title" id="nt-35"><span class="s-num">3.5 / 3.6</span> Ratio analysis <span class="hl-badge">3.6 HL</span></div>
+  <p class="para">From Oasis Cycles' accounts above. <strong>Capital employed = non-current liabilities + equity = 220 + 700 = $920k.</strong> Opening stock was $110k, so average stock = (110 + 130) ÷ 2 = $120k.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Ratio</th><th>Working (2025)</th><th class="num-col">2025</th><th class="num-col">2024</th><th>Comment</th></tr>
+    <tr><td><strong>Gross profit margin</strong></td><td>480 ÷ 1,200 × 100</td><td class="num-col">40.0%</td><td class="num-col">42.0%</td><td>Fell: cost of sales rose faster than prices (e.g. battery costs)</td></tr>
+    <tr><td><strong>Profit margin</strong></td><td>180 ÷ 1,200 × 100</td><td class="num-col">15.0%</td><td class="num-col">14.0%</td><td>Improved despite lower GPM, so expenses are well controlled</td></tr>
+    <tr><td><strong>ROCE</strong></td><td>180 ÷ 920 × 100</td><td class="num-col">19.6%</td><td class="num-col">17.0%</td><td>Better use of capital, and well above its borrowing cost (20 ÷ 220 ≈ 9.1%)</td></tr>
+    <tr><td><strong>Current ratio</strong></td><td>320 ÷ 200</td><td class="num-col">1.6 : 1</td><td class="num-col">1.9 : 1</td><td>Lower, but still inside the usual 1.5 to 2 comfort range</td></tr>
+    <tr><td><strong>Acid test</strong></td><td>(320 − 130) ÷ 200</td><td class="num-col">0.95 : 1</td><td class="num-col">1.2 : 1</td><td>Just below 1, so it now relies on selling stock to pay short-term debts</td></tr>
+    <tr><td><strong>Stock turnover</strong> <span class="hl-badge">HL</span></td><td>720 ÷ 120 (or 120 ÷ 720 × 365)</td><td class="num-col">6 times (61 days)</td><td class="num-col">7 times (52 days)</td><td>Slower; bikes sit longer and risk becoming outdated models</td></tr>
+    <tr><td><strong>Debtor days</strong> <span class="hl-badge">HL</span></td><td>150 ÷ 1,200 × 365</td><td class="num-col">46 days</td><td class="num-col">38 days</td><td>Customers paying more slowly, which squeezes cash flow</td></tr>
+    <tr><td><strong>Creditor days</strong> <span class="hl-badge">HL</span></td><td>170 ÷ 720 × 365</td><td class="num-col">86 days</td><td class="num-col">70 days</td><td>Paying suppliers later helps cash, but risks supplier goodwill and lost discounts</td></tr>
+    <tr><td><strong>Gearing</strong> <span class="hl-badge">HL</span></td><td>220 ÷ 920 × 100</td><td class="num-col">23.9%</td><td class="num-col">30.0%</td><td>Low gearing (under 25%), so there is room to borrow for expansion</td></tr>
+  </table></div>
+  <div class="exam-tip"><div class="tip-label">Common mistake</div>Capital employed is <strong>not</strong> the same as net assets. Here net assets are $700k, but capital employed is $920k because the $220k long-term loan is added back. Using $700k gives a wrong ROCE (25.7%) and a wrong gearing (31.4%).</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Strategies to improve ratios</div>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th>Ratio</th><th>How to improve it</th></tr>
+        <tr><td>GPM</td><td>Raise price (if demand is inelastic); cheaper suppliers; less waste (lean)</td></tr>
+        <tr><td>Profit margin</td><td>Cut expenses (rent, admin, marketing); raise productivity</td></tr>
+        <tr><td>ROCE</td><td>Raise PBIT; sell unused assets; repay debt (cuts capital employed)</td></tr>
+        <tr><td>Current / acid test</td><td>Chase debtors; replace the overdraft with a long-term loan; sale and leaseback; retain profit</td></tr>
+        <tr><td>Stock turnover <span class="hl-badge">HL</span></td><td>JIT; discount slow-moving stock; narrow the range</td></tr>
+        <tr><td>Debtor days <span class="hl-badge">HL</span></td><td>Shorter credit terms; early-payment discounts; factoring</td></tr>
+        <tr><td>Creditor days <span class="hl-badge">HL</span></td><td>Negotiate longer credit terms with suppliers</td></tr>
+        <tr><td>Gearing <span class="hl-badge">HL</span></td><td>Issue shares; retain profit; repay loans</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Insolvency vs bankruptcy <span class="hl-badge">HL</span></div>
+      <p class="para"><strong>Insolvency:</strong> a business (or person) cannot pay its debts when they fall due. It is a cash flow problem and can be temporary.<br><strong>Bankruptcy:</strong> the <em>legal</em> declaration that an individual cannot repay debts, after which assets are sold to pay creditors. For companies the equivalent is liquidation.</p>
+      <div class="sub-title">Limits of ratio analysis</div>
+      <ul class="small-list"><li>Based on past data; a snapshot of a single date</li><li>Needs comparison (past years, rivals, industry) to mean anything</li><li>Ignores qualitative factors (morale, brand, the economy)</li><li>Figures can be "window dressed"</li></ul>
+    </div>
+  </div>
+
+  <!-- 3.8 -->
+  <div class="section-title" id="nt-38"><span class="s-num">3.8</span> Investment appraisal</div>
+  <p class="para">A new production line costs <strong>$100,000</strong> and brings net cash flows of $30,000, $35,000, $40,000, $40,000 and $30,000 over 5 years. Discount rate 10% (NPV is HL).</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Year</th><th class="num-col">Net cash flow ($)</th><th class="num-col">Cumulative cash flow ($)</th><th class="num-col">Discount factor (10%)</th><th class="num-col">Present value ($)</th></tr>
+    <tr><td>0</td><td class="num-col">(100,000)</td><td class="num-col">(100,000)</td><td class="num-col">1.0000</td><td class="num-col">(100,000)</td></tr>
+    <tr><td>1</td><td class="num-col">30,000</td><td class="num-col">(70,000)</td><td class="num-col">0.9091</td><td class="num-col">27,273</td></tr>
+    <tr><td>2</td><td class="num-col">35,000</td><td class="num-col">(35,000)</td><td class="num-col">0.8264</td><td class="num-col">28,924</td></tr>
+    <tr><td>3</td><td class="num-col">40,000</td><td class="num-col">5,000</td><td class="num-col">0.7513</td><td class="num-col">30,052</td></tr>
+    <tr><td>4</td><td class="num-col">40,000</td><td class="num-col">45,000</td><td class="num-col">0.6830</td><td class="num-col">27,320</td></tr>
+    <tr><td>5</td><td class="num-col">30,000</td><td class="num-col">75,000</td><td class="num-col">0.6209</td><td class="num-col">18,627</td></tr>
+  </table></div>
+  <div class="card-grid cols3">
+    <div class="formula-block" style="margin:0"><div class="eq"><span>Payback</span><span class="equals">=</span><span>2 years + (35,000 ÷ 40,000) × 12</span></div><div class="formula-note">= <strong>2 years 10.5 months</strong>. Use the <em>undiscounted</em> cumulative column: after year 2, $35,000 is still owed, and year 3 brings $40,000.</div></div>
+    <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq"><span>ARR</span><span class="equals">=</span><span>[(175,000 − 100,000) ÷ 5] ÷ 100,000 × 100</span></div><div class="formula-note">= 15,000 ÷ 100,000 × 100 = <strong>15%</strong>. Compare it with the interest rate or a target rate.</div></div>
+    <div class="formula-block booklet" style="margin:0"><span class="booklet-tag">★ Data Booklet</span><div class="eq"><span>NPV</span><span class="equals">=</span><span>132,196 − 100,000</span><span class="label">HL</span></div><div class="formula-note">= <strong>+$32,196</strong>. Positive, so the project earns more than the 10% required return.</div></div>
+  </div>
+  <div class="card-grid cols2" style="margin-top:14px">
+    <div class="tbl-wrap" style="margin:0"><table>
+      <tr><th>Method</th><th>Strength</th><th>Weakness</th></tr>
+      <tr><td><strong>Payback</strong></td><td>Simple; focuses on risk and cash flow; good when technology changes fast</td><td>Ignores cash after payback and the time value of money</td></tr>
+      <tr><td><strong>ARR</strong></td><td>Uses all cash flows; a % that is easy to compare with interest rates</td><td>Ignores timing and the time value of money</td></tr>
+      <tr><td><strong>NPV</strong> <span class="hl-badge">HL</span></td><td>Includes the time value of money and all cash flows</td><td>Depends on the chosen discount rate; harder to explain</td></tr>
+    </table></div>
+    <div class="card" style="margin:0">
+      <div class="sub-title" style="margin-top:0">Discount factors (the exam gives these when needed)</div>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th>Year</th><th class="num-col">4%</th><th class="num-col">6%</th><th class="num-col">8%</th><th class="num-col">10%</th><th class="num-col">20%</th></tr>
+        <tr><td>1</td><td class="num-col">0.9615</td><td class="num-col">0.9434</td><td class="num-col">0.9259</td><td class="num-col">0.9091</td><td class="num-col">0.8333</td></tr>
+        <tr><td>2</td><td class="num-col">0.9246</td><td class="num-col">0.8900</td><td class="num-col">0.8573</td><td class="num-col">0.8264</td><td class="num-col">0.6944</td></tr>
+        <tr><td>3</td><td class="num-col">0.8890</td><td class="num-col">0.8396</td><td class="num-col">0.7938</td><td class="num-col">0.7513</td><td class="num-col">0.5787</td></tr>
+        <tr><td>4</td><td class="num-col">0.8548</td><td class="num-col">0.7921</td><td class="num-col">0.7350</td><td class="num-col">0.6830</td><td class="num-col">0.4823</td></tr>
+        <tr><td>5</td><td class="num-col">0.8219</td><td class="num-col">0.7473</td><td class="num-col">0.6806</td><td class="num-col">0.6209</td><td class="num-col">0.4019</td></tr>
+        <tr><td>6</td><td class="num-col">0.7903</td><td class="num-col">0.7050</td><td class="num-col">0.6302</td><td class="num-col">0.5645</td><td class="num-col">0.3349</td></tr>
+      </table></div>
+    </div>
+  </div>
+  <div class="exam-tip"><div class="tip-label">Evaluation tip</div>Never decide on numbers alone. Ask how <strong>reliable the cash flow forecasts</strong> are (they are estimates), whether the firm can <strong>finance</strong> it (see gearing and liquidity), and what the <strong>qualitative factors</strong> are: staff morale (automation), brand, environmental impact, fit with objectives.</div>
+
+  <!-- 2.4 -->
+  <div class="section-title" id="nt-24"><span class="s-num">2.4</span> Motivation and demotivation</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Theory</th><th>Core idea</th><th>Use it in an answer when…</th></tr>
+    <tr><td><strong>Taylor</strong></td><td>Workers are motivated by money; break work into simple tasks; pay by output (piece rate)</td><td>The case has repetitive production work, piece rates or productivity targets</td></tr>
+    <tr><td><strong>Maslow</strong></td><td>Hierarchy: physiological, safety, social, esteem, self-actualisation; lower needs come first</td><td>Explaining why pay or security must be fixed before recognition will motivate</td></tr>
+    <tr><td><strong>Herzberg</strong></td><td>Hygiene factors (pay, conditions, security) only prevent dissatisfaction; motivators (achievement, recognition, responsibility, the work itself) motivate</td><td>Arguing that a pay rise alone won't motivate; recommending job enrichment</td></tr>
+    <tr><td><strong>McClelland</strong> <span class="hl-badge">HL</span></td><td>Acquired needs for achievement, affiliation and power</td><td>Matching roles or rewards to different people (sales stars vs team players)</td></tr>
+    <tr><td><strong>Deci &amp; Ryan</strong> <span class="hl-badge">HL</span></td><td>Self-determination: intrinsic motivation needs autonomy, competence and relatedness</td><td>Remote or flexible work, empowerment, creative jobs</td></tr>
+    <tr><td><strong>Equity (Adams)</strong> <span class="hl-badge">HL</span></td><td>Workers compare their input and reward with others'; perceived unfairness demotivates</td><td>Pay gaps, bonuses for some staff only, gig workers vs permanent staff</td></tr>
+    <tr><td><strong>Expectancy (Vroom)</strong> <span class="hl-badge">HL</span></td><td>Motivation depends on expectancy (effort leads to performance) × instrumentality (performance leads to reward) × valence (value of the reward)</td><td>Unrealistic targets or rewards that staff don't value</td></tr>
+  </table></div>
+  <div class="card-grid cols3">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Financial rewards</div>
+      <ul class="small-list"><li>Salary; wages (time rate and piece rate)</li><li>Commission; performance-related pay (PRP)</li><li>Profit-related pay; employee share ownership</li><li>Fringe payments (car, health insurance)</li></ul>
+      <div class="sub-title">Non-financial rewards</div>
+      <ul class="small-list"><li>Job enrichment, rotation, enlargement</li><li>Empowerment; teamwork</li><li>Purpose: the chance to make a difference</li></ul>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Paper 2 style pay calculations</div>
+      <ul class="small-list">
+        <li><strong>Time rate:</strong> 40 hours at $12 + 5 overtime hours at 1.5× = 480 + 90 = <strong>$570</strong></li>
+        <li><strong>Piece rate:</strong> 650 units × $0.80 = <strong>$520</strong></li>
+        <li><strong>Commission:</strong> $1,500 basic + 3% of $60,000 sales = 1,500 + 1,800 = <strong>$3,300</strong></li>
+        <li><strong>Labour turnover</strong> <span class="hl-badge">HL</span>: 18 leavers; staff 110 at the start and 130 at the end, so the average is 120. 18 ÷ 120 × 100 = <strong>15%</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Also in 2.4</div>
+      <ul class="small-list"><li><strong>Training:</strong> induction, on the job, off the job</li><li><strong>Appraisal</strong> <span class="hl-badge">HL</span>: formative, summative, 360-degree, self-appraisal</li><li><strong>Recruitment</strong> <span class="hl-badge">HL</span>: internal (cheaper, motivating, known) vs external (new ideas, wider pool, costlier)</li></ul>
+    </div>
+  </div>
+  <div class="case-box"><div class="case-label">Case, Microsoft Japan's four-day week (2019)</div><p>Microsoft Japan gave staff every Friday off for a month at full pay. It reported sales per employee up about 40% compared with the year before, with fewer, shorter meetings. Link it to <strong>Deci &amp; Ryan</strong> (autonomy) and <strong>Herzberg</strong> (motivators over hygiene). Evaluate it too: it was a one-month trial in an office setting and may not transfer to a factory.</p></div>
+
+  <!-- 1.4 -->
+  <div class="section-title" id="nt-14"><span class="s-num">1.4</span> Stakeholders</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <p class="para"><strong>Internal:</strong> employees, managers, shareholders (owners).<br><strong>External:</strong> customers, suppliers, government, local community, lenders, pressure groups, competitors.</p>
+      <div class="sub-title">Typical conflicts</div>
+      <ul class="small-list">
+        <li><strong>Shareholders vs employees:</strong> higher dividends vs higher pay. Oasis paid $48k in dividends and kept $80k to reinvest.</li>
+        <li><strong>Managers vs community:</strong> expanding a factory vs noise, traffic and pollution</li>
+        <li><strong>Customers vs shareholders:</strong> lower prices vs higher margins</li>
+        <li><strong>Firm vs suppliers:</strong> cutting costs or lengthening creditor days vs the supplier's cash flow</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Stakeholder mapping (power vs interest)</div>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th></th><th>Low interest</th><th>High interest</th></tr>
+        <tr><td><strong>High power</strong></td><td>Keep satisfied (government, regulators, banks)</td><td>Key players: manage closely (major shareholders, the board)</td></tr>
+        <tr><td><strong>Low power</strong></td><td>Monitor (general public)</td><td>Keep informed (employees, local community)</td></tr>
+      </table></div>
+      <p class="para muted">Useful for structuring a conflict answer: which stakeholder's view is likely to win, and why. <span class="more-link" onclick="goTo('unit1')">Matrix diagram on Unit 1 →</span></p>
+    </div>
+  </div>
+  <div class="case-box"><div class="case-label">Case, Tesla's Berlin Gigafactory</div><p>Tesla wanted to expand its plant near Berlin (managers, shareholders and the regional government, which wanted jobs, were in favour). In February 2024 local residents voted against the expansion in a non-binding vote, worried about clearing forest and water use. In March 2024, activists set fire to a power pylon and production stopped for about a week. It shows <strong>community and pressure groups</strong> clashing with owners, and how even low-power stakeholders can disrupt a business.</p></div>
+
+  <!-- 1.5 -->
+  <div class="section-title" id="nt-15"><span class="s-num">1.5</span> Growth and evolution</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Economies and diseconomies of scale</div>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th></th><th>Economies (average cost falls)</th><th>Diseconomies (average cost rises)</th></tr>
+        <tr><td><strong>Internal</strong> (within the firm)</td><td>Purchasing (bulk buying), technical, financial (cheaper loans), managerial (specialists), marketing, risk-bearing</td><td>Poor communication, coordination problems, lower motivation, loss of control, bureaucracy</td></tr>
+        <tr><td><strong>External</strong> (from the industry or area)</td><td>Skilled labour pool, specialist suppliers nearby, shared infrastructure (clusters such as Silicon Valley)</td><td>Congestion, rising rents and wages in the area, competition for staff</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Paper 2 style: average cost = total cost ÷ output</div>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th class="num-col">Output</th><th class="num-col">Total cost ($)</th><th class="num-col">Average cost ($)</th><th></th></tr>
+        <tr><td class="num-col">1,000</td><td class="num-col">50,000</td><td class="num-col">50</td><td rowspan="3" style="color:var(--pos)">Economies of scale</td></tr>
+        <tr><td class="num-col">5,000</td><td class="num-col">175,000</td><td class="num-col">35</td></tr>
+        <tr><td class="num-col">10,000</td><td class="num-col">300,000</td><td class="num-col">30</td></tr>
+        <tr><td class="num-col">20,000</td><td class="num-col">700,000</td><td class="num-col">35</td><td style="color:var(--neg)">Diseconomies</td></tr>
+      </table></div>
+      <p class="para muted">The lowest average cost (the most efficient scale) is around 10,000 units. Growing beyond it raises unit costs.</p>
+    </div>
+  </div>
+  <div class="card-grid cols3">
+    <div class="card"><div class="sub-title" style="margin-top:0">Internal vs external growth</div><p class="para"><strong>Internal (organic):</strong> new products, new markets, more capacity, funded by retained profit. Slower, lower risk, keeps control and culture.<br><strong>External:</strong> joining with other firms. Faster, buys market share and capability, but costly and risks culture clashes.</p></div>
+    <div class="card"><div class="sub-title" style="margin-top:0">Why grow, or stay small?</div><p class="para"><strong>Grow:</strong> economies of scale, market share and power, survival, diversification of risk, owners' ambition.<br><strong>Stay small:</strong> owner control, personal service, niche markets, lower risk, limited finance, avoiding diseconomies.</p></div>
+    <div class="card"><div class="sub-title" style="margin-top:0">External growth methods</div><ul class="small-list"><li><strong>Merger:</strong> two firms agree to combine</li><li><strong>Acquisition / takeover:</strong> buying a controlling stake (hostile if unwanted)</li><li><strong>Joint venture:</strong> a new, jointly owned business</li><li><strong>Strategic alliance:</strong> cooperation with no new entity</li><li><strong>Franchising:</strong> selling the right to use the brand and system</li></ul></div>
+  </div>
+  <div class="card-grid cols3">
+    <div class="case-box"><div class="case-label">Case, acquisition</div><p>Microsoft completed its roughly <strong>$69bn takeover of Activision Blizzard</strong> (Call of Duty) in October 2023, after competition regulators in the UK, US and EU scrutinised it. Fast growth in gaming content, but regulators were concerned about market power.</p></div>
+    <div class="case-box"><div class="case-label">Case, joint venture</div><p><strong>Sony Honda Mobility</strong> (set up 2022) combines Sony's electronics and software with Honda's car-making to build EVs under the Afeela brand. They share costs and risks without either firm buying the other.</p></div>
+    <div class="case-box"><div class="case-label">Case, franchising</div><p>McDonald's operates around <strong>95%</strong> of its restaurants through franchisees. It grows quickly with franchisees' money while earning rent and royalties, but has less day-to-day control over quality.</p></div>
+  </div>
+  <!-- ═══ TOOLKIT ═══ -->
+  <div class="part-head" id="nt-tools">Toolkit for this test</div>
+  <p class="part-sub">The 2024 guide says every toolkit item can be examined at AO2 and AO4, so these are the ones most likely to turn up as Paper 2 calculations on these topics.</p>
+
+  <div class="section-title">Decision trees <span style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">· units 1, 5 · links to 1.5 growth and 5.7 contingency</span></div>
+  <div class="card-grid cols2">
+    <div class="tbl-wrap" style="margin:0"><table>
+      <tr><th>Option</th><th>Outcomes (probability × payoff)</th><th class="num-col">Expected value</th><th class="num-col">Net (EV − cost)</th></tr>
+      <tr><td><strong>A: enter a new market</strong> (cost $200k)</td><td>Success 0.6 × $600k · Failure 0.4 × $100k</td><td class="num-col">360 + 40 = $400k</td><td class="num-col"><strong>$200k</strong></td></tr>
+      <tr><td><strong>B: upgrade the existing range</strong> (cost $80k)</td><td>Success 0.7 × $300k · Failure 0.3 × $150k</td><td class="num-col">210 + 45 = $255k</td><td class="num-col"><strong>$175k</strong></td></tr>
+    </table></div>
+    <div class="card" style="margin:0">
+      <p class="para"><strong>Option A</strong> has the higher expected net gain ($200k vs $175k), so on the numbers choose A. But A has a 40% chance of a $100k loss (100 − 200), while B's worst case is still +$70k (150 − 80). A risk-averse firm, or one with weak liquidity, might prefer B.</p>
+      <p class="para muted">Squares are decision nodes and circles are chance nodes. Probabilities at each chance node must add up to 1. Work backwards from right to left. <span class="more-link" onclick="goTo('tools')">Diagram on the Tools page →</span></p>
+    </div>
+  </div>
+
+  <div class="section-title">Contribution: make or buy, contribution vs absorption costing <span class="hl-badge">HL</span></div>
+  <p class="para">Three products share <strong>$50,000</strong> of fixed costs. Absorption costing spreads the fixed costs by share of revenue; contribution costing does not.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>$000</th><th class="num-col">Product X</th><th class="num-col">Product Y</th><th class="num-col">Product Z</th><th class="num-col">Total</th></tr>
+    <tr><td>Revenue</td><td class="num-col">100</td><td class="num-col">100</td><td class="num-col">50</td><td class="num-col">250</td></tr>
+    <tr><td>Variable costs</td><td class="num-col">(60)</td><td class="num-col">(85)</td><td class="num-col">(30)</td><td class="num-col">(175)</td></tr>
+    <tr class="total-row"><td><strong>Contribution</strong></td><td class="num-col"><strong>40</strong></td><td class="num-col"><strong>15</strong></td><td class="num-col"><strong>20</strong></td><td class="num-col"><strong>75</strong></td></tr>
+    <tr><td>Fixed costs absorbed (by revenue: 40% / 40% / 20%)</td><td class="num-col">(20)</td><td class="num-col">(20)</td><td class="num-col">(10)</td><td class="num-col">(50)</td></tr>
+    <tr class="total-row"><td><strong>Profit under absorption costing</strong></td><td class="num-col">20</td><td class="num-col" style="color:var(--neg)">(5)</td><td class="num-col">10</td><td class="num-col">25</td></tr>
+  </table></div>
+  <div class="exam-tip"><div class="tip-label">The classic Paper 2 trap</div>Y looks loss-making under absorption costing, but it makes a <strong>positive contribution of $15k</strong>. If Y is dropped, the $50k fixed costs stay, so profit falls from $25k to 75 − 15 − 50 = <strong>$10k</strong>. Keep any product with a positive contribution unless the resources can earn more elsewhere. Make or buy uses the same logic (CTB vs CTM, see 5.6).</div>
+
+  <div class="section-title">Critical path analysis <span class="hl-badge">HL</span> <span style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">· you complete and analyse the network; you won't have to draw it from scratch</span></div>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 235" width="100%" style="max-width:700px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="nt-cp" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#a8493a"/></marker>
+    <marker id="nt-cp2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#9a9da5"/></marker>
+  </defs>
+  <!-- edges: critical in red -->
+  <line x1="94" y1="120" x2="203" y2="72" stroke="#a8493a" stroke-width="2.2" marker-end="url(#nt-cp)"/>
+  <line x1="95" y1="136" x2="301" y2="183" stroke="#9a9da5" stroke-width="1.5" marker-end="url(#nt-cp2)"/>
+  <line x1="246" y1="81" x2="312" y2="166" stroke="#a8493a" stroke-width="2.2" marker-end="url(#nt-cp)"/>
+  <line x1="255" y1="67" x2="451" y2="122" stroke="#9a9da5" stroke-width="1.5" marker-end="url(#nt-cp2)"/>
+  <line x1="354" y1="180" x2="452" y2="141" stroke="#a8493a" stroke-width="2.2" marker-end="url(#nt-cp)"/>
+  <line x1="506" y1="130" x2="600" y2="130" stroke="#a8493a" stroke-width="2.2" marker-end="url(#nt-cp)"/>
+  <!-- edge labels -->
+  <g font-size="11" font-weight="600">
+    <text x="140" y="86" fill="#a8493a">A · 3</text>
+    <text x="180" y="178" fill="#71757f">B · 4</text>
+    <text x="292" y="116" fill="#a8493a">C · 2</text>
+    <text x="345" y="84" fill="#71757f">D · 4</text>
+    <text x="405" y="182" fill="#a8493a">E · 3</text>
+    <text x="536" y="120" fill="#a8493a">F · 2</text>
+  </g>
+  <!-- nodes: number | EST (top) / LFT (bottom) -->
+  <g font-size="11" text-anchor="middle">
+    <g><circle cx="70" cy="130" r="26" fill="#fff" stroke="#1c1e22" stroke-width="1.3"/><line x1="70" y1="104" x2="70" y2="156" stroke="#1c1e22"/><line x1="70" y1="130" x2="96" y2="130" stroke="#1c1e22"/><text x="57" y="134" font-weight="600">1</text><text x="82" y="124" fill="#1f5670">0</text><text x="82" y="146" fill="#a8493a">0</text></g>
+    <g><circle cx="230" cy="60" r="26" fill="#fff" stroke="#1c1e22" stroke-width="1.3"/><line x1="230" y1="34" x2="230" y2="86" stroke="#1c1e22"/><line x1="230" y1="60" x2="256" y2="60" stroke="#1c1e22"/><text x="217" y="64" font-weight="600">2</text><text x="242" y="54" fill="#1f5670">3</text><text x="242" y="76" fill="#a8493a">3</text></g>
+    <g><circle cx="330" cy="190" r="26" fill="#fff" stroke="#1c1e22" stroke-width="1.3"/><line x1="330" y1="164" x2="330" y2="216" stroke="#1c1e22"/><line x1="330" y1="190" x2="356" y2="190" stroke="#1c1e22"/><text x="317" y="194" font-weight="600">3</text><text x="342" y="184" fill="#1f5670">5</text><text x="342" y="206" fill="#a8493a">5</text></g>
+    <g><circle cx="480" cy="130" r="26" fill="#fff" stroke="#1c1e22" stroke-width="1.3"/><line x1="480" y1="104" x2="480" y2="156" stroke="#1c1e22"/><line x1="480" y1="130" x2="506" y2="130" stroke="#1c1e22"/><text x="467" y="134" font-weight="600">4</text><text x="492" y="124" fill="#1f5670">8</text><text x="492" y="146" fill="#a8493a">8</text></g>
+    <g><circle cx="630" cy="130" r="26" fill="#fff" stroke="#1c1e22" stroke-width="1.3"/><line x1="630" y1="104" x2="630" y2="156" stroke="#1c1e22"/><line x1="630" y1="130" x2="656" y2="130" stroke="#1c1e22"/><text x="617" y="134" font-weight="600">5</text><text x="642" y="124" fill="#1f5670">10</text><text x="642" y="146" fill="#a8493a">10</text></g>
+  </g>
+  <g font-size="10">
+    <text x="20" y="20" fill="#3b3f47">Node: number | <tspan fill="#1f5670" font-weight="600">EST</tspan> (top) / <tspan fill="#a8493a" font-weight="600">LFT</tspan> (bottom) · activity · duration (days)</text>
+    <text x="20" y="228" fill="#a8493a" font-weight="600">Critical path A → C → E → F = 10 days</text>
+  </g>
+</svg>
+  </div>
+  <div class="card-grid cols2">
+    <div class="tbl-wrap" style="margin:0"><table>
+      <tr><th>Activity</th><th class="num-col">Duration</th><th class="num-col">EST</th><th class="num-col">LFT</th><th class="num-col">Total float</th><th class="num-col">Free float</th></tr>
+      <tr><td><strong>A</strong></td><td class="num-col">3</td><td class="num-col">0</td><td class="num-col">3</td><td class="num-col">0</td><td class="num-col">0</td></tr>
+      <tr><td>B</td><td class="num-col">4</td><td class="num-col">0</td><td class="num-col">5</td><td class="num-col">1</td><td class="num-col">1</td></tr>
+      <tr><td><strong>C</strong></td><td class="num-col">2</td><td class="num-col">3</td><td class="num-col">5</td><td class="num-col">0</td><td class="num-col">0</td></tr>
+      <tr><td>D</td><td class="num-col">4</td><td class="num-col">3</td><td class="num-col">8</td><td class="num-col">1</td><td class="num-col">1</td></tr>
+      <tr><td><strong>E</strong></td><td class="num-col">3</td><td class="num-col">5</td><td class="num-col">8</td><td class="num-col">0</td><td class="num-col">0</td></tr>
+      <tr><td><strong>F</strong></td><td class="num-col">2</td><td class="num-col">8</td><td class="num-col">10</td><td class="num-col">0</td><td class="num-col">0</td></tr>
+    </table></div>
+    <div class="card" style="margin:0">
+      <ul class="small-list">
+        <li><strong>EST</strong> (forward pass): the earliest an activity can start. Where activities merge, take the <em>largest</em> (node 3 = max(0 + 4, 3 + 2) = 5).</li>
+        <li><strong>LFT</strong> (backward pass): the latest it can finish without delaying the project. Where activities split, take the <em>smallest</em>.</li>
+        <li><strong>Total float</strong> = LFT − duration − EST. For D: 8 − 4 − 3 = <strong>1 day</strong>.</li>
+        <li><strong>Free float</strong> = EST of the next activity − duration − EST. For B: 5 − 4 − 0 = <strong>1 day</strong>.</li>
+        <li><strong>Critical activities</strong> have zero float: any delay delays the whole project.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Simple linear regression <span class="hl-badge">HL</span> <span style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">· links to 4.3 forecasting</span></div>
+  <div class="card-grid cols2">
+    <div class="diagram-wrap" style="margin:0;padding:14px">
+      <svg viewBox="0 0 620 290" width="100%" style="max-width:600px" xmlns="http://www.w3.org/2000/svg">
+  <!-- x 0-10 -> 70-570 ; y 20-70 -> 250-50 -->
+  <g stroke="#eeebe3" stroke-width="1"><line x1="70" y1="210" x2="580" y2="210"/><line x1="70" y1="170" x2="580" y2="170"/><line x1="70" y1="130" x2="580" y2="130"/><line x1="70" y1="90" x2="580" y2="90"/><line x1="70" y1="50" x2="580" y2="50"/></g>
+  <line x1="70" y1="40" x2="70" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <line x1="70" y1="250" x2="580" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <g fill="#9a9da5" font-size="9" text-anchor="end"><text x="62" y="253">20</text><text x="62" y="213">30</text><text x="62" y="173">40</text><text x="62" y="133">50</text><text x="62" y="93">60</text><text x="62" y="53">70</text></g>
+  <g fill="#9a9da5" font-size="9" text-anchor="middle"><text x="70" y="265">0</text><text x="170" y="265">2</text><text x="270" y="265">4</text><text x="370" y="265">6</text><text x="470" y="265">8</text><text x="570" y="265">10</text></g>
+  <text x="325" y="284" text-anchor="middle" fill="#71757f" font-size="11">Advertising spend ($000 a month)</text>
+  <text x="22" y="150" text-anchor="middle" fill="#71757f" font-size="11" transform="rotate(-90,22,150)">Sales (000 units)</text>
+  <line x1="120" y1="227.7" x2="470" y2="98.7" stroke="#2f7350" stroke-width="2"/>
+  <line x1="470" y1="98.7" x2="570" y2="61.9" stroke="#2f7350" stroke-width="2" stroke-dasharray="6,4"/>
+  <g fill="#1f5670"><circle cx="170" cy="210" r="4"/><circle cx="220" cy="194" r="4"/><circle cx="270" cy="166" r="4"/><circle cx="320" cy="158" r="4"/><circle cx="370" cy="130" r="4"/><circle cx="420" cy="122" r="4"/><circle cx="470" cy="98" r="4"/></g>
+  <circle cx="570" cy="61.9" r="4.5" fill="#917216" stroke="#fff" stroke-width="1.5"/>
+  <text x="562" y="50" text-anchor="end" fill="#917216" font-size="9.5" font-weight="600">Extrapolated: ~67k units</text>
+  <text x="90" y="60" fill="#2f7350" font-size="10" font-weight="600">Line of best fit (strong positive correlation)</text>
+</svg>
+    </div>
+    <div class="card" style="margin:0">
+      <ul class="small-list">
+        <li><strong>Scatter diagram:</strong> plot the independent variable (cause, x) against the dependent variable (effect, y)</li>
+        <li><strong>Line of best fit:</strong> a straight line through the middle of the points (about half above, half below)</li>
+        <li><strong>Correlation:</strong> positive or negative; strong (points close to the line) or weak; or none</li>
+        <li><strong>Extrapolation:</strong> extend the line beyond the data to forecast. Here $10k of advertising predicts about 67k units</li>
+      </ul>
+      <div class="ad-box dis" style="margin-top:10px"><h5>Limitations</h5><ul><li>Correlation is not causation (sales may rise because of the season, not the adverts)</li><li>Extrapolating outside the data range is unreliable</li><li>Assumes a straight-line relationship; few data points mean weak conclusions</li></ul></div>
+    </div>
+  </div>
+
+  <div class="section-title">Force field analysis <span class="hl-badge">HL</span> <span style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">· units 2, 5 · good for a "recommend" question</span></div>
+  <div class="card-grid cols2">
+    <div class="tbl-wrap" style="margin:0"><table>
+      <tr><th colspan="2">Decision: should Oasis reshore frame production to Dubai? (weights 1 to 5)</th></tr>
+      <tr><td style="color:var(--pos)"><strong>Driving forces</strong></td><td style="color:var(--neg)"><strong>Restraining forces</strong></td></tr>
+      <tr><td><span class="ff-bar" style="width:80px;background:var(--pos)"></span>Shorter lead times (4)</td><td><span class="ff-bar" style="width:100px;background:var(--neg)"></span>Higher labour costs (5)</td></tr>
+      <tr><td><span class="ff-bar" style="width:60px;background:var(--pos)"></span>Better quality control (3)</td><td><span class="ff-bar" style="width:80px;background:var(--neg)"></span>$400k set-up cost (4)</td></tr>
+      <tr><td><span class="ff-bar" style="width:40px;background:var(--pos)"></span>Government incentives (2)</td><td><span class="ff-bar" style="width:60px;background:var(--neg)"></span>Shortage of skilled technicians (3)</td></tr>
+      <tr><td><span class="ff-bar" style="width:40px;background:var(--pos)"></span>"Made in UAE" branding (2)</td><td></td></tr>
+      <tr class="total-row"><td><strong>Total 11</strong></td><td><strong>Total 12</strong></td></tr>
+    </table></div>
+    <div class="card" style="margin:0">
+      <p class="para">The restraining forces (12) slightly outweigh the driving forces (11), so the change is <strong>not yet</strong> justified. Management can strengthen drivers or weaken restraints, for example by training local technicians or leasing the robot to cut the set-up cost, then re-assess.</p>
+      <p class="para muted">Limitation: the weights are subjective. A different manager could score them differently and reach the opposite decision.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Descriptive statistics <span style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400">· units 2, 3, 4, 5</span></div>
+  <div class="card-grid cols2">
+    <div class="card" style="margin:0">
+      <p class="para">Weekly e-bike sales over 7 weeks: <strong>12, 15, 15, 18, 20, 22, 38</strong></p>
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><td><strong>Mean</strong></td><td>140 ÷ 7 = <strong>20</strong></td></tr>
+        <tr><td><strong>Median</strong> (middle value)</td><td><strong>18</strong></td></tr>
+        <tr><td><strong>Mode</strong> (most frequent)</td><td><strong>15</strong></td></tr>
+        <tr><td><strong>Range</strong></td><td>38 − 12 = <strong>26</strong></td></tr>
+        <tr><td><strong>Quartiles</strong></td><td>Q1 = 15, Q3 = 22, so the interquartile range = <strong>7</strong></td></tr>
+        <tr><td><strong>Standard deviation</strong></td><td>≈ <strong>8</strong> (average spread around the mean)</td></tr>
+      </table></div>
+    </div>
+    <div class="card" style="margin:0">
+      <p class="para">The one-off 38 (perhaps a promotion week) pulls the <strong>mean</strong> above most weeks. The <strong>median</strong> (18) is a better guide to a "typical" week, which matters when planning stock or staff. Charts: bar charts compare categories, pie charts show shares of a whole, and infographics summarise data for stakeholders.</p>
+      <p class="para muted"><strong>Other tools to have ready:</strong> SWOT, STEEPLE, Ansoff (growth strategy, 1.5), BCG (product portfolio, 4.5), circular business models (cradle to cradle, 5.3), Gantt chart <span class="hl-badge">HL</span> (project timing, 5.6), Porter's generic strategies <span class="hl-badge">HL</span> (cost leadership vs differentiation, 4.5) and Hofstede <span class="hl-badge">HL</span> (culture and offshoring, 5.4). <span class="more-link" onclick="goTo('tools')">Tools page →</span></p>
+    </div>
+  </div>
+
+  <!-- ═══ PRACTICE PAPER ═══ -->
+  <div class="part-head" id="nt-practice">Mini practice paper · Oasis Cycles Ltd</div>
+  <p class="part-sub">Written in Paper 2 style (structured parts, then an extended response). Try each question before opening the answer. Use the Oasis accounts in 3.4 above.</p>
+
+  <div class="section-title">Section A</div>
+  <div class="stimulus"><div class="stim-label">Part 1</div>Oasis Cycles Ltd designs and assembles e-bikes in Dubai. Frames are made by a contract manufacturer in Vietnam, and final assembly uses <strong>batch production</strong>. Oasis plans to launch the <em>Dune</em>, a premium e-bike: selling price <strong>$1,500</strong>, variable cost <strong>$900</strong> per bike, extra fixed costs <strong>$360,000</strong> a year. Forecast sales: <strong>800 bikes</strong> a year.</div>
+  <details class="qa"><summary>(a) Define <em>batch production</em>.<span class="marks">[2]</span></summary><div class="ans">Making a set quantity (batch) of identical products together, where the whole batch completes each stage of production before moving on to the next stage. <strong>[1 mark for "groups of identical products", 1 for "each batch moves through stages together"]</strong></div></details>
+  <details class="qa"><summary>(b) Calculate the break-even quantity for the <em>Dune</em> (show your working).<span class="marks">[2]</span></summary><div class="ans">Contribution per unit = 1,500 − 900 = $600<br>Break-even = 360,000 ÷ 600 = <strong>600 bikes</strong></div></details>
+  <details class="qa"><summary>(c) Calculate the margin of safety at forecast sales.<span class="marks">[1]</span></summary><div class="ans">800 − 600 = <strong>200 bikes</strong> (sales can fall 25% before Oasis makes a loss on the Dune)</div></details>
+  <details class="qa"><summary>(d) Calculate the price Oasis must charge to make $180,000 profit on 800 bikes.<span class="marks">[2]</span></summary><div class="ans">Target price = (FC + target profit) ÷ Q + VC = (360,000 + 180,000) ÷ 800 + 900 = 675 + 900 = <strong>$1,575</strong></div></details>
+
+  <div class="stimulus"><div class="stim-label">Part 2</div>Use Oasis Cycles' 2025 statement of profit or loss and statement of financial position (section 3.4). In 2024 the acid test ratio was 1.2 : 1 and debtor days were 38.</div>
+  <details class="qa"><summary>(e) Calculate Oasis's return on capital employed (ROCE).<span class="marks">[2]</span></summary><div class="ans">Capital employed = non-current liabilities + equity = 220 + 700 = $920k<br>ROCE = 180 ÷ 920 × 100 = <strong>19.57%</strong></div></details>
+  <details class="qa"><summary>(f) Calculate the acid test ratio.<span class="marks">[2]</span></summary><div class="ans">(320 − 130) ÷ 200 = <strong>0.95 : 1</strong></div></details>
+  <details class="qa"><summary>(g) Calculate debtor days. <span class="hl-badge">HL</span><span class="marks">[2]</span></summary><div class="ans">150 ÷ 1,200 × 365 = <strong>45.63 days</strong> (about 46 days)</div></details>
+  <details class="qa"><summary>(h) Comment on Oasis's liquidity position.<span class="marks">[4]</span></summary><div class="ans">Liquidity has <strong>weakened</strong>: the acid test fell from 1.2 to 0.95, so Oasis can no longer cover its current liabilities without selling stock. The current ratio of 1.6 is still acceptable, but cash is only $40k against a $30k overdraft. Debtor days rose from 38 to about 46, so customers are paying more slowly, which drains cash. Oasis pays suppliers after about 86 days, which helps for now but risks supplier relationships. Overall, liquidity is <strong>acceptable but deteriorating</strong>, and Oasis should chase debtors and reduce slow-moving stock before taking on big new spending.</div></details>
+
+  <div class="stimulus"><div class="stim-label">Part 3</div>Oasis is considering buying a <strong>robotic frame-welding cell</strong> so it can make frames in-house. Cost: <strong>$400,000</strong>. Expected net cash flows: $120k, $140k, $160k, $160k (years 1 to 4). Discount rate 10%. Oasis needs 2,000 frames a year. The Vietnamese supplier charges <strong>$80</strong> per frame; making them in-house would cost <strong>$50,000</strong> a year in fixed costs plus <strong>$50</strong> per frame.</div>
+  <details class="qa"><summary>(i) Calculate the payback period.<span class="marks">[2]</span></summary><div class="ans">Cumulative: −400, −280, −140, +20. After year 2, $140k is still owed and year 3 brings $160k.<br>Payback = 2 years + (140 ÷ 160) × 12 = <strong>2 years 10.5 months</strong></div></details>
+  <details class="qa"><summary>(j) Calculate the average rate of return (ARR).<span class="marks">[2]</span></summary><div class="ans">Total returns = 580k. [(580 − 400) ÷ 4] ÷ 400 × 100 = 45 ÷ 400 × 100 = <strong>11.25%</strong></div></details>
+  <details class="qa"><summary>(k) Calculate the net present value (NPV) at 10%. <span class="hl-badge">HL</span><span class="marks">[3]</span></summary><div class="ans">120 × 0.9091 = 109.09 · 140 × 0.8264 = 115.70 · 160 × 0.7513 = 120.21 · 160 × 0.6830 = 109.28<br>Total present value = $454.28k. NPV = 454.28 − 400 = <strong>+$54,276</strong></div></details>
+  <details class="qa"><summary>(l) Calculate the cost to buy (CTB) and cost to make (CTM) for 2,000 frames. <span class="hl-badge">HL</span><span class="marks">[3]</span></summary><div class="ans">CTB = 80 × 2,000 = <strong>$160,000</strong><br>CTM = 50,000 + (50 × 2,000) = <strong>$150,000</strong><br>Making is <strong>$10,000 cheaper</strong> a year, and the gap widens as volume grows (break-even quantity: 80Q = 50,000 + 50Q, so Q = 1,667 frames).</div></details>
+
+  <div class="section-title">Section B</div>
+  <div class="stimulus"><div class="stim-label">Part 4</div>Oasis uses <strong>50 frames a week</strong> and keeps a buffer stock of <strong>100 frames</strong>. Lead time from Vietnam is <strong>6 weeks</strong>; in-house production would cut it to <strong>1 week</strong>. The factory's labour turnover last year was 15%. Robotic welding needs skilled technicians, who are scarce in the UAE. Several managers argue the robot should be funded with a new long-term loan.</div>
+  <details class="qa"><summary>(m) Calculate the reorder level for frames from Vietnam and from in-house production. <span class="hl-badge">HL</span><span class="marks">[2]</span></summary><div class="ans">Vietnam: (50 × 6) + 100 = <strong>400 frames</strong><br>In-house: (50 × 1) + 100 = <strong>150 frames</strong>. Much less stock is needed, which frees up cash.</div></details>
+  <details class="qa"><summary>(n) Explain <strong>two</strong> effects of reshoring frame production on Oasis's stakeholders.<span class="marks">[4]</span></summary><div class="ans"><strong>Employees:</strong> new skilled jobs in Dubai and possibly more motivation through training (Herzberg's growth), but also pressure while robots are introduced, and a risk of turnover rising above 15% if technicians are poached.<br><strong>The Vietnamese supplier:</strong> loses a contract worth $160,000 a year, damaging the relationship, which matters if Oasis ever needs it as a backup (contingency planning).<br>(Shareholders, lenders or customers are also valid choices.)</div></details>
+  <details class="qa"><summary>(o) Recommend whether Oasis should reshore frame production using the robotic cell.<span class="marks">[10]</span></summary><div class="ans">
+    <strong>Model answer plan</strong> (top-band answers use the case data throughout, are balanced, and reach a justified conclusion):<br>
+    <strong>1. Define</strong> reshoring and state the decision.<br>
+    <strong>2. For:</strong> NPV is positive (+$54,276) at 10%, so it beats the required return. CTM is $10,000 a year below CTB and the gap grows with volume. The lead time falls from 6 weeks to 1, so the reorder level falls from 400 to 150 frames: less stock, which helps the slowing stock turnover (61 days) and the weak acid test (0.95). Better quality control (QA) and "Made in UAE" branding support the premium <em>Dune</em> (5.3, 4.5).<br>
+    <strong>3. Against:</strong> payback of 2 years 10.5 months is long for fast-changing technology. ARR of 11.25% is only a little above the cost of borrowing (about 9.1%). The cash flows are only forecasts and depend on <em>Dune</em> sales of 800 (the margin of safety is 200 bikes). A $400k loan would raise gearing from 23.9% to (220 + 400) ÷ (920 + 400) ≈ <strong>47%</strong>, while liquidity is already weakening. Skilled technicians are scarce, and Adidas's failed Speedfactory reshoring shows the risks.<br>
+    <strong>4. Judgement:</strong> for example, "Oasis should reshore, but in phases: lease the robot or part-fund it with retained profit to keep gearing below about 35%, and keep the Vietnamese supplier as a contingency until local output is reliable. The decision depends most on whether Dune sales reach the forecast."
+  </div></details>
+  <div class="exam-tip"><div class="tip-label">Last-minute checklist</div>Formula, then working, then answer with units · capital employed = NCL + equity · payback uses <em>undiscounted</em> cash flows · round break-even <strong>up</strong> · every "comment" gets a comparison and a "so what" · the 10-marker needs case data, both sides and a justified conclusion.</div>
+</div>
 <!-- ═══════════════════ TOOLS & FRAMEWORKS ═══════════════════ -->
+
 <div class="page" id="page-tools">
   <div class="page-title">Tools &amp; Frameworks</div>
   <div class="page-subtitle">SWOT · STEEPLE · Ansoff Matrix · BCG Matrix · Decision Trees · Mendelow Matrix</div>
@@ -2666,7 +3395,11 @@ svg text{font-family:'Inter',sans-serif}
 <footer style="text-align:center;padding:28px 20px 36px;font-size:12px;color:var(--faint);border-top:1px solid var(--line2);margin-top:8px">Built by Jonathan</footer>
 </div><!-- /main -->
 <script>
-const pages = ['home','unit1','unit2','unit3','unit4','unit5','tools','formulas','defs'];
+const pages = ['home','nov','unit1','unit2','unit3','unit4','unit5','tools','formulas','defs'];
+function goTo(page, anchor){
+  switchPage(page);
+  if(anchor) setTimeout(()=>{ const el=document.getElementById(anchor); if(el) el.scrollIntoView(); }, 380);
+}
 let current = 'home';
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
