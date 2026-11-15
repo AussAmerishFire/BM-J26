@@ -834,7 +834,7 @@ svg text{font-family:'Inter',sans-serif}
 
 
   <!-- STATEMENT FORMATS -->
-  <div class="section-title">3.3 Statement Formats (learn the layout)</div>
+  <div class="section-title">3.4 Final Accounts · Statement Formats (learn the layout)</div>
   <p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.6">These are the exact structures examiners expect. In Paper 2 you may be asked to complete or construct any of these, so the order of line items matters as much as the figures. Sample numbers are shown so you can see how each total is built.</p>
 
   <div class="card-grid cols2">
@@ -902,7 +902,7 @@ svg text{font-family:'Inter',sans-serif}
       <tr class="total-row"><td>Total current liabilities</td><td class="num-col">7,000</td></tr>
       <tr class="total-row"><td>Net current assets (working capital)</td><td class="num-col">6,000</td></tr>
       <tr><td>Non-current liabilities (long-term debt)</td><td class="num-col">(20,000)</td></tr>
-      <tr class="total-row"><td>NET ASSETS (= capital employed)</td><td class="num-col">39,000</td></tr>
+      <tr class="total-row"><td>NET ASSETS (= total equity)</td><td class="num-col">39,000</td></tr>
       <tr class="group-row"><td colspan="2">Financed by, Equity</td></tr>
       <tr><td class="indent">Share capital</td><td class="num-col">15,000</td></tr>
       <tr><td class="indent">Retained earnings</td><td class="num-col">24,000</td></tr>
@@ -932,8 +932,9 @@ svg text{font-family:'Inter',sans-serif}
 
   <!-- 3.3 P&L -->
   <!-- 3.4 RATIO ANALYSIS -->
-  <div class="section-title">3.4 Ratio Analysis (computed from the statements above)</div>
+  <div class="section-title">3.5 / 3.6 Ratio Analysis (computed from the statements above)</div>
   <p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.6">Every ratio below is worked out from the sample statements at the top of this page, so you can trace each figure. Always interpret a ratio (compare to previous years, competitors, or a benchmark) rather than just stating it.</p>
+  <div class="exam-tip"><div class="tip-label">Capital employed</div>The IB defines <strong>capital employed = non-current liabilities + equity</strong> = 20,000 + 39,000 = <strong>$59,000</strong>. It is <em>not</em> the same as net assets ($39,000), because the long-term loan is added back. Use $59,000 for both ROCE and gearing.</div>
   <div class="card-grid cols2">
     <div class="card">
       <div class="sub-title">Profitability</div>
@@ -950,7 +951,7 @@ svg text{font-family:'Inter',sans-serif}
       <div class="formula-block booklet" style="margin-top:10px"><span class="booklet-tag">★ Data Booklet</span>
         <div class="eq"><span>ROCE</span><span class="equals">=</span>
           <span class="frac"><span class="num">Profit before int. &amp; tax</span><span class="den">Capital employed</span></span><span>× 100</span></div>
-        <div class="formula-note">14,000 ÷ 39,000 × 100 = 35.9%. If above the bank interest rate, the business is creating value.</div>
+        <div class="formula-note">14,000 ÷ 59,000 × 100 = 23.7% (capital employed = non-current liabilities + equity = 20,000 + 39,000). If it is above the bank interest rate, the business is creating value.</div>
       </div>
     </div>
     <div class="card">
@@ -968,14 +969,14 @@ svg text{font-family:'Inter',sans-serif}
       <div class="formula-block booklet" style="margin-top:10px"><span class="booklet-tag">★ Data Booklet</span>
         <div class="eq"><span>Gearing</span><span class="equals">=</span>
           <span class="frac"><span class="num">Non-current liabilities</span><span class="den">Capital employed</span></span><span>× 100</span><span class="label">HL</span></div>
-        <div class="formula-note">20,000 ÷ 39,000 × 100 = 51.3%. Above 50% is high, leaving the firm exposed to interest rate rises.</div>
+        <div class="formula-note">20,000 ÷ 59,000 × 100 = 33.9%. Moderate: under 25% is usually seen as low and over 50% as high. The higher the gearing, the more exposed the firm is to interest rate rises.</div>
       </div>
     </div>
   </div>
 
   <!-- 3.5 DEPRECIATION -->
-  <div class="section-title">3.5 Depreciation</div>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:10px">The systematic allocation of a non-current asset's cost over its useful life. Two IB methods:</p>
+  <div class="section-title">3.4 Depreciation <span class="hl-badge">HL</span></div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px">The systematic allocation of a non-current asset's cost over its useful life. The 2024 syllabus names two methods: straight line and units of production.</p>
   <div class="card-grid cols2">
     <div class="card">
       <div class="sub-title">Straight-Line Method</div>
@@ -988,13 +989,15 @@ svg text{font-family:'Inter',sans-serif}
       <p style="font-size:12px;color:var(--muted);margin-top:8px"><strong>Example:</strong> Machine costs $50,000, residual $5,000, life 5 years.<br>Annual dep. = (50,000−5,000)/5 = <strong>$9,000/year</strong></p>
     </div>
     <div class="card">
-      <div class="sub-title">Reducing Balance Method</div>
+      <div class="sub-title">Units of Production Method</div>
       <div class="formula-block" style="border-color:var(--accent)">
         <div class="eq">
-          <span>Annual Depreciation</span><span class="equals">=</span><span>Rate% × Net Book Value</span>
+          <span>Annual Depreciation</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Cost − Residual Value</span><span class="den">Total expected units of output</span></span>
+          <span>× units produced this year</span>
         </div>
       </div>
-      <p style="font-size:12px;color:var(--muted);margin-top:8px"><strong>Example:</strong> NBV $50,000, rate 20%.<br>Year 1: $10,000. Year 2: 20% × $40,000 = $8,000. Year 3: 20% × $32,000 = $6,400.<br>Higher depreciation early, matches asset use for vehicles/tech.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px"><strong>Example:</strong> same machine, expected to produce 90,000 units in its life.<br>Per unit = (50,000 − 5,000) ÷ 90,000 = $0.50. Year 1: 24,000 units × $0.50 = <strong>$12,000</strong>. Year 2: 20,000 units = <strong>$10,000</strong>.<br>Matches the charge to actual use, so it suits machinery and vehicles. Straight line suits assets used evenly (buildings, furniture).</p>
     </div>
   </div>
 
@@ -1034,31 +1037,32 @@ svg text{font-family:'Inter',sans-serif}
   </div>
 
   <!-- 3.8 INVESTMENT APPRAISAL -->
-  <div class="section-title">3.8 Investment Appraisal <span class="hl-badge">HL</span></div>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Evaluating whether a capital investment is worth making. Three key methods in IB BM.</p>
+  <div class="section-title">3.8 Investment Appraisal</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:12px">Evaluating whether a capital investment is worth making. Payback and ARR are SL and HL; NPV is HL only.</p>
   <div class="card" style="padding:20px">
     <div class="sub-title">Worked Example, New Production Line</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Initial investment: $100,000. Annual net cash flows (after tax): $30,000, $35,000, $40,000, $40,000, $30,000. Discount rate: 10%.</p>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Initial investment: $100,000. Annual net cash flows: $30,000, $35,000, $40,000, $40,000, $30,000. Discount rate: 10%.</p>
     <div class="tbl-wrap"><table>
-      <tr><th>Year</th><th>Net Cash Flow ($)</th><th>Discount Factor @ 10%</th><th>Discounted CF ($)</th><th>Cumulative CF ($)</th></tr>
-      <tr><td>0 (now)</td><td>(100,000)</td><td>1.000</td><td>(100,000)</td><td>(100,000)</td></tr>
-      <tr><td>1</td><td>30,000</td><td>0.909</td><td>27,270</td><td>(72,730)</td></tr>
-      <tr><td>2</td><td>35,000</td><td>0.826</td><td>28,910</td><td>(43,820)</td></tr>
-      <tr><td>3</td><td>40,000</td><td>0.751</td><td>30,040</td><td>(13,780)</td></tr>
-      <tr><td>4</td><td>40,000</td><td>0.683</td><td>27,320</td><td>13,540</td></tr>
-      <tr><td>5</td><td>30,000</td><td>0.621</td><td>18,630</td><td>32,170</td></tr>
+      <tr><th>Year</th><th>Net Cash Flow ($)</th><th>Cumulative CF ($)<br><span style="font-weight:400;color:var(--muted)">undiscounted, for payback</span></th><th>Discount Factor @ 10%</th><th>Discounted CF ($)<br><span style="font-weight:400;color:var(--muted)">for NPV</span></th></tr>
+      <tr><td>0 (now)</td><td>(100,000)</td><td>(100,000)</td><td>1.0000</td><td>(100,000)</td></tr>
+      <tr><td>1</td><td>30,000</td><td>(70,000)</td><td>0.9091</td><td>27,273</td></tr>
+      <tr><td>2</td><td>35,000</td><td>(35,000)</td><td>0.8264</td><td>28,924</td></tr>
+      <tr><td>3</td><td>40,000</td><td>5,000</td><td>0.7513</td><td>30,052</td></tr>
+      <tr><td>4</td><td>40,000</td><td>45,000</td><td>0.6830</td><td>27,320</td></tr>
+      <tr><td>5</td><td>30,000</td><td>75,000</td><td>0.6209</td><td>18,627</td></tr>
     </table></div>
     <div class="card-grid cols3" style="margin-top:16px">
       <div class="card">
         <div class="sub-title">Payback Period</div>
         <div class="formula-block">
           <div class="eq" style="flex-direction:column;align-items:flex-start;gap:4px">
-            <span>Payback = 3 years + </span>
-            <span class="frac"><span class="num">$13,780</span><span class="den">$40,000</span></span>
-            <span>= <strong>3 years 4.1 months</strong></span>
+            <span>Payback = 2 years + </span>
+            <span class="frac"><span class="num">$35,000</span><span class="den">$40,000</span></span>
+            <span>× 12 months</span>
+            <span>= <strong>2 years 10.5 months</strong></span>
           </div>
         </div>
-        <p style="font-size:11px;color:var(--muted)">Simple, ignores time value of money</p>
+        <p style="font-size:11px;color:var(--muted)">Uses the <strong>undiscounted</strong> cumulative cash flow: after year 2, $35,000 is still to be recovered and year 3 brings $40,000. Simple, but ignores the time value of money.</p>
       </div>
       <div class="card">
         <div class="sub-title">ARR (Average Rate of Return)</div>
@@ -1074,12 +1078,12 @@ svg text{font-family:'Inter',sans-serif}
         </div>
       </div>
       <div class="card">
-        <div class="sub-title">NPV</div>
+        <div class="sub-title">NPV <span class="hl-badge">HL</span></div>
         <div class="formula-block">
           <div class="eq" style="flex-direction:column;align-items:flex-start;gap:4px">
-            <span>Sum of discounted CFs = $132,170</span>
-            <span>NPV = 132,170 − 100,000</span>
-            <span><strong>NPV = +$32,170</strong></span>
+            <span>Sum of discounted CFs = $132,196</span>
+            <span>NPV = 132,196 − 100,000</span>
+            <span><strong>NPV = +$32,196</strong></span>
           </div>
         </div>
         <p style="font-size:11px;color:var(--pos)">Positive NPV → invest! More sophisticated; includes time value of money.</p>
@@ -3136,15 +3140,19 @@ svg text{font-family:'Inter',sans-serif}
   </div>
 
   <div class="fs-group">
-    <div class="fs-title">NPV discount table (printed in the booklet) <span class="hl-badge">HL</span></div>
+    <div class="fs-title">NPV discount table (given in the exam paper when needed) <span class="hl-badge">HL</span></div>
     <div class="tbl-wrap"><table>
-      <tr><th>Year</th><th>3%</th><th>4%</th><th>5%</th><th>6%</th><th>8%</th><th>10%</th><th>12%</th><th>20%</th></tr>
-      <tr><td>1</td><td>0.971</td><td>0.962</td><td>0.952</td><td>0.943</td><td>0.926</td><td>0.909</td><td>0.893</td><td>0.833</td></tr>
-      <tr><td>2</td><td>0.943</td><td>0.925</td><td>0.907</td><td>0.890</td><td>0.857</td><td>0.826</td><td>0.797</td><td>0.694</td></tr>
-      <tr><td>3</td><td>0.915</td><td>0.889</td><td>0.864</td><td>0.840</td><td>0.794</td><td>0.751</td><td>0.712</td><td>0.579</td></tr>
-      <tr><td>4</td><td>0.888</td><td>0.855</td><td>0.823</td><td>0.792</td><td>0.735</td><td>0.683</td><td>0.636</td><td>0.482</td></tr>
-      <tr><td>5</td><td>0.863</td><td>0.822</td><td>0.784</td><td>0.747</td><td>0.681</td><td>0.621</td><td>0.567</td><td>0.402</td></tr>
-      <tr><td>6</td><td>0.837</td><td>0.790</td><td>0.746</td><td>0.705</td><td>0.630</td><td>0.564</td><td>0.507</td><td>0.335</td></tr>
+      <tr><th>Year</th><th>4%</th><th>6%</th><th>8%</th><th>10%</th><th>20%</th></tr>
+      <tr><td>1</td><td>0.9615</td><td>0.9434</td><td>0.9259</td><td>0.9091</td><td>0.8333</td></tr>
+      <tr><td>2</td><td>0.9246</td><td>0.8900</td><td>0.8573</td><td>0.8264</td><td>0.6944</td></tr>
+      <tr><td>3</td><td>0.8890</td><td>0.8396</td><td>0.7938</td><td>0.7513</td><td>0.5787</td></tr>
+      <tr><td>4</td><td>0.8548</td><td>0.7921</td><td>0.7350</td><td>0.6830</td><td>0.4823</td></tr>
+      <tr><td>5</td><td>0.8219</td><td>0.7473</td><td>0.6806</td><td>0.6209</td><td>0.4019</td></tr>
+      <tr><td>6</td><td>0.7903</td><td>0.7050</td><td>0.6302</td><td>0.5645</td><td>0.3349</td></tr>
+      <tr><td>7</td><td>0.7599</td><td>0.6651</td><td>0.5835</td><td>0.5132</td><td>0.2791</td></tr>
+      <tr><td>8</td><td>0.7307</td><td>0.6274</td><td>0.5403</td><td>0.4665</td><td>0.2326</td></tr>
+      <tr><td>9</td><td>0.7026</td><td>0.5919</td><td>0.5002</td><td>0.4241</td><td>0.1938</td></tr>
+      <tr><td>10</td><td>0.6756</td><td>0.5584</td><td>0.4632</td><td>0.3855</td><td>0.1615</td></tr>
     </table></div>
     <p style="font-size:12.5px;color:var(--muted)">Discounted cash flow = cash flow × discount factor. NPV = Σ discounted cash flows − original cost.</p>
   </div>
