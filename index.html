@@ -201,6 +201,38 @@ svg text{font-family:'Inter',sans-serif}
 .fs-banner.memorise{background:var(--neg-soft);border:1px solid var(--neg)}
 .fs-section-head{font-size:24px;font-weight:600;color:var(--ink);margin:8px 0 6px;display:flex;align-items:center;gap:10px}
 
+/* ── IN-PAGE CONTENTS + HELPERS ──────────────── */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:-24px 0 30px}
+.toc a{font-size:12px;color:var(--ink2);text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:999px;padding:5px 12px;transition:border-color .15s,color .15s}
+.toc a:hover{border-color:var(--accent);color:var(--accent)}
+.section-title{scroll-margin-top:24px}
+.card-grid > *{min-width:0}
+.para{font-size:13px;color:var(--ink2);line-height:1.65;margin:0 0 10px}
+.para.muted{color:var(--muted)}
+.small-list{font-size:12.5px;color:var(--ink2);padding-left:18px;line-height:1.75}
+.small-list li{margin-bottom:2px}
+.steps{list-style:none;counter-reset:s;padding:0;margin:4px 0}
+.steps li{counter-increment:s;position:relative;padding:7px 0 7px 32px;font-size:12.5px;color:var(--ink2);
+  line-height:1.55;border-bottom:1px solid var(--line2)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:21px;height:21px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:600;display:flex;
+  align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace}
+.exam-tip{background:var(--card);border:1px solid var(--line);border-left:2px solid var(--gold);
+  border-radius:var(--radius);padding:13px 18px;margin:14px 0;font-size:12.5px;color:var(--ink2);line-height:1.6}
+.exam-tip .tip-label{font-size:10.5px;font-weight:600;color:var(--gold);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:4px}
+.new-badge{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:10px;font-weight:600;
+  padding:1px 7px;border-radius:2px;border:1px solid var(--accent-line);margin-left:7px;vertical-align:middle;
+  font-family:'Inter',sans-serif;letter-spacing:.03em}
+.whats-new{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--accent-line);
+  border-left:2px solid var(--accent);border-radius:var(--radius);padding:16px 20px;margin:-12px 0 32px}
+.whats-new .wn-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;padding-top:2px}
+.whats-new p{font-size:13px;color:var(--ink2);line-height:1.6}
+.whats-new a{color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+
 /* ── PROGRESS ────────────────────────────────── */
 #progress{position:fixed;top:0;left:var(--sidebar);right:0;height:2px;background:var(--accent);
   z-index:200;transform:scaleX(0);transform-origin:left;transition:transform .1s}
@@ -230,6 +262,7 @@ svg text{font-family:'Inter',sans-serif}
   .legend{grid-template-columns:1fr}
   .fs-grid{grid-template-columns:1fr}
   .home-hero h1{font-size:38px}
+  .whats-new{flex-direction:column;gap:6px}
   #menu-btn{display:flex!important}
 }
 #menu-btn{display:none;position:fixed;top:14px;left:14px;z-index:150;background:var(--card);
@@ -271,8 +304,13 @@ svg text{font-family:'Inter',sans-serif}
       <div class="stat"><div class="n">5</div><div class="l">Units</div></div>
       <div class="stat"><div class="n">6</div><div class="l">Frameworks</div></div>
       <div class="stat"><div class="n">★</div><div class="l">Booklet formulas flagged</div></div>
-      <div class="stat"><div class="n">30+</div><div class="l">Applied cases</div></div>
+      <div class="stat"><div class="n">45+</div><div class="l">Applied cases</div></div>
     </div>
+  </div>
+
+  <div class="whats-new">
+    <div class="wn-label">New · Sep to Nov</div>
+    <p>Added <a onclick="switchPage('unit4');setTimeout(()=>document.getElementById('u4-43').scrollIntoView(),350)">4.3 Sales forecasting</a> <span class="hl-badge">HL</span> and, in <a onclick="switchPage('unit5')">Unit 5</a>: 5.2 Operations methods, 5.3 Lean production &amp; quality <span class="hl-badge">HL</span>, 5.4 Location, 5.6 Production planning <span class="hl-badge">HL</span>, 5.7 Crisis management &amp; contingency planning <span class="hl-badge">HL</span>. 5.5 Break-even now covers target price and target profit. The Formula Sheet and Definitions have the new terms.</p>
   </div>
 
   <div class="unit-list">
@@ -293,12 +331,12 @@ svg text{font-family:'Inter',sans-serif}
     </div>
     <div class="unit-row" onclick="switchPage('unit4')">
       <div class="u-num">04</div>
-      <div class="u-body"><h3>Marketing</h3><p>Orientation, market share, product life cycle, pricing, promotion, distribution, 7Ps</p></div>
+      <div class="u-body"><h3>Marketing</h3><p>Orientation, market share, sales forecasting (HL), product life cycle, pricing, promotion, distribution, 7Ps</p></div>
       <div class="u-arrow">→</div>
     </div>
     <div class="unit-row" onclick="switchPage('unit5')">
       <div class="u-num">05</div>
-      <div class="u-body"><h3>Operations Management</h3><p>Break-even analysis, contribution, margin of safety, production methods</p></div>
+      <div class="u-body"><h3>Operations Management</h3><p>Operations methods, lean production &amp; quality (HL), location, break-even, production planning (HL), crisis management (HL)</p></div>
       <div class="u-arrow">→</div>
     </div>
     <div class="unit-row" onclick="switchPage('tools')">
@@ -1052,10 +1090,15 @@ svg text{font-family:'Inter',sans-serif}
 <!-- ═══════════════════ UNIT 4 ═══════════════════ -->
 <div class="page" id="page-unit4">
   <div class="page-title">Unit 4 · Marketing</div>
-  <div class="page-subtitle">Market orientation · market share · product life cycle · pricing · promotion · distribution · 7Ps</div>
+  <div class="page-subtitle">Market orientation · market share · sales forecasting (HL) · product life cycle · pricing · promotion · distribution · 7Ps</div>
+  <div class="toc">
+    <a href="#u4-41">4.1 Introduction</a>
+    <a href="#u4-43">4.3 Sales forecasting · HL</a>
+    <a href="#u4-45">4.5 Marketing mix</a>
+  </div>
 
   <!-- 4.1 MARKETING BASICS -->
-  <div class="section-title">4.1 Introduction to Marketing</div>
+  <div class="section-title" id="u4-41">4.1 Introduction to Marketing</div>
   <div class="card-grid cols2">
     <div class="card">
       <div class="sub-title">Market vs Product Orientation</div>
@@ -1086,8 +1129,145 @@ svg text{font-family:'Inter',sans-serif}
   </div>
   <div class="case-box"><div class="case-label">Applied, On Holding AG market position</div><p>On's running shoe segment grew its market share from ~1% to ~6% of the premium performance running market (2021 to 2024). Key concept: a high-growth market (premium athleisure growing ~10% annually) made share gains easier than in a saturated market. Always link market share moves to whether the overall market is growing or shrinking.</p></div>
 
+  <!-- 4.3 SALES FORECASTING (HL) -->
+  <div class="section-title" id="u4-43">4.3 Sales Forecasting <span class="hl-badge">HL</span></div>
+  <p class="para"><strong>Sales forecasting</strong> means predicting a business's future sales (volume or revenue) over a set period, usually by spotting patterns in past sales data. The syllabus assesses the <strong>benefits and limitations of sales forecasting (AO3)</strong>, so you must be able to judge how far a forecast can be trusted. You will understand the limits much better if you know how a time-series forecast is built, so the method is shown below too.</p>
+
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">The four components of a time series</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>Component</th><th>Meaning</th><th>Example</th></tr>
+        <tr><td><strong>Trend</strong></td><td>The underlying long-term direction of sales (rising, falling or flat) once short-term ups and downs are smoothed out</td><td>Global EV sales rising year on year since 2020</td></tr>
+        <tr><td><strong>Seasonal variation</strong></td><td>Regular, predictable changes <em>within a year</em> linked to seasons, weather, holidays or festivals</td><td>Toy sales peak in Q4 (Christmas); UAE retail peaks around Ramadan, Eid and the Dubai Shopping Festival</td></tr>
+        <tr><td><strong>Cyclical variation</strong></td><td>Changes linked to the <em>business (economic) cycle</em> of boom, downturn, recession and recovery, lasting several years</td><td>Car and housing sales fell sharply in the 2008 to 09 recession</td></tr>
+        <tr><td><strong>Random variation</strong></td><td>Irregular, unpredictable one-off events that cannot be forecast</td><td>COVID-19 lockdowns (2020), a viral TikTok trend, a factory fire</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="sub-title">Forecasting methods</div>
+      <p class="para"><strong>Quantitative (time-series analysis)</strong>, based on numerical past data:</p>
+      <ul class="small-list">
+        <li><strong>Moving averages</strong> smooth out seasonal and random fluctuations to reveal the trend</li>
+        <li><strong>Extrapolation</strong> extends the trend line forward into the future (by eye on a graph, or by the average change per period)</li>
+        <li>The forecast is then adjusted by the <strong>average seasonal variation</strong> for that period</li>
+      </ul>
+      <p class="para" style="margin-top:10px"><strong>Qualitative</strong>, based on judgement. These are used when there is little past data, for example for a new product:</p>
+      <ul class="small-list">
+        <li>Market research (surveys, focus groups, test marketing)</li>
+        <li>Expert opinion and the sales force's own estimates</li>
+        <li>Delphi method: a panel of experts revise their forecasts over several rounds until they reach a consensus</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-title">How a four-part moving average forecast is built (worked example, quarterly sales $000)</div>
+  <div class="card-grid cols2">
+    <div class="tbl-wrap" style="margin:0"><table>
+      <tr><th>Quarter</th><th class="num-col">Sales</th><th class="num-col">Centred trend</th><th class="num-col">Seasonal variation (actual − trend)</th></tr>
+      <tr><td>Y1 Q1</td><td class="num-col">40</td><td class="num-col">–</td><td class="num-col">–</td></tr>
+      <tr><td>Y1 Q2</td><td class="num-col">60</td><td class="num-col">–</td><td class="num-col">–</td></tr>
+      <tr><td>Y1 Q3</td><td class="num-col">80</td><td class="num-col">59</td><td class="num-col">+21</td></tr>
+      <tr><td>Y1 Q4</td><td class="num-col">52</td><td class="num-col">61</td><td class="num-col">−9</td></tr>
+      <tr><td>Y2 Q1</td><td class="num-col">48</td><td class="num-col">63</td><td class="num-col">−15</td></tr>
+      <tr><td>Y2 Q2</td><td class="num-col">68</td><td class="num-col">65</td><td class="num-col">+3</td></tr>
+      <tr><td>Y2 Q3</td><td class="num-col">88</td><td class="num-col">67</td><td class="num-col">+21</td></tr>
+      <tr><td>Y2 Q4</td><td class="num-col">60</td><td class="num-col">69</td><td class="num-col">−9</td></tr>
+      <tr><td>Y3 Q1</td><td class="num-col">56</td><td class="num-col">71</td><td class="num-col">−15</td></tr>
+      <tr><td>Y3 Q2</td><td class="num-col">76</td><td class="num-col">73</td><td class="num-col">+3</td></tr>
+      <tr><td>Y3 Q3</td><td class="num-col">96</td><td class="num-col">–</td><td class="num-col">–</td></tr>
+      <tr><td>Y3 Q4</td><td class="num-col">68</td><td class="num-col">–</td><td class="num-col">–</td></tr>
+    </table></div>
+    <div class="card" style="margin:0">
+      <ol class="steps">
+        <li><strong>Moving average.</strong> Add four consecutive quarters and divide by 4. Y1 Q1 to Q4: (40 + 60 + 80 + 52) ÷ 4 = <strong>58</strong>. Roll forward one quarter, Y1 Q2 to Y2 Q1: 240 ÷ 4 = <strong>60</strong>.</li>
+        <li><strong>Centre it.</strong> A four-part average falls <em>between</em> two quarters (between Q2 and Q3), so average each pair: (58 + 60) ÷ 2 = <strong>59</strong>. This is the trend value for Y1 Q3. (A three-part average needs no centring because it lands on the middle period.)</li>
+        <li><strong>Seasonal variation</strong> = actual − trend. Y1 Q3: 80 − 59 = <strong>+21</strong>, so Q3 is a strong quarter.</li>
+        <li><strong>Average seasonal variation</strong> for each quarter: Q1 = −15, Q2 = +3, Q3 = +21, Q4 = −9. (These sum to 0, which is a good check.)</li>
+        <li><strong>Extrapolate the trend.</strong> It rises by $2k per quarter: Y3 Q2 = 73, so Y3 Q3 = 75, Y3 Q4 = 77, Y4 Q1 = 79.</li>
+        <li><strong>Forecast</strong> = extrapolated trend + average seasonal variation. Y4 Q1 = 79 + (−15) = <strong>$64k</strong>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 680 300" width="100%" style="max-width:680px" xmlns="http://www.w3.org/2000/svg">
+  <!-- y gridlines: v -> y = 250 - (v-30)*2.5 -->
+  <g stroke="#eeebe3" stroke-width="1">
+    <line x1="50" y1="225" x2="640" y2="225"/><line x1="50" y1="175" x2="640" y2="175"/>
+    <line x1="50" y1="125" x2="640" y2="125"/><line x1="50" y1="75" x2="640" y2="75"/>
+  </g>
+  <text x="44" y="229" text-anchor="end" fill="#9a9da5" font-size="9">40</text>
+  <text x="44" y="179" text-anchor="end" fill="#9a9da5" font-size="9">60</text>
+  <text x="44" y="129" text-anchor="end" fill="#9a9da5" font-size="9">80</text>
+  <text x="44" y="79" text-anchor="end" fill="#9a9da5" font-size="9">100</text>
+  <!-- axes -->
+  <line x1="50" y1="40" x2="50" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <line x1="50" y1="250" x2="640" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <text x="16" y="145" text-anchor="middle" fill="#71757f" font-size="11" transform="rotate(-90,16,145)">Sales ($000)</text>
+  <!-- forecast zone -->
+  <rect x="578" y="40" width="62" height="210" fill="#f5efdd" opacity=".6"/>
+  <text x="609" y="54" text-anchor="middle" fill="#917216" font-size="9.5" font-weight="600">Forecast</text>
+  <!-- actual sales -->
+  <polyline points="60,225 105,175 150,125 195,195 240,205 285,155 330,105 375,175 420,185 465,135 510,85 555,155"
+    fill="none" stroke="#1f5670" stroke-width="2"/>
+  <g fill="#1f5670"><circle cx="60" cy="225" r="3"/><circle cx="105" cy="175" r="3"/><circle cx="150" cy="125" r="3"/><circle cx="195" cy="195" r="3"/><circle cx="240" cy="205" r="3"/><circle cx="285" cy="155" r="3"/><circle cx="330" cy="105" r="3"/><circle cx="375" cy="175" r="3"/><circle cx="420" cy="185" r="3"/><circle cx="465" cy="135" r="3"/><circle cx="510" cy="85" r="3"/><circle cx="555" cy="155" r="3"/></g>
+  <!-- centred trend (Y1Q3..Y3Q2) and extrapolation -->
+  <line x1="150" y1="177.5" x2="465" y2="142.5" stroke="#2f7350" stroke-width="2.5"/>
+  <line x1="465" y1="142.5" x2="600" y2="127.5" stroke="#2f7350" stroke-width="2" stroke-dasharray="6,4"/>
+  <!-- seasonal adjustment to forecast -->
+  <line x1="600" y1="127.5" x2="600" y2="162" stroke="#917216" stroke-width="1.3" stroke-dasharray="2,2"/>
+  <circle cx="600" cy="127.5" r="3.5" fill="#2f7350"/>
+  <circle cx="600" cy="165" r="5" fill="#917216" stroke="#fff" stroke-width="1.5"/>
+  <text x="596" y="118" text-anchor="end" fill="#2f7350" font-size="9">trend 79</text>
+  <text x="606" y="149" fill="#917216" font-size="9">−15</text>
+  <text x="596" y="184" text-anchor="end" fill="#917216" font-size="9.5" font-weight="600">$64k</text>
+  <!-- x labels -->
+  <g fill="#9a9da5" font-size="8.5" text-anchor="middle">
+    <text x="60" y="263">Q1</text><text x="105" y="263">Q2</text><text x="150" y="263">Q3</text><text x="195" y="263">Q4</text>
+    <text x="240" y="263">Q1</text><text x="285" y="263">Q2</text><text x="330" y="263">Q3</text><text x="375" y="263">Q4</text>
+    <text x="420" y="263">Q1</text><text x="465" y="263">Q2</text><text x="510" y="263">Q3</text><text x="555" y="263">Q4</text>
+    <text x="600" y="263">Q1</text>
+  </g>
+  <g fill="#71757f" font-size="10" text-anchor="middle" font-weight="500">
+    <text x="127.5" y="280">Year 1</text><text x="307.5" y="280">Year 2</text><text x="487.5" y="280">Year 3</text><text x="600" y="280">Year 4</text>
+  </g>
+  <!-- legend -->
+  <line x1="70" y1="52" x2="92" y2="52" stroke="#1f5670" stroke-width="2"/><text x="98" y="55" fill="#3b3f47" font-size="10">Actual sales</text>
+  <line x1="180" y1="52" x2="202" y2="52" stroke="#2f7350" stroke-width="2.5"/><text x="208" y="55" fill="#3b3f47" font-size="10">Trend (centred moving average)</text>
+  <line x1="380" y1="52" x2="402" y2="52" stroke="#2f7350" stroke-width="2" stroke-dasharray="6,4"/><text x="408" y="55" fill="#3b3f47" font-size="10">Extrapolated trend</text>
+</svg>
+  </div>
+  <p class="para muted">The moving average strips out the seasonal zig-zag to reveal a steady upward trend. Extending that trend and then subtracting Q1's typical seasonal dip gives the forecast. Notice the method assumes the pattern of the last three years carries on, which is exactly where its limitations come from.</p>
+
+  <div class="ad-grid">
+    <div class="ad-box adv"><h5>Benefits of sales forecasting</h5><ul>
+      <li><strong>Better planning across the business:</strong> operations (output and stock levels), HR (workforce planning, seasonal hiring), finance (cash flow forecasts and budgets) and marketing (timing of campaigns)</li>
+      <li><strong>Better stock control:</strong> lowers the risk of stockouts or costly excess stock, which supports JIT (see 5.6)</li>
+      <li><strong>Improves cash flow management:</strong> expected revenue feeds directly into the cash flow forecast (3.7)</li>
+      <li><strong>Helps raise finance:</strong> banks and investors expect sales forecasts in a business plan</li>
+      <li><strong>Sets targets</strong> against which actual performance can be measured (variance analysis)</li>
+      <li><strong>Reveals seasonal patterns</strong> so promotions, staffing and production can be planned in advance</li>
+    </ul></div>
+    <div class="ad-box dis"><h5>Limitations of sales forecasting</h5><ul>
+      <li><strong>Based on past data:</strong> assumes the future will follow past patterns, which is often untrue in dynamic markets</li>
+      <li><strong>Random variations cannot be predicted:</strong> pandemics, natural disasters and viral trends make forecasts wrong overnight</li>
+      <li><strong>Less accurate the further ahead</strong> you forecast; not possible for new products with no sales history</li>
+      <li><strong>Ignores qualitative factors</strong> such as competitor actions, changing tastes, new regulations and economic shocks</li>
+      <li><strong>Time-consuming and costly</strong> to collect good data and analyse it, especially for small businesses</li>
+      <li><strong>Risk of bias:</strong> over-optimistic managers may inflate forecasts, and people may treat a forecast as fact</li>
+    </ul></div>
+  </div>
+
+  <div class="card-grid cols3">
+    <div class="case-box"><div class="case-label">Applied, COVID-19 (random variation)</div><p>In March 2020, panic buying sent demand for toilet paper and hand sanitiser soaring while airline demand collapsed. No forecast built on 2015 to 2019 data could have predicted this. It is the clearest example of why random variation limits time-series forecasting.</p></div>
+    <div class="case-box"><div class="case-label">Applied, UAE retail (seasonal variation)</div><p>Dubai retailers plan stock and staffing around predictable peaks such as Ramadan and Eid, the Dubai Shopping Festival and back-to-school. Note the twist: Ramadan follows the lunar calendar and moves about <strong>11 days earlier every year</strong>, so the quarter it falls in shifts over time. A seasonal variation calculated from old data slowly becomes inaccurate.</p></div>
+    <div class="case-box"><div class="case-label">Applied, Zara (reducing reliance on forecasts)</div><p>Zara produces in small batches and uses daily store sales data to decide what to make next, rather than committing to large orders months ahead. It reduces the cost of forecasting errors (unsold stock, markdowns) instead of trying to forecast perfectly. This links forecasting to lean production (5.3).</p></div>
+  </div>
+  <div class="exam-tip"><div class="tip-label">Evaluation tip</div>How reliable a forecast is depends on: <strong>how stable the market is</strong> (mature FMCG versus tech), <strong>how far ahead</strong> it looks, <strong>how much reliable past data</strong> exists, and whether it is <strong>combined with qualitative methods</strong>. A strong conclusion says a forecast is a planning guide, not a guarantee, so firms should update it regularly and have contingency plans (5.7).</div>
+
   <!-- 4.5 PRODUCT LIFE CYCLE -->
-  <div class="section-title">4.5 Product Life Cycle</div>
+  <div class="section-title" id="u4-45">4.5 Product Life Cycle</div>
   <div class="diagram-wrap">
     <svg viewBox="0 0 720 380" width="100%" style="max-width:720px" xmlns="http://www.w3.org/2000/svg">
   <!-- zero line for cash flow -->
@@ -1235,10 +1415,271 @@ svg text{font-family:'Inter',sans-serif}
 <!-- ═══════════════════ UNIT 5 ═══════════════════ -->
 <div class="page" id="page-unit5">
   <div class="page-title">Unit 5 · Operations Management</div>
-  <div class="page-subtitle">Break-even analysis · contribution · margin of safety · production methods · quality</div>
+  <div class="page-subtitle">Operations methods · lean production &amp; quality (HL) · location · break-even · production planning (HL) · crisis management (HL)</div>
+  <div class="toc">
+    <a href="#u5-52">5.2 Operations methods</a>
+    <a href="#u5-53">5.3 Lean &amp; quality · HL</a>
+    <a href="#u5-54">5.4 Location</a>
+    <a href="#u5-55">5.5 Break-even</a>
+    <a href="#u5-56">5.6 Production planning · HL</a>
+    <a href="#u5-57">5.7 Crisis &amp; contingency · HL</a>
+  </div>
+  <p class="para muted" style="margin-top:-12px">Operations management is the business function that turns inputs (land, labour, capital, enterprise) into outputs (goods and services) <strong>efficiently</strong>, meaning at the right quality, cost and time. In exams, operations decisions are almost always linked to cost, quality, sustainability and stakeholder impact.</p>
+
+  <!-- 5.2 OPERATIONS METHODS -->
+  <div class="section-title" id="u5-52">5.2 Operations Methods</div>
+  <p class="para">An <strong>operations method</strong> is the way a business organises production. The syllabus names four: <strong>job, batch, mass/flow and mass customisation</strong>. The right choice depends mainly on the <strong>volume</strong> of output and the <strong>variety</strong> customers want.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Method</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Example</th></tr>
+    <tr><td><strong>Job production</strong></td><td>A single, unique item made to an individual customer's specification, one at a time</td><td>High quality, fully customised; premium prices; motivating, skilled work</td><td>Labour-intensive and slow; high unit cost; no economies of scale</td><td>Burj Khalifa (construction), tailored suits, wedding cakes</td></tr>
+    <tr><td><strong>Batch production</strong></td><td>Groups (batches) of identical products are made together; each batch completes a stage before moving to the next</td><td>Some economies of scale; flexible, since the firm can switch between product variants; lower unit cost than job</td><td>Downtime between batches (cleaning, resetting machines); work-in-progress stock; repetitive tasks; needs careful scheduling</td><td>Bakeries (croissants, then baguettes), clothing in sizes, medicines</td></tr>
+    <tr><td><strong>Mass / flow production</strong></td><td>Continuous production of large volumes of standardised products along a production line</td><td>Lowest unit cost (economies of scale); high output; automation gives consistent quality</td><td>Very high set-up (capital) cost; inflexible; monotonous work can demotivate; one breakdown stops the whole line; needs large, stable demand</td><td>Coca-Cola bottling, car assembly lines, Nestlé</td></tr>
+    <tr><td><strong>Mass customisation</strong></td><td>Combines the low unit cost of mass production with the flexibility to tailor products to each customer, using technology (CAD/CAM, robotics, online configurators)</td><td>Customers pay a premium for personalisation; still some economies of scale; a strong USP; build-to-order means little finished-goods stock</td><td>Complex, costly technology and IT systems; slower delivery than off-the-shelf; harder to plan component stock; in practice only a limited menu of options</td><td>Nike By You trainers, Dell build-to-order laptops, Starbucks drinks, "Share a Coke" named bottles</td></tr>
+  </table></div>
+  <p class="para muted">Cellular production (teams or "cells" that each make a complete unit) is a lean way of organising flow production. It is not named in the 2024 syllabus, but it is useful evidence in a lean production answer.</p>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 680 330" width="100%" style="max-width:680px" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="om-arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#917216"/></marker></defs>
+  <!-- axes -->
+  <line x1="90" y1="30" x2="90" y2="280" stroke="#71757f" stroke-width="1.2"/>
+  <line x1="90" y1="280" x2="640" y2="280" stroke="#71757f" stroke-width="1.2"/>
+  <text x="365" y="314" text-anchor="middle" fill="#71757f" font-size="11">Volume of output →</text>
+  <text x="44" y="155" text-anchor="middle" fill="#71757f" font-size="11" transform="rotate(-90,44,155)">Variety / customisation →</text>
+  <text x="96" y="296" fill="#9a9da5" font-size="9">Low</text><text x="634" y="296" text-anchor="end" fill="#9a9da5" font-size="9">High</text>
+  <text x="82" y="276" text-anchor="end" fill="#9a9da5" font-size="9">Low</text><text x="82" y="40" text-anchor="end" fill="#9a9da5" font-size="9">High</text>
+  <!-- traditional trade-off line -->
+  <line x1="255" y1="99" x2="300" y2="148" stroke="#9a9da5" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <line x1="390" y1="192" x2="465" y2="230" stroke="#9a9da5" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <!-- Job -->
+  <rect x="102" y="55" width="156" height="44" rx="3" fill="#eaf1f4" stroke="#1f5670"/>
+  <text x="180" y="74" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600">Job production</text>
+  <text x="180" y="89" text-anchor="middle" fill="#71757f" font-size="8.5">one-off · bespoke · high unit cost</text>
+  <!-- Batch -->
+  <rect x="275" y="148" width="130" height="44" rx="3" fill="#edf4ef" stroke="#2f7350"/>
+  <text x="340" y="167" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600">Batch production</text>
+  <text x="340" y="182" text-anchor="middle" fill="#71757f" font-size="8.5">groups of identical items</text>
+  <!-- Flow -->
+  <rect x="465" y="230" width="150" height="40" rx="3" fill="#f7eeeb" stroke="#a8493a"/>
+  <text x="540" y="247" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600">Mass / flow production</text>
+  <text x="540" y="261" text-anchor="middle" fill="#71757f" font-size="8.5">standardised · lowest unit cost</text>
+  <!-- Mass customisation -->
+  <rect x="465" y="55" width="150" height="44" rx="3" fill="#f5efdd" stroke="#917216"/>
+  <text x="540" y="74" text-anchor="middle" fill="#1c1e22" font-size="11" font-weight="600">Mass customisation</text>
+  <text x="540" y="89" text-anchor="middle" fill="#71757f" font-size="8.5">high volume AND high variety</text>
+  <!-- tech arrow -->
+  <line x1="540" y1="226" x2="540" y2="106" stroke="#917216" stroke-width="1.6" marker-end="url(#om-arr)"/>
+  <text x="550" y="150" fill="#917216" font-size="9.5" font-weight="600">Technology:</text>
+  <text x="550" y="163" fill="#917216" font-size="9.5">CAD/CAM, robotics,</text>
+  <text x="550" y="176" fill="#917216" font-size="9.5">online configurators</text>
+  <text x="104" y="266" fill="#9a9da5" font-size="9.5">Dashed line = the traditional trade-off: more volume, less variety</text>
+</svg>
+  </div>
+
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title">Factors that influence the choice of method</div>
+      <ul class="small-list">
+        <li><strong>Size and stability of demand:</strong> flow production only pays off with large, predictable demand</li>
+        <li><strong>Nature of the product:</strong> bespoke (job) versus standardised (flow)</li>
+        <li><strong>Finance available:</strong> flow and mass customisation need heavy capital investment</li>
+        <li><strong>Technology:</strong> automation and CAD/CAM make mass customisation possible</li>
+        <li><strong>Business objectives and positioning:</strong> premium quality versus cost leadership</li>
+        <li><strong>Labour skills:</strong> job production needs highly skilled craftspeople</li>
+      </ul>
+      <p class="para muted" style="margin-top:8px">Many firms <strong>combine methods</strong>, for example batch-producing components and then flow-producing the final assembly. Firms also change method as they grow: a start-up bakery may move from job to batch to flow.</p>
+    </div>
+    <div class="card">
+      <div class="case-box" style="margin-top:0"><div class="case-label">Applied, Nike By You (mass customisation)</div><p>Nike members design their own trainers online by choosing colours, materials and custom text. Pairs are built to order and take roughly <strong>3 to 4 weeks</strong> to arrive. Nike charges a premium over the standard shoe but still uses standard lasts and components, so it keeps economies of scale. The trade-off for the customer is slower delivery.</p></div>
+      <div class="case-box"><div class="case-label">Applied, Dell (build-to-order)</div><p>Dell built its business on letting customers configure PCs online and assembling each order from standard components. Because it made only what had been ordered and paid for, it held very little finished-goods stock and freed up working capital. This shows mass customisation working alongside a lean operation.</p></div>
+    </div>
+  </div>
+
+  <!-- 5.3 LEAN PRODUCTION & QUALITY MANAGEMENT (HL) -->
+  <div class="section-title" id="u5-53">5.3 Lean Production &amp; Quality Management <span class="hl-badge">HL</span></div>
+  <p class="para"><strong>Lean production</strong> is an approach to operations that aims to <strong>minimise waste</strong> of all resources (materials, time, labour, space and energy) while maintaining or improving quality. It is "doing more with less". It grew out of the <strong>Toyota Production System</strong> developed by Taiichi Ohno in post-war Japan. The two features in the syllabus are <strong>less waste</strong> and <strong>greater efficiency</strong>.</p>
+
+  <div class="sub-title">The seven wastes (muda), remembered as TIMWOOD</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Waste</th><th>What it means</th><th>Lean fix</th></tr>
+    <tr><td><strong>T</strong>ransport</td><td>Moving materials or products more than necessary</td><td>Re-design factory layout; locate suppliers nearby</td></tr>
+    <tr><td><strong>I</strong>nventory</td><td>Holding more stock than needed, which ties up cash and space</td><td>Just-in-time (JIT)</td></tr>
+    <tr><td><strong>M</strong>otion</td><td>Unnecessary movement by workers (reaching, walking, searching)</td><td>Organised workstations, cell production</td></tr>
+    <tr><td><strong>W</strong>aiting</td><td>Idle time waiting for parts, machines or decisions</td><td>Balanced production lines, preventive maintenance</td></tr>
+    <tr><td><strong>O</strong>verproduction</td><td>Making more than customers have ordered</td><td>"Pull" production: make only what is demanded</td></tr>
+    <tr><td><strong>O</strong>ver-processing</td><td>Doing more work than the customer values (extra steps, over-engineering)</td><td>Simplify processes; kaizen</td></tr>
+    <tr><td><strong>D</strong>efects</td><td>Faulty output that must be scrapped or reworked</td><td>Quality assurance, TQM, quality circles</td></tr>
+  </table></div>
+
+  <div class="sub-title">Methods of lean production</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Continuous improvement (kaizen)</div>
+      <p class="para">Kaizen ("change for the better") is a philosophy of making <strong>small, ongoing, incremental improvements</strong> suggested by <strong>all employees</strong>, from the shop floor to senior managers, rather than relying on occasional big changes.</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Pros</h5><ul><li>Cheap: many small ideas, little capital</li><li>Uses the knowledge of the workers who do the job</li><li>Empowering and motivating (links to Herzberg and Pink)</li><li>Gains add up over time</li></ul></div>
+        <div class="ad-box dis"><h5>Cons</h5><ul><li>Needs a supportive culture and trust</li><li>Results are slow; diminishing returns over time</li><li>Not enough when radical change is needed</li><li>Staff may resist or run out of ideas</li></ul></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Just-in-time (JIT)</div>
+      <p class="para">Raw materials and components <strong>arrive exactly when they are needed</strong> for production, and finished goods are made only when ordered. Little or no buffer stock is held. Stock is often "pulled" through the factory using <strong>kanban</strong> signals (cards or electronic signals that trigger the next order).</p>
+      <div class="ad-grid">
+        <div class="ad-box adv"><h5>Pros</h5><ul><li>Lower storage and insurance costs</li><li>Less cash tied up in stock, so better working capital</li><li>Less waste, damage and obsolescence</li><li>Quality problems show up immediately</li></ul></div>
+        <div class="ad-box dis"><h5>Cons</h5><ul><li>Very vulnerable to supply disruption</li><li>Relies on highly reliable suppliers</li><li>Bulk-buying discounts are lost</li><li>Hard to meet sudden surges in demand</li></ul></div>
+      </div>
+      <p class="para muted" style="margin-top:8px">JIT is compared with just-in-case (JIC) in 5.6.</p>
+    </div>
+  </div>
+
+  <div class="sub-title">Cradle to cradle (C2C) design and manufacturing</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <p class="para">Cradle to cradle (William McDonough and Michael Braungart, 2002) designs products so that at the end of their life <strong>every material is reused</strong>, so there is no "waste". It replaces the linear <strong>cradle to grave</strong> model (take, make, dispose).</p>
+      <ul class="small-list">
+        <li><strong>Biological nutrients:</strong> materials that safely biodegrade and return to nature</li>
+        <li><strong>Technical nutrients:</strong> materials such as metals and some plastics that are recycled again and again in a closed loop without losing quality</li>
+        <li>Products are <strong>designed for disassembly</strong>, use safe and non-toxic materials, and are made using renewable energy</li>
+        <li>Closely linked to <strong>circular business models</strong> and the sustainability key concept</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ad-grid" style="margin-top:0">
+        <div class="ad-box adv"><h5>Benefits</h5><ul><li>Lower raw material costs in the long run</li><li>Stronger CSR image and brand loyalty</li><li>Gets ahead of tightening environmental laws</li><li>Supports the triple bottom line</li></ul></div>
+        <div class="ad-box dis"><h5>Drawbacks</h5><ul><li>High design, R&amp;D and certification costs</li><li>Needs take-back and recovery logistics</li><li>May raise prices</li><li>Relies on customers returning products</li></ul></div>
+      </div>
+      <div class="case-box"><div class="case-label">Applied, Herman Miller and Interface</div><p>Herman Miller designed its Mirra office chair for C2C certification, so it comes apart easily for recycling. Carpet-tile maker Interface runs a take-back programme (ReEntry) that recovers old tiles so their materials can be reused.</p></div>
+    </div>
+  </div>
+
+  <div class="sub-title">Quality control versus quality assurance</div>
+  <div class="tbl-wrap"><table>
+    <tr><th></th><th>Quality control (QC)</th><th>Quality assurance (QA)</th></tr>
+    <tr><td><strong>Approach</strong></td><td><strong>Detects</strong> defects by inspecting output</td><td><strong>Prevents</strong> defects by building quality into every stage of the process</td></tr>
+    <tr><td><strong>When</strong></td><td>Mainly at the end of production (reactive)</td><td>Throughout production (proactive)</td></tr>
+    <tr><td><strong>Who</strong></td><td>Specialist inspectors or a QC department</td><td>Every employee is responsible for their own work</td></tr>
+    <tr><td><strong>Costs</strong></td><td>Inspection costs plus scrap and rework of faulty goods</td><td>Training and system costs, but far less waste</td></tr>
+    <tr><td><strong>Motivation</strong></td><td>Can demotivate, because workers are checked rather than trusted</td><td>Empowering; the foundation of TQM</td></tr>
+    <tr><td><strong>Example</strong></td><td>Random sampling of bottles on a bottling line</td><td>ISO 9001-certified processes, self-checking at each workstation</td></tr>
+  </table></div>
+
+  <div class="sub-title">Methods of managing quality</div>
+  <div class="card-grid cols3">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Quality circles</div>
+      <p class="para">Small groups of workers from the same area meet regularly to <strong>identify, analyse and solve</strong> quality and production problems, then present solutions to management. They began in 1960s Japan (Kaoru Ishikawa).</p>
+      <ul class="small-list"><li><span style="color:var(--pos)">+</span> Uses shop-floor knowledge; motivating; low cost</li><li><span style="color:var(--neg)">−</span> Takes time away from production; managers may ignore ideas; needs a participative culture</li></ul>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Benchmarking</div>
+      <p class="para">Comparing the firm's products, processes or performance with the <strong>best in the industry</strong>, or best practice in any industry, to find and copy improvements. The steps are: choose the area, choose the benchmark partner, collect data, analyse the gap, implement changes, review.</p>
+      <ul class="small-list"><li><span style="color:var(--pos)">+</span> Realistic targets; learns from proven practice</li><li><span style="color:var(--neg)">−</span> Data can be hard to get; copying is not innovating; may not fit the firm's culture</li></ul>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Total quality management (TQM)</div>
+      <p class="para">A <strong>culture</strong> in which every employee at every level is responsible for quality all the time. It focuses on meeting the needs of internal and external customers, with a goal of <strong>zero defects</strong> and continuous improvement.</p>
+      <ul class="small-list"><li><span style="color:var(--pos)">+</span> Lower waste costs; stronger reputation; motivated staff</li><li><span style="color:var(--neg)">−</span> Expensive training; slow culture change; risk of bureaucracy and resistance</li></ul>
+    </div>
+  </div>
+  <div class="case-box"><div class="case-label">Applied, Great Ormond Street Hospital (benchmarking outside the industry)</div><p>The London children's hospital studied Formula 1 pit-stop crews to redesign how patients are handed over from surgery to intensive care. It introduced clear roles, a set sequence and checklists, and reported fewer handover errors. This is benchmarking best practice from a completely different industry.</p></div>
+
+  <div class="sub-title">Impact of lean production and TQM on an organisation</div>
+  <div class="ad-grid">
+    <div class="ad-box adv"><h5>Positive impacts</h5><ul>
+      <li><strong>Costs:</strong> less waste, rework and storage, so lower unit costs and better margins</li>
+      <li><strong>Quality and reputation:</strong> fewer defects, more customer loyalty, and grounds for premium pricing</li>
+      <li><strong>Workforce:</strong> empowerment, teamwork and multi-skilling raise motivation</li>
+      <li><strong>Cash flow:</strong> less money tied up in stock</li>
+      <li><strong>Sustainability:</strong> lower resource use supports the triple bottom line</li>
+    </ul></div>
+    <div class="ad-box dis"><h5>Negative impacts / challenges</h5><ul>
+      <li><strong>Upfront cost:</strong> training, new systems and reorganisation</li>
+      <li><strong>Culture change:</strong> needs commitment from top to bottom and can face resistance (links to 2.5)</li>
+      <li><strong>Stress:</strong> constant improvement and zero-defect targets add pressure</li>
+      <li><strong>Supply risk:</strong> lean (JIT) supply chains break easily in disruptions</li>
+      <li><strong>Job losses:</strong> efficiency gains may mean redundancies, which hurts morale</li>
+    </ul></div>
+  </div>
+
+  <div class="sub-title">National and international quality standards</div>
+  <div class="card-grid cols2">
+    <div class="tbl-wrap" style="margin:0"><table>
+      <tr><th>Standard</th><th>What it certifies</th></tr>
+      <tr><td><strong>ISO 9001</strong> <span style="color:var(--faint)">(international)</span></td><td>Quality management systems: consistent processes, customer focus, continual improvement</td></tr>
+      <tr><td><strong>ISO 14001</strong> <span style="color:var(--faint)">(international)</span></td><td>Environmental management systems</td></tr>
+      <tr><td><strong>ISO 45001</strong> <span style="color:var(--faint)">(international)</span></td><td>Occupational health and safety</td></tr>
+      <tr><td><strong>CE marking</strong> <span style="color:var(--faint)">(EU)</span></td><td>Product meets EU health, safety and environmental requirements; needed to sell many products in the EU</td></tr>
+      <tr><td><strong>BSI Kitemark</strong> <span style="color:var(--faint)">(UK)</span></td><td>Product or service independently certified by the British Standards Institution</td></tr>
+      <tr><td><strong>Emirates Quality Mark</strong> <span style="color:var(--faint)">(UAE)</span></td><td>Ministry of Industry and Advanced Technology (MoIAT) mark for products meeting UAE national standards. Regulated products need ECAS or EQM certification to be sold in the UAE</td></tr>
+    </table></div>
+    <div class="card" style="margin:0">
+      <div class="ad-box adv" style="margin-bottom:12px"><h5>Why standards matter</h5><ul>
+        <li>Signal quality and build trust with customers</li>
+        <li>Often required to win B2B and government contracts</li>
+        <li>Give access to export markets (e.g. CE for the EU)</li>
+        <li>Systematic processes reduce waste and errors</li>
+        <li>A marketing tool and a source of competitive advantage</li>
+      </ul></div>
+      <div class="ad-box dis"><h5>Limitations</h5><ul>
+        <li>Expensive to gain and keep (audits, consultants)</li>
+        <li>Paperwork and bureaucracy</li>
+        <li>They certify the <em>process</em>, not that the product is excellent</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="card-grid cols3">
+    <div class="case-box"><div class="case-label">Applied, Toyota (lean pioneer)</div><p>Toyota's production system combines JIT, kanban and kaizen with <strong>jidoka</strong>: any worker can pull the <em>andon</em> cord to stop the line when they spot a problem, so defects are fixed at the source instead of being passed on. This is QA in action and the model most lean systems copy.</p></div>
+    <div class="case-box"><div class="case-label">Applied, Zara (lean fashion)</div><p>Zara makes much of its fashion range in small batches at factories close to its Spanish headquarters, so new designs can reach stores within weeks. Less overproduction means fewer end-of-season markdowns than rivals who commit to large orders months ahead.</p></div>
+    <div class="case-box"><div class="case-label">Applied, Boeing (quality failure)</div><p>In January 2024, a door plug blew out of a new Alaska Airlines 737 MAX 9 mid-flight. Investigators found the bolts meant to hold it had not been reinstalled at the factory. The US regulator (FAA) capped 737 MAX production at 38 a month. This is a powerful argument for QA and a TQM culture over end-of-line inspection.</p></div>
+  </div>
+
+  <!-- 5.4 LOCATION -->
+  <div class="section-title" id="u5-54">5.4 Location</div>
+  <p class="para">Location decisions are <strong>strategic</strong>: they are long-term, expensive and hard to reverse. Firms weigh <strong>quantitative</strong> factors (costs and revenues that can be measured) against <strong>qualitative</strong> factors (harder to measure, but often decisive).</p>
+  <div class="sub-title">Reasons for a specific location of production</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Factor</th><th>Explanation</th><th>Example</th></tr>
+    <tr><td><strong>Cost of land and premises</strong></td><td>Rent and property prices vary hugely between and within countries</td><td>Back offices moved from city centres to cheaper suburbs or abroad</td></tr>
+    <tr><td><strong>Labour costs and skills</strong></td><td>Wage levels, availability of skilled workers, productivity</td><td>Garment production in Bangladesh and Vietnam; tech talent in Silicon Valley</td></tr>
+    <tr><td><strong>Proximity to the market</strong></td><td>Important for bulk-increasing or perishable goods, and for services that must be near customers</td><td>Coca-Cola bottlers sit near consumers because water adds weight; shops in malls</td></tr>
+    <tr><td><strong>Proximity to raw materials</strong></td><td>Important for bulk-reducing industries, where inputs are heavier than the outputs</td><td>Steel plants near iron ore; oil refineries near oil fields</td></tr>
+    <tr><td><strong>Infrastructure</strong></td><td>Ports, airports, roads, power and internet speed</td><td>Jebel Ali Port and JAFZA make Dubai a global logistics hub</td></tr>
+    <tr><td><strong>Government incentives</strong></td><td>Grants, tax breaks, subsidies and free zones</td><td>UAE free zones (100% foreign ownership, tax incentives); US CHIPS Act grant of $6.6bn to TSMC's Arizona plant</td></tr>
+    <tr><td><strong>Clustering (agglomeration)</strong></td><td>Being near related firms, suppliers and specialist workers</td><td>Silicon Valley; Dubai Internet City</td></tr>
+    <tr><td><strong>Trade barriers</strong></td><td>Producing inside a trade bloc avoids tariffs and quotas</td><td>Nissan opened its Sunderland (UK) plant in 1986 to sell inside the European market</td></tr>
+    <tr><td><strong>Political stability and legal system</strong></td><td>Risk of conflict, corruption or sudden policy change; protection of property rights</td><td>Firms avoiding unstable regions despite low costs</td></tr>
+    <tr><td><strong>Qualitative factors</strong></td><td>Quality of life for staff, culture, language, ethical and environmental impact on the community</td><td>Attracting expatriate managers to Dubai</td></tr>
+  </table></div>
+
+  <div class="sub-title">Ways of reorganising production, nationally and internationally</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <p class="para">Two separate questions sit behind these four terms: <strong>who</strong> does the work (the firm or a third party) and <strong>where</strong> (home country or abroad).</p>
+      <div class="tbl-wrap"><table>
+        <tr><th></th><th>Done by the firm itself</th><th>Done by a third party</th></tr>
+        <tr><td><strong>Home country</strong></td><td>In-house production (insourcing brings work back to here)</td><td>Domestic outsourcing</td></tr>
+        <tr><td><strong>Overseas</strong></td><td>Offshoring to the firm's own overseas site</td><td>Offshore outsourcing (e.g. Apple and Foxconn)</td></tr>
+      </table></div>
+      <p class="para muted">Reshoring is moving offshored work back to the home country. <strong>Nearshoring</strong> (moving it to a nearby country, such as US firms using Mexico) is a related term worth knowing.</p>
+    </div>
+    <div class="exam-tip" style="margin:0"><div class="tip-label">Common mistake</div>Outsourcing and offshoring are <strong>not</strong> the same. Outsourcing is about <em>who</em> does the work (an external provider), and that provider can be in the same country. Offshoring is about <em>where</em> the work is done (another country), and the firm can offshore its own factory. Always define both precisely.</div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Method</th><th>Meaning</th><th>Advantages</th><th>Disadvantages</th><th>Example</th></tr>
+    <tr><td><strong>Outsourcing / subcontracting</strong></td><td>Transferring an internal activity to an external provider (a third party)</td><td>Lower costs (specialists have economies of scale); focus on core activities; access to expertise; fixed costs become variable</td><td>Less control over quality; dependence on the supplier; ethical risks in suppliers' factories; IP and confidentiality risks; job losses at home</td><td>Apple outsources iPhone assembly to Foxconn; Nike uses contract factories; firms outsource cleaning, payroll and IT support</td></tr>
+    <tr><td><strong>Offshoring</strong></td><td>Relocating business activities (own or outsourced) to another country</td><td>Lower labour and operating costs; access to new markets and talent; 24-hour working across time zones</td><td>Language, cultural and time-zone barriers; longer supply chains (lead times, disruption risk); harder quality control; bad publicity over home job losses; political and exchange-rate risk</td><td>Apple moved most US-bound iPhone assembly to India in 2025 ("China + 1"); call centres in India and the Philippines</td></tr>
+    <tr><td><strong>Insourcing</strong></td><td>Bringing a previously outsourced activity back in-house, done by the firm's own employees</td><td>More control over quality and processes; protects IP and data; can be cheaper at high volume; faster response</td><td>Higher fixed costs (staff, equipment, training); loses specialist expertise and economies of scale; takes management time</td><td>General Motors brought most of its IT work back in-house from 2012, hiring thousands of IT staff</td></tr>
+    <tr><td><strong>Reshoring</strong></td><td>Returning previously offshored activities to the home country</td><td>Shorter, more resilient supply chains; better quality control; "Made in…" branding and PR; government support</td><td>Higher labour and operating costs; skills shortages at home; expensive set-up</td><td>US chip production: CHIPS Act subsidies helped bring TSMC's advanced fab to Arizona, though it was delayed by skilled-labour shortages</td></tr>
+  </table></div>
+  <div class="card-grid cols3">
+    <div class="case-box"><div class="case-label">Applied, Apple (offshoring and diversification)</div><p>Facing US–China tariffs, Apple shifted most iPhones sold in the US to Indian assembly in 2025. India now makes roughly a quarter of all iPhones. Yet most iPhones are still made in China, Indian costs are higher, and the move covers mainly final assembly. A good example to evaluate: <strong>risk reduction versus cost</strong>.</p></div>
+    <div class="case-box"><div class="case-label">Applied, Adidas Speedfactory (failed reshoring)</div><p>Adidas opened robot-run "Speedfactories" in Ansbach, Germany (2016) and Atlanta, USA (2017) to make trainers close to customers. In November 2019 it announced both would close and the technology would move to suppliers in Asia, "where the know-how and suppliers are located". Reshoring is <em>not</em> automatically a success.</p></div>
+    <div class="case-box"><div class="case-label">Applied, why reshoring is rising</div><p>Drivers include rising wages in China, supply chain shocks (COVID-19, the 2021 Suez Canal blockage), tariffs and trade wars, automation reducing the labour-cost advantage, government subsidies, and the lower carbon footprint of shorter supply chains.</p></div>
+  </div>
 
   <!-- 5.5 BREAK-EVEN -->
-  <div class="section-title">5.5 Break-Even Analysis</div>
+  <div class="section-title" id="u5-55">5.5 Break-Even Analysis</div>
   <p style="font-size:13px;color:var(--muted);margin-bottom:8px">The break-even point (BEP) is the output level where <strong>total revenue = total costs</strong>, i.e. profit is zero. Below BEP the firm makes a loss, above it makes a profit.</p>
 
   <div class="card-grid cols2">
@@ -1284,6 +1725,34 @@ svg text{font-family:'Inter',sans-serif}
       </div>
     </div>
   </div>
+
+  <!-- TARGET PROFIT / PRICE / AVERAGE COST (syllabus aspects) -->
+  <div class="card-grid cols3">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Target profit</div>
+      <div class="formula-block" style="margin-top:0">
+        <div class="eq"><span>Profit</span><span class="equals">=</span><span>(P × Q) − (FC + VC/unit × Q)</span></div>
+        <div class="formula-note">Or (contribution per unit × Q) − FC. Selling 7,000 units: (4 × 7,000) − 20,000 = <strong>$8,000</strong></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Target price</div>
+      <div class="formula-block" style="margin-top:0">
+        <div class="eq"><span>Target price</span><span class="equals">=</span>
+          <span class="frac"><span class="num">FC + target profit</span><span class="den">Q</span></span><span>+ VC/unit</span></div>
+        <div class="formula-note">To make $10,000 profit selling 6,000 units: (20,000 + 10,000) ÷ 6,000 + 6 = <strong>$11</strong>. Check: 66,000 − (20,000 + 36,000) = 10,000 ✓</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">Average cost</div>
+      <div class="formula-block" style="margin-top:0">
+        <div class="eq"><span>Average cost</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Total costs</span><span class="den">Q</span></span></div>
+        <div class="formula-note">At 5,000 units: 50,000 ÷ 5,000 = $10, the same as the price, which is why profit is zero at the BEP. Average cost falls as output rises because fixed costs are spread over more units.</div>
+      </div>
+    </div>
+  </div>
+  <p class="para muted"><strong>Total contribution versus contribution per unit:</strong> each unit sold contributes $4 towards fixed costs. Once <em>total</em> contribution ($4 × units) exceeds the $20,000 fixed costs, every extra unit adds $4 of profit. Always round a break-even quantity <strong>up</strong> to the next whole unit.</p>
 
   <!-- BREAK-EVEN CHART - geometrically correct -->
   <div class="sub-title">Break-Even Chart (BEP correctly at 5,000 units / $50,000)</div>
@@ -1336,14 +1805,16 @@ svg text{font-family:'Inter',sans-serif}
   <p style="font-size:12px;color:var(--muted)">The break-even point is where the <span style="color:var(--accent)">Revenue</span> line crosses the <span style="color:var(--neg)">Total Cost</span> line, at exactly 5,000 units and $50,000. Left of this = loss; right of this = profit. The vertical gap between revenue and total cost beyond BEP = profit at that output.</p>
 
   <!-- Effect of changes -->
-  <div class="sub-title">Effects of Changes on Break-Even</div>
+  <div class="sub-title">Effects of Changes on Break-Even, Profit and Margin of Safety (actual sales stay at 7,000 units)</div>
   <div class="tbl-wrap"><table>
-    <tr><th>Change</th><th>Effect on BEP</th><th>Why</th></tr>
-    <tr><td>↑ Selling price</td><td>BEP falls (fewer units needed)</td><td>Higher contribution per unit</td></tr>
-    <tr><td>↑ Variable cost</td><td>BEP rises (more units needed)</td><td>Lower contribution per unit</td></tr>
-    <tr><td>↑ Fixed cost</td><td>BEP rises</td><td>More contribution needed to cover FC</td></tr>
-    <tr><td>↓ Selling price</td><td>BEP rises</td><td>Lower contribution per unit</td></tr>
+    <tr><th>Change</th><th class="num-col">Contribution / unit</th><th class="num-col">BEP (units)</th><th class="num-col">Margin of safety</th><th class="num-col">Profit</th><th>Why / on the chart</th></tr>
+    <tr><td><strong>Base case</strong> (P $10, VC $6, FC $20k)</td><td class="num-col">$4</td><td class="num-col">5,000</td><td class="num-col">2,000</td><td class="num-col">$8,000</td><td>Starting point</td></tr>
+    <tr><td>↑ Price to $12</td><td class="num-col">$6</td><td class="num-col">3,334</td><td class="num-col">3,666</td><td class="num-col">$22,000</td><td>Higher contribution, so BEP falls. Revenue line pivots up (steeper)</td></tr>
+    <tr><td>↓ Price to $8</td><td class="num-col">$2</td><td class="num-col">10,000</td><td class="num-col">−3,000</td><td class="num-col">−$6,000</td><td>Contribution halves, so BEP doubles and the firm makes a loss at 7,000 units</td></tr>
+    <tr><td>↑ Variable cost to $7</td><td class="num-col">$3</td><td class="num-col">6,667</td><td class="num-col">333</td><td class="num-col">$1,000</td><td>Lower contribution, so BEP rises. Total cost line pivots up (steeper)</td></tr>
+    <tr><td>↑ Fixed costs to $24k</td><td class="num-col">$4</td><td class="num-col">6,000</td><td class="num-col">1,000</td><td class="num-col">$4,000</td><td>More contribution needed. FC and TC lines shift up in parallel</td></tr>
   </table></div>
+  <p class="para muted">Caution: the table assumes sales stay at 7,000 units. In reality a price rise usually <em>reduces</em> quantity demanded (depending on PED), so the higher margin may be partly cancelled out. Mention this in evaluation.</p>
 
   <!-- Limitations -->
   <div class="card-grid cols2">
@@ -1363,19 +1834,298 @@ svg text{font-family:'Inter',sans-serif}
         <li>Fixed costs may change at higher output (stepped costs)</li>
         <li>Only suitable for single-product analysis</li>
         <li>Static, ignores market changes over time</li>
+        <li>Ignores qualitative factors and demand: it shows costs at each output, not how many units customers will actually buy at that price</li>
+        <li>Only as reliable as the cost and revenue data used</li>
       </ul></div>
     </div>
   </div>
 
-  <!-- PRODUCTION METHODS -->
-  <div class="section-title">5.x Production Methods</div>
+  <!-- 5.6 PRODUCTION PLANNING (HL) -->
+  <div class="section-title" id="u5-56">5.6 Production Planning <span class="hl-badge">HL</span></div>
+  <p class="para">Production planning makes sure the right inputs are in the right place at the right time, at the lowest cost. It covers the <strong>supply chain</strong>, <strong>stock control</strong>, and measuring <strong>how efficiently resources are used</strong>. Paper 2 often asks you to calculate these metrics and then decide (make or buy, JIT or JIC).</p>
+
+  <div class="sub-title">The supply chain process (local and global)</div>
+  <p class="para">A <strong>supply chain</strong> is the network of organisations, people, activities and resources involved in getting a product from raw materials to the final consumer. <strong>Supply chain management</strong> coordinates every stage so that cost, speed and quality are optimised.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 225" width="100%" style="max-width:700px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="sc-arr" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1f5670"/></marker>
+    <marker id="sc-arr2" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#6a5a8c"/></marker>
+    <marker id="sc-arr3" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#2f7350"/></marker>
+  </defs>
+  <text x="350" y="40" text-anchor="middle" fill="#1f5670" font-size="10.5" font-weight="600">Goods flow downstream →</text>
+  <g font-size="11" text-anchor="middle">
+    <rect x="15" y="58" width="110" height="50" rx="3" fill="#fff" stroke="#1f5670"/><text x="70" y="80" fill="#1c1e22" font-weight="600">Suppliers</text><text x="70" y="95" fill="#71757f" font-size="8.5">raw materials, parts</text>
+    <rect x="152" y="58" width="110" height="50" rx="3" fill="#fff" stroke="#1f5670"/><text x="207" y="80" fill="#1c1e22" font-weight="600">Manufacturer</text><text x="207" y="95" fill="#71757f" font-size="8.5">production</text>
+    <rect x="289" y="58" width="110" height="50" rx="3" fill="#fff" stroke="#1f5670"/><text x="344" y="80" fill="#1c1e22" font-weight="600">Distribution</text><text x="344" y="95" fill="#71757f" font-size="8.5">warehousing, logistics</text>
+    <rect x="426" y="58" width="110" height="50" rx="3" fill="#fff" stroke="#1f5670"/><text x="481" y="80" fill="#1c1e22" font-weight="600">Retailers</text><text x="481" y="95" fill="#71757f" font-size="8.5">shops, online</text>
+    <rect x="563" y="58" width="110" height="50" rx="3" fill="#fff" stroke="#2f7350"/><text x="618" y="80" fill="#1c1e22" font-weight="600">Consumers</text><text x="618" y="95" fill="#71757f" font-size="8.5">final customer</text>
+  </g>
+  <g stroke="#1f5670" stroke-width="1.3">
+    <line x1="126" y1="76" x2="147" y2="76" marker-end="url(#sc-arr)"/><line x1="263" y1="76" x2="284" y2="76" marker-end="url(#sc-arr)"/>
+    <line x1="400" y1="76" x2="421" y2="76" marker-end="url(#sc-arr)"/><line x1="537" y1="76" x2="558" y2="76" marker-end="url(#sc-arr)"/>
+  </g>
+  <g stroke="#6a5a8c" stroke-width="1.3">
+    <line x1="151" y1="92" x2="130" y2="92" marker-end="url(#sc-arr2)"/><line x1="288" y1="92" x2="267" y2="92" marker-end="url(#sc-arr2)"/>
+    <line x1="425" y1="92" x2="404" y2="92" marker-end="url(#sc-arr2)"/><line x1="562" y1="92" x2="541" y2="92" marker-end="url(#sc-arr2)"/>
+  </g>
+  <text x="412" y="130" text-anchor="middle" fill="#6a5a8c" font-size="10.5" font-weight="600">← Information (orders, demand data) and cash flow upstream</text>
+  <path d="M618,110 C618,215 207,215 207,114" fill="none" stroke="#2f7350" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#sc-arr3)"/>
+  <text x="412" y="212" text-anchor="middle" fill="#2f7350" font-size="10">Reverse logistics: returns, repair, recycling (circular economy)</text>
+</svg>
+  </div>
   <div class="tbl-wrap"><table>
-    <tr><th>Method</th><th>Description</th><th>Advantages</th><th>Disadvantages</th><th>Example</th></tr>
-    <tr><td>Job production</td><td>One-off, bespoke items made individually</td><td>High quality, customised, premium price</td><td>Labour-intensive, slow, expensive</td><td>Savile Row suits, wedding cakes</td></tr>
-    <tr><td>Batch production</td><td>Groups of identical products made in stages</td><td>Flexible, some economies of scale</td><td>Downtime between batches, storage costs</td><td>Bakery bread runs, pharmaceuticals</td></tr>
-    <tr><td>Flow (mass) production</td><td>Continuous production of standardised goods</td><td>Low unit cost, high output, automation</td><td>High setup cost, inflexible, monotonous work</td><td>Coca-Cola bottling, car assembly lines</td></tr>
-    <tr><td>Cellular production</td><td>Teams (cells) responsible for a complete stage</td><td>Motivating, flexible, quality ownership</td><td>Requires multi-skilled staff, setup cost</td><td>Toyota lean manufacturing cells</td></tr>
+    <tr><th></th><th>Local supply chain (suppliers nearby / same country)</th><th>Global supply chain (suppliers across countries)</th></tr>
+    <tr><td><strong>Cost</strong></td><td>Inputs may cost more, but transport and tariff costs are lower</td><td>Access to the cheapest or most specialised suppliers, with economies of scale</td></tr>
+    <tr><td><strong>Lead time</strong></td><td>Short, so it suits JIT</td><td>Long, so higher buffer stocks are needed</td></tr>
+    <tr><td><strong>Control and quality</strong></td><td>Easier to monitor, communicate and fix problems</td><td>Harder to monitor quality and ethics (e.g. child labour, safety)</td></tr>
+    <tr><td><strong>Risk</strong></td><td>Less exposed to global shocks, but depends on a few suppliers</td><td>Exposed to disruption (pandemics, blocked shipping routes, conflict), exchange-rate swings and tariffs</td></tr>
+    <tr><td><strong>Sustainability</strong></td><td>Lower carbon footprint; supports the local community</td><td>Higher transport emissions</td></tr>
   </table></div>
+  <div class="case-box"><div class="case-label">Applied, Ever Given (global supply chain risk)</div><p>In March 2021 the container ship <em>Ever Given</em> blocked the Suez Canal for six days, holding up hundreds of ships and billions of dollars of trade each day. Firms running lean, global supply chains suddenly faced missing components. It became a standard example of why some firms are moving to local suppliers or holding more stock.</p></div>
+
+  <div class="sub-title">Just-in-time (JIT) versus just-in-case (JIC)</div>
+  <div class="tbl-wrap"><table>
+    <tr><th></th><th>Just-in-time (JIT)</th><th>Just-in-case (JIC)</th></tr>
+    <tr><td><strong>Meaning</strong></td><td>Stock arrives only when needed; minimal or no buffer stock</td><td>Large buffer stocks are held in case of supply delays or demand surges</td></tr>
+    <tr><td><strong>Storage costs</strong></td><td>Low</td><td>High (warehousing, insurance, security)</td></tr>
+    <tr><td><strong>Working capital</strong></td><td>Little cash tied up in stock</td><td>A lot of cash tied up in stock (opportunity cost)</td></tr>
+    <tr><td><strong>Risk of stockouts</strong></td><td>High if supply is disrupted</td><td>Low</td></tr>
+    <tr><td><strong>Purchasing</strong></td><td>Frequent small orders, so bulk discounts are lost</td><td>Bulk buying, so purchasing economies of scale</td></tr>
+    <tr><td><strong>Waste</strong></td><td>Little risk of obsolescence or spoilage</td><td>Risk of stock going out of date, perishing or being damaged</td></tr>
+    <tr><td><strong>Meeting sudden demand</strong></td><td>Difficult</td><td>Easy</td></tr>
+    <tr><td><strong>Best suited to</strong></td><td>Stable demand, reliable (often nearby) suppliers, lean culture</td><td>Uncertain supply or demand, critical inputs, seasonal peaks</td></tr>
+  </table></div>
+  <div class="case-box"><div class="case-label">Applied, Toyota (JIT pioneer holds some stock just in case)</div><p>After the 2011 Fukushima earthquake disrupted its suppliers, Toyota's business continuity plan required suppliers to hold roughly <strong>two to six months of semiconductor stock</strong>. When the global chip shortage hit in 2021, Toyota kept production largely on target while rivals cut output, although it later had to cut production too as the shortage dragged on. The lesson: the best answer is often a <strong>hybrid</strong>, using JIT for most parts and JIC for critical, hard-to-replace ones.</p></div>
+
+  <div class="sub-title">Stock control chart</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="tbl-wrap" style="margin-top:0"><table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td><strong>Buffer stock</strong></td><td>The minimum stock held as a safety margin against late deliveries or unexpected demand</td></tr>
+        <tr><td><strong>Lead time</strong></td><td>The time between placing an order and receiving it</td></tr>
+        <tr><td><strong>Reorder level</strong></td><td>The stock level at which a new order is placed</td></tr>
+        <tr><td><strong>Reorder quantity</strong></td><td>The amount of stock ordered each time</td></tr>
+        <tr><td><strong>Maximum stock</strong></td><td>The highest stock level the firm wants to hold (buffer + reorder quantity)</td></tr>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="formula-block" style="margin-top:0">
+        <div class="eq"><span>Reorder level</span><span class="equals">=</span><span>(usage per week × lead time) + buffer stock</span></div>
+        <div class="formula-note">(100 units × 2 weeks) + 200 = <strong>400 units</strong></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Reorder quantity</span><span class="equals">=</span><span>maximum stock − buffer stock</span></div>
+        <div class="formula-note">800 − 200 = <strong>600 units</strong>. Stock falls from 800 to 200 in 6 weeks at 100 units a week, so a new order is placed at week 4 (stock = 400) and arrives at week 6.</div>
+      </div>
+      <p class="para muted">The chart assumes usage and lead time are constant. In reality they vary, which is exactly why buffer stock is held.</p>
+    </div>
+  </div>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 320" width="100%" style="max-width:700px" xmlns="http://www.w3.org/2000/svg">
+  <!-- buffer zone: stock 0-200 -> y 260-216 -->
+  <rect x="80" y="216" width="510" height="44" fill="#f7eeeb"/>
+  <!-- axes -->
+  <line x1="80" y1="30" x2="80" y2="260" stroke="#71757f" stroke-width="1.2"/>
+  <line x1="80" y1="260" x2="600" y2="260" stroke="#71757f" stroke-width="1.2"/>
+  <text x="30" y="145" text-anchor="middle" fill="#71757f" font-size="11" transform="rotate(-90,30,145)">Stock level (units)</text>
+  <text x="430" y="304" text-anchor="middle" fill="#71757f" font-size="11">Time (weeks)</text>
+  <!-- y labels: y = 260 - 0.22*s -->
+  <g fill="#9a9da5" font-size="9" text-anchor="end">
+    <text x="72" y="263">0</text><text x="72" y="219">200</text><text x="72" y="175">400</text><text x="72" y="131">600</text><text x="72" y="87">800</text>
+  </g>
+  <!-- x labels: x = 80 + 28w -->
+  <g fill="#9a9da5" font-size="9" text-anchor="middle">
+    <text x="80" y="275">0</text><text x="136" y="275">2</text><text x="192" y="275">4</text><text x="248" y="275">6</text><text x="304" y="275">8</text>
+    <text x="360" y="275">10</text><text x="416" y="275">12</text><text x="472" y="275">14</text><text x="528" y="275">16</text><text x="584" y="275">18</text>
+  </g>
+  <!-- reference lines -->
+  <line x1="80" y1="84" x2="590" y2="84" stroke="#1f5670" stroke-width="1" stroke-dasharray="5,4"/>
+  <line x1="80" y1="172" x2="590" y2="172" stroke="#917216" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <line x1="80" y1="216" x2="590" y2="216" stroke="#a8493a" stroke-width="1.2"/>
+  <text x="596" y="87" fill="#1f5670" font-size="9.5" font-weight="600">Max stock 800</text>
+  <text x="596" y="175" fill="#917216" font-size="9.5" font-weight="600">Reorder level 400</text>
+  <text x="596" y="219" fill="#a8493a" font-size="9.5" font-weight="600">Buffer stock 200</text>
+  <!-- sawtooth -->
+  <path d="M80,84 L248,216 L248,84 L416,216 L416,84 L584,216 L584,84" fill="none" stroke="#1c1e22" stroke-width="2"/>
+  <!-- reorder points -->
+  <g fill="#917216" stroke="#fff" stroke-width="1.5"><circle cx="192" cy="172" r="4.5"/><circle cx="360" cy="172" r="4.5"/><circle cx="528" cy="172" r="4.5"/></g>
+  <text x="184" y="194" text-anchor="end" fill="#917216" font-size="9.5">Order placed</text>
+  <text x="254" y="236" fill="#a8493a" font-size="9">Delivery arrives</text>
+  <!-- reorder quantity label -->
+  <text x="408" y="120" text-anchor="end" fill="#3b3f47" font-size="9.5" font-weight="600">Reorder</text>
+  <text x="408" y="133" text-anchor="end" fill="#3b3f47" font-size="9.5" font-weight="600">quantity</text>
+  <text x="408" y="146" text-anchor="end" fill="#3b3f47" font-size="9.5">= 600 units</text>
+  <!-- lead time bracket -->
+  <path d="M192,284 L192,290 L248,290 L248,284" fill="none" stroke="#6a5a8c" stroke-width="1.2"/>
+  <text x="220" y="303" text-anchor="middle" fill="#6a5a8c" font-size="9.5" font-weight="600">Lead time = 2 weeks</text>
+</svg>
+  </div>
+
+  <div class="sub-title">Measuring efficiency: capacity, defects and productivity</div>
+  <p class="para muted">Worked example: a furniture maker can produce up to 10,000 chairs a month. This month it made 8,000 chairs, 240 of them defective, using 40 workers × 160 hours (6,400 labour hours) and 10 machines × 200 hours (2,000 machine hours).</p>
+  <div class="card-grid cols2">
+    <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+      <div class="eq"><span>Capacity utilisation rate</span><span class="equals">=</span>
+        <span class="frac"><span class="num">actual output</span><span class="den">productive capacity</span></span><span>× 100</span></div>
+      <div class="formula-note">8,000 ÷ 10,000 × 100 = <strong>80%</strong>. High utilisation spreads fixed costs over more units: with $40,000 fixed costs, that is $5 per chair at 8,000 but $4 at 10,000. Near 100%, though, there is no slack for maintenance or extra orders, and staff come under strain.</div>
+    </div>
+    <div class="formula-block">
+      <div class="eq"><span>Defect rate</span><span class="equals">=</span>
+        <span class="frac"><span class="num">number of defective units</span><span class="den">total output</span></span><span>× 100</span></div>
+      <div class="formula-note">240 ÷ 8,000 × 100 = <strong>3%</strong>. Lower is better. Reduce it with QA, TQM and training. Six Sigma aims for just 3.4 defects per million opportunities.</div>
+    </div>
+    <div class="formula-block">
+      <div class="eq"><span>Labour productivity</span><span class="equals">=</span>
+        <span class="frac"><span class="num">total output</span><span class="den">total hours worked</span></span></div>
+      <div class="formula-note">8,000 ÷ 6,400 = <strong>1.25 chairs per labour hour</strong> (or per worker: 8,000 ÷ 40 = 200 chairs). Improve it with training, motivation, better equipment and incentive pay.</div>
+    </div>
+    <div class="formula-block">
+      <div class="eq"><span>Capital productivity</span><span class="equals">=</span>
+        <span class="frac"><span class="num">total output</span><span class="den">total capital hours (machine hours)</span></span></div>
+      <div class="formula-note">8,000 ÷ 2,000 = <strong>4 chairs per machine hour</strong>. Improve it with maintenance, upgraded technology and less downtime.</div>
+    </div>
+    <div class="formula-block booklet"><span class="booklet-tag">★ Data Booklet</span>
+      <div class="eq"><span>Productivity rate</span><span class="equals">=</span>
+        <span class="frac"><span class="num">total output</span><span class="den">total input</span></span><span>× 100</span></div>
+      <div class="formula-note">Inputs and outputs measured in the same units, often value. Output worth $400,000 from inputs costing $320,000: 400,000 ÷ 320,000 × 100 = <strong>125%</strong>.</div>
+    </div>
+    <div class="formula-block">
+      <div class="eq"><span>Operating leverage</span><span class="equals">=</span>
+        <span class="frac"><span class="num">Q × (P − AVC)</span><span class="den">Q × (P − AVC) − TFC</span></span><span class="label">= total contribution ÷ profit</span></div>
+      <div class="formula-note">Using the 5.5 firm at 7,000 units: 28,000 ÷ 8,000 = <strong>3.5</strong>. A 10% rise in sales gives a <strong>35%</strong> rise in profit (7,700 units: profit = $10,800). It works in reverse too: a 10% fall in sales cuts profit by 35%.</div>
+    </div>
+  </div>
+  <div class="exam-tip"><div class="tip-label">Interpreting operating leverage</div>Operating leverage shows how sensitive profit is to a change in sales. It is <strong>high</strong> when fixed costs are large compared with variable costs (airlines, car makers, software firms). Profits then grow fast in booms but collapse in downturns, so the firm is riskier. It is <strong>low</strong> when most costs are variable. Operating leverage is very high just above break-even and falls as output grows.</div>
+
+  <div class="sub-title">Cost to buy (CTB) versus cost to make (CTM)</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="formula-block" style="margin-top:0">
+        <div class="eq"><span>CTB</span><span class="equals">=</span><span>P × Q</span><span class="label">P = supplier's price per unit</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>CTM</span><span class="equals">=</span><span>TFC + (AVC × Q)</span></div>
+      </div>
+      <p class="para" style="margin-top:10px"><strong>Worked example:</strong> a firm needs 5,000 components. A supplier charges $8 each: <strong>CTB</strong> = 8 × 5,000 = <strong>$40,000</strong>. Making them in-house costs fixed costs of $15,000 plus $4 per unit: <strong>CTM</strong> = 15,000 + (4 × 5,000) = <strong>$35,000</strong>. Making saves $5,000.</p>
+      <p class="para"><strong>Break-even quantity:</strong> 8Q = 15,000 + 4Q, so Q = <strong>3,750</strong>. Below 3,750 units buying is cheaper (no fixed costs); above it making is cheaper.</p>
+    </div>
+    <div class="diagram-wrap" style="margin:0;padding:16px">
+      <svg viewBox="0 0 620 300" width="100%" style="max-width:600px" xmlns="http://www.w3.org/2000/svg">
+  <!-- x: 0-6000 -> 80-560 ; y: 0-50k -> 250-50 -->
+  <g stroke="#eeebe3" stroke-width="1">
+    <line x1="80" y1="210" x2="570" y2="210"/><line x1="80" y1="170" x2="570" y2="170"/><line x1="80" y1="130" x2="570" y2="130"/><line x1="80" y1="90" x2="570" y2="90"/><line x1="80" y1="50" x2="570" y2="50"/>
+  </g>
+  <line x1="80" y1="40" x2="80" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <line x1="80" y1="250" x2="570" y2="250" stroke="#71757f" stroke-width="1.2"/>
+  <g fill="#9a9da5" font-size="9" text-anchor="end">
+    <text x="72" y="253">0</text><text x="72" y="213">10k</text><text x="72" y="173">20k</text><text x="72" y="133">30k</text><text x="72" y="93">40k</text><text x="72" y="53">50k</text>
+  </g>
+  <g fill="#9a9da5" font-size="9" text-anchor="middle">
+    <text x="80" y="265">0</text><text x="160" y="265">1000</text><text x="240" y="265">2000</text><text x="320" y="265">3000</text><text x="400" y="265">4000</text><text x="480" y="265">5000</text><text x="560" y="265">6000</text>
+  </g>
+  <text x="325" y="290" text-anchor="middle" fill="#71757f" font-size="11">Quantity of components</text>
+  <text x="26" y="150" text-anchor="middle" fill="#71757f" font-size="11" transform="rotate(-90,26,150)">Cost ($)</text>
+  <line x1="80" y1="250" x2="560" y2="58" stroke="#1f5670" stroke-width="2"/>
+  <line x1="80" y1="190" x2="560" y2="94" stroke="#a8493a" stroke-width="2"/>
+  <line x1="380" y1="130" x2="380" y2="250" stroke="#2f7350" stroke-width="1" stroke-dasharray="4,3"/>
+  <circle cx="380" cy="130" r="5" fill="#2f7350" stroke="#fff" stroke-width="1.5"/>
+  <text x="386" y="242" fill="#2f7350" font-size="9.5" font-weight="600">3,750 units</text>
+  <text x="200" y="150" text-anchor="middle" fill="#1f5670" font-size="10" font-weight="600">← Buy is cheaper</text>
+  <text x="470" y="200" text-anchor="middle" fill="#a8493a" font-size="10" font-weight="600">Make is cheaper →</text>
+  <line x1="96" y1="58" x2="118" y2="58" stroke="#1f5670" stroke-width="2"/><text x="124" y="61" fill="#3b3f47" font-size="10">CTB = $8 × Q</text>
+  <line x1="96" y1="76" x2="118" y2="76" stroke="#a8493a" stroke-width="2"/><text x="124" y="79" fill="#3b3f47" font-size="10">CTM = $15,000 + $4 × Q</text>
+</svg>
+    </div>
+  </div>
+  <div class="ad-grid">
+    <div class="ad-box adv"><h5>Qualitative reasons to MAKE</h5><ul>
+      <li>Full control over quality and delivery times</li>
+      <li>Protects secret designs, recipes and IP</li>
+      <li>Uses spare capacity (fixed costs are already paid)</li>
+      <li>Not dependent on a supplier who may raise prices or fail</li>
+      <li>The activity is a core competency or a source of competitive advantage</li>
+    </ul></div>
+    <div class="ad-box adv"><h5>Qualitative reasons to BUY</h5><ul>
+      <li>Supplier has specialist expertise and economies of scale</li>
+      <li>No capital investment or extra staff needed</li>
+      <li>Flexibility to change volumes or suppliers</li>
+      <li>Management can focus on core activities</li>
+      <li>Quicker to start: no set-up time</li>
+    </ul></div>
+  </div>
+  <p class="para muted">The make-or-buy decision links directly to outsourcing and insourcing (5.4). A quantitative CTB/CTM answer should always be weighed against these qualitative factors.</p>
+
+  <!-- 5.7 CRISIS MANAGEMENT & CONTINGENCY PLANNING (HL) -->
+  <div class="section-title" id="u5-57">5.7 Crisis Management &amp; Contingency Planning <span class="hl-badge">HL</span></div>
+  <p class="para">A <strong>crisis</strong> is an unexpected event that threatens serious harm to a business, its stakeholders, its reputation or even its survival, and needs urgent action. Examples include product recalls, cyberattacks and IT failures, natural disasters, pandemics, supply chain collapse, industrial accidents and scandals.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th></th><th>Contingency planning</th><th>Crisis management</th></tr>
+    <tr><td><strong>Definition</strong></td><td>Planning <strong>in advance</strong> for unexpected events: identifying possible crises and preparing responses ("what if?" plans, Plan B)</td><td>The steps taken <strong>when a crisis actually happens</strong> to limit the damage and return to normal operations</td></tr>
+    <tr><td><strong>Timing</strong></td><td>Before the crisis</td><td>During and after the crisis</td></tr>
+    <tr><td><strong>Nature</strong></td><td>Proactive</td><td>Reactive</td></tr>
+    <tr><td><strong>Aim</strong></td><td>Be ready, so any crisis does less harm and is shorter</td><td>Contain the crisis, protect stakeholders and reputation, restore normality</td></tr>
+    <tr><td><strong>Examples</strong></td><td>Backup servers, alternative suppliers, buffer stock, fire drills, insurance, a ready-made communications plan</td><td>Product recall, setting up a crisis team, press conferences, public apology, compensation</td></tr>
+  </table></div>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 198" width="100%" style="max-width:700px" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="cm-arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#71757f"/></marker></defs>
+  <rect x="15" y="20" width="205" height="112" rx="3" fill="#eaf1f4" stroke="#1f5670"/>
+  <text x="117" y="42" text-anchor="middle" fill="#1f5670" font-size="10" font-weight="600" letter-spacing=".06em">BEFORE</text>
+  <text x="117" y="60" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Contingency planning</text>
+  <g fill="#3b3f47" font-size="9.5" text-anchor="middle"><text x="117" y="80">Identify risks (likelihood × impact)</text><text x="117" y="95">Prepare responses and resources</text><text x="117" y="110">Train staff and rehearse plans</text></g>
+  <line x1="222" y1="76" x2="243" y2="76" stroke="#71757f" stroke-width="1.4" marker-end="url(#cm-arr)"/>
+  <rect x="248" y="20" width="205" height="112" rx="3" fill="#f7eeeb" stroke="#a8493a"/>
+  <text x="350" y="42" text-anchor="middle" fill="#a8493a" font-size="10" font-weight="600" letter-spacing=".06em">DURING</text>
+  <text x="350" y="60" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Crisis management</text>
+  <g fill="#3b3f47" font-size="9.5" text-anchor="middle"><text x="350" y="80">Transparency · Communication</text><text x="350" y="95">Speed · Control</text><text x="350" y="110">Protect people, contain damage</text></g>
+  <line x1="455" y1="76" x2="476" y2="76" stroke="#71757f" stroke-width="1.4" marker-end="url(#cm-arr)"/>
+  <rect x="481" y="20" width="205" height="112" rx="3" fill="#edf4ef" stroke="#2f7350"/>
+  <text x="583" y="42" text-anchor="middle" fill="#2f7350" font-size="10" font-weight="600" letter-spacing=".06em">AFTER</text>
+  <text x="583" y="60" text-anchor="middle" fill="#1c1e22" font-size="12" font-weight="600">Recovery &amp; review</text>
+  <g fill="#3b3f47" font-size="9.5" text-anchor="middle"><text x="583" y="80">Restore normal operations</text><text x="583" y="95">Rebuild trust and reputation</text><text x="583" y="110">Learn lessons</text></g>
+  <path d="M583,134 C583,180 117,180 117,138" fill="none" stroke="#71757f" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#cm-arr)"/>
+  <text x="350" y="188" text-anchor="middle" fill="#71757f" font-size="10">Lessons learned feed back into an updated contingency plan</text>
+</svg>
+  </div>
+
+  <div class="sub-title">Factors that affect effective crisis management</div>
+  <div class="card-grid cols2">
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">1 · Transparency</div>
+      <p class="para">Being <strong>open and honest</strong> about what happened, why, and what is being done. Hiding information destroys trust when it comes out, and it usually does come out.</p>
+      <div class="case-box"><div class="case-label">Poor transparency, Boeing 737 MAX</div><p>Pilots were not fully told about the MCAS flight-control software. After two crashes (Lion Air, 2018; Ethiopian Airlines, 2019) killed 346 people, the aircraft was grounded worldwide for about 20 months. The damage to Boeing's reputation and finances lasted for years.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">2 · Communication</div>
+      <p class="para">Clear, consistent, timely messages to <strong>all stakeholders</strong> (customers, employees, investors, media, government) through suitable channels, ideally from one trusted spokesperson, and showing empathy.</p>
+      <div class="case-box"><div class="case-label">Good communication, KFC UK (2018)</div><p>After switching its delivery contract to DHL, KFC ran out of chicken and had to shut hundreds of its roughly 900 UK restaurants. It apologised with humour in a full-page "FCK, we're sorry" advert (an empty bucket with the letters rearranged) and kept customers updated on which stores were open. The ad won a Gold Lion at Cannes and turned a supply failure into a PR success.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">3 · Speed</div>
+      <p class="para">Acting <strong>quickly</strong> to contain the crisis before it escalates. Delay looks like indifference and lets rumours spread, and on social media that can happen in hours. Speed must not come at the cost of accuracy, though.</p>
+      <div class="case-box"><div class="case-label">Fast action, Johnson &amp; Johnson Tylenol (1982)</div><p>After seven people died from Tylenol capsules that had been laced with cyanide, J&amp;J warned the public and recalled about 31 million bottles nationwide within a week, at a cost of around $100m. It then relaunched with tamper-evident packaging. This is still the textbook example of putting customer safety first.</p></div>
+    </div>
+    <div class="card">
+      <div class="sub-title" style="margin-top:0">4 · Control</div>
+      <p class="para">Management <strong>takes charge</strong> of the situation and the narrative. That means a crisis team with clear roles and authority, controlling the flow of information, physically containing the problem (e.g. a recall), and steering operations back to normal.</p>
+      <div class="case-box"><div class="case-label">Loss of control, Delta and CrowdStrike (2024)</div><p>A faulty CrowdStrike software update crashed Windows systems worldwide on 19 July 2024. Most airlines recovered within a day or two, but Delta's crew-tracking system could not cope. It cancelled over 7,000 flights in five days, affecting about 1.3 million passengers, at a cost of roughly $550m.</p></div>
+    </div>
+  </div>
+
+  <div class="sub-title">Impact of contingency planning (syllabus: cost, time, risks, safety)</div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Factor</th><th>Benefits of contingency planning</th><th>Limitations of contingency planning</th></tr>
+    <tr><td><strong>Cost</strong></td><td>Reduces the financial damage of a crisis (lost sales, fines, compensation, recovery costs); may lower insurance premiums</td><td>Costs money up front (backup systems, buffer stock, consultants, training, drills) for events that may never happen, which is an opportunity cost</td></tr>
+    <tr><td><strong>Time</strong></td><td>Faster response and recovery because key decisions are already made; less downtime</td><td>Takes management time to write, test and update plans; plans go out of date quickly</td></tr>
+    <tr><td><strong>Risks</strong></td><td>Risks are identified and assessed in advance (likelihood × impact), reducing uncertainty and reassuring investors, insurers and lenders</td><td>Impossible to foresee every crisis ("black swan" events such as COVID-19); can create a false sense of security</td></tr>
+    <tr><td><strong>Safety</strong></td><td>Protects employees and customers (evacuation drills, recall procedures), meets legal duties and protects reputation</td><td>Only works if staff are trained and plans are rehearsed regularly; people's behaviour in a real crisis is unpredictable</td></tr>
+  </table></div>
+  <div class="card-grid cols2">
+    <div class="case-box"><div class="case-label">Applied, contingency planning paying off</div><p>Toyota's post-2011 business continuity plan (chip stockpiles held by suppliers, multiple suppliers for the same part, and a database mapping its suppliers' suppliers) let it react far faster than rivals when the 2021 chip shortage hit. It is a clear example of upfront <strong>cost</strong> buying lower <strong>risk</strong> and saving <strong>time</strong>.</p></div>
+    <div class="exam-tip" style="margin:14px 0"><div class="tip-label">Evaluation tip</div>Contingency planning is most worthwhile when a crisis is <strong>likely</strong> or its impact would be <strong>severe</strong>: airlines, banks, food producers, chemical plants, hospitals. Small firms may lack the money and time, so they should prioritise their biggest risks. A strong conclusion: contingency planning cannot prevent crises, but it greatly improves the <em>quality</em> of crisis management when one strikes.</div>
+  </div>
 </div>
 <!-- ═══════════════════ TOOLS & FRAMEWORKS ═══════════════════ -->
 <div class="page" id="page-tools">
@@ -1703,7 +2453,53 @@ svg text{font-family:'Inter',sans-serif}
       <div class="formula-block">
         <div class="eq"><span>Total costs</span><span class="equals">=</span><span>fixed costs + (variable cost per unit × quantity)</span></div>
       </div>
+      <div class="formula-block">
+        <div class="eq"><span>Target price</span><span class="equals">=</span>
+          <span class="frac"><span class="num">fixed costs + target profit</span><span class="den">quantity</span></span><span>+ variable cost per unit</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Average cost</span><span class="equals">=</span>
+          <span class="frac"><span class="num">total costs</span><span class="den">quantity</span></span></div>
+      </div>
     </div>
+  </div>
+
+  <div class="fs-group">
+    <div class="fs-title">Production planning · HL only <span class="new-badge">NEW</span></div>
+    <div class="fs-grid">
+      <div class="formula-block">
+        <div class="eq"><span>Defect rate</span><span class="equals">=</span>
+          <span class="frac"><span class="num">number of defective units</span><span class="den">total output</span></span><span>× 100</span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Labour productivity</span><span class="equals">=</span>
+          <span class="frac"><span class="num">total output</span><span class="den">total hours worked</span></span><span class="label">HL</span></div>
+        <div class="formula-note">Can also be per worker: total output ÷ number of workers</div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Capital productivity</span><span class="equals">=</span>
+          <span class="frac"><span class="num">total output</span><span class="den">total capital hours</span></span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Operating leverage</span><span class="equals">=</span>
+          <span class="frac"><span class="num">Q × (P − AVC)</span><span class="den">Q × (P − AVC) − TFC</span></span><span class="label">HL</span></div>
+        <div class="formula-note">= total contribution ÷ profit. Shows the % change in profit for each 1% change in sales</div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Cost to buy (CTB)</span><span class="equals">=</span><span>P × Q</span><span class="label">HL</span></div>
+        <div class="formula-note">P = price per unit charged by the supplier, Q = quantity</div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Cost to make (CTM)</span><span class="equals">=</span><span>TFC + (AVC × Q)</span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Reorder level</span><span class="equals">=</span><span>(usage per period × lead time) + buffer stock</span><span class="label">HL</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Reorder quantity</span><span class="equals">=</span><span>maximum stock − buffer stock</span><span class="label">HL</span></div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:10px">Only capacity utilisation rate and productivity rate are printed in the Data Booklet (see ★ above). Everything in this group must be learned.</p>
   </div>
 
   <div class="fs-group">
@@ -1716,6 +2512,13 @@ svg text{font-family:'Inter',sans-serif}
       <div class="formula-block">
         <div class="eq"><span>Market growth</span><span class="equals">=</span>
           <span class="frac"><span class="num">change in market size</span><span class="den">original market size</span></span><span>× 100</span></div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Seasonal variation</span><span class="equals">=</span><span>actual sales − trend value</span><span class="label">HL · sales forecasting</span></div>
+        <div class="formula-note">Trend = centred moving average (a four-part average must be centred)</div>
+      </div>
+      <div class="formula-block">
+        <div class="eq"><span>Sales forecast</span><span class="equals">=</span><span>extrapolated trend + average seasonal variation</span><span class="label">HL</span></div>
       </div>
     </div>
   </div>
@@ -1791,6 +2594,13 @@ svg text{font-family:'Inter',sans-serif}
     <div class="def-card"><div class="term">Penetration pricing</div><div class="defn">Setting a low initial price to quickly gain market share.</div></div>
     <div class="def-card"><div class="term">Price skimming</div><div class="defn">Setting a high initial price on a new product, lowering it over time.</div></div>
     <div class="def-card"><div class="term">Marketing mix</div><div class="defn">The combination of elements (7Ps) used to market a product effectively.</div></div>
+    <div class="def-card"><div class="term">Sales forecasting <span class="hl-badge">HL</span></div><div class="defn">Predicting a business's future sales over a given period, usually by analysing patterns in past sales data.</div></div>
+    <div class="def-card"><div class="term">Trend <span class="hl-badge">HL</span></div><div class="defn">The underlying long-term direction of a data series once short-term fluctuations are removed.</div></div>
+    <div class="def-card"><div class="term">Seasonal variation <span class="hl-badge">HL</span></div><div class="defn">Regular, predictable changes in sales within a year, linked to seasons, weather or holidays.</div></div>
+    <div class="def-card"><div class="term">Cyclical variation <span class="hl-badge">HL</span></div><div class="defn">Fluctuations in sales linked to the business cycle (boom, recession, recovery) over several years.</div></div>
+    <div class="def-card"><div class="term">Random variation <span class="hl-badge">HL</span></div><div class="defn">Irregular, unpredictable changes in sales caused by one-off events.</div></div>
+    <div class="def-card"><div class="term">Moving average <span class="hl-badge">HL</span></div><div class="defn">An average of a set number of consecutive periods, recalculated as each new period is added, used to smooth data and reveal the trend.</div></div>
+    <div class="def-card"><div class="term">Extrapolation <span class="hl-badge">HL</span></div><div class="defn">Extending a trend line beyond the existing data to forecast future values.</div></div>
   </div>
 
   <div class="section-title">Unit 5 · Operations</div>
@@ -1801,6 +2611,37 @@ svg text{font-family:'Inter',sans-serif}
     <div class="def-card"><div class="term">Fixed costs</div><div class="defn">Costs that do not change with the level of output (e.g. rent, salaries).</div></div>
     <div class="def-card"><div class="term">Variable costs</div><div class="defn">Costs that change directly with the level of output (e.g. raw materials).</div></div>
     <div class="def-card"><div class="term">Capacity utilisation</div><div class="defn">The proportion of maximum possible output that a business is currently producing.</div></div>
+    <div class="def-card"><div class="term">Target price</div><div class="defn">The price a firm must charge to reach a target profit at a given level of output.</div></div>
+    <div class="def-card"><div class="term">Job production</div><div class="defn">Making a single, unique product to an individual customer's specification.</div></div>
+    <div class="def-card"><div class="term">Batch production</div><div class="defn">Making a set quantity of identical products together, each batch completing one stage before moving to the next.</div></div>
+    <div class="def-card"><div class="term">Mass / flow production</div><div class="defn">Continuous production of large volumes of standardised products along a production line.</div></div>
+    <div class="def-card"><div class="term">Mass customisation</div><div class="defn">Using flexible, technology-driven production to tailor products to individual customers at close to mass-production unit cost.</div></div>
+    <div class="def-card"><div class="term">Outsourcing / subcontracting</div><div class="defn">Transferring a business activity to an external provider (third party) instead of doing it in-house.</div></div>
+    <div class="def-card"><div class="term">Offshoring</div><div class="defn">Relocating business activities to another country, whether done by the firm itself or by a third party.</div></div>
+    <div class="def-card"><div class="term">Insourcing</div><div class="defn">Bringing a previously outsourced activity back in-house to be done by the firm's own employees.</div></div>
+    <div class="def-card"><div class="term">Reshoring</div><div class="defn">Returning previously offshored business activities to the home country.</div></div>
+    <div class="def-card"><div class="term">Lean production <span class="hl-badge">HL</span></div><div class="defn">An approach to operations that minimises waste of all resources while maintaining or improving quality.</div></div>
+    <div class="def-card"><div class="term">Kaizen <span class="hl-badge">HL</span></div><div class="defn">Continuous improvement through small, incremental changes suggested by all employees.</div></div>
+    <div class="def-card"><div class="term">Just-in-time (JIT) <span class="hl-badge">HL</span></div><div class="defn">A stock control system in which inputs arrive only when needed for production, so little or no buffer stock is held.</div></div>
+    <div class="def-card"><div class="term">Just-in-case (JIC) <span class="hl-badge">HL</span></div><div class="defn">Holding large buffer stocks to protect against supply delays or unexpected rises in demand.</div></div>
+    <div class="def-card"><div class="term">Cradle to cradle <span class="hl-badge">HL</span></div><div class="defn">Designing products so that all materials can be safely returned to nature or recycled indefinitely, eliminating waste.</div></div>
+    <div class="def-card"><div class="term">Quality control <span class="hl-badge">HL</span></div><div class="defn">Detecting defects by inspecting products, mainly at the end of production.</div></div>
+    <div class="def-card"><div class="term">Quality assurance <span class="hl-badge">HL</span></div><div class="defn">Preventing defects by building quality into every stage of production, with all employees responsible.</div></div>
+    <div class="def-card"><div class="term">Quality circle <span class="hl-badge">HL</span></div><div class="defn">A small group of workers who meet regularly to identify and solve quality and production problems.</div></div>
+    <div class="def-card"><div class="term">Benchmarking <span class="hl-badge">HL</span></div><div class="defn">Comparing a firm's products, processes or performance with industry best practice to identify improvements.</div></div>
+    <div class="def-card"><div class="term">Total quality management (TQM) <span class="hl-badge">HL</span></div><div class="defn">A culture in which every employee is responsible for continuously improving quality to meet customer needs, aiming for zero defects.</div></div>
+    <div class="def-card"><div class="term">Supply chain <span class="hl-badge">HL</span></div><div class="defn">The network of organisations, activities and resources involved in moving a product from raw materials to the final consumer.</div></div>
+    <div class="def-card"><div class="term">Buffer stock <span class="hl-badge">HL</span></div><div class="defn">The minimum level of stock held as a safety margin against delays or unexpected demand.</div></div>
+    <div class="def-card"><div class="term">Lead time <span class="hl-badge">HL</span></div><div class="defn">The time between placing an order for stock and receiving it.</div></div>
+    <div class="def-card"><div class="term">Reorder level <span class="hl-badge">HL</span></div><div class="defn">The stock level at which a new order is placed.</div></div>
+    <div class="def-card"><div class="term">Reorder quantity <span class="hl-badge">HL</span></div><div class="defn">The amount of stock ordered each time a new order is placed.</div></div>
+    <div class="def-card"><div class="term">Defect rate <span class="hl-badge">HL</span></div><div class="defn">The percentage of total output that is faulty.</div></div>
+    <div class="def-card"><div class="term">Labour productivity <span class="hl-badge">HL</span></div><div class="defn">Output per unit of labour input, e.g. per worker or per labour hour.</div></div>
+    <div class="def-card"><div class="term">Capital productivity <span class="hl-badge">HL</span></div><div class="defn">Output per unit of capital input, e.g. per machine hour.</div></div>
+    <div class="def-card"><div class="term">Operating leverage <span class="hl-badge">HL</span></div><div class="defn">The sensitivity of profit to changes in sales, determined by the proportion of fixed costs in total costs.</div></div>
+    <div class="def-card"><div class="term">Cost to buy / cost to make <span class="hl-badge">HL</span></div><div class="defn">The cost of buying units from a supplier (P × Q) compared with producing them in-house (TFC + AVC × Q).</div></div>
+    <div class="def-card"><div class="term">Crisis management <span class="hl-badge">HL</span></div><div class="defn">The actions taken to deal with an unexpected, threatening event as it happens, to limit damage and restore normal operations.</div></div>
+    <div class="def-card"><div class="term">Contingency planning <span class="hl-badge">HL</span></div><div class="defn">Planning in advance for unexpected events by identifying possible crises and preparing responses to them.</div></div>
   </div>
 
   <!-- COMMAND TERMS -->
